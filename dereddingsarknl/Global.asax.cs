@@ -24,9 +24,10 @@ namespace dereddingsarknl
 
     protected void Application_BeginRequest()
     {
-      if (Request.IsLocal)
+      MiniProfiler.Start();
+      if(Request.IsLocal)
       {
-        MiniProfiler.Start();
+
       }
     }
 
@@ -37,9 +38,7 @@ namespace dereddingsarknl
       routes.MapRoute("Index", "", new { controller = "Index", action = "Show" });
 
       routes.MapRoute("OverOns", "over-de-gemeente/{partName}", new { controller = "OverOns", action = "Show", partName = "grondslag" });
-
-      routes.MapRoute("Pages", "{fileName}", new { controller = "Page", action = "Show" });
-      routes.MapRoute("PagesInFolder", "{folderName}/{fileName}", new { controller = "Page", action = "ShowInFolder", fileName = "welkom" });
+      routes.MapRoute("Activiteiten", "activiteiten/{partName}", new { controller = "Activiteiten", action = "Show", partName = "samenkomsten" });
     }
 
     protected void Application_Start()

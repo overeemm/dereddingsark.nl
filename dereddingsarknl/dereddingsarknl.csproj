@@ -77,9 +77,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AutorisatieController.cs" />
+    <Compile Include="Controllers\ActiviteitenController.cs" />
     <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="Controllers\OverOnsController.cs" />
-    <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -145,6 +145,7 @@
     <Content Include="Content\Photos\9.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <None Include="Properties\PublishProfiles\dereddingsark %40 nitroserve.pubxml" />
     <None Include="Scripts\jquery-1.7.2.intellisense.js">
       <DependentUpon>jquery-1.7.2.js</DependentUpon>
     </None>
@@ -171,6 +172,8 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Index\Show.cshtml" />
+    <Content Include="Views\OverOns\Show.cshtml" />
+    <Content Include="Views\Activiteiten\Show.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -179,7 +182,6 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Page\Show.cshtml" />
     <Content Include="Views\Shared\_User.cshtml" />
   </ItemGroup>
   <PropertyGroup>

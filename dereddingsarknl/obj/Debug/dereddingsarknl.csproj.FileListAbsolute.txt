@@ -17,6 +17,5 @@ C:\Users\michiel\Documents\GitHub\dereddingsark.nl\dereddingsarknl\bin\MarkdownS
 C:\Users\michiel\Documents\GitHub\dereddingsark.nl\dereddingsarknl\bin\MarkdownSharp.xml
 C:\Users\michiel\Documents\GitHub\dereddingsark.nl\dereddingsarknl\bin\MiniProfiler.pdb
 C:\Users\michiel\Documents\GitHub\dereddingsark.nl\dereddingsarknl\bin\MiniProfiler.xml
-C:\Users\michiel\Documents\GitHub\dereddingsark.nl\dereddingsarknl\obj\Debug\dereddingsarknl.csprojResolveAssemblyReference.cache
 C:\Users\michiel\Documents\GitHub\dereddingsark.nl\dereddingsarknl\obj\Debug\dereddingsarknl.dll
 C:\Users\michiel\Documents\GitHub\dereddingsark.nl\dereddingsarknl\obj\Debug\dereddingsarknl.pdb
