@@ -1,0 +1,197 @@
+﻿@using StackExchange.Profiling;
+@using dereddingsarknl.Models;
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=us-ascii" />
+  <meta name="robots" content="index, follow" />
+  <meta name="keywords" content="evangelie, gemeente, de reddingsark, ark, braaksma, christus, jezus, christen, christendom, baarn, bunschoten, amersfoort, adelheidlaan, oostwende college" />
+  <meta name="description" content="evangeliegemeente De Reddingsark" />
+
+  <title>@ViewBag.Title</title>
+  <link href="@Url.Content("~/favicon.ico")" rel="shortcut icon" type="image/x-icon" />
+  <link rel="stylesheet" href="@Url.Content("~/Content/template.css")" type="text/css" />
+</head>
+
+<body class="body_bg">
+  <div id="page_bg">
+    <div id="header">
+      <div class="header_img">
+        <div class="news">
+          <div class="latest">
+            <div class="module">
+              <div>
+                <div>
+                  <div>
+                    <h3>nieuwste artikelen</h3>
+
+                    <ul class="latestnews">
+                      <li class="latestnews"><a href="/mededelingenbladen/934-bunschoten-8-april-2012" class=
+                      "latestnews">Bunschoten 8 april 2012</a></li>
+
+                      <li class="latestnews"><a href="/contactbladen/932-april-2012" class="latestnews">April
+                      2012</a></li>
+
+                      <li class="latestnews"><a href="/mededelingenbladen/931-baarn-1-april-2012" class=
+                      "latestnews">Baarn 1 april 2012</a></li>
+
+                      <li class="latestnews"><a href="/mededelingenbladen/930-bunschoten-1-april-2012" class=
+                      "latestnews">Bunschoten 1 april 2012</a></li>
+
+                      <li class="latestnews"><a href="/audio/samenkomsten-baarn/935-h-geurts-jezuss-gebedsworsteling"
+                      class="latestnews">H. Geurts - Jezus's gebedsworsteling</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="separator"></div>
+
+          <div class="popular">
+            <div class="module">
+              <div>
+                <div>
+                  <div>
+                    <h3>agenda</h3>
+
+                    <p>15-04-2012 09:45 - 11:45<br />
+                    <a href=
+                    "/samenkomsten/rooster/event/NmNzNm5wMDhnM2luZzJrODc2bGtyc2ZwaWtfMjAxMjA0MTVUMDc0NTAwWiBldmFuZ2VsaWVnZW1lZW50ZWRlcmVkZGluZ3NhcmtAbQ/1?start=1334475900&amp;end=1334483100">
+                    Samenkomst Bunschoten</a></p>
+
+                    <p>15-04-2012 09:45 - 11:45<br />
+                    <a href=
+                    "/samenkomsten/rooster/event/NWl1bW83MTBiN204Z3Y0bG1zaGNxcHBvc2NfMjAxMjA0MTVUMDc0NTAwWiBldmFuZ2VsaWVnZW1lZW50ZWRlcmVkZGluZ3NhcmtAbQ/1?start=1334475900&amp;end=1334483100">
+                    samenkomst Baarn</a></p>
+
+                    <p>zie ook het <a href="/samenkomsten/rooster/calendars/1">volledige rooster</a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="clr"></div>
+        </div>
+
+        <div class="clr"></div>
+      </div>
+
+      <div id="pillmenu">
+        <table cellspacing="0" cellpadding="0" style="float: left;">
+          <tr>
+            <td>
+              kruimelpad1 &gt; kruimelpad2
+            </td>
+          </tr>
+        </table>
+        <div class="clr"></div>
+      </div>
+    </div>
+    <div id="wrapper">
+      <div id="content">
+        <div id="leftcolumn">
+          <div class="module_menu">
+            <div>
+              <div>
+                <div>
+                  <ul class="menu">
+                    <li><a href="http://www.dereddingsark.nl/"><span>welkom</span></a></li>
+                    <!--<li><a href="/nieuws"><span>nieuws</span></a></li>-->
+                    <li class="parent"><a href="/audio"><span>audio</span></a></li>
+                    <li><a href="@Url.Page("artikelen")"><span>artikelen</span></a></li>
+                    <li><a href="@Url.Page("contact")"><span>contact</span></a></li>
+                    <li><a href="@Url.Page("fotos")"><span>foto's</span></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="module">
+            <div>
+              <div>
+                <div>
+                  @Extensions.BuildMenu2(Url, ViewBag.PageKey)
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="module">
+            <div>
+              <div>
+                <div>
+                  @Extensions.BuildMenu3(Url, ViewBag.PageKey)
+                  <ul class="menu">
+                  <!-- ingelogd 
+                    <li class="item271"><a href="/contactbladen"><span>contactbladen</span></a></li>
+
+                    <li class="item272"><a href="/mededelingenbladen"><span>mededelingenbladen</span></a></li>
+
+                    <li class="item21"><a href="/mijn-gegevens"><span>mijn gegevens</span></a></li>
+                    -->
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="module">
+            <div>
+              <div>
+                <div style="padding-top:10px;">
+                  <a href="http://www.dereddingsark.nl/index.php?option=com_ninjarsssyndicator&amp;feed_id=1&amp;format=raw"><img src="@Url.Content("~/Content/images/rss.png")" alt="rss" title="rss" /></a> 
+                  &nbsp; 
+                  <a href="http://www.google.com/calendar/ical/evangeliegemeentedereddingsark%40gmail.com/public/basic.ics"><img src="@Url.Content("~/Content/images/cal.png")" alt="agenda" title="agenda" /></a> 
+                  &nbsp; 
+                  <a href="http://www.dereddingsark.nl/index.php?option=com_podcast&amp;view=feed&amp;format=raw"><img src="@Url.Content("~/Content/images/podcast.png")" alt="podcast" title="podcast" /></a> 
+                  &nbsp; 
+                  <a href="http://twitter.com/dereddingsark"><img src="@Url.Content("~/Content/images/twitter.png")" alt="twitter" title="twitter" /></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="module">
+            <div>
+              <div>
+                <div>
+                
+                @Html.Partial("_User")
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- voeg toe voor banner:  style="width:600px;float:left;"-->
+        <div id="maincolumn_full">
+          @RenderBody()
+        </div>
+        <!-- voeg toe voor banner:
+        <div style="float:left;padding-left:10px;"><a href="http://www.dereddingsark.nl/nieuws/904-strijd-thats-the-question">
+        <img src="http://www.dereddingsark.nl/banner_strijd.jpg" /></a>
+        </div>-->
+
+        <div class="clr"></div>
+      </div>
+    </div><!-- /Wrapper -->
+    
+    <!--footer start-->
+    <div id="footer">
+      <div id="f123">
+        <div>
+          <div style="text-align: center; padding: 10px 0 0;">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--footer end-->
+  </div>
+  @MiniProfiler.RenderIncludes()
+</body>
+</html>

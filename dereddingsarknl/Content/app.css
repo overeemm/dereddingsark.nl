@@ -1,0 +1,405 @@
+/* icons van http://365psd.com/day/2-209/ */
+
+body, html {
+  background-color: #F0EEE1;
+}
+
+.container {
+  padding: 20px 20px 0px;
+}
+
+.header.columns {
+  background: url('images/logo-small.png') no-repeat;
+  min-height: 100px;
+}
+
+  .header.columns h2 {
+    margin-left: 210px;
+    font-weight: normal;
+    font-size: 3.5rem;
+    float: left;
+    height: 100%;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
+  .header.columns h5 {
+    margin-left: 210px;
+    float: left;
+    margin-top: -10px;
+    font-size: 1.6rem;
+    font-weight: normal;
+  }
+
+  .header.columns h3 {
+    margin-left: 0px;
+    float: left;
+    margin-top: 20px;
+    padding: 0px 20px 0px 250px;
+    background-color: white;
+    color: #0A91A8;
+  }
+
+.menu.columns ul {
+  margin-top: -21px;
+}
+
+.menu.columns li {
+  display: inline-block;
+  margin: 0px 4px 10px 4px;
+  font-weight: bold;
+  -moz-box-shadow: 3px 3px 5px 0px #aaa;
+  -webkit-box-shadow: 3px 3px 5px 0px #aaa;
+  box-shadow: 3px 3px 5px 0px #aaa;
+  height: 100px;
+  padding: 75px 4px 0px;
+  color: #fff;
+  background: #639ca5; /* Old browsers */
+  background: -moz-linear-gradient(top, #639ca5 0%, #008fa5 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#639ca5), color-stop(100%,#008fa5)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #639ca5 0%,#008fa5 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #639ca5 0%,#008fa5 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #639ca5 0%,#008fa5 100%); /* IE10+ */
+  background: linear-gradient(to bottom, #639ca5 0%,#008fa5 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#639ca5', endColorstr='#008fa5',GradientType=0 ); /* IE6-9 */
+  border-bottom: 1px solid #F0EEE1;
+}
+
+  .menu.columns li:hover {
+    height: 110px;
+    margin-bottom: 0px;
+  }
+
+  .menu.columns li.active {
+    background: #fff;
+    color: #639ca5;
+    border-bottom: 1px solid #639ca5;
+  }
+
+  .menu.columns li a {
+    color: #fff;
+  }
+
+  .menu.columns li.overons {
+  }
+
+  .menu.columns li.activiteiten {
+  }
+
+  .menu.columns li.audio {
+  }
+
+  .menu.columns li.artikelen {
+  }
+
+  .menu.columns li.fotos {
+  }
+
+  .menu.columns li.inloggen {
+  }
+
+.banner {
+  background-color: #fff;
+  -moz-box-shadow: 0px 0px 5px 0px #aaa;
+  -webkit-box-shadow: 0px 0px 5px 0px #aaa;
+  box-shadow: 0px 0px 5px 0px #aaa;
+  margin: 20px auto;
+}
+
+  .banner .columns {
+    margin-left: auto;
+    margin-right: auto;
+    float: none;
+  }
+
+    .banner .columns p {
+      font-size: 2.5rem;
+      line-height: 1.25;
+    }
+
+      .banner .columns p span.large {
+        font-size: 3.5rem;
+        font-weight: bold;
+        color: #0A91A8;
+      }
+
+div.row.zones {
+  margin: 10px auto;
+}
+
+div.columns p.titel {
+  color: #fff;
+  font-size: 1.8rem;
+  padding: 3px 0px 3px 30px;
+  background: url("images/iconsbar.png") 0px -30px no-repeat;
+  height: 30px;
+  line-height: 20px;
+  margin: 0px 0px 0px 0px;
+}
+
+div.agendacontainer {
+  padding-left: 0px;
+}
+
+div.agenda, div.newitems {
+  padding: 0px;
+  background-color: #0A91A8;
+  -moz-box-shadow: 0px 0px 5px 0px #aaa;
+  -webkit-box-shadow: 0px 0px 5px 0px #aaa;
+  box-shadow: 0px 0px 5px 0px #aaa;
+}
+
+  div.agenda ul, div.newitems ul {
+    margin-bottom: 0px;
+  }
+
+div.columns.agenda p.titel {
+  background-position: 0px -30px;
+}
+
+div.agenda li {
+  padding-left: 30px;
+  height: 30px;
+  line-height: 30px;
+  color: #fff;
+  margin: 0px 0px 10px 0px;
+  border-top: 1px solid #fff;
+  list-style-type: none;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+  div.agenda li:first-child {
+    border-top: 0px;
+  }
+
+  div.agenda li span {
+    font-size: 1rem;
+    position: absolute;
+    left: 0px;
+    margin: 16px 0px 0px 30px;
+  }
+
+div.columns.newitems p.titel {
+  background-position: 0px -120px;
+}
+
+div.newitems li {
+  padding-left: 30px;
+  background: url("images/iconsbar.png") no-repeat;
+  height: 30px;
+  line-height: 30px;
+  color: #fff;
+  margin: 0px;
+  border-top: 1px solid #fff;
+  list-style-type: none;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+  div.newitems li:first-child {
+    border-top: 0px;
+  }
+
+  div.newitems li span {
+    font-size: 1rem;
+    position: absolute;
+    left: 0px;
+    margin: 16px 0px 0px 30px;
+  }
+
+  div.newitems li.audio {
+    background-position: 0px 0px;
+    margin-bottom: 10px;
+  }
+
+  div.newitems li.artikel {
+    background-position: 0px -90px;
+  }
+
+  div.newitems li.foto {
+    background-position: 0px -60px;
+  }
+
+  div.newitems li.nieuws {
+    background-position: 0px -120px;
+  }
+
+div.foto {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+}
+
+  div.foto img {
+    display: none;
+  }
+
+div.row.map {
+  margin-bottom: 20px;
+}
+
+.locaties {
+  background: url('images/locaties.png') no-repeat;
+  height: 250px;
+}
+
+  .locaties p {
+    background-color: rgba(255,255,255,1);
+    display: inline-block;
+    float: left;
+    clear: left;
+    margin: 10px;
+    padding: 5px;
+    font-size: 2rem;
+  }
+
+    .locaties p:not(:first-child) {
+      margin-top: -12px;
+    }
+
+  .locaties .marker {
+    display: inline-block;
+    background-color: #f00;
+    width: 10px;
+    height: 10px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    position: absolute;
+  }
+
+    .locaties .marker.baarn {
+      top: 135px;
+      left: 75px;
+    }
+
+    .locaties .marker.bunschoten {
+      top: 85px;
+      left: 940px;
+    }
+
+  .locaties .arrow {
+    display: inline-block;
+    position: absolute;
+  }
+
+    .locaties .arrow.baarn {
+      background: url("images/arrow-baarn.png") no-repeat;
+      height: 65px;
+      width: 42px;
+      top: 150px;
+      left: 62px;
+    }
+
+    .locaties .arrow.bunschoten {
+      background: url("images/arrow-bunschoten.png") no-repeat;
+      height: 43px;
+      width: 50px;
+      top: 97px;
+      left: 885px;
+    }
+
+div.container.footer {
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  clear: both;
+  min-height: 20px;
+  background-color: #0A91A8;
+  color: #fff;
+  border-top: solid 1px #F0EEE1;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  -moz-box-shadow: 0px -3px 5px 0px #aaa;
+  -webkit-box-shadow: 0px -3px 5px 0px #aaa;
+  box-shadow: 0px -3px 5px 0px #aaa;
+}
+
+  div.container.footer p {
+    margin: 0px;
+  }
+
+  div.container.footer a, div.container.footer a:visited, div.container.footer a:active, div.container.footer a:hover {
+    color: #fff;
+    text-decoration: underline;
+  }
+
+div.artikel {
+  background-color: #fff;
+  -moz-box-shadow: 0px 0px 5px 0px #aaa;
+  -webkit-box-shadow: 0px 0px 5px 0px #aaa;
+  box-shadow: 0px 0px 5px 0px #aaa;
+  margin-bottom: 20px;
+}
+
+  div.artikel p {
+    padding: 10px;
+    margin: 0px;
+  }
+
+  div.artikel ul {
+    margin: 0px 0px 0px 20px;
+  }
+
+    div.artikel ul li {
+      margin: 0px 0px 10px 10px;
+    }
+
+span.bijbeltekst {
+  display: block;
+  background-color: #F0EEE1;
+  color: #0A91A8;
+  border: solid 1px #fff;
+  padding: 3px;
+  margin: 5px;
+}
+
+span.vers {
+  font-weight: bold;
+  font-size: 1rem;
+  display: block;
+}
+
+div.artikel h5 {
+  font-size: 1.5rem;
+  padding-left: 10px;
+}
+
+div.artikel h3 {
+  font-size: 1.8rem;
+  padding: 10px;
+  background-color: #0A91A8;
+  color: #fff;
+}
+
+ul.submenu li {
+  display: inline-block;
+  width: 100%;
+  background-color: #0A91A8;
+  color: #fff;
+  height: 28px;
+  text-align: center;
+  font-weight: bold;
+  line-height: 28px;
+  font-size: 1.5rem;
+  margin: 2px 0px;
+  float: left;
+  border: solid 1px #0A91A8;
+}
+
+  ul.submenu li:hover {
+    border: solid 1px #fff;
+  }
+
+  ul.submenu li a, ul.submenu li a:visited, ul.submenu li a:active, ul.submenu li a:hover {
+    color: #fff;
+  }
+
+  ul.submenu li.active {
+    background-color: #fff;
+    border: solid 1px #fff;
+    color: #0a91a8;
+  }
