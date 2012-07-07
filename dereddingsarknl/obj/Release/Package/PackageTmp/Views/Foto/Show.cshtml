@@ -1,0 +1,14 @@
+﻿<div class="row">
+  @foreach(var album in ViewBag.Albums)
+  {
+
+    <div class="three columns photoalbum">
+      <div class="photocontainer">
+        <div class="photo" style="background-image:url('@album.Thumbnail')" id="@album.Id" name="@album.Name" data-thumbnail="@album.Thumbnail">
+          
+        </div>
+        <span>@album.Name</span>
+      </div>
+    </div>
+  }
+</div>

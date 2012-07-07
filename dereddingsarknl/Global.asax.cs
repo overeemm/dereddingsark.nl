@@ -39,6 +39,8 @@ namespace dereddingsarknl
 
       routes.MapRoute("OverOns", "over-de-gemeente/{partName}", new { controller = "OverOns", action = "Show", partName = "grondslag" });
       routes.MapRoute("Activiteiten", "activiteiten/{partName}", new { controller = "Activiteiten", action = "Show", partName = "samenkomsten" });
+      routes.MapRoute("Fotos", "fotos", new { controller = "Foto", action = "Show" });
+      routes.MapRoute("FotosJSON", "fotos/{name}/{id}", new { controller = "Foto", action = "Photos" });
     }
 
     protected void Application_Start()

@@ -8,3 +8,12 @@ C:\Users\michiel\Documents\GitHub\dereddingsark.nl\dereddingsarknl\bin\MiniProfi
 C:\Users\michiel\Documents\GitHub\dereddingsark.nl\dereddingsarknl\bin\MiniProfiler.xml
 C:\Users\michiel\Documents\GitHub\dereddingsark.nl\dereddingsarknl\obj\Release\dereddingsarknl.dll
 C:\Users\michiel\Documents\GitHub\dereddingsark.nl\dereddingsarknl\obj\Release\dereddingsarknl.pdb
+C:\Users\michiel\Documents\GitHub\dereddingsark.nl\dereddingsarknl\bin\Google.GData.AccessControl.dll
+C:\Users\michiel\Documents\GitHub\dereddingsark.nl\dereddingsarknl\bin\Google.GData.Calendar.dll
+C:\Users\michiel\Documents\GitHub\dereddingsark.nl\dereddingsarknl\bin\Google.GData.Client.dll
+C:\Users\michiel\Documents\GitHub\dereddingsark.nl\dereddingsarknl\bin\Google.GData.Extensions.dll
+C:\Users\michiel\Documents\GitHub\dereddingsark.nl\dereddingsarknl\bin\Google.GData.Photos.dll
+C:\Users\michiel\Documents\GitHub\dereddingsark.nl\dereddingsarknl\bin\Newtonsoft.Json.dll
+C:\Users\michiel\Documents\GitHub\dereddingsark.nl\dereddingsarknl\bin\Newtonsoft.Json.pdb
+C:\Users\michiel\Documents\GitHub\dereddingsark.nl\dereddingsarknl\bin\Newtonsoft.Json.xml
+C:\Users\michiel\Documents\GitHub\dereddingsark.nl\dereddingsarknl\obj\Release\dereddingsarknl.csprojResolveAssemblyReference.cache

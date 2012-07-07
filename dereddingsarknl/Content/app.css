@@ -36,7 +36,7 @@ body, html {
     color: #000;
     text-decoration: none;
   }
-  
+
   .header.columns h3 {
     margin-left: 0px;
     float: left;
@@ -342,7 +342,7 @@ div.submenucontainer {
   padding: 0px;
   margin-bottom: 40px;
 }
-  
+
 div.artikel {
   background-color: #fff;
   -moz-box-shadow: 0px 0px 5px 0px #aaa;
@@ -368,9 +368,8 @@ div.artikel {
 
     div.artikel ul li {
       margin: 0px 0px 10px 0px;
-      list-style-type:none;
+      list-style-type: none;
       font-size: 1.3rem;
-      
     }
 
 blockquote {
@@ -381,16 +380,17 @@ blockquote {
   padding: 3px;
   margin: 5px;
 }
+
   blockquote p {
     color: #0A91A8;
   }
 
-blockquote strong {
-  font-weight: bold;
-  font-size: 1rem;
-  display: block;
-  color: #0A91A8;
-}
+  blockquote strong {
+    font-weight: bold;
+    font-size: 1rem;
+    display: block;
+    color: #0A91A8;
+  }
 
 div.artikel h5 {
   font-size: 1.5rem;
@@ -431,4 +431,59 @@ ul.submenu li {
     background-color: #fff;
     border: solid 1px #fff;
     color: #0a91a8;
+  }
+
+div.three div.photo, div.three.photoalbum span, div.three.photoalbum div.photocontainer {
+  width: 230px;
+}
+
+div.six div.photo, div.six.photoalbum span, div.six.photoalbum div.photocontainer {
+  width: 480px;
+}
+div.six div.photo {
+  height: 319px;
+}
+div.six.photoalbum {
+  margin-bottom: 50px;
+}
+div.six.photoalbum div.photocontainer {
+  height: inherit;
+}
+
+div.photo {
+  height: 165px;
+  background: #0A91A8 url('') 4px 4px no-repeat;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+  div.photo.orbit {
+    
+  }
+
+  div.photo img {
+    display: none;
+  }
+
+div.photoalbum {
+  margin-bottom: 20px;
+}
+
+  div.photoalbum span {
+    color: #fff;
+    display: inline-block;
+    background-color: #0A91A8;
+    padding: 4px 4px 4px 4px;
+  }
+
+  div.photoalbum div.photocontainer {
+    height: 187px;
+    -moz-box-shadow: 0px 0px 5px 0px #aaa;
+    -webkit-box-shadow: 0px 0px 5px 0px #aaa;
+    box-shadow: 0px 0px 5px 0px #aaa;
+  }
+
+  div.photoalbum span a, div.photoalbum span a:visited, div.photoalbum span a:active, div.photoalbum span a:hover {
+    color: #fff;
+    text-decoration: none;
   }

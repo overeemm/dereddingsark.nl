@@ -2,6 +2,36 @@ jQuery(document).ready(function ($) {
 
   /* Use this js doc for all application specific JS */
 
+  $('div.photo').click(function () {
+
+    revertAlbums();
+
+    var $this = $(this);
+    var id = $this.attr("id");
+    var name = $this.attr("name");
+
+    $this.css("background-image", "");
+    $this.parent().parent().removeClass("three").addClass("six");
+
+    $.get("/fotos/" + name + "/" + id, function (data) {
+      for (var i = 0; i < data.length; i++) {
+        $this.append("<img src='" + data[i].Url + "' />");
+      }
+      $this.orbit();
+    });
+    
+  });
+
+  function revertAlbums() {
+    $('div.photo.orbit').empty().each(function (i, e) {
+      $(e).css("background-image", "url('" + $(e).data("thumbnail") + "')");
+      $(e).prependTo($(e).parent().parent());
+      $(e).parent().parent().removeClass("six").addClass("three");
+      $(e).css("width", "").css("height", "").removeClass("orbit");
+      $('div.orbit-wrapper').remove();
+    });
+  }
+
   $('div.slideshow').orbit();
 
   /* ALERT BOXES ------------ */
