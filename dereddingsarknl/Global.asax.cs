@@ -42,6 +42,7 @@ namespace dereddingsarknl
       routes.MapRoute("Fotos", "fotos", new { controller = "Foto", action = "Show" });
       routes.MapRoute("FotosJSON", "fotos/{name}/{id}", new { controller = "Foto", action = "Photos" });
       routes.MapRoute("Agenda", "agenda", new { controller = "Agenda", action = "Show" });
+      routes.MapRoute("Audio", "audio", new { controller = "Audio", action = "Show" });
     }
 
     protected void Application_Start()

@@ -22,8 +22,8 @@
         @foreach(var item in ViewBag.CalendarItems)
         {
           <li>@item.What 
-            <span title="@item.When.ToString("ddd d MMM h:mm", new CultureInfo("nl-NL")) uur - @item.Where">
-              @item.When.ToString("ddd d MMM h:mm", new CultureInfo("nl-NL")) uur - @item.Where
+            <span title="@item.When.ToString("ddd d MMM H:mm", new CultureInfo("nl-NL")) uur - @item.Where">
+              @item.When.ToString("ddd d MMM H:mm", new CultureInfo("nl-NL")) uur - @item.Where
             </span>
           </li>
         }

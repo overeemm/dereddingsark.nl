@@ -53,7 +53,7 @@
         <ul>
           <li class="overons @ViewBag.OverOns"><a href="@Url.Action("Show", "OverOns", new { partName = "" })">over ons</a></li>
           <li class="activiteiten @ViewBag.Activiteiten"><a href="@Url.Action("Show", "Activiteiten", new { partName = "" })">activiteiten</a></li>
-          <li class="audio"><a href="@Url.Action("", "audio")">audio</a></li>
+          <li class="audio @ViewBag.Opnames""><a href="@Url.Action("Show", "Audio")">audio</a></li>
           <li class="artikelen"><a href="@Url.Action("", "artikelen")">artikelen</a></li>
           <li class="fotos @ViewBag.Fotos"><a href="@Url.Action("Show", "Foto")">foto's</a></li>
           <li class="inloggen"><a href="@Url.Action("", "inloggen")">inloggen</a></li>

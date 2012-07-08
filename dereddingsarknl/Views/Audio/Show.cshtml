@@ -1,0 +1,16 @@
+﻿@using System.Globalization;
+
+<div class="row">
+  @foreach(var opname in ViewBag.OpnameList)
+  {
+    <div class="four columns">
+      <div class="twelve columns newitems">
+        <ul>
+          <li class="audio">@opname.Titel
+            <span>@opname.Datum.ToString("ddd d MMM yyyy H:mm", new CultureInfo("nl-NL")) - @opname.Categorie</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  }
+</div>

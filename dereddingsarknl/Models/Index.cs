@@ -26,7 +26,7 @@ namespace dereddingsarknl.Models
     {
       foreach (string line in File.ReadAllLines(filename))
       {
-        _contents.Add(line.Split(',').Select(vl => vl.Trim()).ToList());
+        _contents.Add(line.Split(',').Select(vl => vl.Trim().Trim('"')).ToList());
       }
     }
 
