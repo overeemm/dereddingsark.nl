@@ -9,21 +9,24 @@ using StackExchange.Profiling;
 
 namespace dereddingsarknl.Controllers
 {
-  public class IndexController : Controller
+  public class AgendaController : Controller
   {
     public ActionResult Show()
     {
-      ViewBag.Title = "Een plek zijn waar God de Vader, Jezus Christus de Zoon en de Heilige Geest centraal staan.";
+      ViewBag.Title = "Agenda";
 
       using(MiniProfiler.Current.Step("Read calendar file"))
       {
         string calendarFile = Path.Combine(Settings.GetDataFolder(HttpContext), "calendar/publiek.ics");
         var calendar = new Calendar(calendarFile);
-        ViewBag.CalendarItems = calendar.Items
-          .Where(i => i.When.Date >= DateTime.Now.Date)
-          .OrderBy(i => i.When)
-          .Take(5).ToList();
+        var items = calendar.Items
+         .Where(i => i.When.Date >= DateTime.Now.Date)
+         .GroupBy(i => new DateTime(i.When.Year, i.When.Month, 1, 0, 0, 0))
+         .ToDictionary(g => g.Key, g => g.OrderBy(i => i.When).ToList());
+        ViewBag.CalendarItems = items;
+        ViewBag.CalendarMonths = items.Keys.OrderBy(i => i).ToList();
       }
+
       return View();
     }
 

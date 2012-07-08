@@ -52,7 +52,9 @@ namespace dereddingsarknl.Controllers
       {
         string filePath = Path.Combine(Settings.GetDataFolder(HttpContext), "indexen/fotos.csv");
         var albumIndex = new Index(filePath);
-
+        
+        ViewBag.Title = "In blik in onze gemeente";
+        ViewBag.Fotos = "active";
         ViewBag.Albums = albumIndex.Items.Select(l => GetAlbum(l.First(), l.Skip(1).First())).ToList();
       }
 

@@ -32,6 +32,22 @@ jQuery(document).ready(function ($) {
     });
   }
 
+  $('div.twelve.agenda p.titel').click(function () {
+    $("div.agendacontainer div.six.active").removeClass("active").addClass("inactive")
+    $(this).parent().parent().removeClass("inactive").addClass("active");
+    $(this).parent().parent().prependTo($(this).parent().parent().parent());
+
+    var inactive = $("div.agendacontainer div.six.inactive").toArray();
+    inactive.sort(function (ae, be) {
+      var a = $(ae).data("sortkey");
+      var b = $(be).data("sortkey");
+      return (a < b ? -1 : (a > b ? 1 : 0));
+    });
+    for (var i = 0; i < inactive.length; i++) {
+      $(inactive[i]).appendTo($("div.agendacontainer"));
+    }
+  });
+
   $('div.slideshow').orbit();
 
   /* ALERT BOXES ------------ */

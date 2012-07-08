@@ -11,4 +11,8 @@
       </div>
     </div>
   }
+  @foreach(var i in Enumerable.Range(0, 4 - (ViewBag.Albums.Count % 4) ))
+  {
+    <div class="three columns photoalbum"></div>
+  }
 </div>

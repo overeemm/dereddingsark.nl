@@ -148,6 +148,11 @@ div.columns p.titel {
   margin: 0px 0px 0px 0px;
 }
 
+  div.columns p.titel a, div.columns p.titel a:visited, div.columns p.titel a:active, div.columns p.titel a:hover {
+    color: #fff;
+    text-decoration: none;
+  }
+
 div.agendacontainer {
   padding-left: 0px;
 }
@@ -189,7 +194,11 @@ div.agenda li {
     font-size: 1rem;
     position: absolute;
     left: 0px;
+    width: 285px;
     margin: 16px 0px 0px 30px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 
 div.columns.newitems p.titel {
@@ -440,15 +449,18 @@ div.three div.photo, div.three.photoalbum span, div.three.photoalbum div.photoco
 div.six div.photo, div.six.photoalbum span, div.six.photoalbum div.photocontainer {
   width: 480px;
 }
+
 div.six div.photo {
   height: 319px;
 }
+
 div.six.photoalbum {
   margin-bottom: 50px;
 }
-div.six.photoalbum div.photocontainer {
-  height: inherit;
-}
+
+  div.six.photoalbum div.photocontainer {
+    height: inherit;
+  }
 
 div.photo {
   height: 165px;
@@ -458,7 +470,6 @@ div.photo {
 }
 
   div.photo.orbit {
-    
   }
 
   div.photo img {
@@ -487,3 +498,46 @@ div.photoalbum {
     color: #fff;
     text-decoration: none;
   }
+
+div.six.columns div.agenda {
+  margin-bottom: 20px;
+  background-color: #fff;
+  color: #0A91A8;
+}
+
+  div.six.columns div.agenda p.titel {
+    color: #fff;
+    background: #0A91A8 url("images/iconsbar.png") 0px -30px no-repeat;
+    cursor: pointer;
+  }
+
+  div.row.agendacontainer div.six.columns.inactive {
+    float: right;
+  }
+
+  div.row.agendacontainer div.six.columns.active {
+    float: left;
+  }
+
+  div.six.columns.inactive div.agenda ul {
+    display: none;
+  }
+
+  div.six.columns div.agenda li {
+    color: #0A91A8;
+    border-top: 1px solid #0A91A8;
+  }
+
+  div.six.columns div.agenda li span {
+    width: 465px;
+  }
+
+div.row.agendacontainer div.columns {
+  float: left;
+}
+
+div.agendaics {
+  background-color: #0A91A8;
+  color: #fff;
+  margin: 20px 0px;
+}

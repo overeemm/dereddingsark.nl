@@ -96,17 +96,17 @@
   <ItemGroup>
     <Compile Include="Controllers\AutorisatieController.cs" />
     <Compile Include="Controllers\ActiviteitenController.cs" />
+    <Compile Include="Controllers\AgendaController.cs" />
     <Compile Include="Controllers\FotoController.cs" />
     <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="Controllers\OverOnsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Calendar.cs" />
     <Compile Include="Models\DataFile.cs" />
-    <Compile Include="Models\Extensions.cs" />
     <Compile Include="Models\FotoAlbum.cs" />
     <Compile Include="Models\Index.cs" />
-    <Compile Include="Models\Menus.cs" />
     <Compile Include="Models\Settings.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Modules\ActivateIndexHttpModule.cs" />
@@ -195,6 +195,7 @@
     <Content Include="Views\OverOns\Show.cshtml" />
     <Content Include="Views\Activiteiten\Show.cshtml" />
     <Content Include="Views\Foto\Show.cshtml" />
+    <Content Include="Views\Agenda\Show.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

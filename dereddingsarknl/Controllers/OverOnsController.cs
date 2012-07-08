@@ -25,6 +25,7 @@ namespace dereddingsarknl.Controllers
           DataFile file = new DataFile(filePath);
           ViewBag.PageContent = file.Content;
           ViewBag.PageTitle = file.Title;
+          ViewBag.Title = file.Title;
           ViewBag.PagePart = partName;
           ViewBag.OverOns = "active";
 
