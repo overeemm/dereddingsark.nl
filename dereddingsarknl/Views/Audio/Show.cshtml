@@ -1,12 +1,27 @@
 ﻿@using System.Globalization;
 
+<div class="row audioplayer">
+  <div class="eight columns">
+    <div class="twelve columns">
+      <div>
+        <span></span>
+        <div class="exit"></div>
+      </div>
+      <a href="#" target="_blank">download</a>
+      <audio id="player"></audio>
+      <div class="play"></div>
+      <div class="stop"></div>
+    </div>
+  </div>
+</div>
+
 <div class="row">
   @foreach(var opname in ViewBag.OpnameList)
   {
     <div class="four columns">
-      <div class="twelve columns newitems">
+      <div class="twelve columns recording">
         <ul>
-          <li class="audio">@opname.Titel
+          <li class="audio"><a href="@opname.Url" target="_blank">@opname.Titel</a>
             <span>@opname.Datum.ToString("ddd d MMM yyyy H:mm", new CultureInfo("nl-NL")) - @opname.Categorie</span>
           </li>
         </ul>

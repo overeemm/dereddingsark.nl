@@ -511,22 +511,22 @@ div.six.columns div.agenda {
     cursor: pointer;
   }
 
-  div.row.agendacontainer div.six.columns.inactive {
-    float: right;
-  }
+div.row.agendacontainer div.six.columns.inactive {
+  float: right;
+}
 
-  div.row.agendacontainer div.six.columns.active {
-    float: left;
-  }
+div.row.agendacontainer div.six.columns.active {
+  float: left;
+}
 
-  div.six.columns.inactive div.agenda ul {
-    display: none;
-  }
+div.six.columns.inactive div.agenda ul {
+  display: none;
+}
 
-  div.six.columns div.agenda li {
-    color: #0A91A8;
-    border-top: 1px solid #0A91A8;
-  }
+div.six.columns div.agenda li {
+  color: #0A91A8;
+  border-top: 1px solid #0A91A8;
+}
 
   div.six.columns div.agenda li span {
     width: 465px;
@@ -542,6 +542,102 @@ div.agendaics {
   margin: 20px 0px;
 }
 
-div.twelve.newitems {
+div.audioplayer {
+  display: none;
+  margin-bottom: 20px;
+}
+
+div.audioplayer .eight .twelve {
+  background-color: #0A91A8;
+  color: #fff;
+  -moz-box-shadow: 0px 0px 5px 0px #aaa;
+  -webkit-box-shadow: 0px 0px 5px 0px #aaa;
+  box-shadow: 0px 0px 5px 0px #aaa;
+  padding: 15px;
+}
+
+  div.audioplayer a, div.audioplayer a:visited, div.audioplayer a:active, div.audioplayer a:hover {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  div.audioplayer div.play {
+    width: 30px;
+    height: 30px;
+    background: #0A91A8 url("images/iconsbar.png") 0px -180px no-repeat;
+  }
+
+  div.audioplayer div.pause {
+    width: 30px;
+    height: 30px;
+    background: #0A91A8 url("images/iconsbar.png") 0px -210px no-repeat;
+  }
+  
+  div.audioplayer div.stop {
+    width: 30px;
+    height: 30px;
+    background: #0A91A8 url("images/iconsbar.png") 0px -240px no-repeat;
+  }
+
+  div.audioplayer .eight .twelve div {
+    height: 30px;
+  }
+
+  div.audioplayer div span {
+    line-height: 30px;
+  }
+  
+  div.audioplayer div div.exit {
+    width: 30px;
+    height: 30px;
+    background: #0A91A8 url("images/iconsbar.png") 0px -150px no-repeat;
+    float: right;
+  }
+  
+div.recording {
+  padding: 0px;
+  margin-bottom: 10px;
+  background-color: #0A91A8;
+  -moz-box-shadow: 0px 0px 5px 0px #aaa;
+  -webkit-box-shadow: 0px 0px 5px 0px #aaa;
+  box-shadow: 0px 0px 5px 0px #aaa;
+}
+
+  div.recording ul {
+    margin-bottom: 0px;
+  }
+
+  div.recording a, div.recording a:visited, div.recording a:active, div.recording a:hover {
+    color: #fff;
+    text-decoration: none;
+  }
+
+div.columns.recording p.titel {
+  background-position: 0px -120px;
+}
+
+div.recording li {
+  padding-left: 30px;
+  background: url("images/iconsbar.png") 0px 0px no-repeat;
+  height: 30px;
+  line-height: 30px;
+  color: #fff;
+  margin: 0px;
+  border-top: 1px solid #fff;
+  list-style-type: none;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   margin-bottom: 10px;
 }
+
+  div.recording li:first-child {
+    border-top: 0px;
+  }
+
+  div.recording li span {
+    font-size: 1rem;
+    position: absolute;
+    left: 0px;
+    margin: 16px 0px 0px 30px;
+  }
