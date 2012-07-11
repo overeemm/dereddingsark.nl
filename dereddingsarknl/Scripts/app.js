@@ -5,6 +5,33 @@ jQuery(document).ready(function ($) {
   $('div.slideshow').orbit();
   $(this).tooltips();
 
+  $('div.inloggen').on('click', 'a.inactive', function (event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    $(this).addClass("active").removeClass("inactive");
+
+    $('div.inloggen').css("width", "230px");
+    $('div.inloggen').animate({
+      "margin-top": -20
+    }, 500, function() {
+      $('div.inloggen input').first().focus();
+    });
+  });
+
+  $('div.inloggen').on('click', 'a.active', function (event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    $(this).addClass("inactive").removeClass("active");
+
+    $('div.inloggen').animate({
+      "margin-top": -500
+    }, 500, function () {
+      $('div.inloggen').css("width", "100px");
+    });
+  });
+
   /* photo albums */
 
   $('div.photo').click(function () {
