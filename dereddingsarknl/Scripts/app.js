@@ -24,7 +24,7 @@ jQuery(document).ready(function ($) {
       }
       $this.orbit();
     });
-    
+
   });
 
   function revertAlbums() {
@@ -57,8 +57,42 @@ jQuery(document).ready(function ($) {
 
   /* audio */
   var canPlayMp3 = $('#player').get(0).canPlayType('audio/mpeg') != '';
-  
+
   if (canPlayMp3) {
+    var player = $('#player').get(0);
+
+    var onLoadedData = function () { 
+      player.addEventListener('timeupdate', onTimeUpdate, false);
+    };
+
+    var onTimeUpdate = function () {
+
+      var currSec = parseInt(player.currentTime % 60);
+      var currMin = parseInt((player.currentTime / 60) % 60);
+      var totalSec = parseInt(player.duration % 60);
+      var totalMin = parseInt((player.duration / 60) % 60);
+
+      // "onEnded" should be triggered from an onended event, but it's not always reliable.playPause
+      if (player.ended) {
+        onEnded();
+      } else if (player.seeking) {
+      } else {
+        var status = [currMin >= 10 ? currMin : '0' + currMin, ':',
+                 currSec >= 10 ? currSec : '0' + currSec,
+                 ' / ',
+                 totalMin >= 10 ? totalMin : '0' + totalMin, ':',
+                 totalSec >= 10 ? totalSec : '0' + totalSec, ].join('');
+        $('div.progress div.info').text(status);
+        $('div.progress div.bar').css('width', (player.currentTime / player.duration) * 100 + '%');
+      }
+    };
+
+    var onEnded_ = function () {
+      player.removeEventListener("timeupdate", onTimeUpdate, false);
+    };
+
+    player.addEventListener("loadeddata", onLoadedData, false);
+
     $("div.recording a").click(function (event) {
       event.preventDefault();
       event.stopPropagation();
@@ -66,15 +100,64 @@ jQuery(document).ready(function ($) {
       $this = $(this);
 
       $('.audioplayer')
+        .appendTo($this.parent().parent().parent().parent())
         .show()
-        .find("span").text($this.text()).end()
         .find("a").attr("href", $this.attr("href")).end()
-        ;
+      ;
 
+      $('div.recordingpointer').hide();
+      $('div.recording.active').removeClass("active");
+      $this.parent().parent().parent().addClass("active");
+      $this.parent().parent().parent().parent().find(".recordingpointer").show();
+
+      reset();
+    });
+
+    var reset = function () {
+      $('div.pause').removeClass("pause").addClass("play");
+      $('div.audioplayer div.stop').hide();
+      player.src = $('div.recording.active a').attr("href");
+      player.removeEventListener('timeupdate', onTimeUpdate, false);
+      player.load();
+      $('div.progress div.info').text('');
+      $('div.progress div.bar').css("width", "0%");
       // http://studio.html5rocks.com/samples/audio-podcast/podcast.js
+    };
 
+    $('div.audioplayer').on('click', 'div.play', function () {
+      $(this).removeClass("play").addClass("pause");
+      $('div.audioplayer div.stop').show();
+      player.play();
+    });
+    $('div.audioplayer').on('click', 'div.pause', function () {
+      $(this).removeClass("pause").addClass("play");
+      $('div.audioplayer div.stop').show();
+      player.pause();
+    });
+    $('div.audioplayer').on('click', 'div.stop', function () {
+      reset();
     });
   }
+
+  $('span.check').click(function () {
+    var $this = $(this);
+    var categorie = $this.data("cat");
+    if ($this.hasClass("checked")) {
+      $this.removeClass("checked");
+      $('div[data-cat="' + categorie + '"]').hide();
+    } else {
+      $this.addClass("checked");
+      $('div[data-cat="' + categorie + '"]').show();
+    }
+
+    $('div.recordingheader').show();
+    $('div.recordingheader').each(function (index, elem) {
+      var $this = $(elem);
+      if ($this.next("div.recordinggroup").find("div.four:visible").length == 0) {
+        $this.hide();
+      }
+    });
+  });
 
   /* ALERT BOXES ------------ */
   //$(".alert-box").delegate("a.close", "click", function(event) {
@@ -89,7 +172,7 @@ jQuery(document).ready(function ($) {
   //$('input, textarea').placeholder();
 
   /* TOOLTIPS ------------ */
-  
+
 
   /* UNCOMMENT THE LINE YOU WANT BELOW IF YOU WANT IE6/7/8 SUPPORT AND ARE USING .block-grids */
   //  $('.block-grid.two-up>li:nth-child(2n+1)').css({clear: 'left'});

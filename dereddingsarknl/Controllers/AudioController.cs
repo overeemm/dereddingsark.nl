@@ -28,9 +28,12 @@ namespace dereddingsarknl.Controllers
            Url = i.Skip(2).First(),
            Categorie = i.First()
          })
-         .OrderByDescending(o => o.Datum)
-         .ToList();
+         //.OrderByDescending(o => o.Datum)
+         .GroupBy(i => new DateTime(i.Datum.Year, i.Datum.Month, 1, 0, 0, 0))
+         .ToDictionary(g => g.Key, g => g.OrderByDescending(i => i.Datum).ToList());
+         //.ToList();
         ViewBag.OpnameList = items;
+        ViewBag.OpnameMonths = items.Keys.OrderByDescending(i => i).ToList();
         ViewBag.Opnames = "active";
       }
 
