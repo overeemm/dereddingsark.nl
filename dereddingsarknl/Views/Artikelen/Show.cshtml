@@ -1,0 +1,19 @@
+﻿@using System.Globalization;
+@foreach(var artikel in ViewBag.ArtikelList)
+{
+  <div class="row artikellist">
+    <div class="twelve columns">
+      <div class="nine columns artikel">
+        <h3><a href="@Url.Action("Artikel", "Artikelen", new { alias = @artikel.Alias })">@artikel.Title</a> - @artikel.Added.ToString("d MMMM yyyy", new CultureInfo("nl-NL"))</h3>
+        <div>
+          @Html.Raw(artikel.Content)
+        </div>
+        <p><a href="@Url.Action("Artikel", "Artikelen", new { alias = @artikel.Alias })">lees verder...</a></p>
+      </div>
+    </div>
+
+    <div class="three columns">
+      <a href="">archief</a>
+    </div>
+  </div>
+}

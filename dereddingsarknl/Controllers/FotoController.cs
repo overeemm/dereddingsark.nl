@@ -28,14 +28,15 @@ namespace dereddingsarknl.Controllers
       var folder = Path.Combine(Settings.GetDataFolder(HttpContext), "fotos");
       Directory.CreateDirectory(folder);
       var xml = Path.Combine(folder, id + ".xml");
-      if(! System.IO.File.Exists(xml) )
+      if(!System.IO.File.Exists(xml))
       {
-        using(WebClient wb = new WebClient())
-        {
-          // hiervoor moet je geauthentiseerd zijn.
-          var uri = string.Format("https://picasaweb.google.com/data/feed/api/user/evangeliegemeentedereddingsark@gmail.com/albumid/{0}?kind=photo", id);
-          wb.DownloadFile(uri, xml);
-        }
+        throw new HttpException(404, "Album " + id + " bestaat niet.");
+        //using(WebClient wb = new WebClient())
+        //{
+        //  // hiervoor moet je geauthentiseerd zijn.
+        //  var uri = string.Format("https://picasaweb.google.com/data/feed/api/user/evangeliegemeentedereddingsark@gmail.com/albumid/{0}?kind=photo", id);
+        //  wb.DownloadFile(uri, xml);
+        //}
       }
 
       var content = XDocument.Load(xml);
@@ -52,7 +53,7 @@ namespace dereddingsarknl.Controllers
       {
         string filePath = Path.Combine(Settings.GetDataFolder(HttpContext), "indexen/fotos.csv");
         var albumIndex = new Index(filePath);
-        
+
         ViewBag.Title = "In blik in onze gemeente";
         ViewBag.Fotos = "active";
         ViewBag.Albums = albumIndex.Items.Select(l => GetAlbum(l.First(), l.Skip(1).First())).ToList();

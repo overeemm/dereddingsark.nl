@@ -1,14 +1,55 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Configuration;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
 
 namespace dereddingsarknl.Models
 {
-  //http://www.google.com/calendar/ical/evangeliegemeentedereddingsark%40gmail.com/public/basic.ics
   public class Calendar
   {
+    private static object fileLock = new object();
+
+    public static string GetCalendarUrl()
+    {
+      return ConfigurationManager.AppSettings["calendar"];
+    }
+
+    public static string GetCachedFile(HttpContextBase httpContext)
+    {
+      string calendarFile = Path.Combine(Settings.GetDataFolder(httpContext), "calendar/publiek.ics");
+
+      // If the file does not exists, download it sync (to bad for this request)
+      if(!File.Exists(calendarFile))
+      {
+        DownloadCalendar(calendarFile);
+      }
+      // If the file is older then 10 minutes, start a backgroundworker to download it
+      else if(File.GetLastWriteTimeUtc(calendarFile).AddMinutes(10) < DateTime.UtcNow)
+      {
+        var worker = new BackgroundWorker();
+        worker.DoWork += (_, args) => DownloadCalendar(args.Argument as string);
+        worker.RunWorkerAsync(calendarFile);
+      }
+
+      return calendarFile;
+    }
+
+    private static void DownloadCalendar(string fileLocation)
+    {
+      using(var client = new WebClient())
+      {
+        var data = client.DownloadData(new Uri(GetCalendarUrl()));
+        lock(fileLock)
+        {
+          File.WriteAllBytes(fileLocation, data);
+        }
+      }
+    }
+
     private string _filePath;
     public Calendar(string filePath)
     {
@@ -20,7 +61,12 @@ namespace dereddingsarknl.Models
       get
       {
         CalendarItem currentItem = null;
-        foreach(var line in File.ReadAllLines(_filePath))
+        var lines = new string[0];
+        lock(fileLock)
+        {
+          lines = File.ReadAllLines(_filePath);
+        }
+        foreach(var line in lines)
         {
           if(line == "BEGIN:VEVENT")
           {

@@ -206,7 +206,7 @@ div.agendacontainer {
   padding-left: 0px;
 }
 
-div.agenda, div.newitems {
+div.agenda, div.newitems, div.frontpage {
   padding: 0px;
   background-color: #0A91A8;
   -moz-box-shadow: 0px 0px 5px 0px #aaa;
@@ -214,6 +214,22 @@ div.agenda, div.newitems {
   box-shadow: 0px 0px 5px 0px #aaa;
 }
 
+div.frontpage {
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+  div.frontpage p {
+    color: #fff;
+    margin: 0px;
+  }
+
+  div.frontpage a, div.frontpage a:visited, div.frontpage a:active, div.frontpage a:hover {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
   div.agenda ul, div.newitems ul {
     margin-bottom: 0px;
   }
@@ -412,6 +428,10 @@ div.artikel {
 
   div.artikel h3 {
     margin-top: 0px;
+  }
+  
+  div.artikel h3 a, div.artikel h3 a:visited, div.artikel h3 a:active, div.artikel h3 a:hover {
+    color: #fff;
   }
 
   div.artikel p {
@@ -781,4 +801,14 @@ div.recording li {
     position: absolute;
     left: 0px;
     margin: 16px 0px 0px 30px;
+  }
+
+
+div.artikellist div.artikel div {
+  height: 290px;
+  overflow: hidden;
+}
+
+  div.artikellist div.artikel div a, div.artikellist div.artikel div a:visited, div.artikellist div.artikel div a:active, div.artikellist div.artikel div a:hover {
+    color: #0A91A8;
   }

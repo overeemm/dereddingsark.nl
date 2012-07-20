@@ -17,8 +17,7 @@ namespace dereddingsarknl.Controllers
 
       using(MiniProfiler.Current.Step("Read calendar file"))
       {
-        string calendarFile = Path.Combine(Settings.GetDataFolder(HttpContext), "calendar/publiek.ics");
-        var calendar = new Calendar(calendarFile);
+        var calendar = new Calendar(Calendar.GetCachedFile(HttpContext));
         ViewBag.CalendarItems = calendar.Items
           .Where(i => i.When.Date >= DateTime.Now.Date)
           .OrderBy(i => i.When)
