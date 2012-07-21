@@ -24,7 +24,7 @@ namespace dereddingsarknl.Models
       var secondes = text.Substring(17, 2);
       if(year == "0000")
       {
-        return new DateTime(2000, 1, 1, 12, 00, 00);
+        return new DateTime(2010, 1, 1, 12, 00, 00);
       }
       else
       {

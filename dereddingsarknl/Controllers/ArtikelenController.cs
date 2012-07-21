@@ -29,6 +29,35 @@ namespace dereddingsarknl.Controllers
          .Take(5)
          .ToList();
 
+        ViewBag.NewestArtikel = items.First();
+        ViewBag.ArtikelList = items.Skip(1);
+        ViewBag.Artikelen = "active";
+      }
+
+      return View();
+    }
+
+    public ActionResult Archief(string sortering)
+    {
+      ViewBag.Title = "Artikelen archief";
+
+      using(MiniProfiler.Current.Step("Read artikelen index"))
+      {
+        string filePath = Path.Combine(Settings.GetDataFolder(HttpContext), "indexen/artikelen.csv");
+        var artikelenIndex = new Index(filePath);
+
+        var items = artikelenIndex.Items
+         .Select(i => new Artikel(i.First(), i.Skip(1).First(), i.Skip(2).First()));
+
+        if(sortering == "datum")
+        {
+          items = items.OrderByDescending(o => o.Added).ToList();
+        }
+        else
+        {
+          items = items.OrderBy(o => o.Title).ToList();
+        }
+
         ViewBag.ArtikelList = items;
         ViewBag.Artikelen = "active";
       }

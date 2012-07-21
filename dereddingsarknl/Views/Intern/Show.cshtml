@@ -1,0 +1,51 @@
+﻿@using System.Globalization;
+@using System.Collections;
+@using System.Linq;
+
+<div class="row">
+  <div class="twelve columns">
+    <div class="four columns contactblad">
+      <div class="twelve columns">
+        <h3>Contactbladen</h3>
+        <ul>
+          @foreach(var blad in ViewBag.Contactbladen)
+          {
+            <li>
+              @blad.Item1 - 
+              @string.Join(", ", (blad.Item2 as DateTime[]).Select(d => d.ToString("MMMM yyyy", new CultureInfo("nl-NL"))))
+            </li>
+          }
+        </ul>
+      </div>
+    </div>
+
+    <div class="four columns baarn">
+      <div class="twelve columns">
+        <h3>Baarn</h3>
+        <ul>
+          @foreach(var blad in ViewBag.Baarn)
+          {
+            <li>
+              @blad.ToString("d MMMM yyyy", new CultureInfo("nl-NL"))
+            </li>
+          }
+        </ul>
+      </div>
+    </div>
+
+    <div class="four columns bunschoten">
+      <div class="twelve columns">
+        <h3>Bunschoten</h3>
+        <ul>
+          @foreach(var blad in ViewBag.Bunschoten)
+          {
+            <li>
+              @blad.ToString("d MMMM yyyy", new CultureInfo("nl-NL"))
+            </li>
+          }
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>

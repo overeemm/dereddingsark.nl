@@ -101,6 +101,7 @@
     <Compile Include="Controllers\ArtikelenController.cs" />
     <Compile Include="Controllers\FotoController.cs" />
     <Compile Include="Controllers\IndexController.cs" />
+    <Compile Include="Controllers\InternController.cs" />
     <Compile Include="Controllers\OverOnsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -203,6 +204,8 @@
     <Content Include="Views\Audio\Show.cshtml" />
     <Content Include="Views\Artikelen\Show.cshtml" />
     <Content Include="Views\Artikelen\Artikel.cshtml" />
+    <Content Include="Views\Artikelen\Archief.cshtml" />
+    <Content Include="Views\Intern\Show.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
