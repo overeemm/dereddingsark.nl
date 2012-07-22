@@ -47,9 +47,10 @@
         <!--<img src="images/logo-small.png" />-->
         <div class="inloggen">
 
-          <form>
-            <input type="text" placeholder="e-mail adres"></input>
-            <input type="password" placeholder="wachtwoord"></input>
+          <form method="post" action="@Url.Action("Login", "User")">
+            <input type="hidden" name="referrer" value="@HttpContext.Current.Request.Url.AbsoluteUri" />
+            <input type="text" name="email" placeholder="e-mail adres"></input>
+            <input type="password" name="password" placeholder="wachtwoord"></input>
             <input type="submit" class="secondary small button" value="inloggen"></input>
           </form>
 

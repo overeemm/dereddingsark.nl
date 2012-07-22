@@ -11,6 +11,47 @@ namespace dereddingsarknl.Controllers
 {
   public class InternController : Controller
   {
+    public ActionResult Bunschoten(string datum)
+    {
+      string contactbladen = Path.Combine(Settings.GetDataFolder(HttpContext), "intern", "bunschoten");
+      var bestand = new DirectoryInfo(contactbladen).GetFiles("*.pdf").FirstOrDefault(f => f.Name.StartsWith(datum));
+      if(bestand == null)
+      {
+        throw new HttpException(404, "Not found");
+      }
+      else
+      {
+        return File(bestand.FullName, "application/pdf");
+      }
+    }
+
+    public ActionResult Baarn(string datum)
+    {
+      string contactbladen = Path.Combine(Settings.GetDataFolder(HttpContext), "intern", "baarn");
+      var bestand = new DirectoryInfo(contactbladen).GetFiles("*.pdf").FirstOrDefault(f => f.Name.StartsWith(datum));
+      if(bestand == null)
+      {
+        throw new HttpException(404, "Not found");
+      }
+      else
+      {
+        return File(bestand.FullName, "application/pdf");
+      }
+    }
+
+    public ActionResult Contactblad(string nummer)
+    {
+      string contactbladen = Path.Combine(Settings.GetDataFolder(HttpContext), "intern", "contactblad");
+      var bestand = new DirectoryInfo(contactbladen).GetFiles("*.pdf").FirstOrDefault(f => f.Name.StartsWith(nummer));
+      if(bestand == null)
+      {
+        throw new HttpException(404, "Not found");
+      }
+      else
+      {
+        return File(bestand.FullName, "application/pdf");
+      }
+    }
 
     public ActionResult Show()
     {

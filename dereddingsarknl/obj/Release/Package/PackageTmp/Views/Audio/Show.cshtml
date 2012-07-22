@@ -1,16 +1,57 @@
 ﻿@using System.Globalization;
 
-<div class="row">
-  @foreach(var opname in ViewBag.OpnameList)
-  {
-    <div class="four columns">
-      <div class="twelve columns newitems">
-        <ul>
-          <li class="audio">@opname.Titel
-            <span>@opname.Datum.ToString("ddd d MMM yyyy H:mm", new CultureInfo("nl-NL")) - @opname.Categorie</span>
-          </li>
-        </ul>
+<div class="twelve columns audioplayer">
+
+  <audio id="player"></audio>
+
+  <div class="progress">
+    <div class="info"></div>
+    <div class="bar"></div>
+  </div>
+  <div class="stop" title="stoppen"></div>
+  <div class="play" title="afspelen"></div>
+  <a href="#" target="_blank" title="downloaden"></a>
+</div>
+
+<div class="row recordingfilter">
+  <div class="twelve columns">
+    <div class="twelve columns">
+      toon:
+    <ul>
+      <li><span class="check checked" data-cat="samenkomst baarn"></span>samenkomst baarn</li>
+      <li><span class="check checked" data-cat="samenkomst bunschoten"></span>samenkomst bunschoten</li>
+      <li><span class="check checked" data-cat="maranatha avond"></span>maranatha avond</li>
+      <li><span class="check checked" data-cat="bijbelstudie"></span>bijbelstudie</li>
+      <li><span class="check checked" data-cat="jeugddienst"></span>jeugddienst</li>
+    </ul>
+    </div>
+  </div>
+</div>
+
+@foreach(var opnameMonth in ViewBag.OpnameMonths)
+{
+  <div class="row recordingheader">
+    <div class="twelve columns">
+      <div class="twelve columns">
+        <p>@opnameMonth.ToString("MMMM yyyy", new CultureInfo("nl-NL"))</p>
       </div>
     </div>
-  }
-</div>
+  </div>
+  
+  <div class="row recordinggroup">
+    @foreach(var opname in ViewBag.OpnameList[opnameMonth])
+    {  
+      <div class="four columns" data-cat="@opname.Categorie">
+        <div class="recordingpointer"></div>
+        <div class="twelve columns recording">
+          <ul>
+            <li class="audio"><a href="@opname.Url" target="_blank">@opname.Titel</a>
+              <span>@opname.Datum.ToString("ddd d MMM yyyy H:mm", new CultureInfo("nl-NL")) - @opname.Categorie</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    }
+  </div>
+
+}

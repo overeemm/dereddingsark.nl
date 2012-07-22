@@ -1,6 +1,7 @@
 jQuery(document).ready(function ($) {
 
   /* index page */
+  $('#banners').orbit({ fluid: '833x100' });
 
   $('div.slideshow').orbit();
   $(this).tooltips();

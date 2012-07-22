@@ -47,6 +47,14 @@ namespace dereddingsarknl
       routes.MapRoute("Artikelen archief", "artikelen/archief", new { controller = "Artikelen", action = "Archief" });
       routes.MapRoute("Artikel", "artikelen/{alias}", new { controller = "Artikelen", action = "Artikel" });
       routes.MapRoute("Intern", "intern", new { controller = "Intern", action = "Show" });
+
+      routes.MapRoute("DlContactblad", "intern/contactblad/{nummer}", new { controller = "Intern", action = "Contactblad" });
+      routes.MapRoute("DlBaarn", "intern/baarn/{datum}", new { controller = "Intern", action = "Baarn" });
+      routes.MapRoute("DlBunschoten", "intern/bunschoten/{datum}", new { controller = "Intern", action = "Bunschoten" });
+
+      routes.MapRoute("UserAdd", "user/add", new { controller = "User", action = "Add" });
+      routes.MapRoute("UserStoreNew", "user/new", new { controller = "User", action = "StoreNew" });
+      routes.MapRoute("UserLogin", "user/login", new { controller = "User", action = "Login" });
     }
 
     protected void Application_Start()
