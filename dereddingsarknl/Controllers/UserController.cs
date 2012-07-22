@@ -11,29 +11,8 @@ using StackExchange.Profiling;
 
 namespace dereddingsarknl.Controllers
 {
-  public class UserController : Controller
+  public class UserController : BaseController
   {
-    private User GetUser(string email)
-    {
-      string filePath = Path.Combine(Settings.GetDataFolder(HttpContext), "gebruikers/index.csv");
-      var users = new Index(filePath);
-      var indexLine = (users.Items.FirstOrDefault(i => i.First().Equals(email.Trim(), StringComparison.InvariantCultureIgnoreCase)));
-      if(indexLine == null)
-      {
-        return null;
-      }
-      else
-      {
-        return new User()
-        {
-          Email = indexLine.First(),
-          Name = indexLine.Skip(1).First(),
-          PasswordHash = indexLine.Skip(2).First(),
-          Salt = indexLine.Skip(3).First()
-        };
-      }
-    }
-
     [HttpPost]
     public ActionResult StoreNew(string name, string email)
     {
@@ -65,49 +44,13 @@ namespace dereddingsarknl.Controllers
 e-mailadres: {0}
 wachtwoord: {1}", email, password)));
 
+          var guid = Guid.NewGuid().ToString("N");
+          string tokenFile = Path.Combine(Settings.GetDataFolder(HttpContext), "gebruikers/tokens", email.Replace("@", "-") + "__" + guid);
+          System.IO.File.Create(tokenFile);
+
           return RedirectToAction("Add");
         }
       }
-    }
-
-    private string GenerateSalt()
-    {
-      var buf = new byte[16];
-      (new RNGCryptoServiceProvider()).GetBytes(buf);
-      return Convert.ToBase64String(buf);
-    }
-
-    private string HashPassword(string password, string salt)
-    {
-      var crypto = new Rfc2898DeriveBytes(password, System.Text.Encoding.Default.GetBytes(salt), 10000);
-      var hash = crypto.GetBytes(32);
-      return Convert.ToBase64String(hash);
-    }
-
-    private string GenerateNewPassword()
-    {
-      var passwordLength = 10;
-      string allowedLetterChars = "abcdefghijkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ";
-      string allowedNumberChars = "23456789!@$?_-";
-      char[] chars = new char[passwordLength];
-      Random rd = new Random();
-
-      bool useLetter = true;
-      for(int i = 0; i < passwordLength; i++)
-      {
-        if(useLetter)
-        {
-          chars[i] = allowedLetterChars[rd.Next(0, allowedLetterChars.Length)];
-          useLetter = false;
-        }
-        else
-        {
-          chars[i] = allowedNumberChars[rd.Next(0, allowedNumberChars.Length)];
-          useLetter = true;
-        }
-      }
-
-      return new string(chars);
     }
 
     public ActionResult Login(string email, string password, string referrer)
@@ -121,6 +64,7 @@ wachtwoord: {1}", email, password)));
       {
         if(user.PasswordHash == HashPassword(password, user.Salt))
         {
+          StoreCookieAndToken(null, user);
           return Redirect(referrer);
         }
         else

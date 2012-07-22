@@ -94,7 +94,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\AutorisatieController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ActiviteitenController.cs" />
     <Compile Include="Controllers\AgendaController.cs" />
     <Compile Include="Controllers\AudioController.cs" />
@@ -115,7 +115,6 @@
     <Compile Include="Models\Index.cs" />
     <Compile Include="Models\Settings.cs" />
     <Compile Include="Models\User.cs" />
-    <Compile Include="Models\Users.cs" />
     <Compile Include="Modules\ActivateIndexHttpModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
