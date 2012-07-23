@@ -20,7 +20,7 @@ body, html {
     position: absolute;
     font-weight: bolder;
     padding: 8px;
-    margin-top: -500px;
+    margin-top: -525px;
     margin-left: 210px;
     -moz-box-shadow: 0px 3px 5px 0px #aaa;
     -webkit-box-shadow: 0px 3px 5px 0px #aaa;
@@ -54,18 +54,25 @@ body, html {
     background-color: #0A91A8;
     color: #fff;
     position: absolute;
-    padding: 8px 8px 8px 38px;
-    background: #0A91A8 url("images/iconsbar.png") 0px -300px no-repeat;
-    margin-top: -20px;
-    margin-left: 210px;
     -moz-box-shadow: 3px 3px 5px 0px #aaa;
     -webkit-box-shadow: 3px 3px 5px 0px #aaa;
     box-shadow: 3px 3px 5px 0px #aaa;
+    position: absolute;
+    font-weight: bolder;
+    padding: 8px;
+    margin-top: -400px;
+    margin-left: 210px;
+    z-index: 999;
+    overflow: hidden;
+    width: 170px;
   }
 
     .header.columns .gebruiker a, .header.columns .gebruiker a:visited, .header.columns .gebruiker a:active, .header.columns .gebruiker a:hover {
       color: #fff;
       text-decoration: none;
+      background: #0A91A8 url("images/iconsbar.png") 0px -307px no-repeat;
+      padding-left: 30px;
+      overflow: hidden;
     }
 
   .header.columns h2 {
@@ -177,36 +184,37 @@ body, html {
     float: none;
   }
 
-  .banner .columns p {
-    font-size: 2.5rem;
-    line-height: 1.25;
-  }
-
-    .banner .columns p span.large {
-      font-size: 3.5rem;
-      font-weight: bold;
-      color: #0A91A8;
+    .banner .columns p {
+      font-size: 2.5rem;
+      line-height: 1.25;
     }
 
+      .banner .columns p span.large {
+        font-size: 3.5rem;
+        font-weight: bold;
+        color: #0A91A8;
+      }
+
 div.aankondigingen {
-  background-color: #fff;
+  background-color: #0A91A8;
   -moz-box-shadow: 0px 0px 5px 0px #aaa;
   -webkit-box-shadow: 0px 0px 5px 0px #aaa;
   box-shadow: 0px 0px 5px 0px #aaa;
   margin: 20px auto;
 }
 
-div.aankondigingen p {
-  background-color: #0A91A8;
-  color: #fff;
-  opacity: 0.9;
-  padding-left: 5px;
-  position: absolute;
-}
+  div.aankondigingen p {
+    background-color: #0A91A8;
+    color: #fff;
+    opacity: 1;
+    padding-left: 5px;
+    position: absolute;
+    font-weight: bolder;
+  }
 
-div.aankondigingen a, div.aankondigingen a:visited, div.aankondigingen a:active, div.aankondigingen a:hover {
-  color: #fff;
-}
+  div.aankondigingen a, div.aankondigingen a:visited, div.aankondigingen a:active, div.aankondigingen a:hover {
+    color: #fff;
+  }
 
 div#banners {
   padding: 0px;
@@ -220,42 +228,47 @@ div.aankodigingen div#banners > div {
 }
 
 div.mannenweekend {
-  background: #fff url("Frontpage/mannenweekend.png") 430px 0px no-repeat;
+  background: #0A91A8 /* url("Frontpage/mannenweekend.png") 430px 0px no-repeat*/;
   background-size: auto 250px;
   height: 120px;
+  width: 100%;
+  margin: 0px;
 }
 
   div.mannenweekend p:first-child {
     width: 150px;
-    top: 30px;
-    left: 200px;
+    top: 60px;
+    left: 360px;
   }
 
   div.mannenweekend p:nth-child(2) {
-    width: 170px;
-    top: 50px;
-    left: 200px;
+    width: 200px;
+    top: 60px;
+    left: 540px;
   }
 
   div.mannenweekend p:nth-child(3) {
     width: 130px;
-    top: 70px;
-    left: 200px;
+    top: 60px;
+    left: 180px;
   }
 
   div.mannenweekend p:nth-child(4) {
-    width: 320px;
-    top: 0px;
-    left: 200px;
+    width: 700px;
+    top: 10px;
+    left: 130px;
+    font-size: 3rem;
   }
 
 div.studieweekend {
-  background: #fff;
+  background: #0A91A8 /* url("Frontpage/mannenweekend.png") 430px 0px no-repeat*/;
   height: 120px;
+  width: 100%;
+  margin: 0px;
 }
 
   div.studieweekend p:first-child {
-    width: 420px;
+    width: 470px;
     top: 30px;
     left: 100px;
     font-size: 2.5rem;
@@ -264,21 +277,21 @@ div.studieweekend {
   div.studieweekend p:nth-child(2) {
     width: 180px;
     top: 20px;
-    left: 620px;
+    left: 660px;
   }
 
   div.studieweekend p:nth-child(3) {
-    width: 220px;
+    width: 250px;
     top: 40px;
-    left: 580px;
+    left: 615px;
   }
 
   div.studieweekend p:nth-child(4) {
-    width: 250px;
-    top:60px;
-    left: 550px;
+    width: 270px;
+    top: 60px;
+    left: 584px;
   }
-  
+
 div.row.zones {
   margin: 10px auto;
 }

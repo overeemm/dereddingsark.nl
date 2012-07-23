@@ -9,7 +9,7 @@ using StackExchange.Profiling;
 
 namespace dereddingsarknl.Controllers
 {
-  public class AgendaController : Controller
+  public class CalendarController : Controller
   {
     public ActionResult Show()
     {
@@ -17,14 +17,18 @@ namespace dereddingsarknl.Controllers
 
       using(MiniProfiler.Current.Step("Read calendar file"))
       {
-        var calendar = new Calendar(Calendar.GetCachedFile(HttpContext));
-        var items = calendar.Items
-         .Where(i => i.When.Date >= DateTime.Now.Date)
-         .GroupBy(i => new DateTime(i.When.Year, i.When.Month, 1, 0, 0, 0))
-         .ToDictionary(g => g.Key, g => g.OrderBy(i => i.When).ToList());
+        var items = 
+           Calendar.Get(HttpContext)
+          .Items
+          .Where(i => i.When.Date >= DateTime.Now.Date)
+          .GroupBy(i => new DateTime(i.When.Year, i.When.Month, 1, 0, 0, 0))
+          .ToDictionary(g => g.Key, g => g.OrderBy(i => i.When).ToList());
+
         ViewBag.CalendarItems = items;
         ViewBag.CalendarMonths = items.Keys.OrderBy(i => i).ToList();
       }
+
+      ViewBag.CalendarUrl = Calendar.GetCalendarUrl();
 
       return View();
     }

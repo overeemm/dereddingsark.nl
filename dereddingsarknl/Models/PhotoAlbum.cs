@@ -6,12 +6,15 @@ using System.Xml.Linq;
 
 namespace dereddingsarknl.Models
 {
-  public class FotoAlbum
+  /// <summary>
+  /// Download xml files through URL like "https://picasaweb.google.com/data/feed/api/user/evangeliegemeentedereddingsark@gmail.com/albumid/{0}?kind=photo"
+  /// </summary>
+  public class PhotoAlbum
   {
     private XDocument _content;
     XNamespace _atom = "http://www.w3.org/2005/Atom";
 
-    public FotoAlbum(XDocument content)
+    public PhotoAlbum(XDocument content)
     {
       _content = content;
     }

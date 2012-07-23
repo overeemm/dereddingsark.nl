@@ -95,27 +95,27 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\BaseController.cs" />
-    <Compile Include="Controllers\ActiviteitenController.cs" />
-    <Compile Include="Controllers\AgendaController.cs" />
-    <Compile Include="Controllers\AudioController.cs" />
-    <Compile Include="Controllers\ArtikelenController.cs" />
-    <Compile Include="Controllers\FotoController.cs" />
+    <Compile Include="Controllers\ActivitiesController.cs" />
+    <Compile Include="Controllers\CalendarController.cs" />
+    <Compile Include="Controllers\RecordingsController.cs" />
+    <Compile Include="Controllers\ArticlesController.cs" />
+    <Compile Include="Controllers\MarkdownController.cs" />
+    <Compile Include="Controllers\PhotoAlbumsController.cs" />
     <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="Controllers\InternController.cs" />
-    <Compile Include="Controllers\OverOnsController.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Artikel.cs" />
-    <Compile Include="Models\Opname.cs" />
+    <Compile Include="Models\Article.cs" />
+    <Compile Include="Models\Recording.cs" />
     <Compile Include="Models\Calendar.cs" />
-    <Compile Include="Models\DataFile.cs" />
-    <Compile Include="Models\FotoAlbum.cs" />
+    <Compile Include="Models\MarkdownFile.cs" />
+    <Compile Include="Models\PhotoAlbum.cs" />
     <Compile Include="Models\Index.cs" />
     <Compile Include="Models\Settings.cs" />
     <Compile Include="Models\User.cs" />
-    <Compile Include="Modules\ActivateIndexHttpModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -157,18 +157,6 @@
     <Content Include="Content\Images\rss.png" />
     <Content Include="Content\Images\twitter.png" />
     <Content Include="Content\Images\wrapper_t_l_bg.jpg" />
-    <Content Include="Content\index.html" />
-    <Content Include="Content\Photos\0.jpg" />
-    <Content Include="Content\Photos\1.jpg" />
-    <Content Include="Content\Photos\10.jpg" />
-    <Content Include="Content\Photos\2.jpg" />
-    <Content Include="Content\Photos\3.jpg" />
-    <Content Include="Content\Photos\4.jpg" />
-    <Content Include="Content\Photos\5.jpg" />
-    <Content Include="Content\Photos\6.jpg" />
-    <Content Include="Content\Photos\7.jpg" />
-    <Content Include="Content\Photos\8.jpg" />
-    <Content Include="Content\Photos\9.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <None Include="Properties\PublishProfiles\dereddingsark %40 movereem.nl.pubxml" />
@@ -199,25 +187,24 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Index\Show.cshtml" />
-    <Content Include="Views\OverOns\Show.cshtml" />
-    <Content Include="Views\Activiteiten\Show.cshtml" />
-    <Content Include="Views\Foto\Show.cshtml" />
-    <Content Include="Views\Agenda\Show.cshtml" />
-    <Content Include="Views\Audio\Show.cshtml" />
-    <Content Include="Views\Artikelen\Show.cshtml" />
-    <Content Include="Views\Artikelen\Artikel.cshtml" />
-    <Content Include="Views\Artikelen\Archief.cshtml" />
+    <Content Include="Views\About\Show.cshtml" />
+    <Content Include="Views\Activities\Show.cshtml" />
+    <Content Include="Views\PhotoAlbums\Show.cshtml" />
+    <Content Include="Views\Calendar\Show.cshtml" />
+    <Content Include="Views\Recordings\Show.cshtml" />
+    <Content Include="Views\Articles\Show.cshtml" />
+    <Content Include="Views\Articles\Artikel.cshtml" />
+    <Content Include="Views\Articles\Archief.cshtml" />
     <Content Include="Views\Intern\Show.cshtml" />
     <Content Include="Views\User\Add.cshtml" />
+    <Content Include="Views\Recordings\Podcast.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Modules\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Shared\_User.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

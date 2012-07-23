@@ -6,30 +6,49 @@ using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
 using dereddingsarknl.Models;
+using StackExchange.Profiling;
 
 namespace dereddingsarknl.Controllers
 {
   public class BaseController : Controller
   {
+    protected const string Login_Cookie = "arklogin";
+    protected User CurrentUser { get; private set; }
+
     protected override void OnActionExecuting(ActionExecutingContext filterContext)
     {
-      var cookie = filterContext.HttpContext.Request.Cookies["login"];
+      base.OnActionExecuting(filterContext);
+
+      var cookie = filterContext.HttpContext.Request.Cookies[Login_Cookie];
       if(cookie != null)
       {
-        var email = cookie.Values["email"];
-        var token = cookie.Values["token"];
-        var generated = cookie.Values["generated"];
+        try
+        {
+          var user = ValidateCookieAndToken(cookie);
+          ViewBag.CurrentUser = CurrentUser = user;
+        }
+        catch { }
+      }
 
-        //if(IsTokenValid(email, token, generated))
-        //{
-
-        //}
+      if(CurrentUser == null || !CurrentUser.EnableProfiler)
+      {
+        MiniProfiler.Stop(true);
       }
     }
 
-    protected string GetUserGuid(User user)
+    protected override void OnActionExecuted(ActionExecutedContext filterContext)
     {
-      string tokenDir = Path.Combine(Settings.GetDataFolder(HttpContext), "gebruikers/tokens");
+      if(CurrentUser != null)
+      {
+        StoreCookieAndToken(filterContext.HttpContext.Request.Cookies[Login_Cookie], CurrentUser);
+      }
+
+      base.OnActionExecuted(filterContext);
+    }
+
+    protected string GetGuidFromUser(User user)
+    {
+      string tokenDir = Path.Combine(Settings.GetDataFolder(HttpContext), "gebruikers\\tokens");
       var begin = user.Email.Replace("@", "-") + "__";
       var file = new DirectoryInfo(tokenDir)
                 .GetFiles()
@@ -38,40 +57,62 @@ namespace dereddingsarknl.Controllers
       return file.Name.Substring(begin.Length);
     }
 
-    protected bool ValidateCookieAndToken(HttpRequestBase request, User user)
+    protected User ValidateCookieAndToken(HttpCookie cookie)
     {
-      var guid = GetUserGuid(user);
-      var ipadress = Request.ServerVariables["REMOTE_ADDR"];
-
-      var tokenFileName = user.Email.Replace("@", "-") + "__" + guid;
-      var tokenFile = Path.Combine(Settings.GetDataFolder(HttpContext), "gebruikers/tokens", tokenFileName);
-
-      var cookie = request.Cookies["login"];
+      var guid = cookie.Values["guid"];
       var generated = cookie.Values["generated"];
       var token = cookie.Values["token"];
-      
-      var tokenIndex = new Index(tokenFile);
+      var ipadress = Request.ServerVariables["REMOTE_ADDR"];
+
+      string tokenDir = Path.Combine(Settings.GetDataFolder(HttpContext), "gebruikers\\tokens");
+      var file = new DirectoryInfo(tokenDir)
+                .GetFiles()
+                .First(f => f.Name.EndsWith(guid));
+
+      var tokenIndex = new Index(file.FullName);
       var item = tokenIndex.Items
                   .FirstOrDefault(i => i.First() == ipadress && i.Skip(1).First() == token && i.Skip(2).First() == generated);
 
-      return item != null;
+      return item != null ? GetUserFromTokenFile(file.Name) : null;
     }
 
-    protected void StoreCookieAndToken(HttpRequestBase request, User user)
+    protected void RemoveCookieAndToken(User user)
     {
-      var cookie = request.Cookies["login"];
+      var cookie = Request.Cookies[Login_Cookie];
+      if(cookie != null)
+      {
+        CurrentUser = null;
+        var token = cookie.Values["token"];
+        var guid = cookie.Values["guid"];
+        string tokenFile = Path.Combine(Settings.GetDataFolder(HttpContext), "gebruikers\\tokens", user.Email.Replace("@", "-") + "__" + guid);
+
+        var lines = new List<string>();
+        var tokenIndex = new Index(tokenFile);
+        foreach(var item in tokenIndex.Items)
+        {
+          if(item.Skip(1).First() != token)
+          {
+            lines.Add(tokenIndex.CreateLine(item));
+          }
+        }
+        System.IO.File.WriteAllLines(tokenFile, lines.ToArray());
+      }
+    }
+
+    protected void StoreCookieAndToken(HttpCookie cookie, User user)
+    {
       var newtoken = cookie == null;
       var ipadress = Request.ServerVariables["REMOTE_ADDR"];
       var token = newtoken ? GenerateSalt() : cookie.Values["token"];
       var generated = newtoken ? DateTime.UtcNow.ToString("yyyyMMddTHH:mm:ss") : cookie.Values["generated"];
 
-      var guid = GetUserGuid(user);
+      var guid = GetGuidFromUser(user);
 
-      var responsecookie = new HttpCookie("login");
+      var responsecookie = new HttpCookie(Login_Cookie);
       responsecookie.Values.Add("guid", guid);
       responsecookie.Values.Add("generated", generated);
       responsecookie.Values.Add("token", token);
-
+      responsecookie.HttpOnly = true;
       responsecookie.Expires = DateTime.Now.AddDays(14);
       // the refresh of a token is max 2 months after the first generated date
       if(!newtoken)
@@ -91,10 +132,10 @@ namespace dereddingsarknl.Controllers
 
       Response.Cookies.Add(responsecookie);
 
-      if(newtoken != null)
+      if(newtoken)
       {
         var tokenFileName = user.Email.Replace("@", "-") + "__" + guid;
-        var tokenFile = Path.Combine(Settings.GetDataFolder(HttpContext), "gebruikers/tokens", tokenFileName);
+        var tokenFile = Path.Combine(Settings.GetDataFolder(HttpContext), "gebruikers\\tokens", tokenFileName);
         System.IO.File.AppendAllLines(tokenFile,
               new string[] { 
               string.Format("\"{0}\", \"{1}\", \"{2}\"", ipadress, token, generated) 
@@ -142,9 +183,27 @@ namespace dereddingsarknl.Controllers
       return new string(chars);
     }
 
-    protected User GetUser(string email)
+    private User GetUserFromTokenFile(string tokenFileName)
     {
-      string filePath = Path.Combine(Settings.GetDataFolder(HttpContext), "gebruikers/index.csv");
+      string filePath = Path.Combine(Settings.GetDataFolder(HttpContext), "gebruikers\\index.csv");
+      var users = new Index(filePath);
+      var indexLine = users
+        .Items
+        .FirstOrDefault(i => 
+          tokenFileName.StartsWith(i.First().Replace("@", "-"), StringComparison.InvariantCultureIgnoreCase));
+      if(indexLine == null)
+      {
+        return null;
+      }
+      else
+      {
+        return dereddingsarknl.Models.User.Create(indexLine);
+      }
+    }
+
+    protected User GetUserFromEmail(string email)
+    {
+      string filePath = Path.Combine(Settings.GetDataFolder(HttpContext), "gebruikers\\index.csv");
       var users = new Index(filePath);
       var indexLine = (users.Items.FirstOrDefault(i => i.First().Equals(email.Trim(), StringComparison.InvariantCultureIgnoreCase)));
       if(indexLine == null)
@@ -153,13 +212,7 @@ namespace dereddingsarknl.Controllers
       }
       else
       {
-        return new User()
-        {
-          Email = indexLine.First(),
-          Name = indexLine.Skip(1).First(),
-          PasswordHash = indexLine.Skip(2).First(),
-          Salt = indexLine.Skip(3).First()
-        };
+        return dereddingsarknl.Models.User.Create(indexLine);
       }
     }
   }

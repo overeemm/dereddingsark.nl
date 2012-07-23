@@ -16,7 +16,7 @@
 <div class="row aankondigingen">
   <div class="ten columns" id="banners">
 
-    <div class="mannenweekend" style="display: none;">
+    <div class="mannenweekend" style="display: block;">
       <p>5 en 6 oktober 2012</p>
       <p>Het Brandpunt in Doorn</p>
       <p>Men only - part 2</p>
@@ -25,7 +25,7 @@
     </div>
 
     <div class="studieweekend" style="display: none;">
-      <p>Dit gebied Ik u: dat u elkaar liefhebt.</p>
+      <p>"Dit gebied Ik u: dat u elkaar liefhebt."</p>
       <p>7, 8 en 9 september 2012</p>
       <p>Studies door Aad van de Sande</p>
 
@@ -39,7 +39,7 @@
 
   <div class="four columns agendacontainer">
     <div class="twelve columns agenda">
-      <p class="titel"><a href="@Url.Action("Show", "Agenda")">agenda</a></p>
+      <p class="titel"><a href="@Url.Action("Show", "Calendar")">agenda</a></p>
       <ul>
         @foreach(var item in ViewBag.CalendarItems)
         {
@@ -69,13 +69,13 @@
 
   <div class="four columns">
     <div class="twelve columns frontpage">
-      <p>De agendapunten automatisch in je digitale agenda? Voeg onze <a href="">agenda</a> toe.</p>
+      <p>De agendapunten automatisch in je digitale agenda? Voeg onze <a href="@ViewBag.CalendarUrl">agenda</a> toe.</p>
     </div>
     <div class="twelve columns frontpage">
-      <p>Onze opnames automatisch downloaden? Je vindt ons in <a href="">itunes</a> of gebruik de <a href="">podcast</a> link.</p>
+      <p>Onze opnames automatisch downloaden? Je vindt ons in <a href="@ViewBag.PodcastiTunesUrl">itunes</a> of gebruik de <a href="@Url.Action("Podcast", "Recordings")">podcast</a> link.</p>
     </div>
     <div class="twelve columns frontpage">
-      <p>Bezoek je onze jeugddiensten? Blijf op de hoogte op <a href="">facebook</a>.</p>
+      <p>Bezoek je onze jeugddiensten? Blijf op de hoogte op <a href="http://www.facebook.com/jeugddienstendereddingsark">facebook</a>.</p>
     </div>
   </div>
 

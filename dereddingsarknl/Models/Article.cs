@@ -5,16 +5,21 @@ using System.Web;
 
 namespace dereddingsarknl.Models
 {
-  public class Artikel
+  public class Article
   {
-    public Artikel(string title, string alias, string added)
+    public Article(string title, string alias, string added)
     {
       Alias = alias;
       Title = title;
-      Added = ParseDatum(added);
+      Added = ParseDate(added);
     }
 
-    private static DateTime ParseDatum(string text)
+    public static Article CreateFromIndexLine(IEnumerable<string> i)
+    {
+      return new Article(i.First(), i.Skip(1).First(), i.Skip(2).First());
+    }
+
+    private static DateTime ParseDate(string text)
     {
       var year = text.Substring(0, 4);
       var month = text.Substring(5, 2);

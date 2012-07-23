@@ -18,7 +18,7 @@ namespace dereddingsarknl.Models
       return ConfigurationManager.AppSettings["calendar"];
     }
 
-    public static string GetCachedFile(HttpContextBase httpContext)
+    public static Calendar Get(HttpContextBase httpContext)
     {
       string calendarFile = Path.Combine(Settings.GetDataFolder(httpContext), "calendar/publiek.ics");
 
@@ -35,7 +35,7 @@ namespace dereddingsarknl.Models
         worker.RunWorkerAsync(calendarFile);
       }
 
-      return calendarFile;
+      return new Calendar(calendarFile);
     }
 
     private static void DownloadCalendar(string fileLocation)
@@ -51,7 +51,8 @@ namespace dereddingsarknl.Models
     }
 
     private string _filePath;
-    public Calendar(string filePath)
+    
+    private Calendar(string filePath)
     {
       _filePath = filePath;
     }

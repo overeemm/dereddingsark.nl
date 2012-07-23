@@ -13,43 +13,30 @@ namespace dereddingsarknl.Controllers
   {
     public ActionResult Bunschoten(string datum)
     {
-      string contactbladen = Path.Combine(Settings.GetDataFolder(HttpContext), "intern", "bunschoten");
-      var bestand = new DirectoryInfo(contactbladen).GetFiles("*.pdf").FirstOrDefault(f => f.Name.StartsWith(datum));
-      if(bestand == null)
-      {
-        throw new HttpException(404, "Not found");
-      }
-      else
-      {
-        return File(bestand.FullName, "application/pdf");
-      }
+      return PdfDownload("bunschoten", f => f.Name.StartsWith(datum));
     }
 
     public ActionResult Baarn(string datum)
     {
-      string contactbladen = Path.Combine(Settings.GetDataFolder(HttpContext), "intern", "baarn");
-      var bestand = new DirectoryInfo(contactbladen).GetFiles("*.pdf").FirstOrDefault(f => f.Name.StartsWith(datum));
-      if(bestand == null)
-      {
-        throw new HttpException(404, "Not found");
-      }
-      else
-      {
-        return File(bestand.FullName, "application/pdf");
-      }
+      return PdfDownload("baarn", f => f.Name.StartsWith(datum));
     }
 
     public ActionResult Contactblad(string nummer)
     {
-      string contactbladen = Path.Combine(Settings.GetDataFolder(HttpContext), "intern", "contactblad");
-      var bestand = new DirectoryInfo(contactbladen).GetFiles("*.pdf").FirstOrDefault(f => f.Name.StartsWith(nummer));
-      if(bestand == null)
+      return PdfDownload("contactblad", f => f.Name.StartsWith(nummer));
+    }
+
+    private ActionResult PdfDownload(string folder, Func<FileInfo, bool> predicate)
+    {
+      string directory = Path.Combine(Settings.GetDataFolder(HttpContext), "intern", folder);
+      var pdffile = new DirectoryInfo(directory).GetFiles("*.pdf").FirstOrDefault(predicate);
+      if(pdffile == null)
       {
         throw new HttpException(404, "Not found");
       }
       else
       {
-        return File(bestand.FullName, "application/pdf");
+        return File(pdffile.FullName, "application/pdf");
       }
     }
 

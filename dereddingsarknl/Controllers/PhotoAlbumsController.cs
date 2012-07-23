@@ -12,7 +12,7 @@ using StackExchange.Profiling;
 
 namespace dereddingsarknl.Controllers
 {
-  public class FotoController : Controller
+  public class PhotoAlbumsController : BaseController
   {
     public ActionResult Photos(string id, string name)
     {
@@ -23,24 +23,16 @@ namespace dereddingsarknl.Controllers
       }
     }
 
-    private FotoAlbum GetAlbum(string id, string name)
+    private PhotoAlbum GetAlbum(string id, string name)
     {
-      var folder = Path.Combine(Settings.GetDataFolder(HttpContext), "fotos");
-      Directory.CreateDirectory(folder);
-      var xml = Path.Combine(folder, id + ".xml");
+      var xml = Path.Combine(Settings.GetDataFolder(HttpContext), "fotos", id + ".xml");
+
       if(!System.IO.File.Exists(xml))
       {
         throw new HttpException(404, "Album " + id + " bestaat niet.");
-        //using(WebClient wb = new WebClient())
-        //{
-        //  // hiervoor moet je geauthentiseerd zijn.
-        //  var uri = string.Format("https://picasaweb.google.com/data/feed/api/user/evangeliegemeentedereddingsark@gmail.com/albumid/{0}?kind=photo", id);
-        //  wb.DownloadFile(uri, xml);
-        //}
       }
 
-      var content = XDocument.Load(xml);
-      return new FotoAlbum(content)
+      return new PhotoAlbum(XDocument.Load(xml))
       {
         Id = id,
         Name = name
@@ -51,8 +43,7 @@ namespace dereddingsarknl.Controllers
     {
       using(MiniProfiler.Current.Step("Read album"))
       {
-        string filePath = Path.Combine(Settings.GetDataFolder(HttpContext), "indexen/fotos.csv");
-        var albumIndex = new Index(filePath);
+        var albumIndex = Index.CreatePhotoAlbumIndex(HttpContext);
 
         ViewBag.Title = "In blik in onze gemeente";
         ViewBag.Fotos = "active";

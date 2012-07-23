@@ -25,10 +25,6 @@ namespace dereddingsarknl
     protected void Application_BeginRequest()
     {
       MiniProfiler.Start();
-      if(Request.IsLocal)
-      {
-
-      }
     }
 
     public static void RegisterRoutes(RouteCollection routes)
@@ -37,16 +33,18 @@ namespace dereddingsarknl
 
       routes.MapRoute("Index", "", new { controller = "Index", action = "Show" });
 
-      routes.MapRoute("OverOns", "over-de-gemeente/{partName}", new { controller = "OverOns", action = "Show", partName = "grondslag" });
-      routes.MapRoute("Activiteiten", "activiteiten/{partName}", new { controller = "Activiteiten", action = "Show", partName = "samenkomsten" });
-      routes.MapRoute("Fotos", "fotos", new { controller = "Foto", action = "Show" });
-      routes.MapRoute("FotosJSON", "fotos/{name}/{id}", new { controller = "Foto", action = "Photos" });
-      routes.MapRoute("Agenda", "agenda", new { controller = "Agenda", action = "Show" });
-      routes.MapRoute("Audio", "audio", new { controller = "Audio", action = "Show" });
-      routes.MapRoute("Artikelen", "artikelen", new { controller = "Artikelen", action = "Show" });
-      routes.MapRoute("Artikelen archief", "artikelen/archief", new { controller = "Artikelen", action = "Archief" });
-      routes.MapRoute("Artikel", "artikelen/{alias}", new { controller = "Artikelen", action = "Artikel" });
+      routes.MapRoute("About", "over-de-gemeente/{partName}", new { controller = "About", action = "Show", partName = "grondslag" });
+      routes.MapRoute("Activities", "activiteiten/{partName}", new { controller = "Activities", action = "Show", partName = "samenkomsten" });
+      routes.MapRoute("PhotoAlbums", "fotos", new { controller = "PhotoAlbums", action = "Show" });
+      routes.MapRoute("PhotoAlbums JSON", "fotos/{name}/{id}", new { controller = "PhotoAlbums", action = "Photos" });
+      routes.MapRoute("Calendar", "agenda", new { controller = "Calendar", action = "Show" });
+      routes.MapRoute("Recordings", "audio", new { controller = "Recordings", action = "Show" });
+      routes.MapRoute("Articles", "artikelen", new { controller = "Articles", action = "Show" });
+      routes.MapRoute("Articles archive", "artikelen/archief", new { controller = "Articles", action = "Archief" });
+      routes.MapRoute("Article", "artikelen/{alias}", new { controller = "Articles", action = "Artikel" });
       routes.MapRoute("Intern", "intern", new { controller = "Intern", action = "Show" });
+
+      routes.MapRoute("Podcast", "podcast", new { controller = "Recordings", action = "Podcast" });
 
       routes.MapRoute("DlContactblad", "intern/contactblad/{nummer}", new { controller = "Intern", action = "Contactblad" });
       routes.MapRoute("DlBaarn", "intern/baarn/{datum}", new { controller = "Intern", action = "Baarn" });
@@ -54,7 +52,9 @@ namespace dereddingsarknl
 
       routes.MapRoute("UserAdd", "user/add", new { controller = "User", action = "Add" });
       routes.MapRoute("UserStoreNew", "user/new", new { controller = "User", action = "StoreNew" });
+      routes.MapRoute("UserStoreUpdate", "user/update", new { controller = "User", action = "StoreUpdate" });
       routes.MapRoute("UserLogin", "user/login", new { controller = "User", action = "Login" });
+      routes.MapRoute("UserLogout", "user/logout", new { controller = "User", action = "Logout" });
     }
 
     protected void Application_Start()
