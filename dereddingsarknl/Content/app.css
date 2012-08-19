@@ -10,8 +10,8 @@ body, html {
 }
 
 .header.columns {
-  background: url('images/logo-small.png') no-repeat;
-  min-height: 100px;
+  background: url('images/logo-small.png') no-repeat 0px 40px;
+  min-height: 130px;
 }
 
   .header.columns .inloggen {
@@ -21,7 +21,7 @@ body, html {
     font-weight: bolder;
     padding: 8px;
     margin-top: -525px;
-    margin-left: 210px;
+    margin-left: -15px;
     -moz-box-shadow: 0px 3px 5px 0px #aaa;
     -webkit-box-shadow: 0px 3px 5px 0px #aaa;
     box-shadow: 0px 3px 5px 0px #aaa;
@@ -61,24 +61,30 @@ body, html {
     font-weight: bolder;
     padding: 8px;
     margin-top: -400px;
-    margin-left: 210px;
+    margin-left: -15px;
     z-index: 999;
     overflow: hidden;
     width: 170px;
+    border-bottom: solid 1px #fff;
   }
 
     .header.columns .gebruiker a, .header.columns .gebruiker a:visited, .header.columns .gebruiker a:active, .header.columns .gebruiker a:hover {
       color: #fff;
       text-decoration: none;
-      background: #0A91A8 url("images/iconsbar.png") 0px -307px no-repeat;
-      padding-left: 30px;
-      overflow: hidden;
     }
+
+      .header.columns .gebruiker a.icon, .header.columns .gebruiker a.icon:visited, .header.columns .gebruiker a.icon:active, .header.columns .gebruiker a.icon:hover {
+        background: #0A91A8 url("images/iconsbar.png") 0px -308px no-repeat;
+        padding-left: 30px;
+        overflow: hidden;
+        padding-top: 0px;
+        vertical-align: bottom;
+      }
 
   .header.columns h2 {
     margin-left: 210px;
     font-weight: normal;
-    font-size: 3.5rem;
+    font-size: 4.5rem;
     float: left;
     height: 100%;
     margin-top: 40px;
@@ -89,7 +95,7 @@ body, html {
     margin-left: 210px;
     float: left;
     margin-top: -10px;
-    font-size: 1.6rem;
+    font-size: 2.0rem;
     font-weight: normal;
   }
 
@@ -107,49 +113,51 @@ body, html {
     color: #0A91A8;
   }
 
-.menu.columns ul {
-  margin-top: -21px;
+.menu.three.columns {
+  padding-right: 0px;
 }
-
-.menu.columns li {
-  display: inline-block;
-  margin: 0px 4px 10px 4px;
-  font-weight: bold;
+  
+.menu.columns ul {
+  margin-top: 0px;
   -moz-box-shadow: 3px 3px 5px 0px #aaa;
   -webkit-box-shadow: 3px 3px 5px 0px #aaa;
   box-shadow: 3px 3px 5px 0px #aaa;
-  height: 100px;
-  padding: 75px 4px 0px;
-  color: #fff;
-  background: #639ca5; /* Old browsers */
-  background: -moz-linear-gradient(top, #639ca5 0%, #008fa5 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#639ca5), color-stop(100%,#008fa5)); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, #639ca5 0%,#008fa5 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top, #639ca5 0%,#008fa5 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top, #639ca5 0%,#008fa5 100%); /* IE10+ */
-  background: linear-gradient(to bottom, #639ca5 0%,#008fa5 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#639ca5', endColorstr='#008fa5',GradientType=0 ); /* IE6-9 */
-  border-bottom: 1px solid #F0EEE1;
 }
 
-  .menu.columns li:hover {
-    height: 110px;
-    margin-bottom: 0px;
+.menu.columns li {
+  display: list-item;
+  list-style-image: none; 
+  list-style-type: none;
+  margin: 0px 0px 0px 0px;
+  font-weight: bold;
+  height: 25px;
+  padding: 0px 20px;
+  color: #fff;
+  background-color: #0A91A8;
+  border-left: 1px solid #Fff;
+}
+
+.menu.columns li:first-child {
+    margin-left: 0px;
   }
 
-  .menu.columns li.active {
+  .menu.columns li:last-child {
+    margin-right: 0px;
+  }
+
+  .menu.columns li:hover, .menu.columns li.active {
     background: #fff;
     color: #639ca5;
-    border-bottom: 1px solid #639ca5;
+    border-left: 1px solid #0A91A8;
+    cursor: pointer;
   }
 
   .menu.columns li a {
     color: #fff;
   }
 
-  .menu.columns li.active a {
+  .menu.columns li:hover a, .menu.columns li.active a {
     color: #639ca5;
-    cursor: default;
   }
 
   .menu.columns li.overons {
@@ -175,25 +183,20 @@ body, html {
   -moz-box-shadow: 0px 0px 5px 0px #aaa;
   -webkit-box-shadow: 0px 0px 5px 0px #aaa;
   box-shadow: 0px 0px 5px 0px #aaa;
-  margin: 20px auto;
+  margin: 0px auto;
+  padding: 0px 40px;
 }
 
-  .banner .columns {
-    margin-left: auto;
-    margin-right: auto;
-    float: none;
+  .banner.columns p {
+    font-size: 2.5rem;
+    line-height: 1.25;
   }
 
-    .banner .columns p {
-      font-size: 2.5rem;
-      line-height: 1.25;
+    .banner.columns p span.large {
+      font-size: 3.5rem;
+      font-weight: bold;
+      color: #0A91A8;
     }
-
-      .banner .columns p span.large {
-        font-size: 3.5rem;
-        font-weight: bold;
-        color: #0A91A8;
-      }
 
 div.aankondigingen {
   background-color: #0A91A8;
@@ -293,8 +296,12 @@ div.studieweekend {
   }
 
 div.row.zones {
-  margin: 10px auto;
+  /*margin: 10px auto;*/
 }
+
+  div.row.zones div.four:last-child {
+    /*padding-right: 0px;*/
+  }
 
 div.columns p.titel {
   color: #fff;
@@ -368,8 +375,8 @@ div.agenda li {
     font-size: 1rem;
     position: absolute;
     left: 0px;
-    width: 285px;
-    margin: 16px 0px 0px 30px;
+    width: 100%;
+    padding: 16px 0px 0px 30px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -427,8 +434,16 @@ div.foto {
   overflow: hidden;
 }
 
-  div.foto img {
+  div.fotocontainer {
+    background-color: #0A91A8;
     display: none;
+    overflow: hidden;
+  }
+
+  div.fotocontainer img {
+    /*height: 250px;*/
+    margin: auto;
+    display: block;
   }
 
 div.row.map {
@@ -436,7 +451,7 @@ div.row.map {
 }
 
 .locaties {
-  background: url('images/locaties.png') no-repeat;
+  background: url('images/locaties.png') no-repeat center center;
   height: 250px;
 }
 
@@ -463,37 +478,39 @@ div.row.map {
     -webkit-border-radius: 5px;
     border-radius: 5px;
     position: absolute;
+    left: 50%;
   }
 
     .locaties .marker.baarn {
-      top: 135px;
-      left: 75px;
+      top: 145px;
+      margin-left: -355px;
     }
 
     .locaties .marker.bunschoten {
-      top: 85px;
-      left: 940px;
+      top: 115px;
+      margin-left: 335px;
     }
 
   .locaties .arrow {
     display: inline-block;
     position: absolute;
+    left: 50%;
   }
 
     .locaties .arrow.baarn {
       background: url("images/arrow-baarn.png") no-repeat;
       height: 65px;
       width: 42px;
-      top: 150px;
-      left: 62px;
+      top: 160px;
+      margin-left: -370px;
     }
 
     .locaties .arrow.bunschoten {
       background: url("images/arrow-bunschoten.png") no-repeat;
       height: 43px;
       width: 50px;
-      top: 97px;
-      left: 885px;
+      top: 127px;
+      margin-left: 280px;
     }
 
 div.container.footer {
@@ -524,6 +541,10 @@ div.container.footer {
 div.submenucontainer {
   padding: 0px;
   margin-bottom: 40px;
+}
+
+div.leftcolumn {
+  padding-left: 0px;
 }
 
 div.artikel {
@@ -620,12 +641,18 @@ ul.submenu li {
     color: #0a91a8;
   }
 
+/*div.photocontainer {
+  width: 100%;
+}*/
+  
 div.three div.photo, div.three.photoalbum span, div.three.photoalbum div.photocontainer {
-  width: 230px;
+  width: 100%;
+  background-color: #0A91A8;
 }
 
 div.six div.photo, div.six.photoalbum span, div.six.photoalbum div.photocontainer {
-  width: 480px;
+  width: 100%;
+  background-color: #0A91A8;
 }
 
 div.six div.photo {
@@ -650,9 +677,9 @@ div.photo {
   div.photo.orbit {
   }
 
-  div.photo img {
+  /*div.photo img {
     display: none;
-  }
+  }*/
 
 div.photoalbum {
   margin-bottom: 20px;
@@ -676,7 +703,7 @@ div.photoalbum {
     color: #fff;
     text-decoration: none;
   }
-
+    
 div.six.columns div.agenda {
   margin-bottom: 20px;
   background-color: #fff;
@@ -909,10 +936,22 @@ div.recording li {
     font-size: 1rem;
     position: absolute;
     left: 0px;
-    margin: 16px 0px 0px 30px;
+    padding: 16px 0px 0px 30px;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 
 
+div.artikellist > div {
+  padding: 0px;
+}
+
+  div.artikellist > div .four.columns {
+    padding-right: 0px;
+  }
+  
 div.artikellist div.artikel div {
   height: 290px;
   overflow: hidden;
@@ -921,6 +960,10 @@ div.artikellist div.artikel div {
   div.artikellist div.artikel div a, div.artikellist div.artikel div a:visited, div.artikellist div.artikel div a:active, div.artikellist div.artikel div a:hover {
     color: #0A91A8;
   }
+
+div.artikelcontainer {
+  padding: 0px;
+}
 
 div.contactblad {
   padding-left: 0px;

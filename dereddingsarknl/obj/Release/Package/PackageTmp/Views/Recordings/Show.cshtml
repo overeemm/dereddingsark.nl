@@ -28,25 +28,25 @@
   </div>
 </div>
 
-@foreach(var opnameMonth in ViewBag.OpnameMonths)
+@foreach(var month in ViewBag.RecordingMonths)
 {
   <div class="row recordingheader">
     <div class="twelve columns">
       <div class="twelve columns">
-        <p>@opnameMonth.ToString("MMMM yyyy", new CultureInfo("nl-NL"))</p>
+        <p>@month.ToString("MMMM yyyy", new CultureInfo("nl-NL"))</p>
       </div>
     </div>
   </div>
   
   <div class="row recordinggroup">
-    @foreach(var opname in ViewBag.OpnameList[opnameMonth])
+    @foreach(var recording in ViewBag.RecordingList[month])
     {  
-      <div class="four columns" data-cat="@opname.Categorie">
+      <div class="four columns" data-cat="@recording.Category">
         <div class="recordingpointer"></div>
         <div class="twelve columns recording">
           <ul>
-            <li class="audio"><a href="@opname.Url" target="_blank">@opname.Titel</a>
-              <span>@opname.Datum.ToString("ddd d MMM yyyy H:mm", new CultureInfo("nl-NL")) - @opname.Categorie</span>
+            <li class="audio"><a href="@recording.Url" target="_blank">@recording.Title</a>
+              <span>@recording.Date.ToString("ddd d MMM yyyy H:mm", new CultureInfo("nl-NL")) - @recording.Category</span>
             </li>
           </ul>
         </div>

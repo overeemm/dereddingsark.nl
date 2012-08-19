@@ -1,6 +1,7 @@
 jQuery(document).ready(function ($) {
 
   /* index page */
+  $('#banners').orbit({ fluid: '833x100' });
 
   $('div.slideshow').orbit();
   $(this).tooltips();
@@ -29,6 +30,33 @@ jQuery(document).ready(function ($) {
       "margin-top": -500
     }, 500, function () {
       $('div.inloggen').css("width", "100px");
+    });
+  });
+
+  $('div.gebruiker').on('click', 'a.inactive', function (event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    $(this).addClass("active").removeClass("inactive");
+
+    $('div.gebruiker').css("width", "270px");
+    $('div.gebruiker').animate({
+      "margin-top": -20
+    }, 500, function () {
+      
+    });
+  });
+
+  $('div.gebruiker').on('click', 'a.active', function (event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    $(this).addClass("inactive").removeClass("active");
+
+    $('div.gebruiker').animate({
+      "margin-top": -400
+    }, 500, function () {
+      $('div.gebruiker').css("width", "170px");
     });
   });
 

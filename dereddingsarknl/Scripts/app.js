@@ -75,7 +75,7 @@ jQuery(document).ready(function ($) {
 
     $.get("/fotos/" + name + "/" + id, function (data) {
       for (var i = 0; i < data.length; i++) {
-        $this.append("<img src='" + data[i].Url + "' />");
+        $this.append("<div class='fotocontainer'><img src='" + data[i].Url + "' /></div>");
       }
       $this.orbit();
     });

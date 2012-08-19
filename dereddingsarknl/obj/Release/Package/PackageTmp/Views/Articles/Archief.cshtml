@@ -9,7 +9,7 @@
         @foreach(var artikel in ViewBag.ArtikelList)
         {
           <li>
-            <a href="@Url.Action("Artikel", "Artikelen", new { alias = @artikel.Alias })">@artikel.Title</a> - 
+            <a href="@Url.Action("Artikel", "Articles", new { alias = @artikel.Alias })">@artikel.Title</a> - 
             @artikel.Added.ToString("d MMMM yyyy", new CultureInfo("nl-NL"))
           </li>
         }

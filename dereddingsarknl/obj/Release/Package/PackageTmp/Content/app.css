@@ -20,7 +20,7 @@ body, html {
     position: absolute;
     font-weight: bolder;
     padding: 8px;
-    margin-top: -500px;
+    margin-top: -525px;
     margin-left: 210px;
     -moz-box-shadow: 0px 3px 5px 0px #aaa;
     -webkit-box-shadow: 0px 3px 5px 0px #aaa;
@@ -29,40 +29,55 @@ body, html {
     overflow: hidden;
     width: 100px;
   }
-  .header.columns .inloggen a, .header.columns .inloggen a:visited, .header.columns .inloggen a:active, .header.columns .inloggen a:hover {
-    color: #0A91A8;
-    text-decoration: none;
-  }
-  .header.columns .inloggen p {
-    color: #555;
-    font-weight: normal;
-    font-style: italic;
-  }
-  .header.columns .inloggen a.hidden {
-    color: #fff;
-    text-decoration: none;
-  }
-  .header.columns .inloggen p.hidden {
-    color: #fff;
-  }
-  
+
+    .header.columns .inloggen a, .header.columns .inloggen a:visited, .header.columns .inloggen a:active, .header.columns .inloggen a:hover {
+      color: #0A91A8;
+      text-decoration: none;
+    }
+
+    .header.columns .inloggen p {
+      color: #555;
+      font-weight: normal;
+      font-style: italic;
+    }
+
+    .header.columns .inloggen a.hidden {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .header.columns .inloggen p.hidden {
+      color: #fff;
+    }
+
   .header.columns .gebruiker {
     background-color: #0A91A8;
     color: #fff;
     position: absolute;
-    padding: 8px 8px 8px 38px;
-    background: #0A91A8 url("images/iconsbar.png") 0px -300px no-repeat;
-    margin-top: -20px;
-    margin-left: 210px;
     -moz-box-shadow: 3px 3px 5px 0px #aaa;
     -webkit-box-shadow: 3px 3px 5px 0px #aaa;
     box-shadow: 3px 3px 5px 0px #aaa;
+    position: absolute;
+    font-weight: bolder;
+    padding: 8px;
+    margin-top: -400px;
+    margin-left: 210px;
+    z-index: 999;
+    overflow: hidden;
+    width: 170px;
   }
-  .header.columns .gebruiker a, .header.columns .gebruiker a:visited, .header.columns .gebruiker a:active, .header.columns .gebruiker a:hover {
-    color: #fff;
-    text-decoration: none;
-  }
-  
+
+    .header.columns .gebruiker a, .header.columns .gebruiker a:visited, .header.columns .gebruiker a:active, .header.columns .gebruiker a:hover {
+      color: #fff;
+      text-decoration: none;
+    }
+
+      .header.columns .gebruiker a.icon, .header.columns .gebruiker a.icon:visited, .header.columns .gebruiker a.icon:active, .header.columns .gebruiker a.icon:hover {
+        background: #0A91A8 url("images/iconsbar.png") 0px -307px no-repeat;
+        padding-left: 30px;
+        overflow: hidden;
+      }
+
   .header.columns h2 {
     margin-left: 210px;
     font-weight: normal;
@@ -163,29 +178,125 @@ body, html {
   -moz-box-shadow: 0px 0px 5px 0px #aaa;
   -webkit-box-shadow: 0px 0px 5px 0px #aaa;
   box-shadow: 0px 0px 5px 0px #aaa;
+  margin: 0px auto;
+  padding: 0px 40px;
+}
+
+  .banner.columns p {
+    font-size: 2.5rem;
+    line-height: 1.25;
+  }
+
+    .banner.columns p span.large {
+      font-size: 3.5rem;
+      font-weight: bold;
+      color: #0A91A8;
+    }
+
+div.aankondigingen {
+  background-color: #0A91A8;
+  -moz-box-shadow: 0px 0px 5px 0px #aaa;
+  -webkit-box-shadow: 0px 0px 5px 0px #aaa;
+  box-shadow: 0px 0px 5px 0px #aaa;
   margin: 20px auto;
 }
 
-  .banner .columns {
-    margin-left: auto;
-    margin-right: auto;
-    float: none;
+  div.aankondigingen p {
+    background-color: #0A91A8;
+    color: #fff;
+    opacity: 1;
+    padding-left: 5px;
+    position: absolute;
+    font-weight: bolder;
   }
 
-    .banner .columns p {
-      font-size: 2.5rem;
-      line-height: 1.25;
-    }
+  div.aankondigingen a, div.aankondigingen a:visited, div.aankondigingen a:active, div.aankondigingen a:hover {
+    color: #fff;
+  }
 
-      .banner .columns p span.large {
-        font-size: 3.5rem;
-        font-weight: bold;
-        color: #0A91A8;
-      }
+div#banners {
+  padding: 0px;
+  height: 120px;
+  margin: 0px auto;
+  float: none;
+}
+
+div.aankodigingen div#banners > div {
+  margin: 0px 15px;
+}
+
+div.mannenweekend {
+  background: #0A91A8 /* url("Frontpage/mannenweekend.png") 430px 0px no-repeat*/;
+  background-size: auto 250px;
+  height: 120px;
+  width: 100%;
+  margin: 0px;
+}
+
+  div.mannenweekend p:first-child {
+    width: 150px;
+    top: 60px;
+    left: 360px;
+  }
+
+  div.mannenweekend p:nth-child(2) {
+    width: 200px;
+    top: 60px;
+    left: 540px;
+  }
+
+  div.mannenweekend p:nth-child(3) {
+    width: 130px;
+    top: 60px;
+    left: 180px;
+  }
+
+  div.mannenweekend p:nth-child(4) {
+    width: 700px;
+    top: 10px;
+    left: 130px;
+    font-size: 3rem;
+  }
+
+div.studieweekend {
+  background: #0A91A8 /* url("Frontpage/mannenweekend.png") 430px 0px no-repeat*/;
+  height: 120px;
+  width: 100%;
+  margin: 0px;
+}
+
+  div.studieweekend p:first-child {
+    width: 470px;
+    top: 30px;
+    left: 100px;
+    font-size: 2.5rem;
+  }
+
+  div.studieweekend p:nth-child(2) {
+    width: 180px;
+    top: 20px;
+    left: 660px;
+  }
+
+  div.studieweekend p:nth-child(3) {
+    width: 250px;
+    top: 40px;
+    left: 615px;
+  }
+
+  div.studieweekend p:nth-child(4) {
+    width: 270px;
+    top: 60px;
+    left: 584px;
+  }
 
 div.row.zones {
   margin: 10px auto;
 }
+
+  div.row.zones div.four:last-child {
+    padding-right: 0px;
+  }
 
 div.columns p.titel {
   color: #fff;
@@ -229,10 +340,10 @@ div.frontpage {
     text-decoration: none;
     font-weight: bold;
   }
-  
-  div.agenda ul, div.newitems ul {
-    margin-bottom: 0px;
-  }
+
+div.agenda ul, div.newitems ul {
+  margin-bottom: 0px;
+}
 
 div.columns.agenda p.titel {
   background-position: 0px -30px;
@@ -357,13 +468,13 @@ div.row.map {
   }
 
     .locaties .marker.baarn {
-      top: 135px;
-      left: 75px;
+      top: 145px;
+      left: 135px;
     }
 
     .locaties .marker.bunschoten {
-      top: 85px;
-      left: 940px;
+      top: 115px;
+      left: 825px;
     }
 
   .locaties .arrow {
@@ -375,16 +486,16 @@ div.row.map {
       background: url("images/arrow-baarn.png") no-repeat;
       height: 65px;
       width: 42px;
-      top: 150px;
-      left: 62px;
+      top: 160px;
+      left: 122px;
     }
 
     .locaties .arrow.bunschoten {
       background: url("images/arrow-bunschoten.png") no-repeat;
       height: 43px;
       width: 50px;
-      top: 97px;
-      left: 885px;
+      top: 127px;
+      left: 770px;
     }
 
 div.container.footer {
@@ -417,6 +528,10 @@ div.submenucontainer {
   margin-bottom: 40px;
 }
 
+div.leftcolumn {
+  padding-left: 0px;
+}
+
 div.artikel {
   background-color: #fff;
   -moz-box-shadow: 0px 0px 5px 0px #aaa;
@@ -429,10 +544,10 @@ div.artikel {
   div.artikel h3 {
     margin-top: 0px;
   }
-  
-  div.artikel h3 a, div.artikel h3 a:visited, div.artikel h3 a:active, div.artikel h3 a:hover {
-    color: #fff;
-  }
+
+    div.artikel h3 a, div.artikel h3 a:visited, div.artikel h3 a:active, div.artikel h3 a:hover {
+      color: #fff;
+    }
 
   div.artikel p {
     padding: 10px;
@@ -567,7 +682,7 @@ div.photoalbum {
     color: #fff;
     text-decoration: none;
   }
-
+    
 div.six.columns div.agenda {
   margin-bottom: 20px;
   background-color: #fff;
@@ -804,6 +919,14 @@ div.recording li {
   }
 
 
+div.artikellist > div {
+  padding: 0px;
+}
+
+  div.artikellist > div .four.columns {
+    padding-right: 0px;
+  }
+  
 div.artikellist div.artikel div {
   height: 290px;
   overflow: hidden;
@@ -813,34 +936,39 @@ div.artikellist div.artikel div {
     color: #0A91A8;
   }
 
+div.artikelcontainer {
+  padding: 0px;
+}
+
 div.contactblad {
   padding-left: 0px;
 }
+
 div.bunschoten {
   padding-right: 0px;
 }
-  
-div.contactblad div.twelve, div.baarn div.twelve, div.bunschoten div.twelve {
-  background-color: #fff;
-  -moz-box-shadow: 0px 0px 5px 0px #aaa;
-  -webkit-box-shadow: 0px 0px 5px 0px #aaa;
-  box-shadow: 0px 0px 5px 0px #aaa;
-  margin-bottom: 20px;
-  padding: 0px 0px;
-}
 
-div.contactblad h3, div.baarn h3, div.bunschoten h3 {
-  font-size: 1.8rem;
-  padding: 10px;
-  background-color: #0A91A8;
-  color: #fff;
-  margin: 0px 0px 10px 0px;
-}
+  div.contactblad div.twelve, div.baarn div.twelve, div.bunschoten div.twelve {
+    background-color: #fff;
+    -moz-box-shadow: 0px 0px 5px 0px #aaa;
+    -webkit-box-shadow: 0px 0px 5px 0px #aaa;
+    box-shadow: 0px 0px 5px 0px #aaa;
+    margin-bottom: 20px;
+    padding: 0px 0px;
+  }
 
-div.contactblad div.twelve li, div.baarn div.twelve li, div.bunschoten div.twelve li {
-  margin: 0px 10px;
-  list-style-type: none;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
+  div.contactblad h3, div.baarn h3, div.bunschoten h3 {
+    font-size: 1.8rem;
+    padding: 10px;
+    background-color: #0A91A8;
+    color: #fff;
+    margin: 0px 0px 10px 0px;
+  }
+
+  div.contactblad div.twelve li, div.baarn div.twelve li, div.bunschoten div.twelve li {
+    margin: 0px 10px;
+    list-style-type: none;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }

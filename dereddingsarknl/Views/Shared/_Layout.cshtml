@@ -43,7 +43,7 @@
   <div class="container">
 
     <div class="row">
-      <div class="six columns header">
+      <div class="nine columns header">
         @if(ViewBag.CurrentUser != null)
         {
           <div class="gebruiker">
@@ -69,7 +69,7 @@
               Uw gegevens worden dan overal gewijzigd.
             </p>
 
-            <a href="" class="inactive">@ViewBag.CurrentUser.Name</a>
+            <a href="" class="icon inactive">@ViewBag.CurrentUser.Name</a>
           </div>
         }
         else
@@ -90,15 +90,15 @@
             bij de broederraad en vraag om inloggegevens.
             </p>
 
-            <a href="" class="inactive">inloggen</a>
+            <a href="" class="icon inactive">inloggen</a>
           </div>
         }
-
+        
         <h2><a href="@Url.Action("Show", "Index")">de reddingsark</a></h2>
         <h5><a href="@Url.Action("Show", "Index")">evangeliegemeente</a></h5>
       </div>
 
-      <div class="six columns menu">
+      <div class="three columns menu">
         <ul>
           <li class="overons @ViewBag.OverOns"><a href="@Url.Action("Show", "About", new { partName = "" })">over ons</a></li>
           <li class="activiteiten @ViewBag.Activiteiten"><a href="@Url.Action("Show", "Activities", new { partName = "" })">activiteiten</a></li>

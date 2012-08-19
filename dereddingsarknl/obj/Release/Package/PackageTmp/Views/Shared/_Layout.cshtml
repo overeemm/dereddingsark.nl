@@ -44,23 +44,55 @@
 
     <div class="row">
       <div class="six columns header">
-        <!--<img src="images/logo-small.png" />-->
-        <div class="inloggen">
+        @if(ViewBag.CurrentUser != null)
+        {
+          <div class="gebruiker">
 
-          <form>
-            <input type="text" placeholder="e-mail adres"></input>
-            <input type="password" placeholder="wachtwoord"></input>
+            <form method="post" action="@Url.Action("Logout", "User")">
+              <input type="submit" class="secondary small button" value="uitloggen" />
+            <input type="hidden" name="referrer" value="@HttpContext.Current.Request.Url.AbsoluteUri" />
+            </form>
+
+            <hr />
+
+            <form method="post" action="@Url.Action("StoreUpdate", "User")">
+              <input type="password" name="password" placeholder="nieuw wachtwoord"></input>
+              <input type="password" name="password2" placeholder="herhaal wachtwoord"></input>
+              <input type="submit" class="secondary small button" value="verander wachtwoord" />
+            <input type="hidden" name="referrer" value="@HttpContext.Current.Request.Url.AbsoluteUri" />
+            </form>
+
+            <hr />
+
+            <p>
+              Is uw e-mailadres gewijzigd? Geef het door via het <a href="@Url.Action("Contact", "Index")">contactformulier</a>. 
+              Uw gegevens worden dan overal gewijzigd.
+            </p>
+
+            <a href="" class="icon inactive">@ViewBag.CurrentUser.Name</a>
+          </div>
+        }
+        else
+        {
+          <div class="inloggen">
+
+            <form method="post" action="@Url.Action("Login", "User")">
+            <input type="text" name="email" placeholder="e-mail adres"></input>
+            <input type="password" name="password" placeholder="wachtwoord"></input>
             <input type="submit" class="secondary small button" value="inloggen"></input>
-          </form>
+            <input type="hidden" name="referrer" value="@HttpContext.Current.Request.Url.AbsoluteUri" />
+            </form>
 
-          <p>
-            Het inloggen op de website is voor vaste bezoekers. Wilt u ook inloggen op de website? Zorg dan dat uw gegevens bekend zijn
+            <hr />
+
+            <p>
+              Het inloggen op de website is voor vaste bezoekers. Wilt u ook inloggen op de website? Zorg dan dat uw gegevens bekend zijn
             bij de broederraad en vraag om inloggegevens.
-          </p>
+            </p>
 
-          <a href="" class="inactive">inloggen</a>
-        </div>
-        @*<div class="gebruiker"><a href="">familie Overeem</a></div>*@
+            <a href="" class="icon inactive">inloggen</a>
+          </div>
+        }
 
         <h2><a href="@Url.Action("Show", "Index")">de reddingsark</a></h2>
         <h5><a href="@Url.Action("Show", "Index")">evangeliegemeente</a></h5>
@@ -68,18 +100,17 @@
 
       <div class="six columns menu">
         <ul>
-          <li class="overons @ViewBag.OverOns"><a href="@Url.Action("Show", "OverOns", new { partName = "" })">over ons</a></li>
-          <li class="activiteiten @ViewBag.Activiteiten"><a href="@Url.Action("Show", "Activiteiten", new { partName = "" })">activiteiten</a></li>
-          <li class="audio @ViewBag.Opnames""><a href="@Url.Action("Show", "Audio")">audio</a></li>
-          <li class="artikelen @ViewBag.Artikelen"><a href="@Url.Action("Show", "Artikelen")">artikelen</a></li>
-          <li class="fotos @ViewBag.Fotos"><a href="@Url.Action("Show", "Foto")">foto's</a></li>
+          <li class="overons @ViewBag.OverOns"><a href="@Url.Action("Show", "About", new { partName = "" })">over ons</a></li>
+          <li class="activiteiten @ViewBag.Activiteiten"><a href="@Url.Action("Show", "Activities", new { partName = "" })">activiteiten</a></li>
+          <li class="audio @ViewBag.Recordings""><a href="@Url.Action("Show", "Recordings")">audio</a></li>
+          <li class="artikelen @ViewBag.Artikelen"><a href="@Url.Action("Show", "Articles")">artikelen</a></li>
+          <li class="fotos @ViewBag.Fotos"><a href="@Url.Action("Show", "PhotoAlbums")">foto's</a></li>
           <li class="intern @ViewBag.Intern"><a href="@Url.Action("Show", "Intern")">intern</a></li>
         </ul>
       </div>
     </div>
 
     @RenderBody()
-
   </div>
   <!-- container -->
 
@@ -89,7 +120,7 @@
       <div class="twelve columns">
         <p>
           &copy; 2012 evangeliegemeente de reddingsark
-                | <a href="contact.html">contact</a>
+                | <a href="@Url.Action("Contact", "Index")">contact</a>
       </div>
     </div>
 
@@ -105,6 +136,5 @@
   <script src="@Url.Content("~/Scripts/app.js")"></script>
 
   @MiniProfiler.RenderIncludes()
-
 </body>
 </html>

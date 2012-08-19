@@ -1,12 +1,12 @@
 ﻿<div class="row">
-  <div class="three columns">
+  <div class="three columns leftcolumn">
     <div class="twelve columns artikel">
       <p>
         Voor wie nog niet bekend is met de reddingsark willen wij hier een aantal punten toelichten. 
         Deze punten geven in het kort weer wat het doel is van de gemeente en hoe wij dat vorm willen geven. 
         Hierbij lichten wij kort onze grondslag en visie toe. Daarnaast gaan we in op zaken als leiding in de gemeente, 
         lidmaatschap van de gemeente, doop en avondmaal.
-        Deze toelichtingen zijn niet uitputtend, mocht u vragen hebben dan kunt u altijd contact opnemen.
+        Deze toelichtingen zijn niet uitputtend, mocht u vragen hebben dan kunt u altijd <a href="@Url.Action("Contact", "Index")">contact</a> opnemen.
       </p>
     </div>
 
@@ -21,7 +21,7 @@
           }
           else
           {
-          <li><a href="@Url.Action("Show", "OverOns", new { partName = part })">@part</a></li>
+          <li><a href="@Url.Action("Show", "About", new { partName = part })">@part</a></li>
           }
         }
       </ul>
