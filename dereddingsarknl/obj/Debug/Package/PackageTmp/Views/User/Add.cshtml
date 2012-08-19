@@ -1,0 +1,16 @@
+﻿<div class="row">
+
+  <div class="twelve columns">
+    <form method="post" action="@Url.Action("StoreNew", "User")">
+    <input type="text" placeholder="e-mail adres" name="email"></input>
+    <input type="text" placeholder="naam" name="name"></input>
+    <input type="submit" class="secondary small button" value="aanmaken"></input>
+    </form>
+
+    @if(!string.IsNullOrEmpty(ViewBag.EmailTaken))
+    {
+      <p>Het emailadres @ViewBag.EmailTaken is al in gebruik.</p>
+    }
+  </div>
+
+</div>

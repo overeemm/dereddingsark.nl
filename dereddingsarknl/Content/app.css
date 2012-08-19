@@ -116,7 +116,7 @@ body, html {
 .menu.three.columns {
   padding-right: 0px;
 }
-  
+
 .menu.columns ul {
   margin-top: 0px;
   -moz-box-shadow: 3px 3px 5px 0px #aaa;
@@ -126,7 +126,7 @@ body, html {
 
 .menu.columns li {
   display: list-item;
-  list-style-image: none; 
+  list-style-image: none;
   list-style-type: none;
   margin: 0px 0px 0px 0px;
   font-weight: bold;
@@ -137,7 +137,7 @@ body, html {
   border-left: 1px solid #Fff;
 }
 
-.menu.columns li:first-child {
+  .menu.columns li:first-child {
     margin-left: 0px;
   }
 
@@ -296,11 +296,11 @@ div.studieweekend {
   }
 
 div.row.zones {
-  /*margin: 10px auto;*/
+  margin: 10px auto;
 }
 
   div.row.zones div.four:last-child {
-    /*padding-right: 0px;*/
+    padding-right: 0px;
   }
 
 div.columns p.titel {
@@ -434,11 +434,11 @@ div.foto {
   overflow: hidden;
 }
 
-  div.fotocontainer {
-    background-color: #0A91A8;
-    display: none;
-    overflow: hidden;
-  }
+div.fotocontainer {
+  background-color: #0A91A8;
+  display: none;
+  overflow: hidden;
+}
 
   div.fotocontainer img {
     /*height: 250px;*/
@@ -448,6 +448,10 @@ div.foto {
 
 div.row.map {
   margin-bottom: 20px;
+}
+
+.locatiessmall {
+  display: none;
 }
 
 .locaties {
@@ -644,7 +648,7 @@ ul.submenu li {
 /*div.photocontainer {
   width: 100%;
 }*/
-  
+
 div.three div.photo, div.three.photoalbum span, div.three.photoalbum div.photocontainer {
   width: 100%;
   background-color: #0A91A8;
@@ -677,7 +681,7 @@ div.photo {
   div.photo.orbit {
   }
 
-  /*div.photo img {
+/*div.photo img {
     display: none;
   }*/
 
@@ -703,7 +707,7 @@ div.photoalbum {
     color: #fff;
     text-decoration: none;
   }
-    
+
 div.six.columns div.agenda {
   margin-bottom: 20px;
   background-color: #fff;
@@ -951,7 +955,7 @@ div.artikellist > div {
   div.artikellist > div .four.columns {
     padding-right: 0px;
   }
-  
+
 div.artikellist div.artikel div {
   height: 290px;
   overflow: hidden;
@@ -997,3 +1001,114 @@ div.bunschoten {
     white-space: nowrap;
     text-overflow: ellipsis;
   }
+
+@media only screen and (max-width: 808px) {
+  .container {
+    padding: 10px 0px 0px;
+  }
+}
+
+/* One row layout */
+@media only screen and (max-width: 767px) {
+  div.row.zones div.slideshowcontainer, div.locaties, div.row.map {
+    display: none;
+  }
+
+  div.menu.columns {
+    padding-left: 0px;
+  }
+
+    div.menu.columns ul {
+      -moz-box-shadow: none;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      background-color: #0A91A8;
+    }
+
+    div.menu.columns li {
+      display: inline-block;
+      margin: 0px;
+      border: 0px;
+      width: auto;
+      margin-left: -4px;
+    }
+
+      div.menu.columns li:first-child {
+        margin-left: 0px;
+      }
+
+  div.row.zones div.four.columns {
+    margin-bottom: 20px;
+    padding: 0px;
+  }
+
+    div.row.zones div.four.columns div.twelve:last-child {
+      margin-bottom: 0px;
+    }
+
+  div.row.zones {
+    margin-bottom: 0px;
+  }
+
+  .locatiessmall {
+    background-color: #fff;
+    color: #0A91A8;
+    display: block;
+    padding-top: 15px;
+    margin-bottom: 20px;
+    -moz-box-shadow: 0px 0px 5px 0px #aaa;
+    -webkit-box-shadow: 0px 0px 5px 0px #aaa;
+    box-shadow: 0px 0px 5px 0px #aaa;
+  }
+
+    .locatiessmall p {
+      font-size: 2.0rem;
+    }
+}
+
+@media only screen and (max-width: 540px) {
+  .header.columns {
+    background-size: 150px 63px;
+  }
+
+    .header.columns h2 {
+      font-size: 3.0rem;
+      margin-left: 140px;
+    }
+
+    .header.columns h5 {
+      font-size: 1.5rem;
+      margin-left: 140px;
+    }
+
+  .banner {
+    padding: 0px 5px;
+  }
+
+    .banner.columns p {
+      font-size: 2rem;
+      line-height: 1.00;
+    }
+
+      .banner.columns p span.large {
+        font-size: 2.5rem;
+      }
+}
+
+@media only screen and (max-width: 370px) {
+  .header.columns {
+    background-size: 100px 42px;
+    min-height: 100px;
+  }
+
+    .header.columns h2 {
+      font-size: 2.0rem;
+      margin-left: 100px;
+    }
+
+    .header.columns h5 {
+      font-size: 1.0rem;
+      margin-top: 0px;
+      margin-left: 100px;
+    }
+}

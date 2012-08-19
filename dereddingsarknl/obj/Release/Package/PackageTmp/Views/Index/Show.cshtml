@@ -8,9 +8,9 @@
       Onze gemeente wil een plek zijn waar <span class="large">God de Vader</span>, 
          
       <span class="large">Jezus Christus de Zoon</span> en de <span class="large">Heilige Geest</span> centraal staan. 
-          Voel je thuis bij ons. 
     </p>
-    <p>Wij hopen <span class="large">door Woord en Geest</span> dichter naar <span class="large">Jezus Christus</span> toe te groeien!</p>
+
+    <p>Wij hopen <span class="large">door Woord en Geest</span> dichter naar <span class="large">Jezus Christus</span> toe te groeien! Voel je thuis bij ons. </p>
   </div>
 </div>
 
@@ -36,6 +36,12 @@
   </div>
 </div>
 
+<div class="row locatiessmall">
+  <div class="twelve columns">
+    <p>Onze gemeente komt samen op twee locaties. In Baarn op de Adelheidlaan 8 en in Bunschoten op Plecht 1 in het Oostwende college. De samenkomsten zijn zondagmorgen om 9:45 uur.</p>
+  </div>
+</div>
+
 <div class="row zones">
 
   <div class="four columns agendacontainer">
@@ -54,11 +60,13 @@
     </div>
   </div>
 
-  <div class="four columns">
+  <div class="four columns slideshowcontainer">
     <div class="foto slideshow">
       @foreach(var p in ViewBag.Photos)
       {
-        <img src="@p.Url" />
+        <div class="fotocontainer">
+          <img src="@p.Url" />
+        </div>
       }
     </div>
   </div>
@@ -79,11 +87,12 @@
 
 <div class="row map">
   <div class="twelve columns locaties">
-    <p>Onze gemeente komt samen op twee locaties, in Baarn en Bunschoten. </p>
-    <p>De samenkomsten zijn zondagmorgen om 9:45 uur.</p>
-    <span title="Adelheidlaan 8, Baarn" class="baarn marker has-tip" data-width="150"></span>
+    <p>onze gemeente komt samen op twee locaties, in baarn en bunschoten. </p>
+    <p>de samenkomsten zijn zondagmorgen om 9:45 uur.</p>
+    <span title="adelheidlaan 8, baarn" class="baarn marker has-tip" data-width="150"></span>
     <span class="arrow baarn"></span>
-    <span title="Oostwende college, Plecht 1, Bunschoten" class="bunschoten marker has-tip" data-width="150"></span>
+    <span title="oostwende college, plecht 1, bunschoten" class="bunschoten marker has-tip" data-width="150"></span>
     <span class="arrow bunschoten"></span>
   </div>
 </div>
+
