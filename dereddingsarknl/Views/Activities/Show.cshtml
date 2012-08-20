@@ -8,6 +8,9 @@
         Daarnaast zijn er verschillende zendelingen uitgezonden vanuit onze gemeente, 
         worden er evangelisatie acties gedaan.
       </p>
+      <p>
+        Heeft u vragen over één van deze activiteiten dan kunt u altijd <a href="@Url.Action("Contact", "Index")">contact</a> opnemen.
+      </p>
     </div>
 
     <div class="twelve columns submenucontainer">
@@ -15,7 +18,7 @@
       <ul class="submenu">
         @foreach(var part in new string[] { "samenkomsten", "gemeente opbouw", "jeugd", "pastoraat", "evangelisatie", "zending" })
         {
-          if(part == @ViewBag.PagePart)
+          if(part.Replace(" ", "-") == @ViewBag.PagePart)
           {
           <li class="active">@part</li>
           }

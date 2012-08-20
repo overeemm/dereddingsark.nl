@@ -3,10 +3,15 @@
 body, html {
   background-color: #F0EEE1;
   color: #555;
+  padding: 0px; margin: 0px; height: 100%;
 }
 
 .container {
-  padding: 20px 20px 0px;
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  padding: 20px 20px 30px;
+  margin-bottom: -29px;
 }
 
 .header.columns {
@@ -211,8 +216,9 @@ div.aankondigingen {
     color: #fff;
     opacity: 1;
     padding-left: 5px;
-    position: absolute;
+    float: left;
     font-weight: bolder;
+    display: inline-block;
   }
 
   div.aankondigingen a, div.aankondigingen a:visited, div.aankondigingen a:active, div.aankondigingen a:hover {
@@ -229,71 +235,6 @@ div#banners {
 div.aankodigingen div#banners > div {
   margin: 0px 15px;
 }
-
-div.mannenweekend {
-  background: #0A91A8 /* url("Frontpage/mannenweekend.png") 430px 0px no-repeat*/;
-  background-size: auto 250px;
-  height: 120px;
-  width: 100%;
-  margin: 0px;
-}
-
-  div.mannenweekend p:first-child {
-    width: 150px;
-    top: 60px;
-    left: 360px;
-  }
-
-  div.mannenweekend p:nth-child(2) {
-    width: 200px;
-    top: 60px;
-    left: 540px;
-  }
-
-  div.mannenweekend p:nth-child(3) {
-    width: 130px;
-    top: 60px;
-    left: 180px;
-  }
-
-  div.mannenweekend p:nth-child(4) {
-    width: 700px;
-    top: 10px;
-    left: 130px;
-    font-size: 3rem;
-  }
-
-div.studieweekend {
-  background: #0A91A8 /* url("Frontpage/mannenweekend.png") 430px 0px no-repeat*/;
-  height: 120px;
-  width: 100%;
-  margin: 0px;
-}
-
-  div.studieweekend p:first-child {
-    width: 470px;
-    top: 30px;
-    left: 100px;
-    font-size: 2.5rem;
-  }
-
-  div.studieweekend p:nth-child(2) {
-    width: 180px;
-    top: 20px;
-    left: 660px;
-  }
-
-  div.studieweekend p:nth-child(3) {
-    width: 250px;
-    top: 40px;
-    left: 615px;
-  }
-
-  div.studieweekend p:nth-child(4) {
-    width: 270px;
-    top: 60px;
-    left: 584px;
-  }
 
 div.row.zones {
   margin: 10px auto;
@@ -738,7 +679,7 @@ div.six.columns div.agenda li {
 }
 
   div.six.columns div.agenda li span {
-    width: 465px;
+    width: 100%;
   }
 
 div.row.agendacontainer div.columns {
@@ -920,7 +861,7 @@ div.columns.recording p.titel {
 div.recording li {
   padding-left: 30px;
   background: url("images/iconsbar.png") 0px 0px no-repeat;
-  height: 30px;
+  height: 38px;
   line-height: 30px;
   color: #fff;
   margin: 0px;
@@ -929,7 +870,6 @@ div.recording li {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  margin-bottom: 10px;
 }
 
   div.recording li:first-child {
@@ -938,9 +878,11 @@ div.recording li {
 
   div.recording li span {
     font-size: 1rem;
-    position: absolute;
+    float: left;
+    line-height: 18px;
     left: 0px;
-    padding: 16px 0px 0px 30px;
+    padding: 0px;
+    margin: -7px 0px 0px 0px;
     width: 100%;
     overflow: hidden;
     white-space: nowrap;
@@ -1013,6 +955,10 @@ div.bunschoten {
   div.row.zones div.slideshowcontainer, div.locaties, div.row.map {
     display: none;
   }
+  
+  div.recordinggroup div.four:last-child {
+    float: none;
+  }
 
   div.menu.columns {
     padding-left: 0px;
@@ -1064,9 +1010,26 @@ div.bunschoten {
     .locatiessmall p {
       font-size: 2.0rem;
     }
+
+  div.row div.leftcolumn {
+    padding-right: 0px;
+  }
+
+  div.artikellist div.artikel div {
+    height: 90px;
+  }
+
+  div.row.artikellist div.four.columns {
+    padding-left: 0px;
+  }
 }
 
 @media only screen and (max-width: 540px) {
+
+  div.aankondigingen div.orbit-wrapper div.slider-nav, div.aankondigingen div.orbit-wrapper div.timer {
+    display: none;
+  }
+
   .header.columns {
     background-size: 150px 63px;
   }
@@ -1112,3 +1075,79 @@ div.bunschoten {
       margin-left: 100px;
     }
 }
+
+div.mannenweekend, div.studieweekend {
+  background: #0A91A8;
+  height: 120px;
+  width: 100%;
+  margin: 0px;
+}
+
+  div.mannenweekend p:first-child, div.studieweekend p:first-child {
+    width: 100%;
+    margin: 40px auto auto auto;
+    text-align: center;
+    font-size: 3rem;
+  }
+
+  div.mannenweekend p:last-child, div.studieweekend p:last-child {
+    width: 100%;
+    margin: 10px auto auto auto;
+    text-align: center;
+  }
+
+@media only screen and (max-width: 767px) {
+  div.mannenweekend p:first-child, div.studieweekend p:first-child {
+    margin: 20px auto auto auto;
+    font-size: 2rem;
+  }
+}
+
+@media only screen and (max-width: 540px) {
+  div.mannenweekend p:first-child, div.studieweekend p:first-child {
+    font-size: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 370px) {
+  div.mannenweekend p:first-child, div.studieweekend p:first-child {
+    margin: 5px auto auto auto;
+    font-size: 1.0rem;
+  }
+
+  div.mannenweekend p:last-child, div.studieweekend p:last-child {
+    font-size: 0.7rem;
+  }
+}
+
+/*div.studieweekend {
+  background: #0A91A8;
+  height: 120px;
+  width: 100%;
+  margin: 0px;
+}
+
+  div.studieweekend p:first-child {
+    width: 470px;
+    top: 30px;
+    left: 100px;
+    font-size: 2.5rem;
+  }
+
+  div.studieweekend p:nth-child(2) {
+    width: 180px;
+    top: 20px;
+    left: 660px;
+  }
+
+  div.studieweekend p:nth-child(3) {
+    width: 250px;
+    top: 40px;
+    left: 615px;
+  }
+
+  div.studieweekend p:nth-child(4) {
+    width: 270px;
+    top: 60px;
+    left: 584px;
+  }*/

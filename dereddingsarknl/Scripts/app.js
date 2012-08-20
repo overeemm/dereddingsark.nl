@@ -1,7 +1,7 @@
 jQuery(document).ready(function ($) {
 
   /* index page */
-  $('#banners').orbit({ fluid: '833x100' });
+  $('#banners').orbit({ fluid: '833x150' });
 
   $('div.slideshow').orbit();
   $(this).tooltips();
@@ -111,7 +111,7 @@ jQuery(document).ready(function ($) {
   });
 
   /* audio */
-  var canPlayMp3 = $('#player').get(0).canPlayType('audio/mpeg') != '';
+  var canPlayMp3 = $('#player').length > 0 && $('#player').get(0).canPlayType('audio/mpeg') != '';
 
   if (canPlayMp3) {
     var player = $('#player').get(0);
@@ -164,6 +164,7 @@ jQuery(document).ready(function ($) {
       $('div.recording.active').removeClass("active");
       $this.parent().parent().parent().addClass("active");
       $this.parent().parent().parent().parent().find(".recordingpointer").show();
+      $('div.progress').css("width", $('div.audioplayer').width() - 95);
 
       reset();
     });

@@ -9,7 +9,7 @@ using StackExchange.Profiling;
 
 namespace dereddingsarknl.Controllers
 {
-  public class InternController : Controller
+  public class InternController : BaseController
   {
     public ActionResult Bunschoten(string datum)
     {

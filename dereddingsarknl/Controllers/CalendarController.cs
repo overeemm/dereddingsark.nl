@@ -9,7 +9,7 @@ using StackExchange.Profiling;
 
 namespace dereddingsarknl.Controllers
 {
-  public class CalendarController : Controller
+  public class CalendarController : BaseController
   {
     public ActionResult Show()
     {
