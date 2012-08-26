@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -11,10 +12,15 @@ namespace dereddingsarknl
 {
   public class MvcApplication : System.Web.HttpApplication
   {
-
     public static void RegisterGlobalFilters(GlobalFilterCollection filters)
     {
       filters.Add(new HandleErrorAttribute());
+      filters.Add(new HandleErrorAttribute
+      {
+        ExceptionType = typeof(FileNotFoundException),
+        View = "Custom404", // Custom404.cshtml is a view in the Shared folder.
+        Order = 2
+      });
     }
 
     protected void Application_EndRequest()
@@ -55,6 +61,10 @@ namespace dereddingsarknl
       routes.MapRoute("UserStoreUpdate", "user/update", new { controller = "User", action = "StoreUpdate" });
       routes.MapRoute("UserLogin", "user/login", new { controller = "User", action = "Login" });
       routes.MapRoute("UserLogout", "user/logout", new { controller = "User", action = "Logout" });
+      routes.MapRoute("UserResetPassword", "user/resetpassword", new { controller = "User", action = "ResetPassword" });
+      routes.MapRoute("UserPassword", "user/setpassword", new { controller = "User", action = "SetPassword" });
+
+      routes.MapRoute("404PageNotFound", "{*url}", new { controller = "Error", action = "NotFound" });
     }
 
     protected void Application_Start()
@@ -63,6 +73,34 @@ namespace dereddingsarknl
 
       RegisterGlobalFilters(GlobalFilters.Filters);
       RegisterRoutes(RouteTable.Routes);
+    }
+
+    protected void Application_Error(object sender, EventArgs e)
+    {
+      Exception exception = Server.GetLastError();
+      Response.Clear();
+      HttpException httpException = exception as HttpException;
+      if(httpException != null)
+      {
+        string action;
+        switch(httpException.GetHttpCode())
+        {
+          case 404:
+            // page not found
+            action = "HttpError404";
+            break;
+          case 500:
+            // server error
+            action = "Internal500";
+            break;
+          default:
+            action = "General";
+            break;
+        }
+        // clear error on server
+        Server.ClearError();
+        Response.Redirect(String.Format("~/Error.html?message={1}", action, exception.Message));
+      }
     }
   }
 }

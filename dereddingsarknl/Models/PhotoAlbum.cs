@@ -13,6 +13,7 @@ namespace dereddingsarknl.Models
   {
     private XDocument _content;
     XNamespace _atom = "http://www.w3.org/2005/Atom";
+    XNamespace _gphoto = "http://schemas.google.com/photos/2007";
 
     public PhotoAlbum(XDocument content)
     {
@@ -43,17 +44,26 @@ namespace dereddingsarknl.Models
       get
       {
         return _content.Element(_atom + "feed").Elements(_atom + "entry")
-          .Select(e => new Photo(e.Element(_atom + "content").Attribute("src").Value));
+          .Select(e => new Photo(
+            e.Element(_atom + "content").Attribute("src").Value,
+            int.Parse(e.Element(_gphoto + "width").Value),
+            int.Parse(e.Element(_gphoto + "height").Value)
+          ));
       }
     }
   }
 
   public class Photo
   {
-    public Photo(string url)
+    public Photo(string url, int width, int height)
     {
       Url = url;
+      Width = width;
+      Height = height;
     }
+
+    public int Width { get; private set; }
+    public int Height { get; private set; }
 
     public string Url { get; private set; }
   }

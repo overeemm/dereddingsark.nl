@@ -27,4 +27,6 @@ C:\Users\michiel\Documents\GitHub\dereddingsark.nl\dereddingsarknl\bin\Google.GD
 C:\Users\michiel\Documents\GitHub\dereddingsark.nl\dereddingsarknl\bin\Newtonsoft.Json.dll
 C:\Users\michiel\Documents\GitHub\dereddingsark.nl\dereddingsarknl\bin\Newtonsoft.Json.pdb
 C:\Users\michiel\Documents\GitHub\dereddingsark.nl\dereddingsarknl\bin\Newtonsoft.Json.xml
+C:\Users\michiel\Documents\GitHub\dereddingsark.nl\dereddingsarknl\bin\Elmah.dll
+C:\Users\michiel\Documents\GitHub\dereddingsark.nl\dereddingsarknl\bin\Elmah.Mvc.dll
 C:\Users\michiel\Documents\GitHub\dereddingsark.nl\dereddingsarknl\obj\Debug\dereddingsarknl.csprojResolveAssemblyReference.cache

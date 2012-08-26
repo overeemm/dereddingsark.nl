@@ -34,13 +34,16 @@ namespace dereddingsarknl.Controllers
           System.IO.File.AppendAllLines(filePath,
             new string[] { dereddingsarknl.Models.User.CreateIndexLine(email, name, passwordHash, salt) });
 
-          var client = new System.Net.Mail.SmtpClient();
-          client.Send(new MailMessage("website@dereddingsark.nl", email,
-            "Gebruikersgegevens voor dereddingsark.nl",
-            string.Format(@"Hierbij uw gegevens voor dereddingsark.nl
+          string token = Guid.NewGuid().ToString("N");
+          StoreResetToken(email, token);
+          string reseturl = Url.Action("SetPassword", "User", new { token = token });
 
-e-mailadres: {0}
-wachtwoord: {1}", email, password)));
+          var client = new System.Net.Mail.SmtpClient();
+          client.Send(new MailMessage(From_Address, email,
+            "Gebruikersgegevens voor dereddingsark.nl",
+            string.Format(@"Er is een account aangemaakt voor uw e-maildres ({0})
+
+U kunt uw e-mailadres instellen via de url {1}", email, reseturl)));
 
           var guid = Guid.NewGuid().ToString("N");
           string tokenFile = Path.Combine(Settings.GetDataFolder(HttpContext), "gebruikers\\tokens", email.Replace("@", "-") + "__" + guid);
@@ -52,20 +55,30 @@ wachtwoord: {1}", email, password)));
     }
 
     [HttpPost]
-    public ActionResult StoreUpdate(string password, string password2, string referrer)
+    public ActionResult StoreUpdate(string password, string password2, string referrer, string token)
     {
-      if(password == password2 && CurrentUser != null)
+      User user;
+      if(!string.IsNullOrEmpty(token))
+      {
+        user = GetUserFromResetPasswordToken(token);
+      }
+      else
+      {
+        user = CurrentUser;
+      }
+
+      if(password == password2 && user != null)
       {
         string salt = GenerateSalt();
         string passwordHash = HashPassword(password, salt);
-        var indexLine = string.Format("\"{0}\", \"{1}\", \"{2}\", \"{3}\"", CurrentUser.Email, CurrentUser.Name, passwordHash, salt);
+        var indexLine = string.Format("\"{0}\", \"{1}\", \"{2}\", \"{3}\"", user.Email, user.Name, passwordHash, salt);
 
         string filePath = Path.Combine(Settings.GetDataFolder(HttpContext), "gebruikers\\index.csv");
         var users = new Index(filePath);
         var lines = new List<string>();
         foreach(var item in users.Items)
         {
-          if(item.First().Equals(CurrentUser.Email, StringComparison.InvariantCultureIgnoreCase))
+          if(item.First().Equals(user.Email, StringComparison.InvariantCultureIgnoreCase))
           {
             lines.Add(indexLine);
           }
@@ -78,6 +91,45 @@ wachtwoord: {1}", email, password)));
         System.IO.File.WriteAllLines(filePath, lines.ToArray());
       }
       return Redirect(referrer);
+    }
+
+    private ActionResult ResetPassword(string email, string referrer)
+    {
+      var user = GetUserFromEmail(email);
+      if(user == null)
+      {
+        return Redirect(referrer);
+      }
+      else
+      {
+        string token = Guid.NewGuid().ToString("N");
+        StoreResetToken(email, token);
+        string reseturl = Url.Action("SetPassword", "User", new { token = token });
+
+        var client = new System.Net.Mail.SmtpClient();
+        client.Send(new MailMessage(From_Address, email,
+          "Geef een wachtwoord op voor dereddingsark.nl",
+          string.Format(@"Ga naar deze url om een wachtwoord op te geven: {0}", reseturl)));
+
+        StoreMessageInCookie("Er is een e-mail gestuurd met instructies om uw wachtwoord te resetten.");
+
+        return Redirect(referrer);
+      }
+    }
+
+    public ActionResult SetPassword(string token)
+    {
+      var user = GetUserFromResetPasswordToken(token);
+      if(user == null)
+      {
+        return RedirectToAction("Show", "Index");
+      }
+      else
+      {
+        ViewBag.User = user;
+        ViewBag.Token = token;
+        return View();
+      }
     }
 
     public ActionResult Logout(string referrer)
@@ -95,30 +147,60 @@ wachtwoord: {1}", email, password)));
       return View();
     }
 
-    public ActionResult Login(string email, string password, string referrer)
+    public ActionResult Login(string email, string password, string referrer, string inloggen, string reset)
     {
-      var user = GetUserFromEmail(email);
-      if(user == null)
+      if(!string.IsNullOrEmpty(reset))
       {
-        return Redirect(referrer);
+        return ResetPassword(email, referrer);
       }
       else
       {
-        if(user.PasswordHash == HashPassword(password, user.Salt))
+        if(Request.RequestType == "GET")
         {
-          StoreCookieAndToken(null, user);
-          return Redirect(referrer);
+          ViewBag.Referrer = Request.UrlReferrer != null ? Request.UrlReferrer.ToString() : Url.Action("Show", "Index");
+          return View();
         }
         else
         {
-          return Redirect(referrer);
+          var user = GetUserFromEmail(email);
+          if(user == null)
+          {
+            StoreMessageInCookie("Het e-mailadres is niet bekend, of het ingevoerde wachtwoord is fout.");
+            return Redirect(referrer);
+          }
+          else
+          {
+            if(string.IsNullOrEmpty(referrer))
+            {
+              referrer = Url.Action("Show", "Index");
+            }
+
+            if(user.PasswordHash == HashPassword(password, user.Salt))
+            {
+              StoreCookieAndToken(null, user);
+              return Redirect(referrer);
+            }
+            else
+            {
+              StoreMessageInCookie("Het e-mailadres is niet bekend, of het ingevoerde wachtwoord is fout.");
+              return Redirect(referrer);
+            }
+          }
         }
       }
-      return View();
     }
 
     public ActionResult Add(string emailtaken)
     {
+      string filePath = Path.Combine(Settings.GetDataFolder(HttpContext), "gebruikers\\index.csv");
+      if(!System.IO.File.Exists(filePath))
+      {
+        System.IO.File.CreateText(filePath).Close();
+      }
+
+      if((CurrentUser == null || !CurrentUser.CanAddUser) && GetUserCount() > 0)
+        return new HttpUnauthorizedResult("U heeft geen toegang tot deze pagina.");
+
       ViewBag.EmailTaken = emailtaken;
       return View();
     }

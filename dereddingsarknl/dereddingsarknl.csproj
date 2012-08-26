@@ -44,6 +44,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Elmah">
+      <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
+    </Reference>
+    <Reference Include="Elmah.Mvc">
+      <HintPath>..\packages\Elmah.MVC.2.0.1\lib\net40\Elmah.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="Google.GData.AccessControl">
       <HintPath>..\packages\Google.GData.AccessControl.2.1.0.0\lib\Google.GData.AccessControl.dll</HintPath>
     </Reference>
@@ -97,6 +103,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ActivitiesController.cs" />
     <Compile Include="Controllers\CalendarController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\RecordingsController.cs" />
     <Compile Include="Controllers\ArticlesController.cs" />
     <Compile Include="Controllers\MarkdownController.cs" />
@@ -126,6 +133,8 @@
     <Content Include="Content\Images\arrow-bunschoten.png" />
     <Content Include="Content\Images\body_bg.png" />
     <Content Include="Content\Images\cal.png" />
+    <Content Include="Content\Images\facebook-small.png" />
+    <Content Include="Content\Images\facebook.png" />
     <Content Include="Content\Images\foundation\orbit\bullets.jpg" />
     <Content Include="Content\Images\foundation\orbit\left-arrow-small.png" />
     <Content Include="Content\Images\foundation\orbit\left-arrow.png" />
@@ -143,6 +152,7 @@
     <Content Include="Content\Images\latest_h3.png" />
     <Content Include="Content\Images\li.png" />
     <Content Include="Content\Images\locaties.png" />
+    <Content Include="Content\Images\locatiessmall.png" />
     <Content Include="Content\Images\logo-small.png" />
     <Content Include="Content\Images\logo.png" />
     <Content Include="Content\Images\menu_bottom.png" />
@@ -155,8 +165,11 @@
     <Content Include="Content\Images\podcast.png" />
     <Content Include="Content\Images\popular_h3.png" />
     <Content Include="Content\Images\rss.png" />
+    <Content Include="Content\Images\twitter-small.png" />
     <Content Include="Content\Images\twitter.png" />
     <Content Include="Content\Images\wrapper_t_l_bg.jpg" />
+    <Content Include="Error.html" />
+    <Content Include="Custom404.html" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <None Include="Properties\PublishProfiles\dereddingsark %40 movereem.nl.pubxml" />
@@ -175,7 +188,9 @@
     <Content Include="Scripts\jquery.reveal.js" />
     <Content Include="Scripts\jquery.tooltips.js" />
     <Content Include="Scripts\modernizr.foundation.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -198,6 +213,11 @@
     <Content Include="Views\Intern\Show.cshtml" />
     <Content Include="Views\User\Add.cshtml" />
     <Content Include="Views\Recordings\Podcast.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\Error\Unknown.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Shared\Custom404.cshtml" />
+    <Content Include="Views\User\SetPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -228,7 +248,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>49756</DevelopmentServerPort>
+          <DevelopmentServerPort>11676</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

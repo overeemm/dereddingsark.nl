@@ -40,9 +40,10 @@ namespace dereddingsarknl.Controllers
         var album = new PhotoAlbum(XDocument.Load(xml));
 
         List<Photo> photos = new List<Photo>();
+        List<Photo> chooseFrom = album.Photos.Where(p => p.Width > p.Height).ToList();
         while(photos.Count < 10)
         {
-          photos.Add(album.Photos.Skip(random.Next(album.Photos.Count() - 1)).First());
+          photos.Add(chooseFrom.Skip(random.Next(chooseFrom.Count() - 1)).First());
         }
         ViewBag.Photos = photos;
       }

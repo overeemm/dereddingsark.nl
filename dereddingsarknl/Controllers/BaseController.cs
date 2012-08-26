@@ -13,6 +13,9 @@ namespace dereddingsarknl.Controllers
   public class BaseController : Controller
   {
     protected const string Login_Cookie = "arklogin";
+    protected const string Message_Cookie = "arkmsg";
+    protected const string From_Address = "dereddingsark@movereem.nl";
+
     protected User CurrentUser { get; private set; }
 
     protected override void OnActionExecuting(ActionExecutingContext filterContext)
@@ -30,6 +33,18 @@ namespace dereddingsarknl.Controllers
         catch { }
       }
 
+      var msgcookie = filterContext.HttpContext.Request.Cookies[Message_Cookie];
+      if(msgcookie != null)
+      {
+        try
+        {
+          ViewBag.LoginMessage = msgcookie.Values["msg"] ?? "";
+        }
+        catch { }
+      }
+
+      RemoveMessageInCookie();
+
       if(CurrentUser == null || !CurrentUser.EnableProfiler)
       {
         MiniProfiler.Stop(true);
@@ -41,6 +56,11 @@ namespace dereddingsarknl.Controllers
       if(CurrentUser != null)
       {
         StoreCookieAndToken(filterContext.HttpContext.Request.Cookies[Login_Cookie], CurrentUser);
+      }
+
+      if(filterContext.Result is HttpUnauthorizedResult && !filterContext.HttpContext.Request.IsAjaxRequest())
+      {
+        filterContext.Result = RedirectToAction("Login", "User");
       }
 
       base.OnActionExecuted(filterContext);
@@ -99,6 +119,21 @@ namespace dereddingsarknl.Controllers
       }
     }
 
+    protected void StoreMessageInCookie(string msg)
+    {
+      var responsecookie = new HttpCookie(Message_Cookie);
+      responsecookie.Values.Add("msg", msg);
+      Response.Cookies.Add(responsecookie);
+    }
+
+    protected void RemoveMessageInCookie()
+    {
+      var responsecookie = new HttpCookie(Message_Cookie);
+      responsecookie.Values.Add("msg", "");
+      responsecookie.Expires = DateTime.Now.AddDays(-1);
+      Response.Cookies.Add(responsecookie);
+    }
+
     protected void StoreCookieAndToken(HttpCookie cookie, User user)
     {
       var newtoken = cookie == null;
@@ -136,11 +171,41 @@ namespace dereddingsarknl.Controllers
       {
         var tokenFileName = user.Email.Replace("@", "-") + "__" + guid;
         var tokenFile = Path.Combine(Settings.GetDataFolder(HttpContext), "gebruikers\\tokens", tokenFileName);
+        System.IO.File.CreateText(tokenFile).Close();
         System.IO.File.AppendAllLines(tokenFile,
               new string[] { 
               string.Format("\"{0}\", \"{1}\", \"{2}\"", ipadress, token, generated) 
             });
       }
+    }
+
+    protected void StoreResetToken(string email, string token)
+    {
+      var tokenFileName = email.Replace("@", "-");
+      var tokenFile = Path.Combine(Settings.GetDataFolder(HttpContext), "gebruikers\\resetpassword", tokenFileName);
+      if(System.IO.File.Exists(tokenFile))
+      {
+        System.IO.File.Delete(tokenFile);
+      }
+      System.IO.File.CreateText(tokenFile).Close();
+      System.IO.File.AppendAllLines(tokenFile,
+            new string[] { 
+              string.Format("\"{0}\", \"{1}\"", token, DateTime.Now.Ticks) 
+            });
+    }
+
+    protected User GetUserFromResetPasswordToken(string token)
+    {
+      var resetPasswordDir = Path.Combine(Settings.GetDataFolder(HttpContext), "gebruikers\\resetpassword");
+      foreach(var file in new DirectoryInfo(resetPasswordDir).GetFiles())
+      {
+        var content = System.IO.File.ReadAllLines(file.FullName).First();
+        if(content.StartsWith("\"" + token))
+        {
+          return GetUserFromEmail(file.Name);
+        }
+      }
+      return null;
     }
 
     protected string GenerateSalt()
@@ -189,7 +254,7 @@ namespace dereddingsarknl.Controllers
       var users = new Index(filePath);
       var indexLine = users
         .Items
-        .FirstOrDefault(i => 
+        .FirstOrDefault(i =>
           tokenFileName.StartsWith(i.First().Replace("@", "-"), StringComparison.InvariantCultureIgnoreCase));
       if(indexLine == null)
       {
@@ -201,11 +266,22 @@ namespace dereddingsarknl.Controllers
       }
     }
 
-    protected User GetUserFromEmail(string email)
+    protected int GetUserCount()
     {
       string filePath = Path.Combine(Settings.GetDataFolder(HttpContext), "gebruikers\\index.csv");
       var users = new Index(filePath);
-      var indexLine = (users.Items.FirstOrDefault(i => i.First().Equals(email.Trim(), StringComparison.InvariantCultureIgnoreCase)));
+      return users.Items.Count();
+    }
+
+    protected User GetUserFromEmail(string email)
+    {
+      var normalizedEmail = email.Replace("@", "-");
+
+      string filePath = Path.Combine(Settings.GetDataFolder(HttpContext), "gebruikers\\index.csv");
+      var users = new Index(filePath);
+      var indexLine = (users.Items.FirstOrDefault(i => 
+        i.First().Replace("@", "-")
+         .Equals(normalizedEmail.Trim(), StringComparison.InvariantCultureIgnoreCase)));
       if(indexLine == null)
       {
         return null;

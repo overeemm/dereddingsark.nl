@@ -1,63 +1,70 @@
 jQuery(document).ready(function ($) {
 
   /* index page */
-  $('#banners').orbit({ fluid: '833x150' });
+  $('#banners').orbit({ fluid: '833x100' });
 
   $('div.slideshow').orbit();
   $(this).tooltips();
 
-  $('div.inloggen').on('click', 'a.inactive', function (event) {
-    event.preventDefault();
-    event.stopPropagation();
 
-    $(this).addClass("active").removeClass("inactive");
+  $('div.inloggen.inactive').on('click', 'a', function (event) {
+    if ($("body").width() >= 768) {
+      event.preventDefault();
+      event.stopPropagation();
 
-    $('div.inloggen').css("width", "230px");
-    $('div.inloggen').animate({
-      "margin-top": -20
-    }, 500, function() {
-      $('div.inloggen input').first().focus();
-    });
+      $('div.inloggen.active').addClass("open");
+      $('div.inloggen.active').animate({
+        "top": 0
+      }, 500, function () {
+        $('div.inloggen.active input').first().focus();
+        $('div.inloggen.inactive').removeClass("open");
+      });
+    }
   });
 
-  $('div.inloggen').on('click', 'a.active', function (event) {
-    event.preventDefault();
-    event.stopPropagation();
+  $('div.inloggen.active').on('click', 'a', function (event) {
+    if ($("body").width() >= 768) {
+      event.preventDefault();
+      event.stopPropagation();
+      $("div.inloggen span.error").remove();
 
-    $(this).addClass("inactive").removeClass("active");
-
-    $('div.inloggen').animate({
-      "margin-top": -500
-    }, 500, function () {
-      $('div.inloggen').css("width", "100px");
-    });
+      $('div.inloggen.active').animate({
+        "top": -600
+      }, 500, function () {
+        $('div.inloggen.active').removeClass("open");
+        $('div.inloggen.inactive').addClass("open");
+        $('div.inloggen.inactive').removeClass("close");
+      });
+    }
   });
 
-  $('div.gebruiker').on('click', 'a.inactive', function (event) {
-    event.preventDefault();
-    event.stopPropagation();
-
-    $(this).addClass("active").removeClass("inactive");
-
-    $('div.gebruiker').css("width", "270px");
-    $('div.gebruiker').animate({
-      "margin-top": -20
-    }, 500, function () {
+  $('div.gebruiker.inactive').on('click', 'a', function (event) {
+    if ($("body").width() >= 768) {
+      event.preventDefault();
+      event.stopPropagation();
       
-    });
+      $('div.gebruiker.active').addClass("open");
+      $('div.gebruiker.active').animate({
+        "top": 0
+      }, 500, function () {
+        $('div.gebruiker.active input').first().focus();
+        $('div.gebruiker.inactive').removeClass("open");
+      });
+    }
   });
 
-  $('div.gebruiker').on('click', 'a.active', function (event) {
-    event.preventDefault();
-    event.stopPropagation();
+  $('div.gebruiker.active').on('click', 'a', function (event) {
+    if ($("body").width() >= 768) {
+      event.preventDefault();
+      event.stopPropagation();
 
-    $(this).addClass("inactive").removeClass("active");
-
-    $('div.gebruiker').animate({
-      "margin-top": -400
-    }, 500, function () {
-      $('div.gebruiker').css("width", "170px");
-    });
+      $('div.gebruiker.active').animate({
+        "top": -600
+      }, 500, function () {
+        $('div.gebruiker.active').removeClass("open");
+        $('div.gebruiker.inactive').addClass("open");
+      });
+    }
   });
 
   /* photo albums */
@@ -116,7 +123,7 @@ jQuery(document).ready(function ($) {
   if (canPlayMp3) {
     var player = $('#player').get(0);
 
-    var onLoadedData = function () { 
+    var onLoadedData = function () {
       player.addEventListener('timeupdate', onTimeUpdate, false);
     };
 

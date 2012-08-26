@@ -13,16 +13,25 @@ namespace dereddingsarknl.Controllers
   {
     public ActionResult Bunschoten(string datum)
     {
+      if(CurrentUser == null)
+        return new HttpUnauthorizedResult();
+
       return PdfDownload("bunschoten", f => f.Name.StartsWith(datum));
     }
 
     public ActionResult Baarn(string datum)
     {
+      if(CurrentUser == null)
+        return new HttpUnauthorizedResult();
+
       return PdfDownload("baarn", f => f.Name.StartsWith(datum));
     }
 
     public ActionResult Contactblad(string nummer)
     {
+      if(CurrentUser == null)
+        return new HttpUnauthorizedResult();
+
       return PdfDownload("contactblad", f => f.Name.StartsWith(nummer));
     }
 
@@ -42,6 +51,9 @@ namespace dereddingsarknl.Controllers
 
     public ActionResult Show()
     {
+      if(CurrentUser == null)
+        return new HttpUnauthorizedResult("U heeft geen toegang tot deze pagina.");
+
       ViewBag.Title = "Intern";
 
       using(MiniProfiler.Current.Step("contactbladen"))
