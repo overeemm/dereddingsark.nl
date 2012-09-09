@@ -16,7 +16,9 @@ namespace dereddingsarknl.Models
 
     public static Article CreateFromIndexLine(IEnumerable<string> i)
     {
-      return new Article(i.First(), i.Skip(1).First(), i.Skip(2).First());
+      var a = new Article(i.First(), i.Skip(1).First(), i.Skip(2).First());
+      a.OldAlias = i.Count() > 3 ? i.Skip(3).First() : "";
+      return a;
     }
 
     private static DateTime ParseDate(string text)
@@ -38,6 +40,7 @@ namespace dereddingsarknl.Models
       }
     }
 
+    public string OldAlias { get; set; }
     public string Alias { get; set; }
     public string Title { get; set; }
 

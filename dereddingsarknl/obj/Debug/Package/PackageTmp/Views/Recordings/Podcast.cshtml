@@ -1,0 +1,69 @@
+﻿@using System.Globalization;
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:media="http://search.yahoo.com/mrss/" version="2.0">
+
+  <channel>
+
+    <title>evangeliegemeente de reddingsark - opnames</title>
+    <link>http://www.dereddingsark.nl/podcast</link>
+    <language>nl-NL</language>
+    <description>opnames van samenkomsten en studies van de evangeliegemeente de reddingsark</description>
+    <copyright>Copyright © 2012 evangeliegemeente de reddingsark</copyright>
+    <managingEditor>website@dereddingsark.nl</managingEditor>
+    <webMaster>website@dereddingsark.nl</webMaster>
+    <rating>G</rating>
+    <pubDate></pubDate>
+    <lastBuildDate></lastBuildDate>
+
+    <image>
+      <url>http://www.pwop.com/itunes_hanselminutes.jpg</url>
+      <title>Hanselminutes</title>
+      <link>http://www.hanselminutes.com</link>
+      <width>144</width>
+      <height>300</height>
+      <description>opnames van samenkomsten en studies van de evangeliegemeente de reddingsark</description>
+    </image>
+
+    <itunes:subtitle>samenkomsten, jeugddiensten, maranatha avonden, bijbelstudies</itunes:subtitle>
+    <itunes:author>evangeliegemeente de reddingsark</itunes:author>
+    <itunes:block>yes</itunes:block>
+    <itunes:explicit>clean</itunes:explicit>
+    <itunes:keywords>reddingsark, evangelie, gemeente, kerk, jezus</itunes:keywords>
+    <itunes:summary>opnames van samenkomsten en studies van de evangeliegemeente de reddingsark</itunes:summary>
+    
+    <itunes:owner>
+      <itunes:name>evangeliegemeente De Reddingsark</itunes:name>
+      <itunes:email>website@dereddingsark.nl</itunes:email>
+    </itunes:owner>
+    <itunes:image href="http://www.dereddingsark.nl/podcast.jpg"/>
+    <itunes:category text="Religion &amp; Spirituality">
+      <itunes:category text="Christianity"/>
+    </itunes:category>
+    
+        @foreach(var recording in ViewBag.RecordingList)
+        {
+          <item>
+            <title>O. Lohuis - Hoe veranderen wij</title>
+            <itunes:author>evangeliegemeente De Reddingsark</itunes:author>
+            <itunes:subtitle></itunes:subtitle>
+            <itunes:summary></itunes:summary>
+            <description></description>
+            <category>Christianity</category>
+            <enclosure url="@recording.Url" length="SIZE" type="audio/mpeg"/>
+            <guid>@recording.Url</guid>
+            <pubDate>Wed, 18 Jul 2012 00:00:00 +0200</pubDate>
+            <itunes:duration>00:45:00</itunes:duration>
+            <itunes:explicit>clean</itunes:explicit>
+            <itunes:keywords></itunes:keywords>
+
+            <!--<li class="audio"><a href="@recording.Url" target="_blank">@recording.Title</a>
+              <span>@recording.Date.ToString("ddd d MMM yyyy H:mm", new CultureInfo("nl-NL")) - @recording.Category</span>
+            </li> -->
+
+          </item>
+        }
+
+    </channel>
+</rss>

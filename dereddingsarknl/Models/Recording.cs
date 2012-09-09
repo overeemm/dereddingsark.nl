@@ -17,14 +17,21 @@ namespace dereddingsarknl.Models
     public string Title { get; private set; }
     public string Url { get; private set; }
     public string Category { get; private set; }
+    public string OldAlias { get; private set; }
+    public string Alias { get; private set; }
 
     public static Recording CreateFromIndexLine(IEnumerable<string> i)
     {
+      var alias = i.Count() > 4 ? i.Skip(4).First() : "";
+      var oldalias = i.Count() > 5 ? i.Skip(5).First() : "";
+
       return new Recording()
       {
         Date = Recording.ParseDate(i.Skip(3).First()),
         Title = i.Skip(1).First(),
         Url = i.Skip(2).First(),
+        Alias = alias,
+        OldAlias = oldalias,
         Category = i.First()
       };
     }

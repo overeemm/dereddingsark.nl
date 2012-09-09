@@ -45,10 +45,17 @@ namespace dereddingsarknl
       routes.MapRoute("PhotoAlbums", "fotos", new { controller = "PhotoAlbums", action = "Show" });
       routes.MapRoute("PhotoAlbums JSON", "fotos/{name}/{id}", new { controller = "PhotoAlbums", action = "Photos" });
       routes.MapRoute("Calendar", "agenda", new { controller = "Calendar", action = "Show" });
+
+      routes.MapRoute("RecordingsOldStyle", "audio/{cat}/{alias}", new { controller = "Recordings", action = "OldPermaLinks" });
+      routes.MapRoute("RecordingPermaLink", "audio/{alias}", new { controller = "Recordings", action = "Single" });
       routes.MapRoute("Recordings", "audio", new { controller = "Recordings", action = "Show" });
+
       routes.MapRoute("Articles", "artikelen", new { controller = "Articles", action = "Show" });
       routes.MapRoute("Articles archive", "artikelen/archief", new { controller = "Articles", action = "Archief" });
+      routes.MapRoute("Articles rss feed", "artikelen/feed", new { controller = "Articles", action = "Feed" });
+      routes.MapRoute("ArticlesOldStyle", "artikelen/{cat}/{alias}", new { controller = "Articles", action = "OldPermaLinks" });
       routes.MapRoute("Article", "artikelen/{alias}", new { controller = "Articles", action = "Artikel" });
+
       routes.MapRoute("Intern", "intern", new { controller = "Intern", action = "Show" });
 
       routes.MapRoute("Podcast", "podcast", new { controller = "Recordings", action = "Podcast" });

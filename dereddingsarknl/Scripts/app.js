@@ -187,6 +187,10 @@ jQuery(document).ready(function ($) {
       // http://studio.html5rocks.com/samples/audio-podcast/podcast.js
     };
 
+    if ($("div.recording a").length == 1) {
+      $("div.recording a").click();
+    }
+
     $('div.audioplayer').on('click', 'div.play', function () {
       $(this).removeClass("play").addClass("pause");
       $('div.audioplayer div.stop').show();

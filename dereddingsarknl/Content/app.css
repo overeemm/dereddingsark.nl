@@ -211,7 +211,6 @@ body, html {
 
   .menu.columns li.active a {
     color: #639ca5;
-    cursor: default;
   }
 
   .menu.columns li.overons {
@@ -881,13 +880,13 @@ div.audioplayer div.progress {
 div.recordingfilter {
 }
 
-  div.recordingfilter .columns .columns {
+  div.recordingfilter .columns {
     background-color: #fff;
     -moz-box-shadow: 0px 0px 5px 0px #aaa;
     -webkit-box-shadow: 0px 0px 5px 0px #aaa;
     box-shadow: 0px 0px 5px 0px #aaa;
-    float: right;
     margin: 0px 0px 10px 0px;
+    float:right;
   }
 
   div.recordingfilter ul {
@@ -897,7 +896,7 @@ div.recordingfilter {
   }
 
   div.recordingfilter li {
-    display: inline-block;
+    display: list-item;
     list-style-type: none;
     margin: 0px;
     font-weight: bold;
@@ -920,7 +919,7 @@ div.recordingfilter {
       background-color: #0A91A8;
     }
 
-div.recordingheader .columns .columns {
+div.recordingheader  .columns {
   background-color: #fff;
   color: #0A91A8;
   margin-bottom: 10px;
@@ -929,7 +928,7 @@ div.recordingheader .columns .columns {
   box-shadow: 0px 0px 5px 0px #aaa;
 }
 
-  div.recordingheader .columns .columns p {
+  div.recordingheader .columns p {
     margin: 0px;
   }
 

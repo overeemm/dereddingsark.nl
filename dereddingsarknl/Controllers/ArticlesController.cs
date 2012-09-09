@@ -11,6 +11,47 @@ namespace dereddingsarknl.Controllers
 {
   public class ArticlesController : MarkdownController
   {
+    public ActionResult Feed()
+    {
+      using(MiniProfiler.Current.Step("Read artikelen index"))
+      {
+        var items =
+          Index.CreateArticleIndex(HttpContext)
+          .Items
+          .Select(i => Article.CreateFromIndexLine(i))
+          .OrderByDescending(o => o.Added)
+          .Take(25)
+          .ToList();
+
+        items.ForEach(a => a.Content = GetMarkdownFile(a.Alias).Content);
+
+        ViewBag.ArtikelList = items;
+      }
+
+      Response.ContentType = "text/xml";
+      return View();
+    }
+
+    public ActionResult OldPermaLinks(string alias)
+    {
+      using(MiniProfiler.Current.Step("Read index"))
+      {
+        var item =
+          Index.CreateArticleIndex(HttpContext)
+          .Items
+          .Select(i => Article.CreateFromIndexLine(i))
+          .Where(i => i.OldAlias == alias)
+          .FirstOrDefault();
+
+        if(item == null)
+        {
+          throw new HttpException(404, "Not found");
+        }
+
+        return RedirectToActionPermanent("Artikel", "Articles", new { alias = item.Alias });
+      }
+    }
+
     public ActionResult Show()
     {
       ViewBag.Title = "Artikelen";

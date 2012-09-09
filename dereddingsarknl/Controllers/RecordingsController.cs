@@ -11,13 +11,57 @@ namespace dereddingsarknl.Controllers
 {
   public class RecordingsController : BaseController
   {
+    public ActionResult OldPermaLinks(string alias)
+    {
+      using(MiniProfiler.Current.Step("Read album"))
+      {
+        var item =
+          Index.CreateAudioIndex(HttpContext)
+          .Items
+          .Select(i => Recording.CreateFromIndexLine(i))
+          .Where(r => r.OldAlias == alias)
+          .FirstOrDefault();
+
+        if(item == null)
+        {
+          throw new HttpException(404, "Not found");
+        }
+
+        return RedirectToActionPermanent("Single", "Recordings", new { alias = item.Alias});
+      }
+    }
+
+    public ActionResult Single(string alias)
+    {
+      using(MiniProfiler.Current.Step("Read recording index"))
+      {
+        var item =
+          Index.CreateAudioIndex(HttpContext)
+          .Items
+          .Select(i => Recording.CreateFromIndexLine(i))
+          .Where(r => r.Alias == alias)
+          .FirstOrDefault();
+
+        if(item == null)
+        {
+          throw new HttpException(404, "Not found");
+        }
+
+        ViewBag.Title = item.Title;
+        ViewBag.Recording = item;
+        ViewBag.Recordings = "active";
+      }
+
+      return View();
+    }
+
     public ActionResult Show()
     {
       ViewBag.Title = "Opnames";
 
-      using(MiniProfiler.Current.Step("Read album"))
+      using(MiniProfiler.Current.Step("Read recording index"))
       {
-        var items = 
+        var items =
           Index.CreateAudioIndex(HttpContext)
           .Items
           .Select(i => Recording.CreateFromIndexLine(i))

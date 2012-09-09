@@ -219,6 +219,8 @@
     <Content Include="Views\Shared\Custom404.cshtml" />
     <Content Include="Views\User\SetPassword.cshtml" />
     <Content Include="Views\Index\Contact.cshtml" />
+    <Content Include="Views\Articles\Feed.cshtml" />
+    <Content Include="Views\Recordings\Single.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

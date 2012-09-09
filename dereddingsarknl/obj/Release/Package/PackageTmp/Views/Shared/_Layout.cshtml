@@ -57,7 +57,7 @@
           <li class="fotos @ViewBag.Fotos"><a href="@Url.Action("Show", "PhotoAlbums")">foto's</a></li>
           @if(ViewBag.CurrentUser != null)
           {
-            <li class="intern @ViewBag.Intern"><a href="@Url.Action("Show", "Intern")">intern</a></li>
+            <li class="intern @ViewBag.Intern"><a href="@Url.Action("Show", "Intern")">gemeente</a></li>
           }
         </ul>
 
@@ -95,11 +95,11 @@
         }
         else
         {
-          <div class="inloggen inactive @(string.IsNullOrEmpty(ViewBag.LoginMessage as string) ? "open" : "close")">
+          <div class="inloggen inactive @(string.IsNullOrEmpty(ViewBag.Message as string) ? "open" : "close")">
             <a href="@Url.Action("Login", "User")" class="icon">inloggen</a>
           </div>
           
-          <div class="inloggen active @(!string.IsNullOrEmpty(ViewBag.LoginMessage as string) ? "open" : "close")">
+          <div class="inloggen active @(!string.IsNullOrEmpty(ViewBag.Message as string) ? "open" : "close")">
 
             <form method="post" action="@Url.Action("Login", "User")">
             <input type="text" name="email" placeholder="e-mail adres"></input>
@@ -110,9 +110,9 @@
             <input type="submit" name="reset" class="secondary small button reset" value="wachtwoord vergeten" />
             </form>
 
-            @if(!string.IsNullOrEmpty(ViewBag.LoginMessage as string))
+            @if(!string.IsNullOrEmpty(ViewBag.Message as string))
             {
-              <span class="error">@ViewBag.LoginMessage</span>
+              <span class="error">@ViewBag.Message</span>
             }
 
             <hr />

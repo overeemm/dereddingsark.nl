@@ -12,8 +12,8 @@ namespace dereddingsarknl.Controllers
 {
   public class BaseController : Controller
   {
-    protected const string Login_Cookie = "arklogin";
-    protected const string Message_Cookie = "arkmsg";
+    protected const string Login_Cookie = "ark.login";
+    protected const string Message_Cookie = "ark.msg";
     protected const string From_Address = "dereddingsark@movereem.nl";
 
     protected User CurrentUser { get; private set; }
@@ -38,7 +38,7 @@ namespace dereddingsarknl.Controllers
       {
         try
         {
-          ViewBag.LoginMessage = msgcookie.Values["msg"] ?? "";
+          ViewBag.Message = msgcookie.Value ?? "";
         }
         catch { }
       }
@@ -122,14 +122,14 @@ namespace dereddingsarknl.Controllers
     protected void StoreMessageInCookie(string msg)
     {
       var responsecookie = new HttpCookie(Message_Cookie);
-      responsecookie.Values.Add("msg", msg);
+      responsecookie.Value = msg;
       Response.Cookies.Add(responsecookie);
     }
 
     protected void RemoveMessageInCookie()
     {
       var responsecookie = new HttpCookie(Message_Cookie);
-      responsecookie.Values.Add("msg", "");
+      responsecookie.Value = "";
       responsecookie.Expires = DateTime.Now.AddDays(-1);
       Response.Cookies.Add(responsecookie);
     }

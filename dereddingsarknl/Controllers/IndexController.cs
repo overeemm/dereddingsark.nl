@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using System.Xml.Linq;
@@ -56,6 +57,21 @@ namespace dereddingsarknl.Controllers
     public ActionResult Contact()
     {
       return View();
+    }
+
+    [HttpPost]
+    public ActionResult SendMessage(string afzender, string naam, string bericht)
+    {
+      var client = new System.Net.Mail.SmtpClient();
+      client.Send(new MailMessage(From_Address, From_Address,
+        "Bericht via dereddingsark.nl van " + naam,
+        string.Format(@"Naam: {0} ({1})
+
+{1}", naam, afzender, bericht)));
+
+      StoreMessageInCookie("Uw bericht is verstuurd.");
+
+      return RedirectToAction("Contact");
     }
 
   }
