@@ -218,6 +218,7 @@
     <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\Shared\Custom404.cshtml" />
     <Content Include="Views\User\SetPassword.cshtml" />
+    <Content Include="Views\Index\Contact.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

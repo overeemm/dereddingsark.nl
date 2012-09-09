@@ -19,7 +19,7 @@ namespace dereddingsarknl.Controllers
       using(MiniProfiler.Current.Step("Get photolist"))
       {
         var album = GetAlbum(id, name);
-        return Json(album.Photos, JsonRequestBehavior.AllowGet);
+        return Json(album.Photos.Take(40), JsonRequestBehavior.AllowGet);
       }
     }
 

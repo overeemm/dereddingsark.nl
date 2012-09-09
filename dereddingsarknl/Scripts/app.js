@@ -1,9 +1,9 @@
 jQuery(document).ready(function ($) {
 
   /* index page */
-  $('#banners').orbit({ fluid: '833x100' });
+  $('#banners').orbit({ fluid: '833x100', animationSpeed: 1500, advanceSpeed: 6000 });
 
-  $('div.slideshow').orbit();
+  $('div.slideshow').orbit({ animationSpeed: 1500, advanceSpeed: 6000 });
   $(this).tooltips();
 
 
@@ -84,7 +84,7 @@ jQuery(document).ready(function ($) {
       for (var i = 0; i < data.length; i++) {
         $this.append("<div class='fotocontainer'><img src='" + data[i].Url + "' /></div>");
       }
-      $this.orbit();
+      $this.orbit({animationSpeed: 800});
     });
 
   });

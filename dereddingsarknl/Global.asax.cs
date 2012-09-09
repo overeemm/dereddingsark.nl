@@ -38,6 +38,7 @@ namespace dereddingsarknl
       routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
       routes.MapRoute("Index", "", new { controller = "Index", action = "Show" });
+      routes.MapRoute("Contact", "contact", new { controller = "Index", action = "Contact" });
 
       routes.MapRoute("About", "over-de-gemeente/{partName}", new { controller = "About", action = "Show", partName = "grondslag" });
       routes.MapRoute("Activities", "activiteiten/{partName}", new { controller = "Activities", action = "Show", partName = "samenkomsten" });

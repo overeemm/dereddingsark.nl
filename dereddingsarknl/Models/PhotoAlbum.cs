@@ -18,7 +18,11 @@ namespace dereddingsarknl.Models
     public PhotoAlbum(XDocument content)
     {
       _content = content;
+      Count = Photos.Count();
     }
+
+    public int Count { get; private set; }
+
     public string Name { get; set; }
 
     public string Id { get; set; }
