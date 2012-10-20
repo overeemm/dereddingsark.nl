@@ -24,23 +24,23 @@ body, html {
   min-height: 90px;
 }
 
-.header.columns h2 {
-  margin-left: 140px;
-  font-weight: normal;
-  font-size: 3.5rem;
-  float: left;
-  height: 100%;
-  margin-top: 20px;
-  margin-bottom: 0px;
-}
+  .header.columns h2 {
+    margin-left: 140px;
+    font-weight: normal;
+    font-size: 3.5rem;
+    float: left;
+    height: 100%;
+    margin-top: 20px;
+    margin-bottom: 0px;
+  }
 
-.header.columns h5 {
-  margin-left: 140px;
-  float: left;
-  margin-top: -5px;
-  font-size: 1.7rem;
-  font-weight: normal;
-}
+  .header.columns h5 {
+    margin-left: 140px;
+    float: left;
+    margin-top: -5px;
+    font-size: 1.7rem;
+    font-weight: normal;
+  }
 
 .menu.columns .inloggen {
   background-color: #fff;
@@ -164,11 +164,16 @@ body, html {
   padding: 0px;
 }
 
+.menu-small-screen {
+  display: none;
+}
+
 .menu.columns ul {
   margin-top: 0px;
 }
 
 .menu.columns li {
+  cursor: pointer;
   display: inline-block;
   margin: 0px 4px 10px 4px;
   font-weight: bold;
@@ -276,7 +281,7 @@ body, html {
     }
 
     .banner.columns div span.large {
-      font-size: 3.5rem;
+      font-size: 3.0rem;
       font-weight: bold;
       color: #0A91A8;
       text-shadow: 0px 0px 0px;
@@ -342,10 +347,10 @@ div.agendacontainer {
   padding-left: 0px;
 }
 
-  div.row.zones div.agendacontainer div.agenda {
-    height: 230px;
-  }
-  
+div.row.zones div.agendacontainer div.agenda {
+  height: 255px;
+}
+
 div.agenda, div.newitems, div.frontpage {
   padding: 0px;
   background-color: #0A91A8;
@@ -380,7 +385,7 @@ div.columns.agenda p.titel {
 
 div.agenda li {
   padding-left: 30px;
-  height: 30px;
+  height: 35px;
   line-height: 30px;
   color: #fff;
   margin: 0px 0px 10px 0px;
@@ -480,7 +485,7 @@ div.row.map {
 
 .locaties {
   background: url('images/locatiessmall.png') no-repeat center center;
-  height: 230px;
+  height: 255px;
 }
 
   .locaties p {
@@ -603,6 +608,14 @@ div.artikel {
     margin-top: 0px;
   }
 
+    div.artikel h3 p.sort {
+      display: inline-block;
+      margin: 0px;
+      padding: 0px;
+      padding-left: 20px;
+      float: right;
+    }
+
     div.artikel h3 a, div.artikel h3 a:visited, div.artikel h3 a:active, div.artikel h3 a:hover {
       color: #fff;
     }
@@ -614,7 +627,7 @@ div.artikel {
   }
 
   div.artikel ul {
-    margin: 0px 0px 0px 20px;
+    margin: 0px 20px 0px 20px;
   }
 
     div.artikel ul li {
@@ -656,6 +669,7 @@ div.artikel h3 {
 }
 
 ul.submenu li {
+  cursor: pointer;
   display: inline-block;
   width: 100%;
   background-color: #0A91A8;
@@ -688,25 +702,16 @@ ul.submenu li {
   width: 100%;
 }*/
 
-div.three div.photo, div.three.photoalbum span, div.three.photoalbum div.photocontainer {
+div.photo, div.photoalbum span, div.photoalbum div.photocontainer {
   width: 100%;
   background-color: #0A91A8;
 }
 
-div.six div.photo, div.six.photoalbum span, div.six.photoalbum div.photocontainer {
-  width: 100%;
-  background-color: #0A91A8;
-}
-
-div.six div.photo {
-  height: 319px;
-}
-
-div.six.photoalbum {
+div.twelve.photoalbum {
   margin-bottom: 50px;
 }
 
-  div.six.photoalbum div.photocontainer {
+  div.twelve.photoalbum div.photocontainer {
     height: inherit;
   }
 
@@ -804,9 +809,9 @@ div.recordingpointer {
   display: none;
   width: 0;
   height: 0;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-bottom: 6px solid #0A91A8;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 13px solid #0A91A8;
   position: absolute;
   margin-top: 47px;
   margin-left: 10px;
@@ -886,7 +891,7 @@ div.recordingfilter {
     -webkit-box-shadow: 0px 0px 5px 0px #aaa;
     box-shadow: 0px 0px 5px 0px #aaa;
     margin: 0px 0px 10px 0px;
-    float:right;
+    float: right;
   }
 
   div.recordingfilter ul {
@@ -905,7 +910,7 @@ div.recordingfilter {
   div.recordingfilter p {
     margin-bottom: 0px;
   }
-  
+
   div.recordingfilter span {
     cursor: pointer;
     border: solid 1px #0A91A8;
@@ -919,10 +924,10 @@ div.recordingfilter {
       background-color: #0A91A8;
     }
 
-div.recordingheader  .columns {
+div.recordingheader .columns {
   background-color: #fff;
   color: #0A91A8;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   -moz-box-shadow: 0px 0px 5px 0px #aaa;
   -webkit-box-shadow: 0px 0px 5px 0px #aaa;
   box-shadow: 0px 0px 5px 0px #aaa;
@@ -938,7 +943,7 @@ div.recordinggroup div.four:last-child {
 
 div.recording {
   padding: 0px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   background-color: #0A91A8;
   -moz-box-shadow: 0px 0px 5px 0px #aaa;
   -webkit-box-shadow: 0px 0px 5px 0px #aaa;
@@ -964,8 +969,8 @@ div.columns.recording p.titel {
 
 div.recording li {
   padding-left: 30px;
-  background: url("images/iconsbar.png") 0px 0px no-repeat;
-  height: 38px;
+  background: url("images/iconsbar.png") 0px 5px no-repeat;
+  height: 43px;
   line-height: 30px;
   color: #fff;
   margin: 0px;
@@ -1015,7 +1020,7 @@ div.artikelcontainer {
   padding: 0px;
 }
 
-div.contactblad {
+div.contactblad, div.bladen {
   padding-left: 0px;
 }
 
@@ -1023,7 +1028,7 @@ div.bunschoten {
   padding-right: 0px;
 }
 
-  div.contactblad div.twelve, div.baarn div.twelve, div.bunschoten div.twelve {
+  div.contactblad div.twelve, div.baarn div.twelve, div.bunschoten div.twelve, div.bladen div.twelve {
     background-color: #fff;
     -moz-box-shadow: 0px 0px 5px 0px #aaa;
     -webkit-box-shadow: 0px 0px 5px 0px #aaa;
@@ -1032,7 +1037,7 @@ div.bunschoten {
     padding: 0px 0px;
   }
 
-  div.contactblad h3, div.baarn h3, div.bunschoten h3 {
+  div.contactblad h3, div.baarn h3, div.bunschoten h3, div.bladen h4 {
     font-size: 1.8rem;
     padding: 10px;
     background-color: #0A91A8;
@@ -1040,13 +1045,18 @@ div.bunschoten {
     margin: 0px 0px 10px 0px;
   }
 
-  div.contactblad div.twelve li, div.baarn div.twelve li, div.bunschoten div.twelve li {
-    margin: 0px 10px;
-    list-style-type: none;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  }
+div.bladen h4 {
+  font-size: 1.5rem;
+  padding: 5px;
+}
+
+div.contactblad div.twelve li, div.baarn div.twelve li, div.bunschoten div.twelve li, div.bladen li {
+  margin: 0px 10px;
+  list-style-type: none;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 
 div.orbit-wrapper div.timer {
   display: none;
@@ -1075,14 +1085,14 @@ div.row.aankondigingen div.orbit-wrapper div.slider-nav {
       margin-left: 100px;
       margin-top: -4px;
     }
-    
+
   div.columns.menu {
     width: 66.667%;
   }
-    
-  div.columns.menu li {
-    margin: 0px 1px 10px 1px;
-  }
+
+    div.columns.menu li {
+      margin: 0px 1px 10px 1px;
+    }
 }
 
 @media only screen and (max-width: 900px) {
@@ -1098,9 +1108,9 @@ div.row.aankondigingen div.orbit-wrapper div.slider-nav {
 
 @media only screen and (max-width: 808px) {
   .container {
-    padding: 0px 0px 20px;
+    padding: 0px 0px 40px;
   }
-  
+
   .header.columns {
     padding-right: 0px;
     background-size: 75px;
@@ -1118,7 +1128,7 @@ div.row.aankondigingen div.orbit-wrapper div.slider-nav {
       margin-left: 65px;
       margin-top: -4px;
     }
-    
+
   div.columns.menu {
     width: 66.667%;
   }
@@ -1128,12 +1138,12 @@ div.row.aankondigingen div.orbit-wrapper div.slider-nav {
   }
 
   .banner.columns div:first-child, .banner.columns div:nth-child(4) {
-    margin-left: 160px;
+    margin-left: 120px;
   }
 
   .banner.columns div:nth-child(2),
   .banner.columns div:nth-child(3) {
-    margin-left: 230px;
+    margin-left: 190px;
   }
 }
 
@@ -1156,13 +1166,17 @@ div.row.aankondigingen div.orbit-wrapper div.slider-nav {
   .header.columns {
     background-size: auto;
   }
-  
+
   .menu.columns .inloggen {
     top: -90px;
   }
 
   .menu.columns .gebruiker {
     top: -90px;
+  }
+
+  div.submenucontainer {
+    margin-bottom: 20px;
   }
 
   div.menu.columns {
@@ -1197,9 +1211,8 @@ div.row.aankondigingen div.orbit-wrapper div.slider-nav {
     display: inline-block;
     margin: 0px;
     border: 0px;
-    width: 15%;
     margin-left: -4px;
-    padding: 2px;
+    padding: 2px 15px;
     -moz-box-shadow: none;
     -webkit-box-shadow: none;
     box-shadow: none;
@@ -1211,47 +1224,62 @@ div.row.aankondigingen div.orbit-wrapper div.slider-nav {
     text-overflow: ellipsis;
   }
 
-  div.menu.columns li a {
-    width: 100%;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  }
+    div.menu.columns li a {
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
 
-  div.menu.columns li:first-child {
-    margin-left: 0px;
-  }
+    div.menu.columns li:first-child {
+      margin-left: 0px;
+    }
 
-  .menu.columns li:hover {
+  .menu.columns li:hover, .menu.columns li.active {
     padding-bottom: 2px;
     margin-bottom: 0px;
+    color: #0A91A8;
+    background-color: #fff;
+    border-bottom: 0px;
   }
 
-  .banner.columns div {
-    font-size: 2.0rem;
+    .menu.columns li:hover a, .menu.columns li.active a {
+      color: #639CA5;
+    }
+
+  .banner {
+    padding-top: 0px;
   }
 
-    .banner.columns div span.large {
-      font-size: 3.0rem;
+    .banner.columns div {
+      font-size: 2.0rem;
     }
 
-    .banner.columns div:first-child, .banner.columns div:nth-child(4) {
-      margin-left: 65px;
-    }
+      .banner.columns div span.large {
+        font-size: 3.0rem;
+      }
 
-    .banner.columns div:nth-child(2),
-    .banner.columns div:nth-child(3) {
-      margin-left: 120px;
-    }
+      .banner.columns div:first-child, .banner.columns div:nth-child(4) {
+        margin-left: 65px;
+      }
+
+      .banner.columns div:nth-child(2),
+      .banner.columns div:nth-child(3) {
+        margin-left: 120px;
+      }
 
   div.row.zones div.four.columns {
     margin-bottom: 20px;
     padding: 0px;
   }
 
-    div.row.zones div.four.columns div.twelve:last-child {
-      margin-bottom: 0px;
-    }
+  div.row.zones div.locatiecontainer {
+    display: none;
+  }
+
+  div.row.zones div.four.columns div.twelve:last-child {
+    margin-bottom: 0px;
+  }
 
   div.row.zones {
     margin-bottom: 0px;
@@ -1287,6 +1315,17 @@ div.row.aankondigingen div.orbit-wrapper div.slider-nav {
 
 @media only screen and (max-width: 540px) {
 
+  .menu-large-screen {
+    display: none;
+  }
+
+  .menu-small-screen {
+    display: block;
+    padding: 2px 2px 2px 32px;
+    background: #0A91A8 url("images/iconsbar.png") 0px -331px no-repeat;
+    margin-bottom: 20px;
+  }
+
   div.aankondigingen div.orbit-wrapper div.slider-nav, div.aankondigingen div.orbit-wrapper div.timer {
     display: none;
   }
@@ -1296,6 +1335,7 @@ div.row.aankondigingen div.orbit-wrapper div.slider-nav {
   }
 
     .header.columns h2 {
+      margin-top: 30px;
       font-size: 3.0rem;
       padding-left: 140px;
     }
@@ -1306,7 +1346,7 @@ div.row.aankondigingen div.orbit-wrapper div.slider-nav {
     }
 
   .banner {
-    padding: 0px 5px;
+    padding: 0px 5px 10px;
   }
 
     .banner.columns div {
@@ -1358,26 +1398,22 @@ div.row.aankondigingen div.orbit-wrapper div.slider-nav {
     margin-bottom: 10px;
   }
 
-  .banner {
-    padding: 0px 5px;
+  .banner.columns div {
+    font-size: 1.6rem;
   }
 
-    .banner.columns div {
-      font-size: 1.6rem;
+    .banner.columns div span.large {
+      font-size: 2.3rem;
     }
 
-      .banner.columns div span.large {
-        font-size: 2.3rem;
-      }
+    .banner.columns div:first-child, .banner.columns div:nth-child(4) {
+      margin-left: 5px;
+    }
 
-      .banner.columns div:first-child, .banner.columns div:nth-child(4) {
-        margin-left: 5px;
-      }
-
-      .banner.columns div:nth-child(2),
-      .banner.columns div:nth-child(3) {
-        margin-left: 50px;
-      }
+    .banner.columns div:nth-child(2),
+    .banner.columns div:nth-child(3) {
+      margin-left: 50px;
+    }
 
   .locatiessmall p {
     font-size: 1.4rem;

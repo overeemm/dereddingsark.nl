@@ -3,9 +3,14 @@
 <div class="row artikellist">
   <div class="twelve columns">
     <div class="twelve columns artikel">
-      <h3>Archief</h3>
-      <ul>
+      <h3>Archief
+        <p class="sort">
+          <a href="@Url.Action("Archief", new { sortering = "datum" })">sorteer op datum</a> | 
+        <a href="@Url.Action("Archief", new { sortering = "titel" })">sorteer op titel</a>
+        </p>
+      </h3>
 
+      <ul>
         @foreach(var artikel in ViewBag.ArtikelList)
         {
           <li>
@@ -13,7 +18,6 @@
             @artikel.Added.ToString("d MMMM yyyy", new CultureInfo("nl-NL"))
           </li>
         }
-
       </ul>
     </div>
   </div>

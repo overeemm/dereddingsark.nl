@@ -79,7 +79,7 @@ namespace dereddingsarknl.Controllers
     public ActionResult Archief(string sortering)
     {
       ViewBag.Title = "Artikelen archief";
-      throw new ArgumentException("test");
+
       using(MiniProfiler.Current.Step("Read artikelen index"))
       {
         var items = 

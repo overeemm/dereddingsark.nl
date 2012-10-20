@@ -4,47 +4,74 @@
 
 <div class="row">
   <div class="twelve columns">
-    <div class="four columns contactblad">
+    @*<div class="four columns bladen">
       <div class="twelve columns">
-        <h3>Contactbladen</h3>
+        <h4>Jarig</h4>
+        <ul>
+          <li>
+            <span>1 okt</span><span>Marleen van Dijk</span><span>21</span></li>
+          <li><span>8 okt</span><span>Zoë Müller</span><span>5</span></li>
+          <li><span>9 okt</span><span>Laura Vedder</span><span>15</span></li>
+          <li><span>10 okt</span>
+            <span>Mart Dubbelman</span><span>15</span></li>
+          <li><span>10 okt</span>
+            <span>Jefta van de Broek</span><span>21</span></li>
+        </ul>
+        <h4>Trouwdag</h4>
+        <ul>
+          <li><span>30 sept</span><span>Annemarije van de Broek</span><span>1</span></li>
+          <li><span>30 sept</span><span>Jonathan van de Broek</span><span>1</span></li>
+        </ul>
+      </div>
+    </div>*@
+
+    <div class="eight columns">
+      @foreach(var album in ViewBag.Albums)
+      {
+
+        <div class="six columns photoalbum">
+          <div class="photocontainer">
+            <div class="photo" style="background-image:url('@album.Thumbnail')" id="@album.Id" name="@album.Name" data-thumbnail="@album.Thumbnail">
+            </div>
+            <span>@album.Name</span>
+          </div>
+        </div>
+      }
+    </div>
+
+    <div class="four columns bladen">
+      <div class="twelve columns">
+        <h4>Contactbladen</h4>
         <ul>
           @foreach(var blad in ViewBag.Contactbladen)
           {
             <li>
-              <a href="@Url.Action("Contactblad", "Intern", new { nummer = @blad.Item1})">
+              <a href="@Url.Action("Contactblad", "Intern", new { nummer = @blad.Item1 })">
                 @blad.Item1 - 
                 @string.Join(", ", (blad.Item2 as DateTime[]).Select(d => d.ToString("MMMM yyyy", new CultureInfo("nl-NL"))))
               </a>
             </li>
           }
         </ul>
-      </div>
-    </div>
 
-    <div class="four columns baarn">
-      <div class="twelve columns">
-        <h3>Baarn</h3>
+        <h4>Mededelingen Baarn</h4>
         <ul>
           @foreach(var blad in ViewBag.Baarn)
           {
             <li>
-              <a href="@Url.Action("Baarn", "Intern", new { datum = @blad.ToString("yyyyMMdd")})">
+              <a href="@Url.Action("Baarn", "Intern", new { datum = @blad.ToString("yyyyMMdd") })">
                 @blad.ToString("d MMMM yyyy", new CultureInfo("nl-NL"))
               </a>
             </li>
           }
         </ul>
-      </div>
-    </div>
 
-    <div class="four columns bunschoten">
-      <div class="twelve columns">
-        <h3>Bunschoten</h3>
+        <h4>Mededelingen Bunschoten</h4>
         <ul>
           @foreach(var blad in ViewBag.Bunschoten)
           {
             <li>
-              <a href="@Url.Action("Bunschoten", "Intern", new { datum = @blad.ToString("yyyyMMdd")})">
+              <a href="@Url.Action("Bunschoten", "Intern", new { datum = @blad.ToString("yyyyMMdd") })">
                 @blad.ToString("d MMMM yyyy", new CultureInfo("nl-NL"))
               </a>
             </li>

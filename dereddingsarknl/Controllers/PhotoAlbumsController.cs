@@ -16,6 +16,9 @@ namespace dereddingsarknl.Controllers
   {
     public ActionResult Photos(string id, string name)
     {
+      if(CurrentUser == null)
+        return new HttpUnauthorizedResult("U heeft geen toegang tot deze pagina.");
+
       using(MiniProfiler.Current.Step("Get photolist"))
       {
         var album = GetAlbum(id, name);
@@ -23,24 +26,11 @@ namespace dereddingsarknl.Controllers
       }
     }
 
-    private PhotoAlbum GetAlbum(string id, string name)
-    {
-      var xml = Path.Combine(Settings.GetDataFolder(HttpContext), "fotos", id + ".xml");
-
-      if(!System.IO.File.Exists(xml))
-      {
-        throw new HttpException(404, "Album " + id + " bestaat niet.");
-      }
-
-      return new PhotoAlbum(XDocument.Load(xml))
-      {
-        Id = id,
-        Name = name
-      };
-    }
-
     public ActionResult Show()
     {
+      if(CurrentUser == null)
+        return new HttpUnauthorizedResult("U heeft geen toegang tot deze pagina.");
+
       using(MiniProfiler.Current.Step("Read album"))
       {
         var albumIndex = Index.CreatePhotoAlbumIndex(HttpContext);

@@ -56,6 +56,12 @@ namespace dereddingsarknl.Controllers
 
       ViewBag.Title = "Intern";
 
+      using(MiniProfiler.Current.Step("Read photoalbums"))
+      {
+        var albumIndex = Index.CreatePhotoAlbumIndex(HttpContext);
+        ViewBag.Albums = albumIndex.Items.Select(l => GetAlbum(l.First(), l.Skip(1).First())).ToList();
+      }
+
       using(MiniProfiler.Current.Step("contactbladen"))
       {
         string contactbladen = Path.Combine(Settings.GetDataFolder(HttpContext), "intern", "contactblad");
@@ -68,7 +74,7 @@ namespace dereddingsarknl.Controllers
             var months = monthstrs.Select(s => new DateTime(int.Parse(s.Substring(0, 4)), int.Parse(s.Substring(4, 2)), 1));
             return new Tuple<string, DateTime[]>(number, months.ToArray());
           })
-          .OrderByDescending(t => t.Item1)
+          .OrderByDescending(t => t.Item1).Take(4)
           .ToList();
       }
 
@@ -81,7 +87,7 @@ namespace dereddingsarknl.Controllers
             var date = f.Name.Substring(0, 8);
             return new DateTime(int.Parse(date.Substring(0, 4)), int.Parse(date.Substring(4, 2)), int.Parse(date.Substring(6, 2)));
           })
-          .OrderByDescending(d => d)
+          .OrderByDescending(d => d).Take(4)
           .ToList();
       }
 
@@ -94,7 +100,7 @@ namespace dereddingsarknl.Controllers
             var date = f.Name.Substring(0, 8);
             return new DateTime(int.Parse(date.Substring(0, 4)), int.Parse(date.Substring(4, 2)), int.Parse(date.Substring(6, 2)));
           })
-          .OrderByDescending(d => d)
+          .OrderByDescending(d => d).Take(4)
           .ToList();
       }
 

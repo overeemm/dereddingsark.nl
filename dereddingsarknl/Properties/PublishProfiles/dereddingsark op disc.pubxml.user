@@ -1,0 +1,308 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <LastUsedBuildConfiguration>Release</LastUsedBuildConfiguration>
+    <LastUsedPlatform>Any CPU</LastUsedPlatform>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/dereddingsarknl.dll">
+      <publishTime>10/20/2012 14:00:58</publishTime>
+    </File>
+    <File Include="bin/Elmah.dll">
+      <publishTime>08/23/2012 23:09:50</publishTime>
+    </File>
+    <File Include="bin/Elmah.Mvc.dll">
+      <publishTime>08/23/2012 23:09:50</publishTime>
+    </File>
+    <File Include="bin/Google.GData.AccessControl.dll">
+      <publishTime>07/07/2012 13:21:50</publishTime>
+    </File>
+    <File Include="bin/Google.GData.Calendar.dll">
+      <publishTime>07/07/2012 13:21:50</publishTime>
+    </File>
+    <File Include="bin/Google.GData.Client.dll">
+      <publishTime>07/07/2012 13:21:50</publishTime>
+    </File>
+    <File Include="bin/Google.GData.Extensions.dll">
+      <publishTime>07/07/2012 13:21:50</publishTime>
+    </File>
+    <File Include="bin/Google.GData.Photos.dll">
+      <publishTime>07/07/2012 13:25:16</publishTime>
+    </File>
+    <File Include="bin/MarkdownSharp.dll">
+      <publishTime>04/13/2012 21:30:07</publishTime>
+    </File>
+    <File Include="bin/MiniProfiler.dll">
+      <publishTime>07/05/2012 20:26:52</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>07/07/2012 13:21:50</publishTime>
+    </File>
+    <File Include="Content/app.css">
+      <publishTime>10/20/2012 13:49:21</publishTime>
+    </File>
+    <File Include="Content/app.min.css">
+      <publishTime>10/20/2012 14:01:56</publishTime>
+    </File>
+    <File Include="Content/foundation.css">
+      <publishTime>09/11/2012 20:29:31</publishTime>
+    </File>
+    <File Include="Content/foundation.min.css">
+      <publishTime>10/20/2012 14:01:56</publishTime>
+    </File>
+    <File Include="Content/ie.css">
+      <publishTime>07/05/2012 20:29:54</publishTime>
+    </File>
+    <File Include="Content/ie.min.css">
+      <publishTime>10/20/2012 14:01:56</publishTime>
+    </File>
+    <File Include="Content/Images/arrow-baarn.png">
+      <publishTime>06/30/2012 13:53:04</publishTime>
+    </File>
+    <File Include="Content/Images/arrow-bunschoten.png">
+      <publishTime>06/30/2012 13:32:40</publishTime>
+    </File>
+    <File Include="Content/Images/body_bg.png">
+      <publishTime>04/13/2012 21:11:30</publishTime>
+    </File>
+    <File Include="Content/Images/cal.png">
+      <publishTime>04/13/2012 21:11:30</publishTime>
+    </File>
+    <File Include="Content/Images/facebook-small.png">
+      <publishTime>08/25/2012 21:14:11</publishTime>
+    </File>
+    <File Include="Content/Images/facebook.png">
+      <publishTime>08/25/2012 21:09:35</publishTime>
+    </File>
+    <File Include="Content/Images/foundation/orbit/bullets.jpg">
+      <publishTime>07/05/2012 20:30:02</publishTime>
+    </File>
+    <File Include="Content/Images/foundation/orbit/left-arrow-small.png">
+      <publishTime>07/05/2012 20:30:02</publishTime>
+    </File>
+    <File Include="Content/Images/foundation/orbit/left-arrow.png">
+      <publishTime>07/05/2012 20:30:03</publishTime>
+    </File>
+    <File Include="Content/Images/foundation/orbit/loading.gif">
+      <publishTime>07/05/2012 20:30:03</publishTime>
+    </File>
+    <File Include="Content/Images/foundation/orbit/mask-black.png">
+      <publishTime>07/05/2012 20:30:04</publishTime>
+    </File>
+    <File Include="Content/Images/foundation/orbit/pause-black.png">
+      <publishTime>07/05/2012 20:30:04</publishTime>
+    </File>
+    <File Include="Content/Images/foundation/orbit/right-arrow-small.png">
+      <publishTime>07/05/2012 20:30:05</publishTime>
+    </File>
+    <File Include="Content/Images/foundation/orbit/right-arrow.png">
+      <publishTime>07/05/2012 20:30:05</publishTime>
+    </File>
+    <File Include="Content/Images/foundation/orbit/rotator-black.png">
+      <publishTime>07/05/2012 20:30:05</publishTime>
+    </File>
+    <File Include="Content/Images/foundation/orbit/timer-black.png">
+      <publishTime>07/05/2012 20:30:05</publishTime>
+    </File>
+    <File Include="Content/Images/header_bg.png">
+      <publishTime>04/13/2012 21:11:30</publishTime>
+    </File>
+    <File Include="Content/Images/header_img_bg.png">
+      <publishTime>04/14/2012 10:07:22</publishTime>
+    </File>
+    <File Include="Content/Images/icons.png">
+      <publishTime>06/30/2012 18:23:31</publishTime>
+    </File>
+    <File Include="Content/Images/iconsbar.png">
+      <publishTime>10/20/2012 13:34:23</publishTime>
+    </File>
+    <File Include="Content/Images/latest_h3.png">
+      <publishTime>04/13/2012 21:11:30</publishTime>
+    </File>
+    <File Include="Content/Images/li.png">
+      <publishTime>04/09/2012 14:03:20</publishTime>
+    </File>
+    <File Include="Content/Images/locaties.png">
+      <publishTime>08/19/2012 19:28:26</publishTime>
+    </File>
+    <File Include="Content/Images/locatiessmall.png">
+      <publishTime>08/25/2012 20:54:26</publishTime>
+    </File>
+    <File Include="Content/Images/logo-small.png">
+      <publishTime>09/09/2012 13:27:42</publishTime>
+    </File>
+    <File Include="Content/Images/logo.png">
+      <publishTime>06/28/2012 20:07:53</publishTime>
+    </File>
+    <File Include="Content/Images/menu_bottom.png">
+      <publishTime>04/13/2012 21:11:30</publishTime>
+    </File>
+    <File Include="Content/Images/menu_row.jpg">
+      <publishTime>04/13/2012 21:11:30</publishTime>
+    </File>
+    <File Include="Content/Images/menu_top_out.jpg">
+      <publishTime>04/13/2012 21:11:30</publishTime>
+    </File>
+    <File Include="Content/Images/news_separator.png">
+      <publishTime>04/13/2012 21:11:30</publishTime>
+    </File>
+    <File Include="Content/Images/news_ul_li_bg.png">
+      <publishTime>04/13/2012 21:11:30</publishTime>
+    </File>
+    <File Include="Content/Images/pathway_col_bg.jpg">
+      <publishTime>04/13/2012 21:11:30</publishTime>
+    </File>
+    <File Include="Content/Images/pillmenu_bg.png">
+      <publishTime>04/13/2012 21:11:30</publishTime>
+    </File>
+    <File Include="Content/Images/podcast.png">
+      <publishTime>04/13/2012 21:11:30</publishTime>
+    </File>
+    <File Include="Content/Images/popular_h3.png">
+      <publishTime>04/13/2012 21:11:30</publishTime>
+    </File>
+    <File Include="Content/Images/rss.png">
+      <publishTime>04/13/2012 21:11:30</publishTime>
+    </File>
+    <File Include="Content/Images/twitter-small.png">
+      <publishTime>10/20/2012 00:02:14</publishTime>
+    </File>
+    <File Include="Content/Images/twitter.png">
+      <publishTime>04/13/2012 21:11:30</publishTime>
+    </File>
+    <File Include="Content/Images/wrapper_t_l_bg.jpg">
+      <publishTime>04/13/2012 21:11:30</publishTime>
+    </File>
+    <File Include="Custom404.html">
+      <publishTime>09/11/2012 21:07:56</publishTime>
+    </File>
+    <File Include="Error.html">
+      <publishTime>09/11/2012 21:07:29</publishTime>
+    </File>
+    <File Include="favicon.ico">
+      <publishTime>04/14/2012 10:20:54</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>04/13/2012 20:59:53</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>08/23/2012 23:09:51</publishTime>
+    </File>
+    <File Include="Scripts/app.js">
+      <publishTime>10/20/2012 13:37:24</publishTime>
+    </File>
+    <File Include="Scripts/app.min.js">
+      <publishTime>10/20/2012 14:01:56</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.7.2.js">
+      <publishTime>07/05/2012 20:26:43</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.7.2.min.js">
+      <publishTime>10/20/2012 14:01:56</publishTime>
+    </File>
+    <File Include="Scripts/jquery.customforms.js">
+      <publishTime>07/05/2012 20:29:51</publishTime>
+    </File>
+    <File Include="Scripts/jquery.orbit-1.4.0.js">
+      <publishTime>07/05/2012 20:29:52</publishTime>
+    </File>
+    <File Include="Scripts/jquery.orbit-1.4.0.min.js">
+      <publishTime>10/20/2012 14:01:56</publishTime>
+    </File>
+    <File Include="Scripts/jquery.placeholder.min.js">
+      <publishTime>07/05/2012 20:29:52</publishTime>
+    </File>
+    <File Include="Scripts/jquery.reveal.js">
+      <publishTime>07/05/2012 20:29:53</publishTime>
+    </File>
+    <File Include="Scripts/jquery.tooltips.js">
+      <publishTime>07/05/2012 20:29:53</publishTime>
+    </File>
+    <File Include="Scripts/jquery.tooltips.min.js">
+      <publishTime>10/20/2012 14:01:56</publishTime>
+    </File>
+    <File Include="Scripts/modernizr.foundation.js">
+      <publishTime>07/05/2012 20:29:53</publishTime>
+    </File>
+    <File Include="Views/About/Show.cshtml">
+      <publishTime>08/16/2012 20:49:35</publishTime>
+    </File>
+    <File Include="Views/Activities/Show.cshtml">
+      <publishTime>08/20/2012 21:30:47</publishTime>
+    </File>
+    <File Include="Views/Articles/Archief.cshtml">
+      <publishTime>10/20/2012 13:48:32</publishTime>
+    </File>
+    <File Include="Views/Articles/Artikel.cshtml">
+      <publishTime>08/16/2012 20:56:20</publishTime>
+    </File>
+    <File Include="Views/Articles/Feed.cshtml">
+      <publishTime>09/09/2012 19:32:03</publishTime>
+    </File>
+    <File Include="Views/Articles/Show.cshtml">
+      <publishTime>09/09/2012 19:15:30</publishTime>
+    </File>
+    <File Include="Views/Calendar/Show.cshtml">
+      <publishTime>08/20/2012 20:59:44</publishTime>
+    </File>
+    <File Include="Views/Error/NotFound.cshtml">
+      <publishTime>08/22/2012 19:16:18</publishTime>
+    </File>
+    <File Include="Views/Error/Unknown.cshtml">
+      <publishTime>08/22/2012 19:16:08</publishTime>
+    </File>
+    <File Include="Views/Index/Contact.cshtml">
+      <publishTime>09/09/2012 19:13:17</publishTime>
+    </File>
+    <File Include="Views/Index/Show.cshtml">
+      <publishTime>10/20/2012 13:13:24</publishTime>
+    </File>
+    <File Include="Views/Intern/Show.cshtml">
+      <publishTime>10/20/2012 00:35:24</publishTime>
+    </File>
+    <File Include="Views/PhotoAlbums/Show.cshtml">
+      <publishTime>07/07/2012 22:45:27</publishTime>
+    </File>
+    <File Include="Views/Recordings/Podcast.cshtml">
+      <publishTime>09/09/2012 19:37:03</publishTime>
+    </File>
+    <File Include="Views/Recordings/Show.cshtml">
+      <publishTime>10/20/2012 00:00:57</publishTime>
+    </File>
+    <File Include="Views/Recordings/Single.cshtml">
+      <publishTime>09/09/2012 20:07:52</publishTime>
+    </File>
+    <File Include="Views/Shared/Custom404.cshtml">
+      <publishTime>08/22/2012 19:16:02</publishTime>
+    </File>
+    <File Include="Views/Shared/Error.cshtml">
+      <publishTime>08/22/2012 19:15:56</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>10/20/2012 13:27:55</publishTime>
+    </File>
+    <File Include="Views/User/Add.cshtml">
+      <publishTime>07/22/2012 20:47:04</publishTime>
+    </File>
+    <File Include="Views/User/Login.cshtml">
+      <publishTime>08/26/2012 22:27:54</publishTime>
+    </File>
+    <File Include="Views/User/SetPassword.cshtml">
+      <publishTime>08/26/2012 22:38:05</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>04/13/2012 20:50:35</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>04/13/2012 20:59:53</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>10/20/2012 14:01:56</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

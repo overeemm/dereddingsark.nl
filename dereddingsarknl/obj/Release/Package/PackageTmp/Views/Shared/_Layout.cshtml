@@ -20,13 +20,14 @@
 
   <title>@ViewBag.Title | evangeliegemeente de reddingsark</title>
 
-  <link rel="stylesheet" href="@Url.Content("~/Content/foundation.css")">
-  <link rel="stylesheet" href="@Url.Content("~/Content/app.css")">
+  <link rel="stylesheet" href="@Url.Content("~/Content/foundation.min.css")">
+
+  <link rel="stylesheet" href="@((Context.IsDebuggingEnabled) ? Url.Content("~/Content/app.css") : Url.Content("~/Content/app.min.css"))">
 
   <link href="@Url.Content("~/favicon.ico")" rel="shortcut icon" type="image/x-icon" />
 
   <!--[if lt IE 9]>
-    <link rel="stylesheet" href="stylesheets/ie.css">
+    <link rel="stylesheet" href="stylesheets/ie.min.css">
   <![endif]-->
 
   <script src="@Url.Content("~/Scripts/modernizr.foundation.js")"></script>
@@ -49,12 +50,23 @@
       </div>
 
       <div class="seven columns menu">
-        <ul>
+
+        <div class="menu-small-screen">
+          <select class="menudropdown">
+            <option></option>
+            <option value="@Url.Action("Show", "About", new { partName = "" })" @(string.IsNullOrEmpty(@ViewBag.OverOns) ? "" : "selected=\"selected\"")>over ons</option>
+            <option value="@Url.Action("Show", "Activities", new { partName = "" })" @(string.IsNullOrEmpty(@ViewBag.Activiteiten) ? "" : "selected=\"selected\"")>activiteiten</option>
+            <option value="@Url.Action("Show", "Recordings")" @(string.IsNullOrEmpty(@ViewBag.Recordings) ? "" : "selected=\"selected\"")>audio</option>
+            <option value="@Url.Action("Show", "Articles")" @(string.IsNullOrEmpty(@ViewBag.Artikelen) ? "" : "selected=\"selected\"")>artikelen</option>
+            <option value="@Url.Action("Show", "Intern")" @(string.IsNullOrEmpty(@ViewBag.Intern) ? "" : "selected=\"selected\"")>gemeente</option>
+          </select>
+        </div>
+
+        <ul class="menu-large-screen">
           <li class="overons @ViewBag.OverOns"><a href="@Url.Action("Show", "About", new { partName = "" })">over ons</a></li>
           <li class="activiteiten @ViewBag.Activiteiten"><a href="@Url.Action("Show", "Activities", new { partName = "" })">activiteiten</a></li>
           <li class="audio @ViewBag.Recordings""><a href="@Url.Action("Show", "Recordings")">audio</a></li>
           <li class="artikelen @ViewBag.Artikelen"><a href="@Url.Action("Show", "Articles")">artikelen</a></li>
-          <li class="fotos @ViewBag.Fotos"><a href="@Url.Action("Show", "PhotoAlbums")">foto's</a></li>
           @if(ViewBag.CurrentUser != null)
           {
             <li class="intern @ViewBag.Intern"><a href="@Url.Action("Show", "Intern")">gemeente</a></li>
@@ -147,12 +159,10 @@
 
   <!-- Included JS Files -->
   <script src="@Url.Content("~/Scripts/jquery-1.7.2.min.js")"></script>
-  <script src="@Url.Content("~/Scripts/jquery.reveal.js")"></script>
-  <script src="@Url.Content("~/Scripts/jquery.orbit-1.4.0.js")"></script>
-  <script src="@Url.Content("~/Scripts/jquery.customforms.js")"></script>
+  <script src="@Url.Content("~/Scripts/jquery.orbit-1.4.0.min.js")"></script>
   <script src="@Url.Content("~/Scripts/jquery.placeholder.min.js")"></script>
-  <script src="@Url.Content("~/Scripts/jquery.tooltips.js")"></script>
-  <script src="@Url.Content("~/Scripts/app.js")"></script>
+  <script src="@Url.Content("~/Scripts/jquery.tooltips.min.js")"></script>
+  <script src="@Url.Content("~/Scripts/app.min.js")"></script>
 
   @MiniProfiler.RenderIncludes()
 </body>

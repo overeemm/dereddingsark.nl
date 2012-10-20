@@ -18,3 +18,4 @@ C:\Users\michiel\Documents\GitHub\dereddingsark.nl\dereddingsarknl\bin\Newtonsof
 C:\Users\michiel\Documents\GitHub\dereddingsark.nl\dereddingsarknl\bin\Newtonsoft.Json.xml
 C:\Users\michiel\Documents\GitHub\dereddingsark.nl\dereddingsarknl\bin\Elmah.dll
 C:\Users\michiel\Documents\GitHub\dereddingsark.nl\dereddingsarknl\bin\Elmah.Mvc.dll
+C:\Users\michiel\Documents\GitHub\dereddingsark.nl\dereddingsarknl\obj\Release\dereddingsarknl.csprojResolveAssemblyReference.cache

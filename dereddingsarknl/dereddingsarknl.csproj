@@ -127,8 +127,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\app.css" />
+    <Content Include="Content\app.min.css" />
     <Content Include="Content\foundation.css" />
+    <Content Include="Content\foundation.min.css" />
     <Content Include="Content\ie.css" />
+    <Content Include="Content\ie.min.css" />
     <Content Include="Content\Images\arrow-baarn.png" />
     <Content Include="Content\Images\arrow-bunschoten.png" />
     <Content Include="Content\Images\body_bg.png" />
@@ -174,19 +177,29 @@
     <Content Include="Global.asax" />
     <None Include="Properties\PublishProfiles\dereddingsark %40 movereem.nl.pubxml" />
     <None Include="Properties\PublishProfiles\dereddingsark %40 nitroserve.pubxml" />
+    <None Include="Properties\PublishProfiles\dereddingsark op disc.pubxml" />
     <None Include="Scripts\jquery-1.7.2.intellisense.js">
       <DependentUpon>jquery-1.7.2.js</DependentUpon>
     </None>
     <Content Include="Scripts\app.js" />
+    <Content Include="Scripts\app.min.js">
+      <DependentUpon>app.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\jquery-1.7.2.js" />
     <Content Include="Scripts\jquery-1.7.2.min.js">
       <DependentUpon>jquery-1.7.2.js</DependentUpon>
     </Content>
     <Content Include="Scripts\jquery.customforms.js" />
     <Content Include="Scripts\jquery.orbit-1.4.0.js" />
+    <Content Include="Scripts\jquery.orbit-1.4.0.min.js">
+      <DependentUpon>jquery.orbit-1.4.0.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\jquery.placeholder.min.js" />
     <Content Include="Scripts\jquery.reveal.js" />
     <Content Include="Scripts\jquery.tooltips.js" />
+    <Content Include="Scripts\jquery.tooltips.min.js">
+      <DependentUpon>jquery.tooltips.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\modernizr.foundation.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -242,6 +255,16 @@
   </Target>
   <Target Name="AfterBuild">
   </Target> -->
+  <UsingTask TaskName="AjaxMin" AssemblyFile="$(MSBuildProjectDirectory)\..\build\AjaxMinTask.dll" />
+  <Target Name="AfterBuild">
+    <ItemGroup>
+      <JS Include="**\*.js" Exclude="**\*.min.js" />
+    </ItemGroup>
+    <ItemGroup>
+      <CSS Include="**\*.css" Exclude="**\*.min.css" />
+    </ItemGroup>
+    <AjaxMin JsSourceFiles="@(JS)" JsSourceExtensionPattern="\.js$" JsTargetExtension=".min.js" CssSourceFiles="@(CSS)" CssSourceExtensionPattern="\.css$" CssTargetExtension=".min.css" />
+  </Target>
   <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
     <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
   </Target>
@@ -251,7 +274,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>11676</DevelopmentServerPort>
+          <DevelopmentServerPort>2629</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

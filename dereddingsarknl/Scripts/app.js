@@ -6,6 +6,13 @@ jQuery(document).ready(function ($) {
   $('div.slideshow').orbit({ animationSpeed: 1500, advanceSpeed: 6000 });
   $(this).tooltips();
 
+  $('.menu li, .submenu li').click(function () {
+    document.location = $(this).find("a").attr("href");
+  });
+
+  $('select.menudropdown').change(function () {
+    document.location = $(this).val();
+  });
 
   $('div.inloggen.inactive').on('click', 'a', function (event) {
     if ($("body").width() >= 768) {
@@ -78,7 +85,7 @@ jQuery(document).ready(function ($) {
     var name = $this.attr("name");
 
     $this.css("background-image", "");
-    $this.parent().parent().removeClass("three").addClass("six");
+    $this.parent().parent().removeClass("six").addClass("twelve");
 
     $.get("/fotos/" + name + "/" + id, function (data) {
       for (var i = 0; i < data.length; i++) {
@@ -93,7 +100,7 @@ jQuery(document).ready(function ($) {
     $('div.photo.orbit').empty().each(function (i, e) {
       $(e).css("background-image", "url('" + $(e).data("thumbnail") + "')");
       $(e).prependTo($(e).parent().parent());
-      $(e).parent().parent().removeClass("six").addClass("three");
+      $(e).parent().parent().removeClass("twelve").addClass("six");
       $(e).css("width", "").css("height", "").removeClass("orbit");
       $('div.orbit-wrapper').remove();
     });
@@ -118,7 +125,12 @@ jQuery(document).ready(function ($) {
   });
 
   /* audio */
-  var canPlayMp3 = $('#player').length > 0 && $('#player').get(0).canPlayType('audio/mpeg') != '';
+  var canPlayMp3 = false;
+  try {
+    canPlayMp3 = $('#player').length > 0 && $('#player').get(0).canPlayType('audio/mpeg') != '';
+  } catch (error) {
+    canPlayMp3 = false;
+  }
 
   if (canPlayMp3) {
     var player = $('#player').get(0);
