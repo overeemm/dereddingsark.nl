@@ -224,7 +224,6 @@
     <Content Include="Views\Articles\Artikel.cshtml" />
     <Content Include="Views\Articles\Archief.cshtml" />
     <Content Include="Views\Intern\Show.cshtml" />
-    <Content Include="Views\User\Add.cshtml" />
     <Content Include="Views\Recordings\Podcast.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\Error\Unknown.cshtml" />
@@ -234,6 +233,7 @@
     <Content Include="Views\Index\Contact.cshtml" />
     <Content Include="Views\Articles\Feed.cshtml" />
     <Content Include="Views\Recordings\Single.cshtml" />
+    <Content Include="Views\User\Show.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

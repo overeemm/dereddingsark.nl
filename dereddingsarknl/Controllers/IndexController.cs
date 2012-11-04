@@ -17,7 +17,7 @@ namespace dereddingsarknl.Controllers
 
     public ActionResult Show()
     {
-      ViewBag.Title = "Een plek zijn waar God de Vader, Jezus Christus de Zoon en de Heilige Geest centraal staan.";
+//      ViewBag.Title = "Een plek zijn waar God de Vader, Jezus Christus de Zoon en de Heilige Geest centraal staan.";
 
       using(MiniProfiler.Current.Step("Read calendar file"))
       {

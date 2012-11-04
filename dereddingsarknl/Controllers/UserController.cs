@@ -14,16 +14,39 @@ namespace dereddingsarknl.Controllers
   public class UserController : BaseController
   {
     [HttpPost]
+    public ActionResult StoreNewBulk(string userlist, string sendmail, string sync)
+    {
+      using(MiniProfiler.Current.Step("Store new users"))
+      {
+        var users = Index.CreateUserIndex(HttpContext);
+        List<string> failed = new List<string>();
+        foreach(var userNameEmail in userlist.Split(new string[] { Environment.NewLine }, StringSplitOptions.None))
+        {
+          try
+          {
+            var name = userNameEmail.Split(' ')[0].Trim();
+            var email = userNameEmail.Split(' ')[1].Trim();
+          }
+          catch
+          {
+            failed.Add(userNameEmail);
+          }
+        }
+
+        return RedirectToAction("Show");
+      }
+    }
+
+    [HttpPost]
     public ActionResult StoreNew(string name, string email)
     {
       using(MiniProfiler.Current.Step("Check uniqueness user and write if unique"))
       {
-        string filePath = Path.Combine(Settings.GetDataFolder(HttpContext), "gebruikers\\index.csv");
-        var users = new Index(filePath);
+        var users = Index.CreateUserIndex(HttpContext);
 
-        if(users.Items.Any(i => i.First().Equals(email.Trim(), StringComparison.InvariantCultureIgnoreCase)))
+        if(users.Contains(i => i.First().Equals(email.Trim(), StringComparison.InvariantCultureIgnoreCase)))
         {
-          return RedirectToAction("Add", new { emailtaken = email });
+          return RedirectToAction("Show", new { emailtaken = email });
         }
         else
         {
@@ -31,8 +54,7 @@ namespace dereddingsarknl.Controllers
           string salt = GenerateSalt();
           string passwordHash = HashPassword(password, salt);
 
-          System.IO.File.AppendAllLines(filePath,
-            new string[] { dereddingsarknl.Models.User.CreateIndexLine(email, name, passwordHash, salt) });
+          users.Add(dereddingsarknl.Models.User.CreateIndexLine(email, name, passwordHash, salt));
 
           string token = Guid.NewGuid().ToString("N");
           StoreResetToken(email, token);
@@ -49,7 +71,7 @@ U kunt uw e-mailadres instellen via de url {1}", email, reseturl)));
           string tokenFile = Path.Combine(Settings.GetDataFolder(HttpContext), "gebruikers\\tokens", email.Replace("@", "-") + "__" + guid);
           System.IO.File.Create(tokenFile);
 
-          return RedirectToAction("Add");
+          return RedirectToAction("Show");
         }
       }
     }
@@ -73,22 +95,9 @@ U kunt uw e-mailadres instellen via de url {1}", email, reseturl)));
         string passwordHash = HashPassword(password, salt);
         var indexLine = string.Format("\"{0}\", \"{1}\", \"{2}\", \"{3}\"", user.Email, user.Name, passwordHash, salt);
 
-        string filePath = Path.Combine(Settings.GetDataFolder(HttpContext), "gebruikers\\index.csv");
-        var users = new Index(filePath);
-        var lines = new List<string>();
-        foreach(var item in users.Items)
-        {
-          if(item.First().Equals(user.Email, StringComparison.InvariantCultureIgnoreCase))
-          {
-            lines.Add(indexLine);
-          }
-          else
-          {
-            lines.Add(users.CreateLine(item));
-          }
-        }
-
-        System.IO.File.WriteAllLines(filePath, lines.ToArray());
+        var users = Index.CreateUserIndex(HttpContext);
+        users.Update( i => i.First().Equals(user.Email, StringComparison.InvariantCultureIgnoreCase)
+                    , indexLine);
       }
       return Redirect(referrer);
     }
@@ -190,18 +199,19 @@ U kunt uw e-mailadres instellen via de url {1}", email, reseturl)));
       }
     }
 
-    public ActionResult Add(string emailtaken)
+    public ActionResult Show(string emailtaken)
     {
-      string filePath = Path.Combine(Settings.GetDataFolder(HttpContext), "gebruikers\\index.csv");
-      if(!System.IO.File.Exists(filePath))
-      {
-        System.IO.File.CreateText(filePath).Close();
-      }
-
-      if((CurrentUser == null || !CurrentUser.CanAddUser) && GetUserCount() > 0)
+      if(CurrentUser == null || !CurrentUser.UserManager)
         return new HttpUnauthorizedResult("U heeft geen toegang tot deze pagina.");
 
       ViewBag.EmailTaken = emailtaken;
+
+      var users = Index.CreateUserIndex(HttpContext);
+      ViewBag.UserList = users.Items
+        .Select(i => dereddingsarknl.Models.User.Create(i))
+        .OrderBy(u => u.Name)
+        .ToList();
+
       return View();
     }
   }

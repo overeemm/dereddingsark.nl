@@ -24,6 +24,14 @@ body, html {
   min-height: 90px;
 }
 
+  .header.columns a.logoplaceholder {
+    display: block;
+    position: absolute;
+    height: 100px;
+    width: 160px;
+    margin-left: -20px;
+  }
+
   .header.columns h2 {
     margin-left: 140px;
     font-weight: normal;
@@ -260,7 +268,7 @@ body, html {
   .banner.columns div {
     font-size: 2.5rem;
     line-height: 1.25;
-    text-shadow: 2px 2px 10px #999;
+    text-shadow: 1px 1px 1px #999;
     padding: 3px 0px;
   }
 
@@ -384,7 +392,8 @@ div.columns.agenda p.titel {
 }
 
 div.agenda li {
-  padding-left: 30px;
+  padding-left: 7px;
+  padding-right: 7px;
   height: 35px;
   line-height: 30px;
   color: #fff;
@@ -405,7 +414,7 @@ div.agenda li {
     position: absolute;
     left: 0px;
     width: 100%;
-    padding: 16px 0px 0px 30px;
+    padding: 16px 8px 0px 8px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -557,22 +566,18 @@ div.container.footer {
   padding: 0px;
   clear: both;
   min-height: 20px;
-  background-color: #0A91A8;
-  color: #fff;
-  border-top: solid 1px #FAF8E9;
+  color: #555;
   padding-top: 3px;
   padding-bottom: 3px;
-  -moz-box-shadow: 0px -3px 5px 0px #aaa;
-  -webkit-box-shadow: 0px -3px 5px 0px #aaa;
-  box-shadow: 0px -3px 5px 0px #aaa;
 }
 
   div.container.footer p {
-    margin: 0px;
+    margin: 0px auto;
+    text-align: center;
   }
 
   div.container.footer a, div.container.footer a:visited, div.container.footer a:active, div.container.footer a:hover {
-    color: #fff;
+    color: #555;
     text-decoration: none;
   }
 
@@ -1067,12 +1072,50 @@ div.row.aankondigingen div.orbit-wrapper div.slider-nav {
   display: none;
 }
 
+div.block {
+  background-color: #fff;
+  -moz-box-shadow: 0px 0px 5px 0px #aaa;
+  -webkit-box-shadow: 0px 0px 5px 0px #aaa;
+  box-shadow: 0px 0px 5px 0px #aaa;
+  margin-bottom: 20px;
+  padding: 0px;
+  padding-bottom: 20px;
+}
+
+  div.block h3 {
+    margin-top: 0px;
+    font-size: 1.8rem;
+    padding: 10px;
+    background-color: #0A91A8;
+    color: #fff;
+  }
+
+  div.block ul {
+    margin: 0px 20px 0px 20px;
+  }
+
+  div.block form, div.block p {
+    margin: 0px 20px 0px 20px;
+  }
+
+  div.block ul li {
+    margin: 0px 0px 10px 0px;
+    list-style-type: none;
+    font-size: 1.3rem;
+  }
+
 @media only screen and (max-width: 1019px) {
   .header.columns {
     padding-right: 0px;
     background-size: 100px;
     width: 33.333%;
   }
+
+    .header.columns a.logoplaceholder {
+      height: 80px;
+      width: 110px;
+      margin-left: -20px;
+    }
 
     .header.columns h2 {
       font-size: 2.5rem;
@@ -1116,6 +1159,12 @@ div.row.aankondigingen div.orbit-wrapper div.slider-nav {
     background-size: 75px;
     width: 33.333%;
   }
+
+    .header.columns a.logoplaceholder {
+      height: 60px;
+      width: 85px;
+      margin-left: -20px;
+    }
 
     .header.columns h2 {
       font-size: 2.4rem;
@@ -1166,6 +1215,12 @@ div.row.aankondigingen div.orbit-wrapper div.slider-nav {
   .header.columns {
     background-size: auto;
   }
+
+    .header.columns a.logoplaceholder {
+      height: 90px;
+      width: 165px;
+      margin-left: -20px;
+    }
 
   .menu.columns .inloggen {
     top: -90px;
@@ -1334,6 +1389,12 @@ div.row.aankondigingen div.orbit-wrapper div.slider-nav {
     background-size: 150px 63px;
   }
 
+    .header.columns a.logoplaceholder {
+      height: 90px;
+      width: 160px;
+      margin-left: -20px;
+    }
+
     .header.columns h2 {
       margin-top: 30px;
       font-size: 3.0rem;
@@ -1373,6 +1434,13 @@ div.row.aankondigingen div.orbit-wrapper div.slider-nav {
     min-height: 100px;
     background-position-y: 40px;
   }
+
+    .header.columns a.logoplaceholder {
+      height: 50px;
+      width: 110px;
+      margin-left: -20px;
+      margin-top: 35px;
+    }
 
   .menu.columns .inloggen {
     top: -100px;
@@ -1417,6 +1485,11 @@ div.row.aankondigingen div.orbit-wrapper div.slider-nav {
 
   .locatiessmall p {
     font-size: 1.4rem;
+  }
+
+  div.container.footer p {
+    margin: 0px auto;
+    width: auto;
   }
 }
 

@@ -14,7 +14,8 @@ namespace dereddingsarknl.Models
     public string PasswordHash { get; set; }
     public string Salt { get; set; }
 
-    public bool CanAddUser { get; private set; }
+    public string Extras { get; private set; }
+    public bool UserManager { get; private set; }
     public bool EnableProfiler { get; private set; }
 
     public static string CreateIndexLine(string email, string name, string passwordHash, string salt)
@@ -32,7 +33,8 @@ namespace dereddingsarknl.Models
         Name = indexLine.Skip(1).First(),
         PasswordHash = indexLine.Skip(2).First(),
         Salt = indexLine.Skip(3).First(),
-        CanAddUser = extras.Contains("adduser"),
+        Extras = extras,
+        UserManager = extras.Contains("users"),
         EnableProfiler = extras.Contains("profiler")
       };
     }

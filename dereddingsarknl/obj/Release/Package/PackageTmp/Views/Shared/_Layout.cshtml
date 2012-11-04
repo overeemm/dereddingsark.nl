@@ -18,7 +18,7 @@
   <meta name="keywords" content="evangelie, gemeente, de reddingsark, ark, christus, jezus, christen, christendom, baarn, bunschoten, amersfoort, adelheidlaan, oostwende college" />
   <meta name="description" content="evangeliegemeente de reddingsark" />
 
-  <title>@ViewBag.Title | evangeliegemeente de reddingsark</title>
+  <title>@ViewBag.Title @(string.IsNullOrEmpty(ViewBag.Title) ? "" : "|") evangeliegemeente De Reddingsark</title>
 
   <link rel="stylesheet" href="@Url.Content("~/Content/foundation.min.css")">
 
@@ -45,6 +45,7 @@
 
     <div class="row">
       <div class="five columns header" title="evangeliegemeente de reddingsark">
+        <a href="@Url.Action("Show", "Index")" class="logoplaceholder"></a>
         <h2><a href="@Url.Action("Show", "Index")">de reddingsark</a></h2>
         <h5><a href="@Url.Action("Show", "Index")">evangeliegemeente</a></h5>
       </div>
@@ -53,7 +54,7 @@
 
         <div class="menu-small-screen">
           <select class="menudropdown">
-            <option></option>
+            <option value="@Url.Action("Show", "Index")">home</option>
             <option value="@Url.Action("Show", "About", new { partName = "" })" @(string.IsNullOrEmpty(@ViewBag.OverOns) ? "" : "selected=\"selected\"")>over ons</option>
             <option value="@Url.Action("Show", "Activities", new { partName = "" })" @(string.IsNullOrEmpty(@ViewBag.Activiteiten) ? "" : "selected=\"selected\"")>activiteiten</option>
             <option value="@Url.Action("Show", "Recordings")" @(string.IsNullOrEmpty(@ViewBag.Recordings) ? "" : "selected=\"selected\"")>audio</option>

@@ -27,10 +27,22 @@ namespace dereddingsarknl.Models
       return new Index(filePath);
     }
 
+    public static Index CreateUserIndex(HttpContextBase context)
+    {
+      string filePath = Path.Combine(Settings.GetDataFolder(context), "gebruikers\\index.csv");
+      if(!System.IO.File.Exists(filePath))
+      {
+        System.IO.File.CreateText(filePath).Close();
+      }
+      return new Index(filePath);
+    }
+
     private List<List<string>> _contents = new List<List<string>>();
+    private string _filename;
 
     public Index(string filename)
     {
+      _filename = filename;
       ParseCSV(filename);
     }
 
@@ -62,6 +74,41 @@ namespace dereddingsarknl.Models
         newLine.AppendFormat("\"{0}\"", value);
       }
       return newLine.ToString();
+    }
+
+    public void Add(string newLine)
+    {
+      System.IO.File.AppendAllLines(_filename, new string[] { newLine });
+    }
+
+    public bool Contains(Predicate<IEnumerable<string>> predicate)
+    {
+      var found = this.Items.Where(i => predicate(i)).ToList();
+      return found.Count > 0;
+    }
+
+    public IEnumerable<string> Find(Predicate<IEnumerable<string>> predicate)
+    {
+      var found = this.Items.Where(i => predicate(i)).ToList();
+      return found.Count > 0 ? found[0] : new string[] { };
+    }
+
+    public void Update(Predicate<IEnumerable<string>> predicate, string newLine)
+    {
+      var lines = new List<string>();
+      foreach(var item in this.Items)
+      {
+        if(predicate(item))
+        {
+          lines.Add(newLine);
+        }
+        else
+        {
+          lines.Add(this.CreateLine(item));
+        }
+      }
+
+      System.IO.File.WriteAllLines(_filename, lines.ToArray());
     }
   }
 }

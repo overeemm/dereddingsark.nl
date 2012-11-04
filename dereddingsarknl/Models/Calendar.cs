@@ -86,7 +86,7 @@ namespace dereddingsarknl.Models
             }
             else if(line.StartsWith("SUMMARY"))
             {
-              currentItem.What = line.Substring(8).Replace("\\,", ",");
+              currentItem.What = line.Substring(8).Replace("\\,", ",").Replace("samenkomst", "Samenkomst");
             }
             else if(line.StartsWith("DTSTART;TZID=Europe/Amsterdam"))
             {

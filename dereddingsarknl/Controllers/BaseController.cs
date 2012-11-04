@@ -251,8 +251,7 @@ namespace dereddingsarknl.Controllers
 
     private User GetUserFromTokenFile(string tokenFileName)
     {
-      string filePath = Path.Combine(Settings.GetDataFolder(HttpContext), "gebruikers\\index.csv");
-      var users = new Index(filePath);
+      var users = Index.CreateUserIndex(HttpContext);
       var indexLine = users
         .Items
         .FirstOrDefault(i =>
@@ -269,8 +268,7 @@ namespace dereddingsarknl.Controllers
 
     protected int GetUserCount()
     {
-      string filePath = Path.Combine(Settings.GetDataFolder(HttpContext), "gebruikers\\index.csv");
-      var users = new Index(filePath);
+      var users = Index.CreateUserIndex(HttpContext);
       return users.Items.Count();
     }
 
@@ -278,8 +276,7 @@ namespace dereddingsarknl.Controllers
     {
       var normalizedEmail = email.Replace("@", "-");
 
-      string filePath = Path.Combine(Settings.GetDataFolder(HttpContext), "gebruikers\\index.csv");
-      var users = new Index(filePath);
+      var users = Index.CreateUserIndex(HttpContext);
       var indexLine = (users.Items.FirstOrDefault(i => 
         i.First().Replace("@", "-")
          .Equals(normalizedEmail.Trim(), StringComparison.InvariantCultureIgnoreCase)));

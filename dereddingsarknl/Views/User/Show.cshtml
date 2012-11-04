@@ -1,0 +1,74 @@
+﻿@using System.Globalization;
+
+<div class="row">
+
+  <div class="twelve columns">
+    <div class="twelve columns block">
+      <h3>Gebruikers</h3>
+
+      <ul>
+        @foreach(var user in ViewBag.UserList)
+        {
+          <li>
+            <span>@user.Name @(string.IsNullOrEmpty(user.Extras) ? "" : "(" + @user.Extras + ")")</span>
+            <a href="mailto:@user.Email">@user.Email</a>
+            <form action="@Url.Action("Login")" method="post">
+              <input type="hidden" name="email" value="@user.Email" />
+              <input type="hidden" name="referrer" value="@Url.Action("Show")" />
+              <input type="submit" class="secondary small button" name="reset" value="reset wachtwoord" />
+            </form>
+          </li>
+        }
+      </ul>
+    </div>
+  </div>
+
+  <div class="twelve columns">
+    <div class="twelve columns block">
+      <h3>beheer</h3>
+      <form action="" method="post">
+        <input type="submit" class="secondary small button" name="reset" value="reset alle wachtwoorden en verstuur e-mail" />
+      </form>
+
+      <form action="" method="post">
+        <input type="submit" class="secondary small button" name="reset" value="export csv (MailChimp)" />
+      </form>
+    </div>
+  </div>
+
+  <div class="twelve columns">
+    <div class="twelve columns block">
+      <h3>nieuw (bulk)</h3>
+
+      <p>
+        Zet op elke regel een nieuwe gebruiker ("email; naam"). 
+        Als de bestaande gebruikers lijst volledig vervangen moet worden zullen gebruikers bijgewerkt worden
+        en niet genoemde gebruikers verwijderd.
+      </p>
+
+      <form method="post" action="@Url.Action("StoreNewBulk", "User")">
+        <textarea name="userlist"></textarea>
+        <input type="checkbox" name="sendmail" value="Verstuur e-mail" />
+        <input type="checkbox" name="sync" value="Vervang gebruikerslijst" />
+        <input type="submit" class="secondary small button" value="verwerk"></input>
+      </form>
+    </div>
+  </div>
+
+  <div class="twelve columns">
+    <div class="twelve columns block">
+      <h3>nieuw</h3>
+      <form method="post" action="@Url.Action("StoreNew", "User")">
+        <input type="text" placeholder="e-mail adres" name="email"></input>
+        <input type="text" placeholder="naam" name="name"></input>
+        <input type="submit" class="secondary small button" value="aanmaken (en mail sturen)"></input>
+      </form>
+
+      @if(!string.IsNullOrEmpty(ViewBag.EmailTaken))
+      {
+        <p>Het emailadres @ViewBag.EmailTaken is al in gebruik.</p>
+      }
+    </div>
+  </div>
+
+</div>
