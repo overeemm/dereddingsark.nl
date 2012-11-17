@@ -178,6 +178,7 @@ body, html {
 
 .menu.columns ul {
   margin-top: 0px;
+  float: right;
 }
 
 .menu.columns li {
@@ -567,14 +568,8 @@ div.container.footer {
   clear: both;
   min-height: 20px;
   color: #555;
-  /*background-color: #0A91A8;
-  color: #fff;*/
-  /*border-top: solid 1px #FAF8E9;*/
   padding-top: 3px;
   padding-bottom: 3px;
-  /*-moz-box-shadow: 0px -3px 5px 0px #aaa;
-  -webkit-box-shadow: 0px -3px 5px 0px #aaa;
-  box-shadow: 0px -3px 5px 0px #aaa;*/
 }
 
   div.container.footer p {
@@ -1077,6 +1072,38 @@ div.row.zones div.slideshowcontainer div.orbit-wrapper div.slider-nav,
 div.row.aankondigingen div.orbit-wrapper div.slider-nav {
   display: none;
 }
+
+div.block {
+  background-color: #fff;
+  -moz-box-shadow: 0px 0px 5px 0px #aaa;
+  -webkit-box-shadow: 0px 0px 5px 0px #aaa;
+  box-shadow: 0px 0px 5px 0px #aaa;
+  margin-bottom: 20px;
+  padding: 0px;
+  padding-bottom: 20px;
+}
+
+  div.block h3 {
+    margin-top: 0px;
+    font-size: 1.8rem;
+    padding: 10px;
+    background-color: #0A91A8;
+    color: #fff;
+  }
+
+  div.block ul {
+    margin: 0px 20px 0px 20px;
+  }
+
+  div.block form, div.block p {
+    margin: 0px 20px 0px 20px;
+  }
+
+  div.block ul li {
+    margin: 0px 0px 10px 0px;
+    list-style-type: none;
+    font-size: 1.3rem;
+  }
 
 @media only screen and (max-width: 1019px) {
   .header.columns {

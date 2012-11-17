@@ -18,7 +18,14 @@ namespace dereddingsarknl.Controllers
 
     public ActionResult Show(string partName)
     {
-      AddMarkdownFileToViewBag(partName);
+      try
+      {
+        AddMarkdownFileToViewBag(partName);
+      }
+      catch(FileNotFoundException)
+      {
+        return PageNotFound();
+      }
       ViewBag.OverOns = "active";
       return View();
     }

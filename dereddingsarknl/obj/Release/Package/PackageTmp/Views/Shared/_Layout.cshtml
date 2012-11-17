@@ -27,7 +27,7 @@
   <link href="@Url.Content("~/favicon.ico")" rel="shortcut icon" type="image/x-icon" />
 
   <!--[if lt IE 9]>
-    <link rel="stylesheet" href="stylesheets/ie.min.css">
+    <link rel="stylesheet" href="@Url.Content("~/Content/ie.min.css")">
   <![endif]-->
 
   <script src="@Url.Content("~/Scripts/modernizr.foundation.js")"></script>
@@ -36,6 +36,21 @@
   <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
+
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-7178740-1']);
+    _gaq.push(['_setDomainName', 'dereddingsark.nl']);
+    _gaq.push(['_trackPageview']);
+
+    (function () {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+  </script>
 
 </head>
 <body>
@@ -59,7 +74,7 @@
             <option value="@Url.Action("Show", "Activities", new { partName = "" })" @(string.IsNullOrEmpty(@ViewBag.Activiteiten) ? "" : "selected=\"selected\"")>activiteiten</option>
             <option value="@Url.Action("Show", "Recordings")" @(string.IsNullOrEmpty(@ViewBag.Recordings) ? "" : "selected=\"selected\"")>audio</option>
             <option value="@Url.Action("Show", "Articles")" @(string.IsNullOrEmpty(@ViewBag.Artikelen) ? "" : "selected=\"selected\"")>artikelen</option>
-            <option value="@Url.Action("Show", "Intern")" @(string.IsNullOrEmpty(@ViewBag.Intern) ? "" : "selected=\"selected\"")>gemeente</option>
+            @*<option value="@Url.Action("Show", "Intern")" @(string.IsNullOrEmpty(@ViewBag.Intern) ? "" : "selected=\"selected\"")>gemeente</option>*@
           </select>
         </div>
 
@@ -83,17 +98,17 @@
           <div class="gebruiker active close">
 
             <form method="post" action="@Url.Action("Logout", "User")">
-            <input type="submit" class="secondary small button" value="uitloggen" />
-            <input type="hidden" name="referrer" value="@HttpContext.Current.Request.Url.AbsoluteUri" />
+              <input type="submit" class="secondary small button" value="uitloggen" />
+              <input type="hidden" name="referrer" value="@HttpContext.Current.Request.Url.AbsoluteUri" />
             </form>
 
             <hr />
 
             <form method="post" action="@Url.Action("StoreUpdate", "User")">
-            <input type="password" name="password" placeholder="nieuw wachtwoord"></input>
-            <input type="password" name="password2" placeholder="herhaal wachtwoord"></input>
-            <input type="submit" class="secondary small button" value="verander wachtwoord" />
-            <input type="hidden" name="referrer" value="@HttpContext.Current.Request.Url.AbsoluteUri" />
+              <input type="password" name="password" placeholder="nieuw wachtwoord"></input>
+              <input type="password" name="password2" placeholder="herhaal wachtwoord"></input>
+              <input type="submit" class="secondary small button" value="verander wachtwoord" />
+              <input type="hidden" name="referrer" value="@HttpContext.Current.Request.Url.AbsoluteUri" />
             </form>
 
             <hr />
@@ -106,7 +121,7 @@
             <a href="@Url.Action("Login", "User")" class="icon">@ViewBag.CurrentUser.Name</a>
           </div>
         }
-        else
+        else if(false)
         {
           <div class="inloggen inactive @(string.IsNullOrEmpty(ViewBag.Message as string) ? "open" : "close")">
             <a href="@Url.Action("Login", "User")" class="icon">inloggen</a>
@@ -115,12 +130,12 @@
           <div class="inloggen active @(!string.IsNullOrEmpty(ViewBag.Message as string) ? "open" : "close")">
 
             <form method="post" action="@Url.Action("Login", "User")">
-            <input type="text" name="email" placeholder="e-mail adres"></input>
-            <input type="password" name="password" placeholder="wachtwoord"></input>
-            <input type="submit" name="inloggen" class="secondary small button" value="inloggen"></input>
-            <input type="hidden" name="referrer" value="@HttpContext.Current.Request.Url.AbsoluteUri" />
+              <input type="text" name="email" placeholder="e-mail adres"></input>
+              <input type="password" name="password" placeholder="wachtwoord"></input>
+              <input type="submit" name="inloggen" class="secondary small button" value="inloggen"></input>
+              <input type="hidden" name="referrer" value="@HttpContext.Current.Request.Url.AbsoluteUri" />
 
-            <input type="submit" name="reset" class="secondary small button reset" value="wachtwoord vergeten" />
+              <input type="submit" name="reset" class="secondary small button reset" value="wachtwoord vergeten" />
             </form>
 
             @if(!string.IsNullOrEmpty(ViewBag.Message as string))
@@ -165,6 +180,8 @@
   <script src="@Url.Content("~/Scripts/jquery.tooltips.min.js")"></script>
   <script src="@Url.Content("~/Scripts/app.min.js")"></script>
 
-  @MiniProfiler.RenderIncludes()
+  @if(ViewBag.IncludeProfiler){
+    MiniProfiler.RenderIncludes()
+  }
 </body>
 </html>

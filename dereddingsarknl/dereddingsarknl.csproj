@@ -50,6 +50,12 @@
     <Reference Include="Elmah.Mvc">
       <HintPath>..\packages\Elmah.MVC.2.0.1\lib\net40\Elmah.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="Glimpse.Core">
+      <HintPath>..\packages\Glimpse.0.87\lib\net40\Glimpse.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Glimpse.Mvc3">
+      <HintPath>..\packages\Glimpse.Mvc3.0.87\lib\net40\Glimpse.Mvc3.dll</HintPath>
+    </Reference>
     <Reference Include="Google.GData.AccessControl">
       <HintPath>..\packages\Google.GData.AccessControl.2.1.0.0\lib\Google.GData.AccessControl.dll</HintPath>
     </Reference>
@@ -122,10 +128,14 @@
     <Compile Include="Models\PhotoAlbum.cs" />
     <Compile Include="Models\Index.cs" />
     <Compile Include="Models\Settings.cs" />
+    <Compile Include="Models\SmtpClientExtensions.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Modules\CustomErrorMailModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Readme\glimpse.mvc3.readme.txt" />
+    <Content Include="App_Readme\glimpse.readme.txt" />
     <Content Include="Content\app.css" />
     <Content Include="Content\app.min.css" />
     <Content Include="Content\foundation.css" />
@@ -237,7 +247,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Modules\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

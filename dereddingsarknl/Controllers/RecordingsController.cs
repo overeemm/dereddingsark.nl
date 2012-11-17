@@ -24,15 +24,17 @@ namespace dereddingsarknl.Controllers
 
         if(item == null)
         {
-          throw new HttpException(404, "Not found");
+          return PageNotFound();
         }
 
-        return RedirectToActionPermanent("Single", "Recordings", new { alias = item.Alias});
+        return RedirectToActionPermanent("Single", "Recordings", new { alias = item.Alias });
       }
     }
 
     public ActionResult Single(string alias)
     {
+
+
       using(MiniProfiler.Current.Step("Read recording index"))
       {
         var item =
@@ -44,7 +46,7 @@ namespace dereddingsarknl.Controllers
 
         if(item == null)
         {
-          throw new HttpException(404, "Not found");
+          return PageNotFound();
         }
 
         ViewBag.Title = item.Title;

@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using StackExchange.Profiling;
+using dereddingsarknl.Models;
 
 namespace dereddingsarknl
 {
@@ -31,6 +32,7 @@ namespace dereddingsarknl
     protected void Application_BeginRequest()
     {
       MiniProfiler.Start();
+      SmtpClientExtensions.InitSettings(HttpContext.Current);
     }
 
     public static void RegisterRoutes(RouteCollection routes)
@@ -39,12 +41,16 @@ namespace dereddingsarknl
 
       routes.MapRoute("Index", "", new { controller = "Index", action = "Show" });
       routes.MapRoute("Contact", "contact", new { controller = "Index", action = "Contact" });
+      routes.MapRoute("SendMessage", "sendmessage", new { controller = "Index", action = "SendMessage" });
 
       routes.MapRoute("About", "over-de-gemeente/{partName}", new { controller = "About", action = "Show", partName = "grondslag" });
       routes.MapRoute("Activities", "activiteiten/{partName}", new { controller = "Activities", action = "Show", partName = "samenkomsten" });
       routes.MapRoute("PhotoAlbums", "fotos", new { controller = "PhotoAlbums", action = "Show" });
       routes.MapRoute("PhotoAlbums JSON", "fotos/{name}/{id}", new { controller = "PhotoAlbums", action = "Photos" });
+
+      routes.MapRoute("CalendarICS", "agenda.ics", new { controller = "Calendar", action = "Download" });
       routes.MapRoute("Calendar", "agenda", new { controller = "Calendar", action = "Show" });
+
 
       routes.MapRoute("RecordingsOldStyle", "audio/{cat}/{alias}", new { controller = "Recordings", action = "OldPermaLinks" });
       routes.MapRoute("RecordingPermaLink", "audio/{alias}", new { controller = "Recordings", action = "Single" });

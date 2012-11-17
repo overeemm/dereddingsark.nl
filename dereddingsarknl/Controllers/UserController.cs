@@ -60,7 +60,7 @@ namespace dereddingsarknl.Controllers
           StoreResetToken(email, token);
           string reseturl = Url.Action("SetPassword", "User", new { token = token });
 
-          var client = new System.Net.Mail.SmtpClient();
+          var client = new System.Net.Mail.SmtpClient().Init();
           client.Send(new MailMessage(From_Address, email,
             "Gebruikersgegevens voor dereddingsark.nl",
             string.Format(@"Er is een account aangemaakt voor uw e-maildres ({0})
@@ -115,7 +115,7 @@ U kunt uw e-mailadres instellen via de url {1}", email, reseturl)));
         StoreResetToken(email, token);
         string reseturl = Url.Action("SetPassword", "User", new { token = token });
 
-        var client = new System.Net.Mail.SmtpClient();
+        var client = new System.Net.Mail.SmtpClient().Init();
         client.Send(new MailMessage(From_Address, email,
           "Geef een wachtwoord op voor dereddingsark.nl",
           string.Format(@"Ga naar deze url om een wachtwoord op te geven: {0}", reseturl)));

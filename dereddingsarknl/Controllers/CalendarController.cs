@@ -17,7 +17,7 @@ namespace dereddingsarknl.Controllers
 
       using(MiniProfiler.Current.Step("Read calendar file"))
       {
-        var items = 
+        var items =
            Calendar.Get(HttpContext)
           .Items
           .Where(i => i.When.Date >= DateTime.Now.Date)
@@ -28,9 +28,13 @@ namespace dereddingsarknl.Controllers
         ViewBag.CalendarMonths = items.Keys.OrderBy(i => i).ToList();
       }
 
-      ViewBag.CalendarUrl = Calendar.GetCalendarUrl();
-
       return View();
+    }
+
+    public ActionResult Download()
+    {
+      var stream = System.IO.File.OpenRead(Calendar.Get(HttpContext).FilePath);
+      return File(stream, "text/calendar", "agenda.ics");
     }
 
   }

@@ -17,8 +17,6 @@ namespace dereddingsarknl.Controllers
 
     public ActionResult Show()
     {
-//      ViewBag.Title = "Een plek zijn waar God de Vader, Jezus Christus de Zoon en de Heilige Geest centraal staan.";
-
       using(MiniProfiler.Current.Step("Read calendar file"))
       {
         ViewBag.CalendarItems =
@@ -60,17 +58,17 @@ namespace dereddingsarknl.Controllers
     }
 
     [HttpPost]
-    public ActionResult SendMessage(string afzender, string naam, string bericht)
+    public ActionResult SendMessage(string afzender, string email, string bericht)
     {
-      var client = new System.Net.Mail.SmtpClient();
-      client.Send(new MailMessage(From_Address, From_Address,
-        "Bericht via dereddingsark.nl van " + naam,
+
+      var client = new System.Net.Mail.SmtpClient().Init();
+      client.Send(new MailMessage(From_Address, To_Address,
+        "Bericht via dereddingsark.nl van " + afzender,
         string.Format(@"Naam: {0} ({1})
 
-{1}", naam, afzender, bericht)));
+{2}", afzender, email, bericht)));
 
       StoreMessageInCookie("Uw bericht is verstuurd.");
-
       return RedirectToAction("Contact");
     }
 

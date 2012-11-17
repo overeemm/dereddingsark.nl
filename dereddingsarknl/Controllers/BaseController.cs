@@ -15,9 +15,16 @@ namespace dereddingsarknl.Controllers
   {
     protected const string Login_Cookie = "ark.login";
     protected const string Message_Cookie = "ark.msg";
-    protected const string From_Address = "dereddingsark@movereem.nl";
+    protected const string From_Address = "site@dereddingsark.nl";
+    protected const string To_Address = "info@dereddingsark.nl";
 
     protected User CurrentUser { get; private set; }
+
+    protected ViewResult PageNotFound()
+    {
+      Response.StatusCode = 404;
+      return View("Custom404");
+    }
 
     protected override void OnActionExecuting(ActionExecutingContext filterContext)
     {
@@ -49,6 +56,10 @@ namespace dereddingsarknl.Controllers
       if(CurrentUser == null || !CurrentUser.EnableProfiler)
       {
         MiniProfiler.Stop(true);
+      }
+      else
+      {
+        ViewBag.IncludeProfiler = true;
       }
     }
 

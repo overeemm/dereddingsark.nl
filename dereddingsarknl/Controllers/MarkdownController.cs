@@ -25,16 +25,9 @@ namespace dereddingsarknl.Controllers
 
     protected MarkdownFile GetMarkdownFile(string fileName)
     {
-      try
+      using(MiniProfiler.Current.Step("Read markdown file"))
       {
-        using(MiniProfiler.Current.Step("Read markdown file"))
-        {
-          return MarkdownFile.Create(HttpContext, BasePath, fileName);
-        }
-      }
-      catch(FileNotFoundException)
-      {
-        throw new HttpException(404, "Not found");
+        return MarkdownFile.Create(HttpContext, BasePath, fileName);
       }
     }
 

@@ -24,8 +24,8 @@
 <div class="row">
   <div class="twelve columns">
     <div class="twelve columns agendaics">
-      <p>Wilt u de agenda automatisch downloaden op uw smartphone? Gebruik dan de volgende link:</p>
-      <input type="text" value="@ViewBag.CalendarUrl" />
+      <p>Wilt u de agenda toevoegen aan Outlook, Google Calendar of uw Smartphone? Gebruik dan de volgende link:</p>
+      <input type="text" value="@String.Concat("http://www.dereddingsark.nl", Url.RouteUrl("CalendarICS"))" />
     </div>
   </div>
 </div>

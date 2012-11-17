@@ -57,6 +57,11 @@ namespace dereddingsarknl.Models
       _filePath = filePath;
     }
 
+    public string FilePath
+    {
+      get { return _filePath; }
+    }
+
     public IEnumerable<CalendarItem> Items
     {
       get

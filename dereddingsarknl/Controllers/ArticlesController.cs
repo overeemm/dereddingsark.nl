@@ -45,7 +45,7 @@ namespace dereddingsarknl.Controllers
 
         if(item == null)
         {
-          throw new HttpException(404, "Not found");
+          return PageNotFound();
         }
 
         return RedirectToActionPermanent("Artikel", "Articles", new { alias = item.Alias });
@@ -105,7 +105,14 @@ namespace dereddingsarknl.Controllers
 
     public ActionResult Artikel(string alias)
     {
-      AddMarkdownFileToViewBag(alias);
+      try
+      {
+        AddMarkdownFileToViewBag(alias);
+      }
+      catch(FileNotFoundException)
+      {
+        return PageNotFound();
+      }
       ViewBag.Artikelen = "active";
       return View("Artikel");
     }

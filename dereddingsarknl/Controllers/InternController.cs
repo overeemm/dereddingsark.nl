@@ -41,7 +41,7 @@ namespace dereddingsarknl.Controllers
       var pdffile = new DirectoryInfo(directory).GetFiles("*.pdf").FirstOrDefault(predicate);
       if(pdffile == null)
       {
-        throw new HttpException(404, "Not found");
+        return PageNotFound();
       }
       else
       {

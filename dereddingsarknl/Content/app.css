@@ -178,6 +178,7 @@ body, html {
 
 .menu.columns ul {
   margin-top: 0px;
+  float: right;
 }
 
 .menu.columns li {

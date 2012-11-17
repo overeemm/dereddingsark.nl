@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using StackExchange.Profiling;
 
 namespace dereddingsarknl.Controllers
 {
@@ -13,6 +14,9 @@ namespace dereddingsarknl.Controllers
     public ViewResult Unknown()
     {
       Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+
+      MiniProfiler.Stop(true);
+
       return View("Unknown");
     }
 
@@ -20,7 +24,10 @@ namespace dereddingsarknl.Controllers
     public ViewResult NotFound(string path)
     {
       Response.StatusCode = (int)HttpStatusCode.NotFound;
-      return View("NotFound", path);
+      
+      MiniProfiler.Stop(true);
+
+      return View("NotFound");
     }
   }
 }

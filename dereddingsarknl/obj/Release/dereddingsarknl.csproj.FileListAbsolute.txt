@@ -19,3 +19,5 @@ C:\Users\michiel\Documents\GitHub\dereddingsark.nl\dereddingsarknl\bin\Newtonsof
 C:\Users\michiel\Documents\GitHub\dereddingsark.nl\dereddingsarknl\bin\Elmah.dll
 C:\Users\michiel\Documents\GitHub\dereddingsark.nl\dereddingsarknl\bin\Elmah.Mvc.dll
 C:\Users\michiel\Documents\GitHub\dereddingsark.nl\dereddingsarknl\obj\Release\dereddingsarknl.csprojResolveAssemblyReference.cache
+C:\Users\michiel\Documents\GitHub\dereddingsark.nl\dereddingsarknl\bin\Glimpse.Core.dll
+C:\Users\michiel\Documents\GitHub\dereddingsark.nl\dereddingsarknl\bin\Glimpse.Mvc3.dll
