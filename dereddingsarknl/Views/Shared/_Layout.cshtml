@@ -14,6 +14,13 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
 
+  <meta property="og:image" content="http://www.dereddingsark.nl/facebook.jpg"></meta>
+  <meta property="og:title" content="@(string.IsNullOrEmpty(ViewBag.Title) ? "evangeliegemeente De Reddingsark" : ViewBag.Title)"></meta>
+  <meta property="og:url" content="@HttpContext.Current.Request.Url.AbsoluteUri"></meta>
+  <meta property="og:site_name" content="evangeliegemeente De Reddingsark"></meta>
+  <meta property="og:type" content="Website"></meta>
+  <meta property="og:description" content="@ViewBag.MetaDescription"></meta>
+
   <meta name="robots" content="index, follow" />
   <meta name="keywords" content="evangelie, gemeente, de reddingsark, ark, christus, jezus, christen, christendom, baarn, bunschoten, amersfoort, adelheidlaan, oostwende college" />
   <meta name="description" content="evangeliegemeente de reddingsark" />
@@ -180,8 +187,19 @@
   <script src="@Url.Content("~/Scripts/jquery.tooltips.min.js")"></script>
   <script src="@Url.Content("~/Scripts/app.min.js")"></script>
 
-  @if(ViewBag.IncludeProfiler){
-    MiniProfiler.RenderIncludes()
+  @if(ViewBag.IncludeProfiler != null && ViewBag.IncludeProfiler)
+  {
+    <!-- Start MiniProfiler-->
+    @MiniProfiler.RenderIncludes();
+    <!-- End MiniProfiler-->
+ 
+  }
+
+  @if(!string.IsNullOrEmpty(ViewBag.Message as string))
+  {
+    <!--  
+       @ViewBag.Message
+      -->
   }
 </body>
 </html>

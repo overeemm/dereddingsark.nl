@@ -34,7 +34,7 @@ namespace dereddingsarknl.Controllers
     public ActionResult Download()
     {
       var stream = System.IO.File.OpenRead(Calendar.Get(HttpContext).FilePath);
-      return File(stream, "text/calendar", "agenda.ics");
+      return File(stream, "text/calendar");
     }
 
   }

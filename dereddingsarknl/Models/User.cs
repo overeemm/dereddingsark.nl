@@ -16,11 +16,12 @@ namespace dereddingsarknl.Models
 
     public string Extras { get; private set; }
     public bool UserManager { get; private set; }
+    public bool AudioManager { get; private set; }
     public bool EnableProfiler { get; private set; }
 
-    public static string CreateIndexLine(string email, string name, string passwordHash, string salt)
+    public static string CreateIndexLine(string email, string name, string passwordHash, string salt, string extras)
     {
-      return string.Format("\"{0}\", \"{1}\", \"{2}\", \"{3}\"", email.Trim(), name.Trim(), passwordHash, salt);
+      return string.Format("\"{0}\", \"{1}\", \"{2}\", \"{3}\", \"{4}\"", email.Trim(), name.Trim(), passwordHash, salt, extras);
     }
 
     public static User Create(IEnumerable<string> indexLine)
@@ -35,6 +36,7 @@ namespace dereddingsarknl.Models
         Salt = indexLine.Skip(3).First(),
         Extras = extras,
         UserManager = extras.Contains("users"),
+        AudioManager = extras.Contains("audio"),
         EnableProfiler = extras.Contains("profiler")
       };
     }

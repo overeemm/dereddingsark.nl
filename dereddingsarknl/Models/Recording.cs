@@ -13,12 +13,12 @@ namespace dereddingsarknl.Models
       return ConfigurationManager.AppSettings["podcastiTunes"];
     }
 
-    public DateTime Date { get; private set; }
-    public string Title { get; private set; }
-    public string Url { get; private set; }
-    public string Category { get; private set; }
-    public string OldAlias { get; private set; }
-    public string Alias { get; private set; }
+    public DateTime Date { get; set; }
+    public string Title { get; set; }
+    public string Url { get; set; }
+    public string Category { get; set; }
+    public string OldAlias { get; set; }
+    public string Alias { get; set; }
 
     public static Recording CreateFromIndexLine(IEnumerable<string> i)
     {
@@ -29,7 +29,7 @@ namespace dereddingsarknl.Models
       {
         Date = Recording.ParseDate(i.Skip(3).First()),
         Title = i.Skip(1).First(),
-        Url = i.Skip(2).First(),
+        Url = i.Skip(2).First().Trim(),
         Alias = alias,
         OldAlias = oldalias,
         Category = i.First()
@@ -47,5 +47,13 @@ namespace dereddingsarknl.Models
       return new DateTime(int.Parse(year), int.Parse(month), int.Parse(date),
         int.Parse(hour), int.Parse(minutes), int.Parse(secondes));
     }
+
+    public string CreateIndexLine()
+    {
+      var dateString = string.IsNullOrEmpty(DateString) ?  Date.ToString("yyyyMMdd HH:mm:ss") : DateString;
+      return string.Format("\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\",\"{5}\"", Category, Title, Url, dateString, Alias, OldAlias);
+    }
+
+    public string DateString { get; set; }
   }
 }

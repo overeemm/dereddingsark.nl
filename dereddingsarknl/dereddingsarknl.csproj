@@ -56,30 +56,12 @@
     <Reference Include="Glimpse.Mvc3">
       <HintPath>..\packages\Glimpse.Mvc3.0.87\lib\net40\Glimpse.Mvc3.dll</HintPath>
     </Reference>
-    <Reference Include="Google.GData.AccessControl">
-      <HintPath>..\packages\Google.GData.AccessControl.2.1.0.0\lib\Google.GData.AccessControl.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.GData.Calendar">
-      <HintPath>..\packages\Google.GData.Calendar.2.1.0.0\lib\Google.GData.Calendar.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.GData.Client">
-      <HintPath>..\packages\Google.GData.Client.2.1.0.0\lib\Google.GData.Client.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.GData.Extensions">
-      <HintPath>..\packages\Google.GData.Extensions.2.1.0.0\lib\Google.GData.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.GData.Photos">
-      <HintPath>..\packages\Google.GData.Photos.2.1.0.0\lib\Google.GData.Photos.dll</HintPath>
-    </Reference>
     <Reference Include="MarkdownSharp">
       <HintPath>..\packages\MarkdownSharp.1.13.0.0\lib\35\MarkdownSharp.dll</HintPath>
     </Reference>
     <Reference Include="MiniProfiler, Version=2.0.2.0, Culture=neutral, PublicKeyToken=b44f9351044011a3, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\MiniProfiler.2.0.2\lib\net40\MiniProfiler.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.4.0.8\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -131,6 +113,7 @@
     <Compile Include="Models\SmtpClientExtensions.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Modules\CustomErrorMailModule.cs" />
+    <Compile Include="Modules\RemoveHeadersModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -183,6 +166,7 @@
     <Content Include="Content\Images\wrapper_t_l_bg.jpg" />
     <Content Include="Error.html" />
     <Content Include="Custom404.html" />
+    <Content Include="facebook.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <None Include="Properties\PublishProfiles\dereddingsark %40 movereem.nl.pubxml" />
@@ -191,6 +175,7 @@
     <None Include="Scripts\jquery-1.7.2.intellisense.js">
       <DependentUpon>jquery-1.7.2.js</DependentUpon>
     </None>
+    <Content Include="podcast.jpg" />
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\app.min.js">
       <DependentUpon>app.js</DependentUpon>
@@ -211,6 +196,8 @@
       <DependentUpon>jquery.tooltips.js</DependentUpon>
     </Content>
     <Content Include="Scripts\modernizr.foundation.js" />
+    <Content Include="twitter-background.png" />
+    <Content Include="twitter-profile-background.png" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -244,6 +231,7 @@
     <Content Include="Views\Articles\Feed.cshtml" />
     <Content Include="Views\Recordings\Single.cshtml" />
     <Content Include="Views\User\Show.cshtml" />
+    <Content Include="Views\User\CreateAPIToken.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -285,8 +273,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>2629</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>
-          </IISUrl>
+          <IISUrl>http://localhost/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -33,8 +33,6 @@ namespace dereddingsarknl.Controllers
 
     public ActionResult Single(string alias)
     {
-
-
       using(MiniProfiler.Current.Step("Read recording index"))
       {
         var item =
@@ -57,9 +55,32 @@ namespace dereddingsarknl.Controllers
       return View();
     }
 
+    [HttpPost]
+    public ActionResult Add(string name, string url, string datetime, string categorie)
+    {
+      if(CurrentUser == null || !CurrentUser.AudioManager)
+        return new HttpUnauthorizedResult("U heeft geen toegang tot deze pagina.");
+
+      var recording = new Recording()
+      {
+        Url = url,
+        Title = name,
+        OldAlias = "",
+        DateString = datetime,
+        Category = categorie,
+        Alias = Path.GetFileNameWithoutExtension(new Uri(url).LocalPath)
+      };
+
+      var index = Index.CreateAudioIndex(HttpContext);
+      index.Add(recording.CreateIndexLine());
+
+      return new EmptyResult();
+    }
+
     public ActionResult Show()
     {
       ViewBag.Title = "Opnames";
+      ViewBag.MetaDescription = "Opnames van samenkomsten en studies van de evangeliegemeente De Reddingsark";
 
       using(MiniProfiler.Current.Step("Read recording index"))
       {
@@ -90,6 +111,7 @@ namespace dereddingsarknl.Controllers
           .ToList();
 
         ViewBag.RecordingList = items;
+        ViewBag.PubDate = items.Select(r => r.Date).Max();
       }
 
       Response.ContentType = "text/xml";

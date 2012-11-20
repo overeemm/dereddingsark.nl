@@ -7,7 +7,6 @@ using System.Web;
 using System.Web.Mvc;
 using System.Xml.Linq;
 using dereddingsarknl.Models;
-using Google.GData.Photos;
 using StackExchange.Profiling;
 
 namespace dereddingsarknl.Controllers

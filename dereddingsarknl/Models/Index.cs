@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Caching;
 using System.IO;
 using System.Text;
 
@@ -9,6 +10,25 @@ namespace dereddingsarknl.Models
 {
   public class Index
   {
+    private static object lockObject = new object();
+
+    private static Index ReturnIndex(string path)
+    {
+      Index index = HttpContext.Current.Cache[path] as Index;
+      if(index == null)
+      {
+        lock(lockObject)
+        {
+          if(index == null)
+          {
+            index = new Index(path);
+            HttpContext.Current.Cache.Add(path, index, new CacheDependency(path), Cache.NoAbsoluteExpiration, Cache.NoSlidingExpiration, CacheItemPriority.Normal, null);
+          }
+        }
+      }
+      return index;
+    }
+
     public static Index CreateArticleIndex(HttpContextBase context)
     {
       string filePath = Path.Combine(Settings.GetDataFolder(context), "indexen/artikelen.csv");
@@ -18,7 +38,7 @@ namespace dereddingsarknl.Models
     public static Index CreateAudioIndex(HttpContextBase context)
     {
       string filePath = Path.Combine(Settings.GetDataFolder(context), "indexen/audio.csv");
-      return new Index(filePath);
+      return ReturnIndex(filePath);
     }
 
     public static Index CreatePhotoAlbumIndex(HttpContextBase context)
@@ -48,7 +68,7 @@ namespace dereddingsarknl.Models
 
     private void ParseCSV(string filename)
     {
-      foreach (string line in File.ReadAllLines(filename))
+      foreach(string line in File.ReadAllLines(filename))
       {
         _contents.Add(line.Split(',').Select(vl => vl.Trim().Trim('"')).ToList());
       }
@@ -78,7 +98,10 @@ namespace dereddingsarknl.Models
 
     public void Add(string newLine)
     {
-      System.IO.File.AppendAllLines(_filename, new string[] { newLine });
+      lock(lockObject)
+      {
+        System.IO.File.AppendAllLines(_filename, new string[] { newLine });
+      }
     }
 
     public bool Contains(Predicate<IEnumerable<string>> predicate)

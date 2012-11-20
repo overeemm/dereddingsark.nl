@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "API Token";
+}
+
+<div class="row">
+  <div class="six columns">
+      <form method="post" action="@Url.Action("CreateAPIToken", "User")">
+      <input type="text" name="email" placeholder="e-mail adres" value="@ViewBag.Email"></input>
+      <input type="password" name="password" placeholder="wachtwoord"></input>
+      <input type="submit" class="secondary small button" value="genereer API token" />
+      </form>
+      
+      <hr />
+      
+      @if(!string.IsNullOrEmpty(ViewBag.Message))
+      {
+        <span>@ViewBag.Message</span>
+        
+        if(ViewBag.Token != null)
+        {
+          <input type="text" name="guid" placeholder="gebruikers guid" title="gebruikers guid" value="@ViewBag.Token.Item1"></input>
+          <input type="text" name="token" placeholder="token" title="token" value="@ViewBag.Token.Item2"></input>
+        }
+      }
+  </div>
+</div>
+

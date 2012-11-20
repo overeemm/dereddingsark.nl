@@ -41,6 +41,18 @@ namespace dereddingsarknl.Controllers
         catch { }
       }
 
+      var userguid = filterContext.HttpContext.Request.Headers["X-UserGuid"];
+      var token = filterContext.HttpContext.Request.Headers["X-Token"];
+      if(!string.IsNullOrEmpty(userguid) && !string.IsNullOrEmpty(token))
+      {
+        try
+        {
+          var user = ValidateAPIToken(userguid, token);
+          ViewBag.CurrentUser = CurrentUser = user;
+        }
+        catch { }
+      }
+
       var msgcookie = filterContext.HttpContext.Request.Cookies[Message_Cookie];
       if(msgcookie != null)
       {
@@ -108,6 +120,20 @@ namespace dereddingsarknl.Controllers
       return item != null ? GetUserFromTokenFile(file.Name) : null;
     }
 
+    protected User ValidateAPIToken(string guid, string token)
+    {
+      string tokenDir = Path.Combine(Settings.GetDataFolder(HttpContext), "gebruikers\\tokens");
+      var file = new DirectoryInfo(tokenDir)
+                .GetFiles()
+                .First(f => f.Name.EndsWith(guid));
+
+      var tokenIndex = new Index(file.FullName);
+      var item = tokenIndex.Items
+                  .FirstOrDefault(i => i.First() == "API" && i.Skip(1).First() == token);
+
+      return item != null ? GetUserFromTokenFile(file.Name) : null;
+    }
+
     protected void RemoveCookieAndToken(User user)
     {
       var cookie = Request.Cookies[Login_Cookie];
@@ -144,6 +170,28 @@ namespace dereddingsarknl.Controllers
       responsecookie.Value = "";
       responsecookie.Expires = DateTime.Now.AddDays(-1);
       Response.Cookies.Add(responsecookie);
+    }
+
+    /// <summary>
+    /// Genereer voor de gegeven gebruiker een speciaal, eeuwig durend token.
+    /// </summary>
+    /// <param name="user"></param>
+    /// <returns></returns>
+    protected Tuple<string, string> GenerateAndStoreAPIToken(User user)
+    {
+      var token = GenerateSalt();
+      var generated = DateTime.UtcNow.ToString("yyyyMMddTHH:mm:ss");
+      var guid = GetGuidFromUser(user);
+
+      var tokenFileName = user.Email.Replace("@", "-") + "__" + guid;
+        var tokenFile = Path.Combine(Settings.GetDataFolder(HttpContext), "gebruikers\\tokens", tokenFileName);
+        System.IO.File.CreateText(tokenFile).Close();
+        System.IO.File.AppendAllLines(tokenFile,
+              new string[] { 
+              string.Format("\"{0}\", \"{1}\", \"{2}\"", "API", token, generated) 
+            });
+
+        return new Tuple<string, string>(guid, token);
     }
 
     protected void StoreCookieAndToken(HttpCookie cookie, User user)

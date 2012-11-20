@@ -11,14 +11,26 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAADNhXxNOAdk6f1VieuWsDIAAAAAACAAAAAAAQZgAAAAEAACAAAAAnokxWUwjnXxoDCrH537E3ZmgWSqcszv9054FMFSSPSgAAAAAOgAAAAAIAACAAAADgxaU0IDbM7kYT/+7xPQmAoiv4svqZMcYClvP9cf7E5yAAAABT6b7JGc7O5uW8vA3KTKrkXQn+N1YX/nQsgeNaYcPES0AAAABF/81326U5Htpt8Kqfrj2QValHw7NBoMRmxDja5FCmKrZpYYB3P8raIT2gtU+rJJ8WucFwjwuWZnyzfVGpl/rV</EncryptedPassword>
   </PropertyGroup>
   <ItemGroup>
+    <File Include="App_Readme/glimpse.mvc3.readme.txt">
+      <publishTime>11/17/2012 13:13:19</publishTime>
+    </File>
+    <File Include="App_Readme/glimpse.readme.txt">
+      <publishTime>11/17/2012 13:13:17</publishTime>
+    </File>
     <File Include="bin/dereddingsarknl.dll">
-      <publishTime>10/20/2012 20:13:24</publishTime>
+      <publishTime>11/17/2012 14:05:41</publishTime>
     </File>
     <File Include="bin/Elmah.dll">
       <publishTime>08/23/2012 23:09:50</publishTime>
     </File>
     <File Include="bin/Elmah.Mvc.dll">
       <publishTime>08/23/2012 23:09:50</publishTime>
+    </File>
+    <File Include="bin/Glimpse.Core.dll">
+      <publishTime>11/17/2012 13:13:16</publishTime>
+    </File>
+    <File Include="bin/Glimpse.Mvc3.dll">
+      <publishTime>11/17/2012 13:13:16</publishTime>
     </File>
     <File Include="bin/Google.GData.AccessControl.dll">
       <publishTime>07/07/2012 13:21:50</publishTime>
@@ -45,22 +57,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/07/2012 13:21:50</publishTime>
     </File>
     <File Include="Content/app.css">
-      <publishTime>10/26/2012 21:26:31</publishTime>
+      <publishTime>11/15/2012 23:12:21</publishTime>
     </File>
     <File Include="Content/app.min.css">
-      <publishTime>10/26/2012 21:27:21</publishTime>
+      <publishTime>11/17/2012 14:05:42</publishTime>
     </File>
     <File Include="Content/foundation.css">
       <publishTime>09/11/2012 20:29:31</publishTime>
     </File>
     <File Include="Content/foundation.min.css">
-      <publishTime>10/26/2012 21:27:21</publishTime>
+      <publishTime>11/17/2012 14:05:42</publishTime>
     </File>
     <File Include="Content/ie.css">
       <publishTime>07/05/2012 20:29:54</publishTime>
     </File>
     <File Include="Content/ie.min.css">
-      <publishTime>10/26/2012 21:27:21</publishTime>
+      <publishTime>11/17/2012 14:05:42</publishTime>
     </File>
     <File Include="Content/Images/arrow-baarn.png">
       <publishTime>06/30/2012 13:53:04</publishTime>
@@ -180,10 +192,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/13/2012 21:11:30</publishTime>
     </File>
     <File Include="Custom404.html">
-      <publishTime>10/20/2012 19:37:48</publishTime>
+      <publishTime>11/15/2012 22:58:38</publishTime>
     </File>
     <File Include="Error.html">
-      <publishTime>10/20/2012 19:37:44</publishTime>
+      <publishTime>11/16/2012 21:32:43</publishTime>
     </File>
     <File Include="favicon.ico">
       <publishTime>04/14/2012 10:20:54</publishTime>
@@ -192,19 +204,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/13/2012 20:59:53</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>08/23/2012 23:09:51</publishTime>
+      <publishTime>11/17/2012 13:13:20</publishTime>
     </File>
     <File Include="Scripts/app.js">
       <publishTime>10/20/2012 13:37:24</publishTime>
     </File>
     <File Include="Scripts/app.min.js">
-      <publishTime>10/26/2012 21:27:21</publishTime>
+      <publishTime>11/17/2012 14:05:41</publishTime>
     </File>
     <File Include="Scripts/jquery-1.7.2.js">
       <publishTime>07/05/2012 20:26:43</publishTime>
     </File>
     <File Include="Scripts/jquery-1.7.2.min.js">
-      <publishTime>10/26/2012 21:27:21</publishTime>
+      <publishTime>11/17/2012 14:05:42</publishTime>
     </File>
     <File Include="Scripts/jquery.customforms.js">
       <publishTime>07/05/2012 20:29:51</publishTime>
@@ -213,7 +225,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/05/2012 20:29:52</publishTime>
     </File>
     <File Include="Scripts/jquery.orbit-1.4.0.min.js">
-      <publishTime>10/26/2012 21:27:21</publishTime>
+      <publishTime>11/17/2012 14:05:42</publishTime>
     </File>
     <File Include="Scripts/jquery.placeholder.min.js">
       <publishTime>07/05/2012 20:29:52</publishTime>
@@ -225,7 +237,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/05/2012 20:29:53</publishTime>
     </File>
     <File Include="Scripts/jquery.tooltips.min.js">
-      <publishTime>10/26/2012 21:27:21</publishTime>
+      <publishTime>11/17/2012 14:05:42</publishTime>
     </File>
     <File Include="Scripts/modernizr.foundation.js">
       <publishTime>07/05/2012 20:29:53</publishTime>
@@ -249,7 +261,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/09/2012 19:15:30</publishTime>
     </File>
     <File Include="Views/Calendar/Show.cshtml">
-      <publishTime>08/20/2012 20:59:44</publishTime>
+      <publishTime>11/16/2012 21:48:49</publishTime>
     </File>
     <File Include="Views/Error/NotFound.cshtml">
       <publishTime>08/22/2012 19:16:18</publishTime>
@@ -264,13 +276,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/20/2012 13:13:24</publishTime>
     </File>
     <File Include="Views/Intern/Show.cshtml">
-      <publishTime>10/20/2012 00:35:24</publishTime>
+      <publishTime>11/04/2012 20:01:15</publishTime>
     </File>
     <File Include="Views/PhotoAlbums/Show.cshtml">
       <publishTime>07/07/2012 22:45:27</publishTime>
     </File>
     <File Include="Views/Recordings/Podcast.cshtml">
-      <publishTime>09/09/2012 19:37:03</publishTime>
+      <publishTime>11/16/2012 22:30:34</publishTime>
     </File>
     <File Include="Views/Recordings/Show.cshtml">
       <publishTime>10/20/2012 00:00:57</publishTime>
@@ -279,13 +291,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/09/2012 20:07:52</publishTime>
     </File>
     <File Include="Views/Shared/Custom404.cshtml">
-      <publishTime>08/22/2012 19:16:02</publishTime>
+      <publishTime>11/16/2012 22:57:50</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>10/20/2012 19:37:51</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>10/26/2012 21:25:19</publishTime>
+      <publishTime>11/17/2012 13:44:23</publishTime>
     </File>
     <File Include="Views/User/Add.cshtml">
       <publishTime>07/22/2012 20:47:04</publishTime>
@@ -296,6 +308,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/User/SetPassword.cshtml">
       <publishTime>08/26/2012 22:38:05</publishTime>
     </File>
+    <File Include="Views/User/Show.cshtml">
+      <publishTime>11/04/2012 20:47:38</publishTime>
+    </File>
     <File Include="Views/Web.config">
       <publishTime>04/13/2012 20:50:35</publishTime>
     </File>
@@ -303,7 +318,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/13/2012 20:59:53</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>10/26/2012 21:27:24</publishTime>
+      <publishTime>11/17/2012 14:05:43</publishTime>
     </File>
   </ItemGroup>
 </Project>

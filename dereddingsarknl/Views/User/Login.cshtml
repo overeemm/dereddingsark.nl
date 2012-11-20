@@ -8,27 +8,35 @@
     {
           
       <form method="post" action="@Url.Action("Logout", "User")">
-      <input type="submit" class="secondary small button" value="uitloggen" />
-      <input type="hidden" name="referrer" value="@ViewBag.Referrer" />
+        <input type="submit" class="secondary small button" value="uitloggen" />
+        <input type="hidden" name="referrer" value="@Url.Action("Login")" />
       </form>
       
       <hr />
       
       <form method="post" action="@Url.Action("StoreUpdate", "User")">
-      <input type="password" name="password" placeholder="nieuw wachtwoord"></input>
-      <input type="password" name="password2" placeholder="herhaal wachtwoord"></input>
-      <input type="submit" class="secondary small button" value="verander wachtwoord" />
-      <input type="hidden" name="referrer" value="@ViewBag.Referrer" />
+        <input type="password" name="password" placeholder="nieuw wachtwoord"></input>
+        <input type="password" name="password2" placeholder="herhaal wachtwoord"></input>
+        <input type="submit" class="secondary small button" value="verander wachtwoord" />
+        <input type="hidden" name="referrer" value="@Url.Action("Login")" />
       </form>
     }
     else
     {
       <form method="post" action="@Url.Action("Login", "User")">
-      <input type="text" name="email" placeholder="e-mail adres"></input>
-      <input type="password" name="password" placeholder="wachtwoord"></input>
-      <input type="submit" class="secondary small button" value="inloggen"></input>
-      <input type="hidden" name="referrer" value="@ViewBag.Referrer" />
+        <input type="text" name="email" placeholder="e-mail adres"></input>
+        <input type="password" name="password" placeholder="wachtwoord"></input>
+        <input type="submit" class="secondary small button" value="inloggen"></input>
+        <input type="hidden" name="referrer" value="@Url.Action("Login")" />
+
+        <input type="submit" name="reset" class="secondary small button reset" value="wachtwoord vergeten" />
       </form>
     }
+
+    @if(!string.IsNullOrEmpty(ViewBag.Message as string))
+    {
+      <span class="error">@ViewBag.Message</span>
+    }
+
   </div>
 </div>

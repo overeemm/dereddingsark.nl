@@ -16,6 +16,9 @@ namespace dereddingsarknl.Controllers
     [HttpPost]
     public ActionResult StoreNewBulk(string userlist, string sendmail, string sync)
     {
+      if((CurrentUser == null || !CurrentUser.UserManager) && GetUserCount() > 0)
+        return new HttpUnauthorizedResult("U heeft geen toegang tot deze pagina.");
+
       using(MiniProfiler.Current.Step("Store new users"))
       {
         var users = Index.CreateUserIndex(HttpContext);
@@ -38,8 +41,11 @@ namespace dereddingsarknl.Controllers
     }
 
     [HttpPost]
-    public ActionResult StoreNew(string name, string email)
+    public ActionResult StoreNew(string name, string email, string extras)
     {
+      if((CurrentUser == null || !CurrentUser.UserManager) && GetUserCount() > 0)
+        return new HttpUnauthorizedResult("U heeft geen toegang tot deze pagina.");
+
       using(MiniProfiler.Current.Step("Check uniqueness user and write if unique"))
       {
         var users = Index.CreateUserIndex(HttpContext);
@@ -54,7 +60,7 @@ namespace dereddingsarknl.Controllers
           string salt = GenerateSalt();
           string passwordHash = HashPassword(password, salt);
 
-          users.Add(dereddingsarknl.Models.User.CreateIndexLine(email, name, passwordHash, salt));
+          users.Add(dereddingsarknl.Models.User.CreateIndexLine(email, name, passwordHash, salt, extras));
 
           string token = Guid.NewGuid().ToString("N");
           StoreResetToken(email, token);
@@ -96,7 +102,7 @@ U kunt uw e-mailadres instellen via de url {1}", email, reseturl)));
         var indexLine = string.Format("\"{0}\", \"{1}\", \"{2}\", \"{3}\"", user.Email, user.Name, passwordHash, salt);
 
         var users = Index.CreateUserIndex(HttpContext);
-        users.Update( i => i.First().Equals(user.Email, StringComparison.InvariantCultureIgnoreCase)
+        users.Update(i => i.First().Equals(user.Email, StringComparison.InvariantCultureIgnoreCase)
                     , indexLine);
       }
       return Redirect(referrer);
@@ -156,6 +162,41 @@ U kunt uw e-mailadres instellen via de url {1}", email, reseturl)));
       return View();
     }
 
+    public ActionResult CreateAPIToken(string email, string password)
+    {
+      if(CurrentUser == null || !CurrentUser.UserManager)
+        return new HttpUnauthorizedResult("U heeft geen toegang tot deze pagina.");
+
+      if(Request.RequestType == "GET")
+      {
+        return View();
+      }
+      else
+      {
+        ViewBag.Email = email;
+        var user = GetUserFromEmail(email);
+        if(user == null)
+        {
+          ViewBag.Message = "Gebruiker is onbekend.";
+          return View();
+        }
+        else
+        {
+          if(user.PasswordHash == HashPassword(password, user.Salt))
+          {
+            ViewBag.Message = "API token gemaakt.";
+            ViewBag.Token = GenerateAndStoreAPIToken(user);
+            return View();
+          }
+          else
+          {
+            ViewBag.Message = "Wachtwoord is fout";
+            return View();
+          }
+        }
+      }
+    }
+
     public ActionResult Login(string email, string password, string referrer, string inloggen, string reset)
     {
       if(!string.IsNullOrEmpty(reset))
@@ -174,7 +215,7 @@ U kunt uw e-mailadres instellen via de url {1}", email, reseturl)));
           var user = GetUserFromEmail(email);
           if(user == null)
           {
-            StoreMessageInCookie("Het e-mailadres is niet bekend, of het ingevoerde wachtwoord is fout.");
+            StoreMessageInCookie("Het e-mailadres is niet bekend of het ingevoerde wachtwoord is fout.");
             return Redirect(referrer);
           }
           else
@@ -191,7 +232,7 @@ U kunt uw e-mailadres instellen via de url {1}", email, reseturl)));
             }
             else
             {
-              StoreMessageInCookie("Het e-mailadres is niet bekend, of het ingevoerde wachtwoord is fout.");
+              StoreMessageInCookie("Het e-mailadres is niet bekend of het ingevoerde wachtwoord is fout.");
               return Redirect(referrer);
             }
           }
@@ -201,7 +242,7 @@ U kunt uw e-mailadres instellen via de url {1}", email, reseturl)));
 
     public ActionResult Show(string emailtaken)
     {
-      if(CurrentUser == null || !CurrentUser.UserManager)
+      if((CurrentUser == null || !CurrentUser.UserManager) && GetUserCount() > 0)
         return new HttpUnauthorizedResult("U heeft geen toegang tot deze pagina.");
 
       ViewBag.EmailTaken = emailtaken;

@@ -51,7 +51,7 @@ namespace dereddingsarknl
       routes.MapRoute("CalendarICS", "agenda.ics", new { controller = "Calendar", action = "Download" });
       routes.MapRoute("Calendar", "agenda", new { controller = "Calendar", action = "Show" });
 
-
+      routes.MapRoute("RecordingAdd", "audio/add", new { controller = "Recordings", action = "Add" });
       routes.MapRoute("RecordingsOldStyle", "audio/{cat}/{alias}", new { controller = "Recordings", action = "OldPermaLinks" });
       routes.MapRoute("RecordingPermaLink", "audio/{alias}", new { controller = "Recordings", action = "Single" });
       routes.MapRoute("Recordings", "audio", new { controller = "Recordings", action = "Show" });
@@ -78,7 +78,8 @@ namespace dereddingsarknl
       routes.MapRoute("UserLogout", "user/logout", new { controller = "User", action = "Logout" });
       routes.MapRoute("UserResetPassword", "user/resetpassword", new { controller = "User", action = "ResetPassword" });
       routes.MapRoute("UserPassword", "user/setpassword", new { controller = "User", action = "SetPassword" });
-
+      routes.MapRoute("UserCreateAPIToken", "user/apitoken", new { controller = "User", action = "CreateAPIToken" });
+      
       routes.MapRoute("404PageNotFound", "{*url}", new { controller = "Error", action = "NotFound" });
     }
 
@@ -88,6 +89,8 @@ namespace dereddingsarknl
 
       RegisterGlobalFilters(GlobalFilters.Filters);
       RegisterRoutes(RouteTable.Routes);
+
+      MvcHandler.DisableMvcResponseHeader = true; 
     }
 
     protected void Application_Error(object sender, EventArgs e)
