@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Xml.Linq;
 using dereddingsarknl.Models;
+using dereddingsarknl.Extensions;
 using StackExchange.Profiling;
 
 namespace dereddingsarknl.Controllers
@@ -30,21 +31,8 @@ namespace dereddingsarknl.Controllers
 
       using(MiniProfiler.Current.Step("Read random 20 foto's from one album"))
       {
-        var albumIndex = Index.CreatePhotoAlbumIndex(HttpContext);
-        var albums = albumIndex.Items.Select(l => l.First()).ToList();
-
-        var randId = albums[random.Next(albums.Count)];
-        var xml = Path.Combine(Settings.GetDataFolder(HttpContext), "fotos", randId + ".xml");
-
-        var album = new PhotoAlbum(XDocument.Load(xml));
-
-        List<Photo> photos = new List<Photo>();
-        List<Photo> chooseFrom = album.Photos.Where(p => p.Width > p.Height).ToList();
-        while(photos.Count < 10)
-        {
-          photos.Add(chooseFrom.Skip(random.Next(chooseFrom.Count() - 1)).First());
-        }
-        ViewBag.Photos = photos;
+        var album = GetAlbum("", "Frontpage", "Frontpage");
+        ViewBag.Photos = album.Photos.TakeRandom(20).ToList();
       }
 
       ViewBag.CalendarUrl = Calendar.GetCalendarUrl();

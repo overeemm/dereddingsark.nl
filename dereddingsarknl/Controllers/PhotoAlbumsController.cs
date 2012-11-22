@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Xml.Linq;
 using dereddingsarknl.Models;
+using dereddingsarknl.Extensions;
 using StackExchange.Profiling;
 
 namespace dereddingsarknl.Controllers
@@ -20,8 +21,9 @@ namespace dereddingsarknl.Controllers
 
       using(MiniProfiler.Current.Step("Get photolist"))
       {
-        var album = GetAlbum(id, name);
-        return Json(album.Photos.Take(40), JsonRequestBehavior.AllowGet);
+        var albumIndex = Index.CreatePhotoAlbumIndex(HttpContext);
+        var album = albumIndex.Items.Select(l => GetAlbum(l.First(), l.Skip(1).First(), l.Skip(2).First())).First(a => a.Id == id);
+        return Json(album.Photos.TakeRandom(40), JsonRequestBehavior.AllowGet);
       }
     }
 
@@ -36,7 +38,7 @@ namespace dereddingsarknl.Controllers
 
         ViewBag.Title = "In blik in onze gemeente";
         ViewBag.Fotos = "active";
-        ViewBag.Albums = albumIndex.Items.Select(l => GetAlbum(l.First(), l.Skip(1).First())).ToList();
+        ViewBag.Albums = albumIndex.Items.Select(l => GetAlbum(l.First(), l.Skip(1).First(), l.Skip(2).First())).ToList();
       }
 
       return View();

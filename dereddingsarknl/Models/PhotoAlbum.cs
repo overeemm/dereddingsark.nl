@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Xml.Linq;
@@ -15,31 +16,48 @@ namespace dereddingsarknl.Models
     XNamespace _atom = "http://www.w3.org/2005/Atom";
     XNamespace _gphoto = "http://schemas.google.com/photos/2007";
 
-    public PhotoAlbum(XDocument content)
+    private DirectoryInfo _folder;
+    private List<Photo> _photos;
+    private Photo _thumb;
+
+    public PhotoAlbum(string id, string name, XDocument content)
     {
+      Id = id;
+      Name = name;
       _content = content;
-      Count = Photos.Count();
+      _photos = _content.Element(_atom + "feed").Elements(_atom + "entry")
+            .Select(e => new Photo(
+              e.Element(_atom + "content").Attribute("src").Value
+            )).ToList();
+      SetThumb();
     }
 
-    public int Count { get; private set; }
+    public PhotoAlbum(string id, string name, string folder)
+    {
+      Id = id;
+      Name = name;
+      _folder = new DirectoryInfo(folder);
+      _photos = _folder.GetFiles("*.jpg").Select(f => new Photo("/Content/Fotos/" + Name + "/" + f.Name)).ToList();
+      SetThumb();
+    }
 
-    public string Name { get; set; }
+    private void SetThumb()
+    {
+      var rand = new Random();
+      _thumb = _photos[rand.Next(_photos.Count)];
+    }
 
-    public string Id { get; set; }
+    public int Count { get { return _photos.Count; } }
+
+    public string Name { get; private set; }
+
+    public string Id { get; private set; }
 
     public string Thumbnail
     {
       get
       {
-        return _content.Element(_atom + "feed").Element(_atom + "icon").Value;
-      }
-    }
-
-    public string Url
-    {
-      get
-      {
-        return _content.Element("feed").Elements("link").FirstOrDefault(e => e.Attribute("rel").Value == "alternate" && e.Attribute("type").Value == "text/html").Value;
+        return _thumb.Url;
       }
     }
 
@@ -47,27 +65,17 @@ namespace dereddingsarknl.Models
     {
       get
       {
-        return _content.Element(_atom + "feed").Elements(_atom + "entry")
-          .Select(e => new Photo(
-            e.Element(_atom + "content").Attribute("src").Value,
-            int.Parse(e.Element(_gphoto + "width").Value),
-            int.Parse(e.Element(_gphoto + "height").Value)
-          ));
+        return _photos;
       }
     }
   }
 
   public class Photo
   {
-    public Photo(string url, int width, int height)
+    public Photo(string url)
     {
       Url = url;
-      Width = width;
-      Height = height;
     }
-
-    public int Width { get; private set; }
-    public int Height { get; private set; }
 
     public string Url { get; private set; }
   }

@@ -99,19 +99,19 @@
         @if(ViewBag.CurrentUser != null)
         {
           <div class="gebruiker inactive open">
-            <a href="@Url.Action("Login", "User")" class="icon">@ViewBag.CurrentUser.Name</a>
+            <a href="@Url.AbsoluteHttpsAction("Login", "User")" class="icon">@ViewBag.CurrentUser.Name</a>
           </div>
           
           <div class="gebruiker active close">
 
-            <form method="post" action="@Url.Action("Logout", "User")">
+            <form method="post" action="@Url.AbsoluteHttpsAction("Logout", "User")">
               <input type="submit" class="secondary small button" value="uitloggen" />
               <input type="hidden" name="referrer" value="@HttpContext.Current.Request.Url.AbsoluteUri" />
             </form>
 
             <hr />
 
-            <form method="post" action="@Url.Action("StoreUpdate", "User")">
+            <form method="post" action="@Url.AbsoluteHttpsAction("StoreUpdate", "User")">
               <input type="password" name="password" placeholder="nieuw wachtwoord"></input>
               <input type="password" name="password2" placeholder="herhaal wachtwoord"></input>
               <input type="submit" class="secondary small button" value="verander wachtwoord" />
@@ -125,18 +125,18 @@
               Uw gegevens worden dan overal gewijzigd.
             </p>
 
-            <a href="@Url.Action("Login", "User")" class="icon">@ViewBag.CurrentUser.Name</a>
+            <a href="@Url.AbsoluteHttpsAction("Login", "User")" class="icon">@ViewBag.CurrentUser.Name</a>
           </div>
         }
         else if(false)
         {
           <div class="inloggen inactive @(string.IsNullOrEmpty(ViewBag.Message as string) ? "open" : "close")">
-            <a href="@Url.Action("Login", "User")" class="icon">inloggen</a>
+            <a href="@Url.AbsoluteHttpsAction("Login", "User")" class="icon">inloggen</a>
           </div>
           
           <div class="inloggen active @(!string.IsNullOrEmpty(ViewBag.Message as string) ? "open" : "close")">
 
-            <form method="post" action="@Url.Action("Login", "User")">
+            <form method="post" action="@Url.AbsoluteHttpsAction("Login", "User")">
               <input type="text" name="email" placeholder="e-mail adres"></input>
               <input type="password" name="password" placeholder="wachtwoord"></input>
               <input type="submit" name="inloggen" class="secondary small button" value="inloggen"></input>
@@ -157,7 +157,7 @@
             bij de broederraad en vraag om inloggegevens.
             </p>
 
-            <a href="@Url.Action("Login", "User")" class="icon">inloggen</a>
+            <a href="@Url.AbsoluteHttpsAction("Login", "User")" class="icon">inloggen</a>
           </div>
         }
       </div>

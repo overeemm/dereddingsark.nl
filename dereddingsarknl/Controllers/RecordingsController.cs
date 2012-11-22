@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using dereddingsarknl.Attributes;
 using dereddingsarknl.Models;
 using StackExchange.Profiling;
 
@@ -56,6 +57,7 @@ namespace dereddingsarknl.Controllers
     }
 
     [HttpPost]
+    [ApiAction]
     public ActionResult Add(string name, string url, string datetime, string categorie)
     {
       if(CurrentUser == null || !CurrentUser.AudioManager)

@@ -59,7 +59,7 @@ namespace dereddingsarknl.Controllers
       using(MiniProfiler.Current.Step("Read photoalbums"))
       {
         var albumIndex = Index.CreatePhotoAlbumIndex(HttpContext);
-        ViewBag.Albums = albumIndex.Items.Select(l => GetAlbum(l.First(), l.Skip(1).First())).ToList();
+        ViewBag.Albums = albumIndex.Items.Select(l => GetAlbum(l.First(), l.Skip(1).First(), l.Skip(2).First())).ToList();
       }
 
       using(MiniProfiler.Current.Step("contactbladen"))

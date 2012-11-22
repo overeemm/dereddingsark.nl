@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Xml.Linq;
 using dereddingsarknl.Models;
+using dereddingsarknl.Extensions;
 using StackExchange.Profiling;
 
 namespace dereddingsarknl.Controllers
@@ -82,7 +83,7 @@ namespace dereddingsarknl.Controllers
         StoreCookieAndToken(filterContext.HttpContext.Request.Cookies[Login_Cookie], CurrentUser);
       }
 
-      if(filterContext.Result is HttpUnauthorizedResult && !filterContext.HttpContext.Request.IsAjaxRequest())
+      if(filterContext.Result is HttpUnauthorizedResult && !filterContext.HttpContext.Request.IsAjaxRequest() && !filterContext.ActionDescriptor.IsApiAction())
       {
         filterContext.Result = RedirectToAction("Login", "User");
       }
@@ -349,20 +350,17 @@ namespace dereddingsarknl.Controllers
       }
     }
 
-    protected PhotoAlbum GetAlbum(string id, string name)
+    protected PhotoAlbum GetAlbum(string id, string name, string folder)
     {
-      var xml = Path.Combine(Settings.GetDataFolder(HttpContext), "fotos", id + ".xml");
-
-      if(!System.IO.File.Exists(xml))
+      //var xml = Path.Combine(Settings.GetDataFolder(HttpContext), "fotos", id + ".xml");
+      var folderPath = Path.Combine(Settings.GetContentFolder(HttpContext), "fotos", folder);
+      
+      if(!System.IO.Directory.Exists(folderPath))
       {
         throw new HttpException(404, "Album " + id + " bestaat niet.");
       }
 
-      return new PhotoAlbum(XDocument.Load(xml))
-      {
-        Id = id,
-        Name = name
-      };
+      return new PhotoAlbum(id, name, folderPath);
     }
   }
 }

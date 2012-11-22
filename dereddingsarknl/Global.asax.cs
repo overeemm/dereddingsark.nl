@@ -31,6 +31,14 @@ namespace dereddingsarknl
 
     protected void Application_BeginRequest()
     {
+      if(!Request.Url.Host.StartsWith("www", StringComparison.InvariantCultureIgnoreCase) && !Request.Url.Host.StartsWith("localhost", StringComparison.InvariantCultureIgnoreCase))
+      {
+        Response.Clear();
+        Response.AddHeader("Location", String.Format("{0}://www.{1}{2}", Request.Url.Scheme, Request.Url.Host, Request.Url.PathAndQuery));
+        Response.StatusCode = 301;
+        Response.End();
+      }
+
       MiniProfiler.Start();
       SmtpClientExtensions.InitSettings(HttpContext.Current);
     }
@@ -79,7 +87,7 @@ namespace dereddingsarknl
       routes.MapRoute("UserResetPassword", "user/resetpassword", new { controller = "User", action = "ResetPassword" });
       routes.MapRoute("UserPassword", "user/setpassword", new { controller = "User", action = "SetPassword" });
       routes.MapRoute("UserCreateAPIToken", "user/apitoken", new { controller = "User", action = "CreateAPIToken" });
-      
+
       routes.MapRoute("404PageNotFound", "{*url}", new { controller = "Error", action = "NotFound" });
     }
 
@@ -90,7 +98,7 @@ namespace dereddingsarknl
       RegisterGlobalFilters(GlobalFilters.Filters);
       RegisterRoutes(RouteTable.Routes);
 
-      MvcHandler.DisableMvcResponseHeader = true; 
+      MvcHandler.DisableMvcResponseHeader = true;
     }
 
     protected void Application_Error(object sender, EventArgs e)

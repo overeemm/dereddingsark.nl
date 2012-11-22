@@ -7,14 +7,14 @@
     @if(ViewBag.CurrentUser != null)
     {
           
-      <form method="post" action="@Url.Action("Logout", "User")">
+      <form method="post" action="@Url.AbsoluteHttpsAction("Logout", "User")">
         <input type="submit" class="secondary small button" value="uitloggen" />
         <input type="hidden" name="referrer" value="@Url.Action("Login")" />
       </form>
       
       <hr />
       
-      <form method="post" action="@Url.Action("StoreUpdate", "User")">
+      <form method="post" action="@Url.AbsoluteHttpsAction("StoreUpdate", "User")">
         <input type="password" name="password" placeholder="nieuw wachtwoord"></input>
         <input type="password" name="password2" placeholder="herhaal wachtwoord"></input>
         <input type="submit" class="secondary small button" value="verander wachtwoord" />
@@ -23,7 +23,7 @@
     }
     else
     {
-      <form method="post" action="@Url.Action("Login", "User")">
+      <form method="post" action="@Url.AbsoluteHttpsAction("Login", "User")">
         <input type="text" name="email" placeholder="e-mail adres"></input>
         <input type="password" name="password" placeholder="wachtwoord"></input>
         <input type="submit" class="secondary small button" value="inloggen"></input>

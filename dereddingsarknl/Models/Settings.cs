@@ -17,5 +17,15 @@ namespace dereddingsarknl.Models
       }
       return folder;
     }
+
+    public static string GetContentFolder(HttpContextBase context)
+    {
+      var folder = ConfigurationManager.AppSettings["dataFolder"];
+      if(string.IsNullOrEmpty(folder) || !System.Diagnostics.Debugger.IsAttached)
+      {
+        folder = context.Server.MapPath(string.Format("/Content"));
+      }
+      return folder;
+    }
   }
 }
