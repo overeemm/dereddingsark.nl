@@ -11,9 +11,9 @@ namespace dereddingsarknl.Controllers
 {
   public class AboutController : MarkdownController
   {
-    public override string BasePath
+    public override PageFolders PageFolder
     {
-      get { return "paginas\\over-de-gemeente"; }
+      get { return PageFolders.About; }
     }
 
     public ActionResult Show(string partName)

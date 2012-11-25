@@ -15,6 +15,11 @@ body {
   overflow-y: scroll;
 }
 
+span.message, p.message {
+  font-size: 15px;
+  font-weight: bolder;
+}
+
 .container {
   min-height: 100%;
   height: auto !important;
@@ -182,7 +187,7 @@ body {
 
 .menu.columns ul {
   margin-top: 0px;
-  float: right;
+  float: left;
 }
 
 .menu.columns li {
@@ -512,6 +517,10 @@ div.row.map {
     font-size: 1.2rem;
     font-weight: bold;
   }
+
+    .locaties p:first-child {
+      margin-top: 15px;
+    }
 
     .locaties p:not(:first-child) {
       margin-top: 13px;
@@ -1107,6 +1116,28 @@ div.block {
     margin: 0px 0px 10px 0px;
     list-style-type: none;
     font-size: 1.3rem;
+  }
+
+li.user {
+  height: 30px;
+  border-bottom: solid 1px #ccc;
+}
+li.user:last-child {
+  border-bottom: 0px;
+}
+
+  li.user form {
+    display: inline-block;
+    float: right;
+    vertical-align: middle;
+  }
+
+  li.user span {
+    vertical-align: middle;
+  }
+
+  li.user a {
+    vertical-align: middle;
   }
 
 @media only screen and (max-width: 1019px) {

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using dereddingsarknl.Models;
+using dereddingsarknl.Extensions;
 using StackExchange.Profiling;
 
 namespace dereddingsarknl.Controllers
@@ -15,8 +16,7 @@ namespace dereddingsarknl.Controllers
     {
       using(MiniProfiler.Current.Step("Read artikelen index"))
       {
-        var items =
-          Index.CreateArticleIndex(HttpContext)
+        var items = Data.GetFile(DataFolders.Indexes, IndexFiles.Articles).OpenIndex()
           .Items
           .Select(i => Article.CreateFromIndexLine(i))
           .OrderByDescending(o => o.Added)
@@ -36,8 +36,7 @@ namespace dereddingsarknl.Controllers
     {
       using(MiniProfiler.Current.Step("Read index"))
       {
-        var item =
-          Index.CreateArticleIndex(HttpContext)
+        var item = Data.GetFile(DataFolders.Indexes, IndexFiles.Articles).OpenIndex()
           .Items
           .Select(i => Article.CreateFromIndexLine(i))
           .Where(i => i.OldAlias == alias)
@@ -58,8 +57,7 @@ namespace dereddingsarknl.Controllers
 
       using(MiniProfiler.Current.Step("Read artikelen index"))
       {
-        var items =
-          Index.CreateArticleIndex(HttpContext)
+        var items = Data.GetFile(DataFolders.Indexes, IndexFiles.Articles).OpenIndex()
           .Items
           .Select(i => Article.CreateFromIndexLine(i))
           .OrderByDescending(o => o.Added)
@@ -82,8 +80,7 @@ namespace dereddingsarknl.Controllers
 
       using(MiniProfiler.Current.Step("Read artikelen index"))
       {
-        var items = 
-          Index.CreateArticleIndex(HttpContext)
+        var items = Data.GetFile(DataFolders.Indexes, IndexFiles.Articles).OpenIndex()
           .Items
           .Select(i => Article.CreateFromIndexLine(i));
 
@@ -117,9 +114,9 @@ namespace dereddingsarknl.Controllers
       return View("Artikel");
     }
 
-    public override string BasePath
+    public override PageFolders PageFolder
     {
-      get { return "paginas\\artikelen"; }
+      get { return PageFolders.Article; }
     }
 
   }

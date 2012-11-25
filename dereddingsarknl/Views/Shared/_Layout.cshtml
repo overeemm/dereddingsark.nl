@@ -128,7 +128,7 @@
             <a href="@Url.AbsoluteHttpsAction("Login", "User")" class="icon">@ViewBag.CurrentUser.Name</a>
           </div>
         }
-        else if(false)
+        else
         {
           <div class="inloggen inactive @(string.IsNullOrEmpty(ViewBag.Message as string) ? "open" : "close")">
             <a href="@Url.AbsoluteHttpsAction("Login", "User")" class="icon">inloggen</a>

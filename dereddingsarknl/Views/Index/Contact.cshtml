@@ -19,7 +19,7 @@ Zodra uw gegevens bij ons bekend zijn krijgt u een wachtwoord.
 
     @if(!string.IsNullOrEmpty(ViewBag.Message as string))
     {
-      <p>@ViewBag.Message</p>
+      <p class="message">@ViewBag.Message</p>
     }
 
     <form method="post" action="@Url.Action("SendMessage", "Index")">

@@ -11,9 +11,9 @@ namespace dereddingsarknl.Controllers
 {
   public class ActivitiesController : MarkdownController
   {
-    public override string BasePath
+    public override PageFolders PageFolder
     {
-      get { return "paginas\\activiteiten"; }
+      get { return PageFolders.Activity; }
     }
 
     public ActionResult Show(string partName)

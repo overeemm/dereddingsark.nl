@@ -48,15 +48,9 @@ namespace dereddingsarknl.Controllers
     [HttpPost]
     public ActionResult SendMessage(string afzender, string email, string bericht)
     {
+      Mailer.Contact(afzender, email, bericht).Send(new SmtpClient().Wrap());
 
-      var client = new System.Net.Mail.SmtpClient().Init();
-      client.Send(new MailMessage(From_Address, To_Address,
-        "Bericht via dereddingsark.nl van " + afzender,
-        string.Format(@"Naam: {0} ({1})
-
-{2}", afzender, email, bericht)));
-
-      StoreMessageInCookie("Uw bericht is verstuurd.");
+      Cookies.StoreMessage("Uw bericht is verstuurd.");
       return RedirectToAction("Contact");
     }
 

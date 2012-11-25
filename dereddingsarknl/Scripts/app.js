@@ -6,7 +6,7 @@ jQuery(document).ready(function ($) {
   $('div.slideshow').orbit({ animationSpeed: 1500, advanceSpeed: 6000 });
   $(this).tooltips();
 
-  $('.menu li, .submenu li').click(function () {
+  $('.menu li, .submenu li:not(.active)').click(function () {
     document.location = $(this).find("a").attr("href");
   });
 

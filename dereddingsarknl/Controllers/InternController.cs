@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using dereddingsarknl.Models;
+using dereddingsarknl.Extensions;
 using StackExchange.Profiling;
 
 namespace dereddingsarknl.Controllers
@@ -16,7 +17,7 @@ namespace dereddingsarknl.Controllers
       if(CurrentUser == null)
         return new HttpUnauthorizedResult();
 
-      return PdfDownload("bunschoten", f => f.Name.StartsWith(datum));
+      return PdfDownload(DataFolders.InternBunschoten, f => f.Name.StartsWith(datum));
     }
 
     public ActionResult Baarn(string datum)
@@ -24,7 +25,7 @@ namespace dereddingsarknl.Controllers
       if(CurrentUser == null)
         return new HttpUnauthorizedResult();
 
-      return PdfDownload("baarn", f => f.Name.StartsWith(datum));
+      return PdfDownload(DataFolders.InternBaarn, f => f.Name.StartsWith(datum));
     }
 
     public ActionResult Contactblad(string nummer)
@@ -32,13 +33,12 @@ namespace dereddingsarknl.Controllers
       if(CurrentUser == null)
         return new HttpUnauthorizedResult();
 
-      return PdfDownload("contactblad", f => f.Name.StartsWith(nummer));
+      return PdfDownload(DataFolders.InternContactblad, f => f.Name.StartsWith(nummer));
     }
 
-    private ActionResult PdfDownload(string folder, Func<FileInfo, bool> predicate)
+    private ActionResult PdfDownload(DataFolders folder, Func<FileInfo, bool> predicate)
     {
-      string directory = Path.Combine(Settings.GetDataFolder(HttpContext), "intern", folder);
-      var pdffile = new DirectoryInfo(directory).GetFiles("*.pdf").FirstOrDefault(predicate);
+      var pdffile = Data.GetDirectory(folder).GetFiles("*.pdf").FirstOrDefault(predicate);
       if(pdffile == null)
       {
         return PageNotFound();
@@ -58,15 +58,14 @@ namespace dereddingsarknl.Controllers
 
       using(MiniProfiler.Current.Step("Read photoalbums"))
       {
-        var albumIndex = Index.CreatePhotoAlbumIndex(HttpContext);
+        var albumIndex = Data.GetFile(DataFolders.Indexes, IndexFiles.Photos).OpenIndex();
         ViewBag.Albums = albumIndex.Items.Select(l => GetAlbum(l.First(), l.Skip(1).First(), l.Skip(2).First())).ToList();
       }
 
       using(MiniProfiler.Current.Step("contactbladen"))
       {
-        string contactbladen = Path.Combine(Settings.GetDataFolder(HttpContext), "intern", "contactblad");
-        ViewBag.Contactbladen = new DirectoryInfo(contactbladen).
-          GetFiles("*.pdf")
+        ViewBag.Contactbladen = Data.GetDirectory(DataFolders.InternContactblad)
+          .GetFiles("*.pdf")
           .Select(f =>
           {
             var number = f.Name.Substring(0, 3);
@@ -80,9 +79,8 @@ namespace dereddingsarknl.Controllers
 
       using(MiniProfiler.Current.Step("baarn"))
       {
-        string bladen = Path.Combine(Settings.GetDataFolder(HttpContext), "intern", "baarn");
-        ViewBag.Baarn = new DirectoryInfo(bladen).
-          GetFiles("*.pdf")
+        ViewBag.Baarn = Data.GetDirectory(DataFolders.InternBaarn)
+          .GetFiles("*.pdf")
           .Select(f => {
             var date = f.Name.Substring(0, 8);
             return new DateTime(int.Parse(date.Substring(0, 4)), int.Parse(date.Substring(4, 2)), int.Parse(date.Substring(6, 2)));
@@ -93,9 +91,8 @@ namespace dereddingsarknl.Controllers
 
       using(MiniProfiler.Current.Step("bunschoten"))
       {
-        string bladen = Path.Combine(Settings.GetDataFolder(HttpContext), "intern", "bunschoten");
-        ViewBag.Bunschoten = new DirectoryInfo(bladen).
-          GetFiles("*.pdf")
+        ViewBag.Bunschoten = Data.GetDirectory(DataFolders.InternBunschoten)
+          .GetFiles("*.pdf")
           .Select(f => {
             var date = f.Name.Substring(0, 8);
             return new DateTime(int.Parse(date.Substring(0, 4)), int.Parse(date.Substring(4, 2)), int.Parse(date.Substring(6, 2)));

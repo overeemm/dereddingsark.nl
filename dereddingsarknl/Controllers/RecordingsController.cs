@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using dereddingsarknl.Attributes;
 using dereddingsarknl.Models;
+using dereddingsarknl.Extensions;
 using StackExchange.Profiling;
 
 namespace dereddingsarknl.Controllers
@@ -16,8 +17,7 @@ namespace dereddingsarknl.Controllers
     {
       using(MiniProfiler.Current.Step("Read album"))
       {
-        var item =
-          Index.CreateAudioIndex(HttpContext)
+        var item = Data.GetFile(DataFolders.Indexes, IndexFiles.Recordings).OpenIndex()
           .Items
           .Select(i => Recording.CreateFromIndexLine(i))
           .Where(r => r.OldAlias == alias)
@@ -36,8 +36,7 @@ namespace dereddingsarknl.Controllers
     {
       using(MiniProfiler.Current.Step("Read recording index"))
       {
-        var item =
-          Index.CreateAudioIndex(HttpContext)
+        var item = Data.GetFile(DataFolders.Indexes, IndexFiles.Recordings).OpenIndex()
           .Items
           .Select(i => Recording.CreateFromIndexLine(i))
           .Where(r => r.Alias == alias)
@@ -73,7 +72,7 @@ namespace dereddingsarknl.Controllers
         Alias = Path.GetFileNameWithoutExtension(new Uri(url).LocalPath)
       };
 
-      var index = Index.CreateAudioIndex(HttpContext);
+      var index = Data.GetFile(DataFolders.Indexes, IndexFiles.Recordings).OpenIndex();
       index.Add(recording.CreateIndexLine());
 
       return new EmptyResult();
@@ -86,8 +85,7 @@ namespace dereddingsarknl.Controllers
 
       using(MiniProfiler.Current.Step("Read recording index"))
       {
-        var items =
-          Index.CreateAudioIndex(HttpContext)
+        var items = Data.GetFile(DataFolders.Indexes, IndexFiles.Recordings).OpenIndex()
           .Items
           .Select(i => Recording.CreateFromIndexLine(i))
           .GroupBy(i => new DateTime(i.Date.Year, i.Date.Month, 1, 0, 0, 0))
@@ -105,8 +103,7 @@ namespace dereddingsarknl.Controllers
     {
       using(MiniProfiler.Current.Step("Read album"))
       {
-        var items =
-          Index.CreateAudioIndex(HttpContext)
+        var items = Data.GetFile(DataFolders.Indexes, IndexFiles.Recordings).OpenIndex()
           .Items
           .Select(i => Recording.CreateFromIndexLine(i))
           .OrderByDescending(r => r.Date)

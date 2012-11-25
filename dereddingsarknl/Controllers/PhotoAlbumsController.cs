@@ -21,7 +21,7 @@ namespace dereddingsarknl.Controllers
 
       using(MiniProfiler.Current.Step("Get photolist"))
       {
-        var albumIndex = Index.CreatePhotoAlbumIndex(HttpContext);
+        var albumIndex = Data.GetFile(DataFolders.Indexes, IndexFiles.Photos).OpenIndex();
         var album = albumIndex.Items.Select(l => GetAlbum(l.First(), l.Skip(1).First(), l.Skip(2).First())).First(a => a.Id == id);
         return Json(album.Photos.TakeRandom(40), JsonRequestBehavior.AllowGet);
       }
@@ -34,7 +34,7 @@ namespace dereddingsarknl.Controllers
 
       using(MiniProfiler.Current.Step("Read album"))
       {
-        var albumIndex = Index.CreatePhotoAlbumIndex(HttpContext);
+        var albumIndex = Data.GetFile(DataFolders.Indexes, IndexFiles.Photos).OpenIndex();
 
         ViewBag.Title = "In blik in onze gemeente";
         ViewBag.Fotos = "active";

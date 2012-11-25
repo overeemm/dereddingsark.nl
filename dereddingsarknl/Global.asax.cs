@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using StackExchange.Profiling;
-using dereddingsarknl.Models;
+using dereddingsarknl.Extensions;
 
 namespace dereddingsarknl
 {
@@ -40,7 +40,7 @@ namespace dereddingsarknl
       }
 
       MiniProfiler.Start();
-      SmtpClientExtensions.InitSettings(HttpContext.Current);
+      new System.Net.Mail.SmtpClient().Set(HttpContext.Current);
     }
 
     public static void RegisterRoutes(RouteCollection routes)

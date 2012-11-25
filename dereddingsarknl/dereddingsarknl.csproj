@@ -15,13 +15,13 @@
     <AssemblyName>dereddingsarknl</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>false</UseIISExpress>
+    <UseIISExpress>true</UseIISExpress>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>4.0</OldToolsVersion>
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>44300</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -50,6 +50,9 @@
     <Reference Include="Elmah.Mvc">
       <HintPath>..\packages\Elmah.MVC.2.0.1\lib\net40\Elmah.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Glimpse.Core">
       <HintPath>..\packages\Glimpse.0.87\lib\net40\Glimpse.Core.dll</HintPath>
     </Reference>
@@ -62,6 +65,9 @@
     <Reference Include="MiniProfiler, Version=2.0.2.0, Culture=neutral, PublicKeyToken=b44f9351044011a3, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\MiniProfiler.2.0.2\lib\net40\MiniProfiler.dll</HintPath>
+    </Reference>
+    <Reference Include="Mvc.Mailer">
+      <HintPath>..\packages\MvcMailer3.3.1\lib\40\Mvc.Mailer.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -88,7 +94,17 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Attributes\ApiActionAttribute.cs" />
+    <Compile Include="Code\Attributes\ApiActionAttribute.cs" />
+    <Compile Include="Code\Attributes\ForceHttpsAttribute.cs" />
+    <Compile Include="Code\CacheManager.cs" />
+    <Compile Include="Code\CookieManager.cs" />
+    <Compile Include="Code\DataManager.cs" />
+    <Compile Include="Code\Environment.cs" />
+    <Compile Include="Code\Extensions\IO.cs" />
+    <Compile Include="Code\HeaderManager.cs" />
+    <Compile Include="Code\UserManager.cs" />
+    <Compile Include="Code\UserToken.cs" />
+    <Compile Include="Code\_enums.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ActivitiesController.cs" />
     <Compile Include="Controllers\CalendarController.cs" />
@@ -101,23 +117,23 @@
     <Compile Include="Controllers\InternController.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\UserController.cs" />
-    <Compile Include="Extensions\Collections.cs" />
-    <Compile Include="Extensions\ControllerHelper.cs" />
-    <Compile Include="Extensions\ViewHelper.cs" />
+    <Compile Include="Code\Extensions\Collections.cs" />
+    <Compile Include="Code\Extensions\Web.Mvc.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Article.cs" />
-    <Compile Include="Models\Recording.cs" />
-    <Compile Include="Models\Calendar.cs" />
-    <Compile Include="Models\MarkdownFile.cs" />
-    <Compile Include="Models\PhotoAlbum.cs" />
-    <Compile Include="Models\Index.cs" />
-    <Compile Include="Models\Settings.cs" />
-    <Compile Include="Models\SmtpClientExtensions.cs" />
-    <Compile Include="Models\User.cs" />
-    <Compile Include="Modules\CustomErrorMailModule.cs" />
-    <Compile Include="Modules\RemoveHeadersModule.cs" />
+    <Compile Include="Code\Mailers\SiteMailer.cs" />
+    <Compile Include="Code\Models\Article.cs" />
+    <Compile Include="Code\Models\Recording.cs" />
+    <Compile Include="Code\Models\Calendar.cs" />
+    <Compile Include="Code\IO\MarkdownFile.cs" />
+    <Compile Include="Code\Models\PhotoAlbum.cs" />
+    <Compile Include="Code\IO\IndexFile.cs" />
+    <Compile Include="Code\Models\Settings.cs" />
+    <Compile Include="Code\Extensions\Net.cs" />
+    <Compile Include="Code\Models\User.cs" />
+    <Compile Include="Code\Modules\CustomErrorMailModule.cs" />
+    <Compile Include="Code\Modules\RemoveHeadersModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -168,6 +184,7 @@
     <Content Include="Content\Images\twitter-small.png" />
     <Content Include="Content\Images\twitter.png" />
     <Content Include="Content\Images\wrapper_t_l_bg.jpg" />
+    <Content Include="email-logo.png" />
     <Content Include="Error.html" />
     <Content Include="Custom404.html" />
     <Content Include="facebook.jpg" />
@@ -236,6 +253,14 @@
     <Content Include="Views\Recordings\Single.cshtml" />
     <Content Include="Views\User\Show.cshtml" />
     <Content Include="Views\User\CreateAPIToken.cshtml" />
+    <Content Include="Views\SiteMailer\_Layout.cshtml" />
+    <Content Include="Views\SiteMailer\Contact.cshtml" />
+    <Content Include="Views\SiteMailer\PasswordReset.cshtml" />
+    <Content Include="Views\SiteMailer\_Layout.text.cshtml" />
+    <Content Include="Views\SiteMailer\Contact.text.cshtml" />
+    <Content Include="Views\SiteMailer\PasswordReset.text.cshtml" />
+    <Content Include="Views\SiteMailer\WelcomeNew.cshtml" />
+    <Content Include="Views\SiteMailer\WelcomeNew.text.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -273,11 +298,11 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>False</AutoAssignPort>
           <DevelopmentServerPort>2630</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost/</IISUrl>
+          <IISUrl>http://localhost:2630/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

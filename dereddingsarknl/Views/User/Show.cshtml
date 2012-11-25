@@ -9,7 +9,7 @@
       <ul>
         @foreach(var user in ViewBag.UserList)
         {
-          <li>
+          <li class="user">
             <span>@user.Name @(string.IsNullOrEmpty(user.Extras) ? "" : "(" + @user.Extras + ")")</span>
             <a href="mailto:@user.Email">@user.Email</a>
             <form action="@Url.Action("Login")" method="post">
@@ -23,6 +23,7 @@
     </div>
   </div>
 
+  <!--
   <div class="twelve columns">
     <div class="twelve columns block">
       <h3>beheer</h3>
@@ -35,7 +36,9 @@
       </form>
     </div>
   </div>
+    -->
 
+  <!--
   <div class="twelve columns">
     <div class="twelve columns block">
       <h3>nieuw (bulk)</h3>
@@ -54,6 +57,7 @@
       </form>
     </div>
   </div>
+    -->
 
   <div class="twelve columns">
     <div class="twelve columns block">
