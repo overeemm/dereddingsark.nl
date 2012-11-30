@@ -1077,6 +1077,12 @@ div.contactblad div.twelve li, div.baarn div.twelve li, div.bunschoten div.twelv
   text-overflow: ellipsis;
 }
 
+textarea.message {
+  height: 100px;
+  font-family: Arial;
+  font-size:14px;
+}
+
 div.orbit-wrapper div.timer {
   display: none;
 }
