@@ -25,7 +25,9 @@ namespace dereddingsarknl.Controllers
           .ToDictionary(g => g.Key, g => g.OrderBy(i => i.When).ToList());
 
         ViewBag.CalendarItems = items;
-        ViewBag.CalendarMonths = items.Keys.OrderBy(i => i).ToList();
+        var months = items.Keys.OrderBy(i => i).ToList();
+        ViewBag.CalendarMonths = months;
+        ViewBag.FirstMonth = months.FirstOrDefault();
       }
 
       return View();
