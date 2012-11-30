@@ -11,9 +11,17 @@ namespace dereddingsarknl.Extensions
     {
       var rand = new Random();
       var count = collection.Count();
+
+      var uniqueIndexCheck = new HashSet<int>();
+
       for(int i = 0; i < take && i < count; i++)
       {
         var randindex = rand.Next(count);
+        while(uniqueIndexCheck.Contains(randindex))
+        {
+          randindex = rand.Next(count);
+        }
+        uniqueIndexCheck.Add(randindex);
         yield return collection.Skip(randindex).Take(1).First();
       }
     }
