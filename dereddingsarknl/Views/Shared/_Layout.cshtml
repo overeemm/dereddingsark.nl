@@ -86,7 +86,11 @@
             <option value="@Url.Action("Show", "Activities", new { partName = "" })" @(string.IsNullOrEmpty(@ViewBag.Activiteiten) ? "" : "selected=\"selected\"")>activiteiten</option>
             <option value="@Url.Action("Show", "Recordings")" @(string.IsNullOrEmpty(@ViewBag.Recordings) ? "" : "selected=\"selected\"")>audio</option>
             <option value="@Url.Action("Show", "Articles")" @(string.IsNullOrEmpty(@ViewBag.Artikelen) ? "" : "selected=\"selected\"")>artikelen</option>
-            @*<option value="@Url.Action("Show", "Intern")" @(string.IsNullOrEmpty(@ViewBag.Intern) ? "" : "selected=\"selected\"")>gemeente</option>*@
+
+            @if(ViewBag.CurrentUser != null)
+            {
+              <option value="@Url.Action("Show", "Intern")" @(string.IsNullOrEmpty(@ViewBag.Intern) ? "" : "selected=\"selected\"")>gemeente</option>
+            }
           </select>
         </div>
 

@@ -206,6 +206,9 @@
       <DependentUpon>jquery-1.7.2.js</DependentUpon>
     </Content>
     <Content Include="Scripts\jquery.customforms.js" />
+    <Content Include="Scripts\jquery.customforms.min.js" />
+    <Content Include="Scripts\jquery.foundation.clearing.js" />
+    <Content Include="Scripts\jquery.foundation.clearing.min.js" />
     <Content Include="Scripts\jquery.orbit-1.4.0.js" />
     <Content Include="Scripts\jquery.orbit-1.4.0.min.js">
       <DependentUpon>jquery.orbit-1.4.0.js</DependentUpon>
@@ -213,11 +216,13 @@
     <Content Include="Scripts\jquery.placeholder.min.js" />
     <Content Include="Scripts\jquery.plugins.min.js" />
     <Content Include="Scripts\jquery.reveal.js" />
+    <Content Include="Scripts\jquery.reveal.min.js" />
     <Content Include="Scripts\jquery.tooltips.js" />
     <Content Include="Scripts\jquery.tooltips.min.js">
       <DependentUpon>jquery.tooltips.js</DependentUpon>
     </Content>
     <Content Include="Scripts\modernizr.foundation.js" />
+    <Content Include="Scripts\modernizr.foundation.min.js" />
     <Content Include="twitter-background.png" />
     <Content Include="twitter-profile-background.png" />
     <Content Include="Web.config">

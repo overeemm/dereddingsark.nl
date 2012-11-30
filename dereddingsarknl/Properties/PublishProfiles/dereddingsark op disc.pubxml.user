@@ -17,7 +17,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/17/2012 13:13:17</publishTime>
     </File>
     <File Include="bin/dereddingsarknl.dll">
-      <publishTime>11/28/2012 19:43:08</publishTime>
+      <publishTime>11/30/2012 19:31:04</publishTime>
     </File>
     <File Include="bin/Elmah.dll">
       <publishTime>08/23/2012 23:09:50</publishTime>
@@ -65,19 +65,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/25/2012 22:48:11</publishTime>
     </File>
     <File Include="Content/app.min.css">
-      <publishTime>11/28/2012 19:43:08</publishTime>
+      <publishTime>11/30/2012 19:31:05</publishTime>
     </File>
     <File Include="Content/foundation.css">
       <publishTime>09/11/2012 20:29:31</publishTime>
     </File>
     <File Include="Content/foundation.min.css">
-      <publishTime>11/28/2012 19:43:08</publishTime>
+      <publishTime>11/30/2012 19:31:05</publishTime>
     </File>
     <File Include="Content/ie.css">
       <publishTime>11/28/2012 19:42:51</publishTime>
     </File>
     <File Include="Content/ie.min.css">
-      <publishTime>11/28/2012 19:43:08</publishTime>
+      <publishTime>11/30/2012 19:31:05</publishTime>
     </File>
     <File Include="Content/Images/arrow-baarn.png">
       <publishTime>06/30/2012 13:53:04</publishTime>
@@ -221,25 +221,34 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/17/2012 14:12:53</publishTime>
     </File>
     <File Include="Scripts/app.js">
-      <publishTime>11/27/2012 22:02:08</publishTime>
+      <publishTime>11/28/2012 19:53:07</publishTime>
     </File>
     <File Include="Scripts/app.min.js">
-      <publishTime>11/28/2012 19:43:08</publishTime>
+      <publishTime>11/30/2012 19:31:05</publishTime>
     </File>
     <File Include="Scripts/jquery-1.7.2.js">
       <publishTime>07/05/2012 20:26:43</publishTime>
     </File>
     <File Include="Scripts/jquery-1.7.2.min.js">
-      <publishTime>11/28/2012 19:43:08</publishTime>
+      <publishTime>11/30/2012 19:31:05</publishTime>
     </File>
     <File Include="Scripts/jquery.customforms.js">
       <publishTime>07/05/2012 20:29:51</publishTime>
+    </File>
+    <File Include="Scripts/jquery.customforms.min.js">
+      <publishTime>11/30/2012 19:31:05</publishTime>
+    </File>
+    <File Include="Scripts/jquery.foundation.clearing.js">
+      <publishTime>11/30/2012 19:11:59</publishTime>
+    </File>
+    <File Include="Scripts/jquery.foundation.clearing.min.js">
+      <publishTime>11/30/2012 19:31:05</publishTime>
     </File>
     <File Include="Scripts/jquery.orbit-1.4.0.js">
       <publishTime>07/05/2012 20:29:52</publishTime>
     </File>
     <File Include="Scripts/jquery.orbit-1.4.0.min.js">
-      <publishTime>11/28/2012 19:43:08</publishTime>
+      <publishTime>11/30/2012 19:31:05</publishTime>
     </File>
     <File Include="Scripts/jquery.placeholder.min.js">
       <publishTime>07/05/2012 20:29:52</publishTime>
@@ -250,14 +259,20 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/jquery.reveal.js">
       <publishTime>07/05/2012 20:29:53</publishTime>
     </File>
+    <File Include="Scripts/jquery.reveal.min.js">
+      <publishTime>11/30/2012 19:31:05</publishTime>
+    </File>
     <File Include="Scripts/jquery.tooltips.js">
       <publishTime>07/05/2012 20:29:53</publishTime>
     </File>
     <File Include="Scripts/jquery.tooltips.min.js">
-      <publishTime>11/28/2012 19:43:08</publishTime>
+      <publishTime>11/30/2012 19:31:05</publishTime>
     </File>
     <File Include="Scripts/modernizr.foundation.js">
       <publishTime>07/05/2012 20:29:53</publishTime>
+    </File>
+    <File Include="Scripts/modernizr.foundation.min.js">
+      <publishTime>11/30/2012 19:31:05</publishTime>
     </File>
     <File Include="twitter-background.png">
       <publishTime>11/19/2012 19:23:16</publishTime>
@@ -308,7 +323,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/27/2012 22:05:53</publishTime>
     </File>
     <File Include="Views/Intern/Show.cshtml">
-      <publishTime>11/25/2012 22:59:20</publishTime>
+      <publishTime>11/30/2012 18:52:41</publishTime>
     </File>
     <File Include="Views/PhotoAlbums/Show.cshtml">
       <publishTime>07/07/2012 22:45:27</publishTime>
@@ -329,7 +344,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/20/2012 19:37:51</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>11/27/2012 22:11:13</publishTime>
+      <publishTime>11/28/2012 19:59:48</publishTime>
     </File>
     <File Include="Views/SiteMailer/Contact.cshtml">
       <publishTime>11/24/2012 19:44:06</publishTime>
@@ -377,7 +392,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/13/2012 20:59:53</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>11/28/2012 19:43:09</publishTime>
+      <publishTime>11/30/2012 19:31:05</publishTime>
     </File>
   </ItemGroup>
 </Project>
