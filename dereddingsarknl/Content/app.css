@@ -161,6 +161,11 @@ span.message, p.message {
       padding-top: 0px;
       vertical-align: bottom;
       font-size: 1.2rem;
+
+      text-overflow: ellipsis;
+      width: 140px;
+      white-space: nowrap;
+      display: inline-block;
     }
 
 .header.columns a, .header.columns a:visited, .header.columns a:active, .header.columns a:hover {
