@@ -3,7 +3,7 @@
 <div class="row agendacontainer">
   @foreach(var month in ViewBag.CalendarMonths)
   {
-    <div class="@(month.ToString("MMyyyy") == DateTime.Now.ToString("MMyyyy") ? "active" : "inactive") six columns" 
+    <div class="@(ViewBag.FirstMonth != null && month.ToString("MMyyyy") == ViewBag.FirstMonth.ToString("MMyyyy") ? "active" : "inactive") six columns" 
       data-sortkey="@(month.ToString("yyyyMM"))">
       <div class="twelve columns agenda">
         <p class="titel">@month.ToString("MMMM yyyy", new CultureInfo("nl-NL"))</p>
