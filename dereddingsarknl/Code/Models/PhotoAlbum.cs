@@ -37,7 +37,7 @@ namespace dereddingsarknl.Models
       Id = id;
       Name = name;
       _folder = new DirectoryInfo(folder);
-      _photos = _folder.GetFiles("*.jpg").Select(f => new Photo("/Content/Fotos/" + Name + "/" + f.Name)).ToList();
+      _photos = _folder.GetFiles("*.jpg").Select(f => new Photo("/Content/Fotos/" + _folder.Name + "/" + f.Name)).ToList();
       SetThumb();
     }
 
