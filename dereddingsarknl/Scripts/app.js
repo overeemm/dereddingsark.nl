@@ -1,9 +1,25 @@
+var _slideshowstarted = false;
+function startSlideshow() {
+  if ($('.slideshowcontainer:visible').length == 1 && !_slideshowstarted) {
+    $('.fotocontainer.lazy').each(function (index, element) {
+      $(element).html('<img src="' + $(element).data('img') + '" />');
+    });
+    $('div.slideshow').orbit({ animationSpeed: 1500, advanceSpeed: 6000 });
+    _slideshowstarted = true;
+  }
+}
+
+$(window).resize(function () {
+  startSlideshow();
+});
+
 jQuery(document).ready(function ($) {
 
   /* index page */
   $('#banners').orbit({ fluid: '833x100', animationSpeed: 1500, advanceSpeed: 6000 });
 
-  $('div.slideshow').orbit({ animationSpeed: 1500, advanceSpeed: 6000 });
+  startSlideshow();
+
   $(this).tooltips();
 
   $('.menu li, .submenu li:not(.active)').click(function () {

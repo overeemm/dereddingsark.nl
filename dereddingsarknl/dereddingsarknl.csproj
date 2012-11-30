@@ -211,6 +211,7 @@
       <DependentUpon>jquery.orbit-1.4.0.js</DependentUpon>
     </Content>
     <Content Include="Scripts\jquery.placeholder.min.js" />
+    <Content Include="Scripts\jquery.plugins.min.js" />
     <Content Include="Scripts\jquery.reveal.js" />
     <Content Include="Scripts\jquery.tooltips.js" />
     <Content Include="Scripts\jquery.tooltips.min.js">

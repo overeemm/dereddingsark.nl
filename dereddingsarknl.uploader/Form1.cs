@@ -132,7 +132,7 @@ namespace dereddingsarknl.uploader
       {
         filename = filename.Replace(c, '_');
       }
-      return filename;
+      return filename.ToLowerInvariant();
     }
 
     private void button2_Click(object sender, EventArgs e)

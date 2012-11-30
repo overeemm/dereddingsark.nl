@@ -51,6 +51,11 @@
     _gaq.push(['_setDomainName', 'dereddingsark.nl']);
     _gaq.push(['_trackPageview']);
 
+    @if(ViewBag.CurrentUser != null)
+    {
+      @Html.Raw("    _gaq.push(['_setCustomVar', 1, 'UserName', '" + ViewBag.CurrentUser.Name + "', 2]);")
+    }
+
     (function () {
       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
@@ -182,9 +187,7 @@
 
   <!-- Included JS Files -->
   <script src="@Url.Content("~/Scripts/jquery-1.7.2.min.js")"></script>
-  <script src="@Url.Content("~/Scripts/jquery.orbit-1.4.0.min.js")"></script>
-  <script src="@Url.Content("~/Scripts/jquery.placeholder.min.js")"></script>
-  <script src="@Url.Content("~/Scripts/jquery.tooltips.min.js")"></script>
+  <script src="@Url.Content("~/Scripts/jquery.plugins.min.js")"></script>
   <script src="@Url.Content("~/Scripts/app.min.js")"></script>
 
   @if(ViewBag.IncludeProfiler != null && ViewBag.IncludeProfiler)

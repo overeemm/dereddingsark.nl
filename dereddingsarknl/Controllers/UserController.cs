@@ -59,7 +59,7 @@ namespace dereddingsarknl.Controllers
           var token = Users.StoreResetToken(email, true);
 
           string reseturl = Url.AbsoluteHttpsAction("SetPassword", "User", new { token = token });
-          Mailer.WelcomeNew(name, email, reseturl);
+          Mailer.WelcomeNew(name, email, reseturl).Send(new SmtpClient().Wrap());
 
           return RedirectToAction("Show");
         }

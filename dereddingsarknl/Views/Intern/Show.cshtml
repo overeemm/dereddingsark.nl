@@ -2,13 +2,18 @@
 @using System.Collections;
 @using System.Linq;
 
-<div class="row">
-  <div class="twelve columns">
-    <p style="background-color:#fff;padding:5px;">
-      admin: <a href="@Url.Action("Show", "User")">gebruikers</a>
-    </p>
+@if(ViewBag.CurrentUser.UserManager)
+{
+  
+  <div class="row">
+    <div class="twelve columns">
+      <p style="background-color: #fff; padding: 5px;">
+        admin: <a href="@Url.Action("Show", "User")">gebruikers</a>
+      </p>
+    </div>
   </div>
-</div>
+
+}
 
 <div class="row">
   <div class="twelve columns">

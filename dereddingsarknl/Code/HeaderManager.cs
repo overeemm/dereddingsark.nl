@@ -15,7 +15,7 @@ namespace dereddingsarknl
       var token = headers["X-Token"];
       if(!string.IsNullOrEmpty(userguid) && !string.IsNullOrEmpty(token))
       {
-        return new ApiToken() { Guid = userguid, Token = token };
+        return new ApiToken() { Guid = userguid.Trim(), Token = token.Trim() };
       }
 
       return null;

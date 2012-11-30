@@ -48,10 +48,12 @@
 
   <div class="four columns slideshowcontainer">
     <div class="foto slideshow">
+      <div class="fotocontainer">
+        <img src="@ViewBag.Photo.Url" />
+      </div>
       @foreach(var p in ViewBag.Photos)
       {
-        <div class="fotocontainer">
-          <img src="@p.Url" />
+        <div class="fotocontainer lazy" data-img="@p.Url">
         </div>
       }
     </div>
