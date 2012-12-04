@@ -139,11 +139,11 @@
         }
         else
         {
-          <div class="inloggen inactive @(string.IsNullOrEmpty(ViewBag.Message as string) ? "open" : "close")">
+          <div class="inloggen inactive @(ViewBag.NotExpandLogin != null || string.IsNullOrEmpty(ViewBag.Message as string) ? "open" : "close")">
             <a href="@Url.AbsoluteHttpsAction("Login", "User")" class="icon">inloggen</a>
           </div>
           
-          <div class="inloggen active @(!string.IsNullOrEmpty(ViewBag.Message as string) ? "open" : "close")">
+          <div class="inloggen active @(ViewBag.NotExpandLogin == null && !string.IsNullOrEmpty(ViewBag.Message as string) ? "open" : "close")">
 
             <form method="post" action="@Url.AbsoluteHttpsAction("Login", "User")">
               <input type="text" name="email" placeholder="e-mail adres"></input>

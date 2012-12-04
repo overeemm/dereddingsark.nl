@@ -13,7 +13,10 @@ namespace dereddingsarknl.Extensions
     {
       string line = string.Join(", ", values.Select(v => v == null ? "\"\"" : "\""+v.ToString()+"\""));
 
-      File.CreateText(file.FullName).Close();
+      if(!file.Exists)
+      {
+        File.CreateText(file.FullName).Close();
+      }
       File.AppendAllLines(file.FullName, new string[] { line });
     }
 

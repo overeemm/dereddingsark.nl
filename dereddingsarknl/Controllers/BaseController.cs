@@ -80,7 +80,7 @@ namespace dereddingsarknl.Controllers
 
     protected override void OnActionExecuted(ActionExecutedContext filterContext)
     {
-      if(CurrentUser != null)
+      if(CurrentUser != null && !CurrentUser.IsAPIUser)
       {
         UserToken token = Cookies.GetUserToken();
         if(token == null)

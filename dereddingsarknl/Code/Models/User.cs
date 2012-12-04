@@ -15,6 +15,7 @@ namespace dereddingsarknl.Models
     public string Salt { get; set; }
 
     public string Extras { get; private set; }
+    public bool IsAPIUser { get; private set; }
     public bool UserManager { get; private set; }
     public bool AudioManager { get; private set; }
     public bool EnableProfiler { get; private set; }
@@ -35,6 +36,7 @@ namespace dereddingsarknl.Models
         PasswordHash = indexLine.Skip(2).First(),
         Salt = indexLine.Skip(3).First(),
         Extras = extras,
+        IsAPIUser = extras.Contains("api"),
         UserManager = extras.Contains("users"),
         AudioManager = extras.Contains("audio"),
         EnableProfiler = extras.Contains("profiler")

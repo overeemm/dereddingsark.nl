@@ -70,6 +70,7 @@ namespace dereddingsarknl.Mailers
     {
       ViewBag.Naam = name;
       ViewBag.ResetUrl = reseturl;
+      ViewBag.Email = email;
 
       var resources = new Dictionary<string, string>();
       resources["emaillogo"] = EmailLogoPath;

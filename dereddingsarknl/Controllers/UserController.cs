@@ -114,13 +114,18 @@ namespace dereddingsarknl.Controllers
 
     public ActionResult SetPassword(string token)
     {
-      var user = Users.GetUserFromResetPasswordToken(token);
+      var user = CurrentUser;
+      if(user != null)
+      {
+        Users.GetUserFromResetPasswordToken(token);
+      }
       if(user == null)
       {
         return RedirectToAction("Show", "Index");
       }
       else
       {
+        ViewBag.NotExpandLogin = true;
         ViewBag.User = user;
         ViewBag.Token = token;
         return View();

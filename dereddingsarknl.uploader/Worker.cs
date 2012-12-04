@@ -4,7 +4,6 @@ using System.IO;
 using System.Net;
 using System.Text;
 using dereddingsarknl.uploader.Config;
-using Limilabs.FTP.Client;
 
 namespace dereddingsarknl.uploader
 {
@@ -28,18 +27,26 @@ namespace dereddingsarknl.uploader
 
         try
         {
-          using(Ftp ftp = new Ftp())
-          {
-            ftp.Connect(Config.Config.FTPAddress);
-            ftp.Login(Config.Config.FTPUser, Config.Config.FTPPass);
+          FtpWebRequest request = (FtpWebRequest)WebRequest.Create(Config.Config.FTPAddress + category.FTPPath + "/" + targetFileName);
+          request.Method = WebRequestMethods.Ftp.UploadFile;
+          request.Credentials = new NetworkCredential(Config.Config.FTPUser, Config.Config.FTPPass);
+          request.UsePassive = true;
+          request.UseBinary = true;
+          request.KeepAlive = false;
 
-            ftp.ChangeFolder(category.FTPPath);
-            ftp.Upload(targetFileName, tempFile);
+          StreamReader sourceStream = new StreamReader(tempFile);
+          byte[] buffer = Encoding.UTF8.GetBytes(sourceStream.ReadToEnd());
+          sourceStream.Close();
+          request.ContentLength = buffer.Length;
 
-            mp3File = Config.Config.FTPSiteAddress + "/" + category.SitePath + "/" + targetFileName;
+          Stream reqStream = request.GetRequestStream();
+          reqStream.Write(buffer, 0, buffer.Length);
+          reqStream.Close();
 
-            ftp.Close();
-          }
+          FtpWebResponse response = (FtpWebResponse)request.GetResponse();
+          string sResult = response.StatusDescription;
+
+          mp3File = Config.Config.FTPSiteAddress + "/" + category.SitePath + "/" + targetFileName;
         }
         catch(Exception exc)
         {
