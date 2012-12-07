@@ -26,6 +26,12 @@ namespace dereddingsarknl.Extensions
       return "https://" + Environment.GetAbsoluteDomain(true) + urlString;
     }
 
+    public static string AbsoluteHttpAction(this UrlHelper url, string actionName, string controllerName, object routeValues)
+    {
+      var urlString = url.Action(actionName, controllerName, routeValues);
+      return "http://" + Environment.GetAbsoluteDomain(true) + urlString;
+    }
+
     public static string AbsoluteHttpAction(this UrlHelper url, string actionName, string controllerName)
     {
       var urlString = url.Action(actionName, controllerName);

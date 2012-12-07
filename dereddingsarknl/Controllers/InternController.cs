@@ -85,7 +85,7 @@ namespace dereddingsarknl.Controllers
             var date = f.Name.Substring(0, 8);
             return new DateTime(int.Parse(date.Substring(0, 4)), int.Parse(date.Substring(4, 2)), int.Parse(date.Substring(6, 2)));
           })
-          .OrderByDescending(d => d).Take(4)
+          .OrderByDescending(d => d).Take(6)
           .ToList();
       }
 
@@ -97,7 +97,7 @@ namespace dereddingsarknl.Controllers
             var date = f.Name.Substring(0, 8);
             return new DateTime(int.Parse(date.Substring(0, 4)), int.Parse(date.Substring(4, 2)), int.Parse(date.Substring(6, 2)));
           })
-          .OrderByDescending(d => d).Take(4)
+          .OrderByDescending(d => d).Take(6)
           .ToList();
       }
 

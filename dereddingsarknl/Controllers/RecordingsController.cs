@@ -107,6 +107,7 @@ namespace dereddingsarknl.Controllers
           .Items
           .Select(i => Recording.CreateFromIndexLine(i))
           .OrderByDescending(r => r.Date)
+          .Take(50)
           .ToList();
 
         ViewBag.RecordingList = items;
