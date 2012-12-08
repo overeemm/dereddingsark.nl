@@ -1,4 +1,5 @@
 ﻿@using System.Globalization;
+@using dereddingsarknl.Extensions;
 
 <div class="twelve columns audioplayer">
 
@@ -13,21 +14,17 @@
   <a href="#" target="_blank" title="downloaden"></a>
 </div>
 
-@*<div class="row recordingfilter">
-  <div class="six columns">
-    <p>Toon alleen opnames van:</p>
-    <ul>
-      <li><span class="check checked" data-cat="samenkomst baarn"></span>samenkomst baarn</li>
-      <li><span class="check checked" data-cat="samenkomst bunschoten"></span>samenkomst bunschoten</li>
-      <li><span class="check checked" data-cat="maranatha avond"></span>maranatha avond</li>
-      <li><span class="check checked" data-cat="bijbelstudie"></span>bijbelstudie</li>
-      <li><span class="check checked" data-cat="jeugddienst"></span>jeugddienst</li>
-    </ul>
-    <p>Onze opnames automatisch downloaden?
-      <!--Je vindt ons in <a href="@ViewBag.PodcastiTunesUrl">itunes</a> of gebruik-->
-      Gebruik de <a href="@Url.Action("Podcast", "Recordings")">podcast</a> link.</p>
+<div class="row">
+  <div class="twelve columns">
+    <div class="twelve columns podcast">
+      <p>
+        Onze opnames automatisch downloaden?
+      Je vindt ons in <a href="https://itunes.apple.com/nl/podcast/evangeliegemeente-reddingsark/id585690963?l=en">iTunes</a> of gebruik
+      de <a href="@Url.AbsoluteHttpAction("Podcast", "Recordings")">podcast</a> link.
+      </p>
+    </div>
   </div>
-</div>*@
+</div>
 
 @foreach(var month in ViewBag.RecordingMonths)
 {

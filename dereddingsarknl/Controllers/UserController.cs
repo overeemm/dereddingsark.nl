@@ -114,10 +114,14 @@ namespace dereddingsarknl.Controllers
 
     public ActionResult SetPassword(string token)
     {
-      var user = CurrentUser;
-      if(user != null)
+      User user = null;
+      if(CurrentUser == null && !string.IsNullOrEmpty(token))
       {
-        Users.GetUserFromResetPasswordToken(token);
+        user = Users.GetUserFromResetPasswordToken(token);
+      }
+      else
+      {
+        user = CurrentUser;
       }
       if(user == null)
       {
