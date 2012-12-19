@@ -1,0 +1,11 @@
+#!/bin/sh
+#	postflight script for lame installation
+#	creates symbolic links for the dynamic library
+
+orig=libmp3lame.0.0.0.dylib
+link1=libmp3lame.0.dylib
+link2=libmp3lame.dylib
+
+cd /usr/local/lib
+if ! [ -L $link1 ]; then ln -s $orig $link1; fi
+if ! [ -L $link2 ]; then ln -s $orig $link2; fi
