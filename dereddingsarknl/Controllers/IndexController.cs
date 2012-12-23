@@ -21,9 +21,10 @@ namespace dereddingsarknl.Controllers
       using(MiniProfiler.Current.Step("Read calendar file"))
       {
         ViewBag.CalendarItems =
-          Calendar.Get(HttpContext)
+          Data.GetFile(DataFolders.Calendar, CalendarFiles.Publiek)
+          .OpenCalendar(HttpContext)
           .Items
-          .Where(i => i.When.Date >= DateTime.Now.Date)
+          .Where(i => i.IsPublic && i.When.Date >= DateTime.Now.Date)
           .OrderBy(i => i.When)
           .Take(5)
           .ToList();

@@ -15,7 +15,9 @@
       <hr />
       
       <form method="post" action="@Url.AbsoluteHttpsAction("StoreUpdate", "User")">
+        <label>Uw nieuwe wachtwoord:</label>
         <input type="password" name="password" placeholder="nieuw wachtwoord"></input>
+        <label>Herhaal uw wachtwoord:</label>
         <input type="password" name="password2" placeholder="herhaal wachtwoord"></input>
         <input type="submit" class="secondary small button" value="verander wachtwoord" />
         <input type="hidden" name="referrer" value="@Url.Action("Show", "Index")" />
@@ -24,7 +26,9 @@
     else
     {
       <form method="post" action="@Url.AbsoluteHttpsAction("Login", "User")">
+        <label>Uw e-mailadres:</label>
         <input type="text" name="email" placeholder="e-mail adres"></input>
+        <label>Uw wachtwoord:</label>
         <input type="password" name="password" placeholder="wachtwoord"></input>
         <input type="submit" class="secondary small button" value="inloggen"></input>
         <input type="hidden" name="referrer" value="@ViewBag.Referrer" />

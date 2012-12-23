@@ -97,6 +97,8 @@ namespace dereddingsarknl
           return new DirectoryInfo(Path.Combine(GetDataFolder(), "intern", "bunschoten"));
         case DataFolders.InternContactblad:
           return new DirectoryInfo(Path.Combine(GetDataFolder(), "intern", "contactblad"));
+        case DataFolders.Calendar:
+          return new DirectoryInfo(Path.Combine(GetDataFolder(), "calendar"));
       }
 
       return null;
@@ -112,6 +114,11 @@ namespace dereddingsarknl
       return new FileInfo(Path.Combine(GetDirectory(folder).FullName, name));
     }
 
+    public FileInfo GetFile(DataFolders folder, CalendarFiles file)
+    {
+      return new FileInfo(Path.Combine(GetDirectory(folder).FullName, GetFileName(file)));
+    }
+
     public FileInfo GetFile(DataFolders folder, IndexFiles file)
     {
       return new FileInfo(Path.Combine(GetDirectory(folder).FullName, GetFileName(file)));
@@ -122,6 +129,16 @@ namespace dereddingsarknl
       return this.GetDirectory(DataFolders.UsersToken)
           .GetFiles()
           .First(f => predicate(f));
+    }
+
+    private string GetFileName(CalendarFiles file)
+    {
+      switch(file)
+      {
+        case CalendarFiles.Publiek:
+          return "publiek.ics";
+      }
+      return "";
     }
 
     private string GetFileName(IndexFiles file)

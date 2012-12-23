@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using dereddingsarknl.Models;
+using dereddingsarknl.Extensions;
 using StackExchange.Profiling;
 
 namespace dereddingsarknl.Controllers
@@ -18,9 +19,10 @@ namespace dereddingsarknl.Controllers
       using(MiniProfiler.Current.Step("Read calendar file"))
       {
         var items =
-           Calendar.Get(HttpContext)
+           Data.GetFile(DataFolders.Calendar, CalendarFiles.Publiek)
+          .OpenCalendar(HttpContext)
           .Items
-          .Where(i => i.When.Date >= DateTime.Now.Date)
+          .Where(i => i.IsPublic && i.When.Date >= DateTime.Now.Date)
           .GroupBy(i => new DateTime(i.When.Year, i.When.Month, 1, 0, 0, 0))
           .ToDictionary(g => g.Key, g => g.OrderBy(i => i.When).ToList());
 
@@ -35,8 +37,12 @@ namespace dereddingsarknl.Controllers
 
     public ActionResult Download()
     {
-      var stream = System.IO.File.OpenRead(Calendar.Get(HttpContext).FilePath);
-      return File(stream, "text/calendar");
+      var content =
+         Data.GetFile(DataFolders.Calendar, CalendarFiles.Publiek)
+        .OpenCalendar(HttpContext)
+        .GetPubliekIcs();
+
+      return Content(content, "text/calendar");
     }
 
   }

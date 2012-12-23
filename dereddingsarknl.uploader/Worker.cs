@@ -22,7 +22,7 @@ namespace dereddingsarknl.uploader
         }
         catch(Exception exc)
         {
-          throw new InvalidOperationException("Het maken van de MP3 is niet goed gegaan", exc);
+          throw new InvalidOperationException("Het maken van de MP3 is niet goed gegaan: " + exc.Message, exc);
         }
 
         try
@@ -33,15 +33,18 @@ namespace dereddingsarknl.uploader
           request.UsePassive = true;
           request.UseBinary = true;
           request.KeepAlive = false;
-
-          StreamReader sourceStream = new StreamReader(tempFile);
-          byte[] buffer = Encoding.UTF8.GetBytes(sourceStream.ReadToEnd());
-          sourceStream.Close();
-          request.ContentLength = buffer.Length;
-
-          Stream reqStream = request.GetRequestStream();
-          reqStream.Write(buffer, 0, buffer.Length);
-          reqStream.Close();
+          
+          FileInfo ff = new FileInfo(tempFile);
+          request.ContentLength = ff.Length;
+          byte[] fileContents = new byte[ff.Length];
+          using(FileStream fr = ff.OpenRead())
+          {
+            fr.Read(fileContents, 0, Convert.ToInt32(ff.Length));
+          }
+          using(Stream writer = request.GetRequestStream())
+          {
+            writer.Write(fileContents, 0, fileContents.Length);
+          }
 
           FtpWebResponse response = (FtpWebResponse)request.GetResponse();
           string sResult = response.StatusDescription;
@@ -50,7 +53,7 @@ namespace dereddingsarknl.uploader
         }
         catch(Exception exc)
         {
-          throw new InvalidOperationException("Uploaden (FTP) is niet goed gegaan", exc);
+          throw new InvalidOperationException("Uploaden (FTP) is niet goed gegaan: " + exc.Message, exc);
         }
       }
 
@@ -83,7 +86,7 @@ namespace dereddingsarknl.uploader
       }
       catch(Exception exc)
       {
-        throw new InvalidOperationException("Uploaden is niet goed gegaan", exc);
+        throw new InvalidOperationException("Uploaden is niet goed gegaan: " + exc.Message, exc);
       }
     }
 

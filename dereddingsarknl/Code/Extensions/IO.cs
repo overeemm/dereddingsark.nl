@@ -20,6 +20,12 @@ namespace dereddingsarknl.Extensions
       File.AppendAllLines(file.FullName, new string[] { line });
     }
 
+    public static Calendar OpenCalendar(this FileInfo file, HttpContextBase context)
+    {
+      //return new IndexFile(file.FullName);
+      return CacheManager.Instance.GetCachedFile<Calendar>(file.FullName, () => Calendar.Get(context));
+    }
+
     public static IndexFile OpenIndex(this FileInfo file)
     {
       //return new IndexFile(file.FullName);

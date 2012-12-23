@@ -6,6 +6,8 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
+using DDay.iCal;
+using DDay.iCal.Serialization.iCalendar;
 
 namespace dereddingsarknl.Models
 {
@@ -51,14 +53,19 @@ namespace dereddingsarknl.Models
           }
         }
       }
-      catch { }
+      catch (Exception ex)
+      {
+        Elmah.ErrorLog.GetDefault(HttpContext.Current).Log(new Elmah.Error(ex));
+      }
     }
 
     private string _filePath;
+    private iCalendar _calendar;
 
     private Calendar(string filePath)
     {
       _filePath = filePath;
+      _calendar = iCalendar.LoadFromFile(_filePath).FirstOrDefault() as iCalendar;
     }
 
     public string FilePath
@@ -66,52 +73,97 @@ namespace dereddingsarknl.Models
       get { return _filePath; }
     }
 
+    public string GetPubliekIcs()
+    {
+      iCalendar iCal = new iCalendar();
+
+      foreach(var item in Items.Where(c => c.IsPublic))
+      {
+        Event evt = iCal.Create<Event>();
+        evt.Start = item.When;
+        evt.End = item.When.AddHours(1);
+        evt.Summary = item.What;
+        evt.Location = item.Where;
+      }
+
+      iCalendarSerializer serializer = new iCalendarSerializer(iCal);
+      return serializer.SerializeToString();
+    }
+
     public IEnumerable<CalendarItem> Items
     {
       get
       {
-        CalendarItem currentItem = null;
-        var lines = new string[0];
-        lock(fileLock)
-        {
-          lines = File.ReadAllLines(_filePath);
-        }
-        foreach(var line in lines)
-        {
-          if(line == "BEGIN:VEVENT")
-          {
-            currentItem = new CalendarItem();
-          }
-          else if(line == "END:VEVENT")
-          {
-            yield return currentItem;
-            currentItem = null;
-          }
-          else if(currentItem != null)
-          {
-            if(line.StartsWith("LOCATION"))
+        return (new CalendarItem[] {
+          new CalendarItem("Kinder Kerstmusical Baarn", "Gymzaal 'De Spoorslag', Spoortstraat 5", new iCalDateTime(new DateTime(2012, 12, 24, 19, 00, 00))),
+          new CalendarItem("Kerstfeest Bunschoten", "Oostwende College, Plecht 1, Bunschoten", new iCalDateTime(new DateTime(2012, 12, 25, 10, 30, 00))),
+          new CalendarItem("Dienst Bunschoten, Jacques Brunt", "Oostwende College, Plecht 1, Bunschoten", new iCalDateTime(new DateTime(2012, 12, 30, 9, 45, 00))),
+          new CalendarItem("Dienst Baarn, Feike ter Velde", "De Reddingsark, Adelheidlaan 8", new iCalDateTime(new DateTime(2012, 12, 30, 9, 45, 00))),
+          new CalendarItem("Oudejaarsdienst Baarn", "De Reddingsark, Adelheidlaan 8", new iCalDateTime(new DateTime(2012, 12, 31, 19, 00, 00)))
+        }).Concat(
+          _calendar
+          .GetOccurrences(new iCalDateTime(DateTime.Now), new iCalDateTime(DateTime.Now.AddYears(1)))
+          .Select(o =>
+            new CalendarItem()
             {
-              currentItem.Where = line.Substring(9).Replace("\\,", ",");
-            }
-            else if(line.StartsWith("SUMMARY"))
-            {
-              currentItem.What = line.Substring(8).Replace("\\,", ",").Replace("samenkomst", "Samenkomst");
-            }
-            else if(line.StartsWith("DTSTART;TZID=Europe/Amsterdam"))
-            {
-              currentItem.When = CalendarItem.ParseWhen(line.Substring(30));
-            }
-          }
-        }
+              What = (o.Source as Event).Summary,
+              Where = (o.Source as Event).Location,
+              When = o.Period.StartTime
+            })
+        );
       }
     }
   }
 
   public class CalendarItem
   {
-    public DateTime When { get; set; }
-    public string Where { get; set; }
-    public string What { get; set; }
+    private string _where;
+    private string _what;
+    public IDateTime When { get; set; }
+    
+    public string Where
+    {
+      get
+      {
+        if(What.IndexOf("dienst baarn", StringComparison.InvariantCultureIgnoreCase) != -1)
+        {
+          return "De Reddingsark, Adelheidlaan 8, Baarn";
+        }
+        if(What.IndexOf("dienst bunschoten", StringComparison.InvariantCultureIgnoreCase) != -1 
+          || What.IndexOf("jeugddienst", StringComparison.InvariantCultureIgnoreCase) != -1)
+        {
+          return "Oostwende College, Plecht 1, Bunschoten";
+        }
+        return _where;
+      }
+      set
+      {
+        _where = value;
+      }
+    }
+
+    public string What
+    {
+      get
+      {
+        return char.ToUpper(_what[0]) + _what.Substring(1);
+      }
+      set
+      {
+        _what = value;
+      }
+    }
+
+    public CalendarItem()
+    {
+    }
+
+    public CalendarItem(string what, string where, IDateTime when)
+    {
+      When = when;
+      Where = where;
+      What = what;
+    }
 
     public static DateTime ParseWhen(string text)
     {
@@ -123,6 +175,34 @@ namespace dereddingsarknl.Models
       var secondes = text.Substring(13, 2);
       return new DateTime(int.Parse(year), int.Parse(month), int.Parse(date),
         int.Parse(hour), int.Parse(minutes), int.Parse(secondes));
+    }
+
+    public string WhatForFrontPage
+    {
+      get
+      {
+        if(IsPublic)
+        {
+          if(What.ToLowerInvariant().StartsWith("dienst "))
+          {
+            return What.Substring(7);
+          }
+          return What;
+        }
+        return string.Empty;
+      }
+    }
+
+    public bool IsPublic
+    {
+      get
+      {
+        return What.StartsWith("dienst ", StringComparison.InvariantCultureIgnoreCase) 
+          || What.IndexOf("jeugddienst", StringComparison.InvariantCultureIgnoreCase) != -1
+          || What.IndexOf("kerstfeest", StringComparison.InvariantCultureIgnoreCase) != -1
+          || What.IndexOf("kerstmusical", StringComparison.InvariantCultureIgnoreCase) != -1
+          || What.IndexOf("oudejaarsdienst", StringComparison.InvariantCultureIgnoreCase) != -1;
+      }
     }
   }
 }

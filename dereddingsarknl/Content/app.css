@@ -149,6 +149,10 @@ span.message, p.message {
     width: 230px;
   }
 
+  .menu.columns .gebruiker label {
+    color: #fff;
+  }
+
   .menu.columns .gebruiker a, .menu.columns .gebruiker a:visited, .menu.columns .gebruiker a:active, .menu.columns .gebruiker a:hover {
     color: #fff;
     text-decoration: none;

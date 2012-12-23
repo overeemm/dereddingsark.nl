@@ -47,27 +47,37 @@ namespace dereddingsarknl.Controllers
       if((CurrentUser == null || !CurrentUser.UserManager) && Users.GetUserCount() > 0)
         return new HttpUnauthorizedResult("U heeft geen toegang tot deze pagina.");
 
-      using(MiniProfiler.Current.Step("Check uniqueness user and write if unique"))
+      var isTaken = false;
+      using(MiniProfiler.Current.Step("Check uniqueness user"))
       {
-        if(Users.IsEmailAlreadyTaken(email))
+        isTaken = Users.IsEmailAlreadyTaken(email);
+      }
+        if(isTaken)
         {
           return RedirectToAction("Show", new { emailtaken = email });
         }
         else
         {
-          Users.Add(name, email, extras);
-          var token = Users.StoreResetToken(email, true);
-
-          string reseturl = Url.AbsoluteHttpsAction("SetPassword", "User", new { token = token });
-          Mailer.WelcomeNew(name, email, reseturl).Send(new SmtpClient().Wrap());
-
+          using(MiniProfiler.Current.Step("Write user"))
+          {
+            Users.Add(name, email, extras);
+          }
+          var token = "";
+          using(MiniProfiler.Current.Step("Write usertoken"))
+          {
+            token = Users.StoreResetToken(email, true);
+          }
+          using(MiniProfiler.Current.Step("Send mail"))
+          {
+            string reseturl = Url.AbsoluteHttpsAction("SetPassword", "User", new { token = token, reason = "nieuw" });
+            Mailer.WelcomeNew(name, email, reseturl).Send(new SmtpClient().Wrap());
+          }
           return RedirectToAction("Show");
         }
-      }
     }
 
     [HttpPost]
-    public ActionResult StoreUpdate(string password, string password2, string referrer, string token)
+    public ActionResult StoreUpdate(string password, string password2, string referrer, string token, string reason)
     {
       User user;
       if(!string.IsNullOrEmpty(token))
@@ -86,7 +96,7 @@ namespace dereddingsarknl.Controllers
       else if(password != password2)
       {
         Cookies.StoreMessage("De wachtwoorden komen niet overeen.");
-        return RedirectToAction("SetPassword", new { token = token });
+        return RedirectToAction("SetPassword", new { token = token, reason = reason });
       }
 
       return Redirect(referrer);
@@ -102,7 +112,7 @@ namespace dereddingsarknl.Controllers
       else
       {
         var token = Users.StoreResetToken(email);
-        string reseturl = Url.AbsoluteHttpsAction("SetPassword", "User", new { token = token });
+        string reseturl = Url.AbsoluteHttpsAction("SetPassword", "User", new { token = token, reason = "change" });
 
         Mailer.PasswordReset(user, reseturl).Send(new SmtpClient().Wrap());
 
@@ -112,7 +122,7 @@ namespace dereddingsarknl.Controllers
       }
     }
 
-    public ActionResult SetPassword(string token)
+    public ActionResult SetPassword(string token, string reason)
     {
       User user = null;
       if(CurrentUser == null && !string.IsNullOrEmpty(token))
@@ -132,6 +142,7 @@ namespace dereddingsarknl.Controllers
         ViewBag.NotExpandLogin = true;
         ViewBag.User = user;
         ViewBag.Token = token;
+        ViewBag.Reason = reason;
         return View();
       }
     }

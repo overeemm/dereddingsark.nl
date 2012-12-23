@@ -63,7 +63,8 @@
     })();
 
   </script>
-
+  
+  <!-- @DateTime.Now.ToString() -->
 </head>
 <body>
 
@@ -121,7 +122,9 @@
             <hr />
 
             <form method="post" action="@Url.AbsoluteHttpsAction("StoreUpdate", "User")">
+              <label>Uw nieuwe wachtwoord:</label>
               <input type="password" name="password" placeholder="nieuw wachtwoord"></input>
+              <label>Herhaal uw wachtwoord:</label>
               <input type="password" name="password2" placeholder="herhaal wachtwoord"></input>
               <input type="submit" class="secondary small button" value="verander wachtwoord" />
               <input type="hidden" name="referrer" value="@HttpContext.Current.Request.Url.AbsoluteUri" />
@@ -146,7 +149,9 @@
           <div class="inloggen active @(ViewBag.NotExpandLogin == null && !string.IsNullOrEmpty(ViewBag.Message as string) ? "open" : "close")">
 
             <form method="post" action="@Url.AbsoluteHttpsAction("Login", "User")">
+              <label>Uw e-mailadres:</label>
               <input type="text" name="email" placeholder="e-mail adres"></input>
+              <label>Uw wachtwoord:</label>
               <input type="password" name="password" placeholder="wachtwoord"></input>
               <input type="submit" name="inloggen" class="secondary small button" value="inloggen"></input>
               <input type="hidden" name="referrer" value="@HttpContext.Current.Request.Url.AbsoluteUri" />

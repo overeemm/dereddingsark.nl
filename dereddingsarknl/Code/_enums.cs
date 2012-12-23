@@ -17,6 +17,11 @@ namespace dereddingsarknl
     Article
   }
 
+  public enum CalendarFiles
+  {
+    Publiek
+  }
+
   public enum DataFolders
   {
     UsersToken,
