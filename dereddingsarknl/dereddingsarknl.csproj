@@ -144,6 +144,27 @@
     <Content Include="App_Readme\glimpse.readme.txt" />
     <Content Include="Content\app.css" />
     <Content Include="Content\app.min.css" />
+    <Content Include="Content\FancyBox\blank.gif" />
+    <Content Include="Content\FancyBox\fancybox_loading.gif" />
+    <Content Include="Content\FancyBox\fancybox_overlay.png" />
+    <Content Include="Content\FancyBox\fancybox_sprite.png" />
+    <Content Include="Content\FancyBox\helpers\fancybox_buttons.png" />
+    <Content Include="Content\FancyBox\helpers\jquery.fancybox-buttons.css" />
+    <Content Include="Content\FancyBox\helpers\jquery.fancybox-buttons.js" />
+    <Content Include="Content\FancyBox\helpers\jquery.fancybox-buttons.min.css" />
+    <Content Include="Content\FancyBox\helpers\jquery.fancybox-buttons.min.js" />
+    <Content Include="Content\FancyBox\helpers\jquery.fancybox-media.js" />
+    <Content Include="Content\FancyBox\helpers\jquery.fancybox-media.min.js" />
+    <Content Include="Content\FancyBox\helpers\jquery.fancybox-thumbs.css" />
+    <Content Include="Content\FancyBox\helpers\jquery.fancybox-thumbs.js" />
+    <Content Include="Content\FancyBox\helpers\jquery.fancybox-thumbs.min.css" />
+    <Content Include="Content\FancyBox\helpers\jquery.fancybox-thumbs.min.js" />
+    <Content Include="Content\FancyBox\jquery.fancybox.css" />
+    <Content Include="Content\FancyBox\jquery.fancybox.js" />
+    <Content Include="Content\FancyBox\jquery.fancybox.min.css" />
+    <Content Include="Content\FancyBox\jquery.fancybox.min.js" />
+    <Content Include="Content\FancyBox\jquery.fancybox.pack.js" />
+    <Content Include="Content\FancyBox\jquery.fancybox.pack.min.js" />
     <Content Include="Content\foundation.css" />
     <Content Include="Content\foundation.min.css" />
     <Content Include="Content\ie.css" />
@@ -270,6 +291,9 @@
     <Content Include="Views\SiteMailer\PasswordReset.text.cshtml" />
     <Content Include="Views\SiteMailer\WelcomeNew.cshtml" />
     <Content Include="Views\SiteMailer\WelcomeNew.text.cshtml" />
+    <Content Include="Views\User\Mail.cshtml" />
+    <Content Include="Views\SiteMailer\GroupMail.text.cshtml" />
+    <Content Include="Views\SiteMailer\GroupMail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

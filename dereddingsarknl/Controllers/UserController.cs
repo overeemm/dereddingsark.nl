@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using dereddingsarknl.Models;
 using dereddingsarknl.Extensions;
 using StackExchange.Profiling;
+using MarkdownSharp;
 
 namespace dereddingsarknl.Controllers
 {
@@ -119,6 +120,32 @@ namespace dereddingsarknl.Controllers
         Cookies.StoreMessage("Er is een e-mail gestuurd met instructies om uw wachtwoord te resetten.");
 
         return Redirect(referrer);
+      }
+    }
+
+    public ActionResult Mail(string to, string subject, string body, bool? test)
+    {
+      if(CurrentUser == null || !CurrentUser.Mailer)
+        return new HttpUnauthorizedResult("U heeft geen toegang tot deze pagina.");
+
+      if(Request.RequestType == "GET")
+      {
+        return View();
+      }
+      else
+      {
+        var users = Users.GetUsers();
+        if(test == null || test.Value)
+        {
+          users = new User[] { CurrentUser };
+        }
+
+        string htmlmessage = new Markdown().Transform(body)
+          .Replace("<p>", "<p style=\"color: #555; font-size: 15px; margin-top: 20px; padding: 10px;\">")
+          .Replace("<a ", "<a style=\"color: #555; font-size: 15px;\" ");
+        Mailer.GroupMail(users, subject, htmlmessage, body).Send(new SmtpClient().Wrap());
+
+        return RedirectToAction("Mail");
       }
     }
 

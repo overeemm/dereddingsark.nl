@@ -59,6 +59,9 @@ namespace dereddingsarknl
       routes.MapRoute("CalendarICS", "agenda.ics", new { controller = "Calendar", action = "Download" });
       routes.MapRoute("Calendar", "agenda", new { controller = "Calendar", action = "Show" });
 
+      routes.MapRoute("InternCalendarICS", "76C49EEA6C5C400086161325BB262201.ics", new { controller = "Calendar", action = "DownloadIntern" });
+      routes.MapRoute("Intern Calendar", "intern/agenda", new { controller = "Calendar", action = "ShowIntern" });
+
       routes.MapRoute("RecordingAdd", "audio/add", new { controller = "Recordings", action = "Add" });
       routes.MapRoute("RecordingsOldStyle", "audio/{cat}/{alias}", new { controller = "Recordings", action = "OldPermaLinks" });
       routes.MapRoute("RecordingPermaLink", "audio/{alias}", new { controller = "Recordings", action = "Single" });
@@ -87,6 +90,7 @@ namespace dereddingsarknl
       routes.MapRoute("UserResetPassword", "user/resetpassword", new { controller = "User", action = "ResetPassword" });
       routes.MapRoute("UserPassword", "user/setpassword", new { controller = "User", action = "SetPassword" });
       routes.MapRoute("UserCreateAPIToken", "user/apitoken", new { controller = "User", action = "CreateAPIToken" });
+      routes.MapRoute("UserMail", "user/mail", new { controller = "User", action = "Mail" });
 
       routes.MapRoute("404PageNotFound", "{*url}", new { controller = "Error", action = "NotFound" });
     }

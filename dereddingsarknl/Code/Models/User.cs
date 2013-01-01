@@ -19,6 +19,7 @@ namespace dereddingsarknl.Models
     public bool UserManager { get; private set; }
     public bool AudioManager { get; private set; }
     public bool EnableProfiler { get; private set; }
+    public bool Mailer { get; private set; }
 
     public static string CreateIndexLine(string email, string name, string passwordHash, string salt, string extras)
     {
@@ -39,7 +40,8 @@ namespace dereddingsarknl.Models
         IsAPIUser = extras.Contains("api"),
         UserManager = extras.Contains("users"),
         AudioManager = extras.Contains("audio"),
-        EnableProfiler = extras.Contains("profiler")
+        EnableProfiler = extras.Contains("profiler"),
+        Mailer = extras.Contains("mail")
       };
     }
   }

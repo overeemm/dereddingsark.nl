@@ -100,26 +100,19 @@ jQuery(document).ready(function ($) {
     var id = $this.attr("id");
     var name = $this.attr("name");
 
-    $this.css("background-image", "");
-    $this.parent().parent().removeClass("six").addClass("twelve");
-
     $.get("/fotos/" + name + "/" + id, function (data) {
-      for (var i = 0; i < data.length; i++) {
-        $this.append("<div class='fotocontainer'><img src='" + data[i].Url + "' /></div>");
-      }
-      $this.orbit({animationSpeed: 800});
-    });
 
+      var photos = [];
+      for (var i = 0; i < data.length; i++) {
+        photos.push({ href: data[i].Url, title: "" });
+      }
+      $.fancybox.open(photos, { padding: 0 });
+
+    });
+    return false;
   });
 
   function revertAlbums() {
-    $('div.photo.orbit').empty().each(function (i, e) {
-      $(e).css("background-image", "url('" + $(e).data("thumbnail") + "')");
-      $(e).prependTo($(e).parent().parent());
-      $(e).parent().parent().removeClass("twelve").addClass("six");
-      $(e).css("width", "").css("height", "").removeClass("orbit");
-      $('div.orbit-wrapper').remove();
-    });
   }
 
   /* calendar */
@@ -253,6 +246,24 @@ jQuery(document).ready(function ($) {
       }
     });
   });
+
+  function setupStoreMail(textarea, test) {
+    $('input.sendmail').click(function () {
+      if (localStorage) {
+        if (test.is(':checked')) {
+          localStorage.setItem('tempMail', textarea.val());
+        } else {
+          localStorage.setItem('tempMail', "");
+        }
+      }
+    });
+  }
+
+  function restoreMail(textarea) {
+    if (localStorage) {
+      textarea.val(localStorage.getItem('tempMail'));
+    }
+  }
 
   /* ALERT BOXES ------------ */
   //$(".alert-box").delegate("a.close", "click", function(event) {

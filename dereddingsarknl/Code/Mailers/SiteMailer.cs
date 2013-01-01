@@ -60,7 +60,7 @@ namespace dereddingsarknl.Mailers
         x.Subject = "Uw wachtwoord voor dereddingsark.nl";
         x.ViewName = "PasswordReset";
         x.To.Add(new MailAddress(user.Email, user.Name));
-        x.From = new MailAddress(Email_AddressFrom, Email_Name);
+        x.From = new MailAddress(Email_AddressTo, Email_Name);
         x.ReplyTo = new MailAddress(Email_AddressReplyTo, Email_Name);
         x.LinkedResources = resources;
       });
@@ -80,6 +80,29 @@ namespace dereddingsarknl.Mailers
         x.Subject = "Uw account voor dereddingsark.nl";
         x.ViewName = "WelcomeNew";
         x.To.Add(new MailAddress(email, name));
+        x.From = new MailAddress(Email_AddressFrom, Email_Name);
+        x.ReplyTo = new MailAddress(Email_AddressReplyTo, Email_Name);
+        x.LinkedResources = resources;
+      });
+    }
+
+    public virtual MvcMailMessage GroupMail(IEnumerable<User> users, string subject, string htmlmessage, string message)
+    {
+      ViewBag.HtmlMessage = htmlmessage;
+      ViewBag.Message = message;
+
+      var resources = new Dictionary<string, string>();
+      resources["emaillogo"] = EmailLogoPath;
+
+      return Populate(x =>
+      {
+        x.Subject = subject;
+        x.ViewName = "GroupMail";
+        foreach(User u in users)
+        {
+          x.Bcc.Add(new MailAddress(u.Email, u.Name));
+        }
+        x.To.Add(new MailAddress(Email_AddressFrom, Email_Name));
         x.From = new MailAddress(Email_AddressFrom, Email_Name);
         x.ReplyTo = new MailAddress(Email_AddressReplyTo, Email_Name);
         x.LinkedResources = resources;

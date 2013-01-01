@@ -65,7 +65,10 @@ namespace dereddingsarknl.Models
     private Calendar(string filePath)
     {
       _filePath = filePath;
-      _calendar = iCalendar.LoadFromFile(_filePath).FirstOrDefault() as iCalendar;
+      lock(fileLock)
+      {
+        _calendar = iCalendar.LoadFromStream(File.OpenRead(filePath)).FirstOrDefault() as iCalendar;
+      }
     }
 
     public string FilePath
@@ -112,6 +115,23 @@ namespace dereddingsarknl.Models
             })
         );
       }
+    }
+
+    public string GetIcs()
+    {
+      iCalendar iCal = new iCalendar();
+
+      foreach(var item in Items)
+      {
+        Event evt = iCal.Create<Event>();
+        evt.Start = item.When;
+        evt.End = item.When.AddHours(1);
+        evt.Summary = item.What;
+        evt.Location = item.Where;
+      }
+
+      iCalendarSerializer serializer = new iCalendarSerializer(iCal);
+      return serializer.SerializeToString();
     }
   }
 

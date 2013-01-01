@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Stuur een mail";
+}
+
+<div class="row">
+  <div class="six columns">
+
+    <form method="post" action="@Url.Action("Mail", "User")">
+      <label>Aan:</label>
+      <select name="to" class="form">
+        <option value="allen">Iedereen</option>
+        <option value="baarn">Baarn</option>
+        <option value="bunschoten">Bunschoten</option>
+      </select>
+
+      <label>Onderwerp:</label>
+      <input type="text" name="subject" placeholder="het onderwerp"></input>
+      <label>Bericht (markdown):</label>
+      <textarea name="body" class="message" placeholder="het bericht (markdown)" ></textarea>
+      <label><input type="checkbox" checked="checked" name="test" value="true" /> verstuur als test</label>
+      <input type="submit" class="secondary small button sendmail" value="versturen"></input>
+    </form>
+
+  </div>
+</div>
+
+<script type="text/javascript">
+  setupStoreMail($('textarea.message'), $('input[type="checkbox"]'));
+  restoreMail($('textarea.message'));
+</script>

@@ -1,4 +1,4 @@
-/* icons van http://365psd.com/day/2-209/ */
+﻿/* icons van http://365psd.com/day/2-209/ */
 
 /* new background-color FAF8E9 */
 /* old background-color FAF8E9 */
@@ -14,6 +14,10 @@ body, html {
 body {
   overflow-y: scroll;
 }
+
+.hidden {
+    display: none;
+}​
 
 span.message, p.message {
   font-size: 15px;
@@ -1064,6 +1068,47 @@ div.artikelcontainer {
   padding: 0px;
 }
 
+div.internmenu {
+}
+
+  div.internmenu ul {
+    background-color: #0A91A8;
+    padding: 10px;
+    -moz-box-shadow: 0px 0px 5px 0px #aaa;
+    -webkit-box-shadow: 0px 0px 5px 0px #aaa;
+    box-shadow: 0px 0px 5px 0px #aaa;
+    margin-left: 30px;
+    margin-right: 15px;
+  }
+
+  div.internmenu li {
+    display: inline-block;
+    list-style: none;
+    padding-left: 30px;
+    color: #fff;
+    margin-right: 20px;
+  }
+
+  div.internmenu a, div.internmenu a:visited, div.internmenu a:active, div.internmenu a:hover {
+    color: #fff;
+  }
+
+    div.internmenu a:hover {
+      text-decoration: underline;
+    }
+
+  div.internmenu li#agenda {
+    background: url("images/iconsbar.png") 0px -34px no-repeat;
+  }
+
+  div.internmenu li#mailer {
+    background: url("images/iconsbar.png") 0px -364px no-repeat;
+  }
+
+  div.internmenu li#gebruiker {
+    background: url("images/iconsbar.png") 0px -304px no-repeat;
+  }
+
 div.contactblad, div.bladen {
   padding-left: 0px;
 }
@@ -1100,6 +1145,11 @@ div.contactblad div.twelve li, div.baarn div.twelve li, div.bunschoten div.twelv
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+select.form {
+  border: solid 1px #ccc;
+  height: 32px;
 }
 
 textarea.message {

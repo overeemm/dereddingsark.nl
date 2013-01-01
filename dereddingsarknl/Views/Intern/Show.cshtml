@@ -2,18 +2,29 @@
 @using System.Collections;
 @using System.Linq;
 
-@if(ViewBag.CurrentUser.UserManager)
-{
-  
-  <div class="row">
-    <div class="twelve columns">
-      <p style="background-color: #fff; padding: 5px;">
-        admin: <a href="@Url.Action("Show", "User")">gebruikers</a>
-      </p>
-    </div>
-  </div>
 
-}
+
+<div class="row">
+  <div class="twelve columns internmenu">
+    <ul>
+      <li id="agenda">
+        <a href="@Url.Action("ShowIntern", "Calendar")">agenda</a>
+      </li>
+      @if(ViewBag.CurrentUser.Mailer)
+      {
+        <li id="mailer">
+          <a href="@Url.Action("Mail", "User")">stuur een mail</a>
+        </li>
+      }
+      @if(ViewBag.CurrentUser.UserManager)
+      {
+        <li id="gebruiker">
+          <a href="@Url.Action("Show", "User")">gebruikers</a>
+        </li>
+      }
+    </ul>
+  </div>
+</div>
 
 <div class="row">
   <div class="twelve columns">
