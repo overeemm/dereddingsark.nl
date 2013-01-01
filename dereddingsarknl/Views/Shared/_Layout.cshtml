@@ -53,7 +53,13 @@
 
     @if(ViewBag.CurrentUser != null)
     {
-      @Html.Raw("    _gaq.push(['_setCustomVar', 1, 'UserName', '" + ViewBag.CurrentUser.Name + "', 2]);")
+      @Html.Raw("    _gaq.push(['_setCustomVar', 1, 'UserName', '" + ViewBag.CurrentUser.Name + "', 3]);")
+      @Html.Raw("    _gaq.push(['_setCustomVar', 2, 'LoggedIn', 'true', 3]);")
+    }
+    else
+    {
+      @Html.Raw("    _gaq.push(['_setCustomVar', 1, 'UserName', '', 3]);")
+      @Html.Raw("    _gaq.push(['_setCustomVar', 2, 'LoggedIn', 'false', 3]);")
     }
 
     (function () {
@@ -198,7 +204,8 @@
   <script type="text/javascript" src="@Url.Content("~/Scripts/jquery-1.7.2.min.js")"></script>
   <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.plugins.min.js")"></script>
   <script type="text/javascript" src="@Url.Content("~/Scripts/app.min.js")"></script>
-  <script type="text/javascript" src="/Content/fancybox/jquery.fancybox.pack.js?v=2.1.3"></script>
+
+  @RenderSection("EndOfBody", required: false)
 
   @if(ViewBag.IncludeProfiler != null && ViewBag.IncludeProfiler)
   {

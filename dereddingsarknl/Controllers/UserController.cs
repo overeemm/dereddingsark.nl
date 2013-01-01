@@ -135,7 +135,7 @@ namespace dereddingsarknl.Controllers
       else
       {
         var users = Users.GetUsers();
-        if(test == null || test.Value)
+        if(test != null && test.Value)
         {
           users = new User[] { CurrentUser };
         }

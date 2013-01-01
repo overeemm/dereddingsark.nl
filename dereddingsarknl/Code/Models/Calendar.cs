@@ -203,9 +203,9 @@ namespace dereddingsarknl.Models
       {
         if(IsPublic)
         {
-          if(What.ToLowerInvariant().StartsWith("dienst "))
+          if(What.ToLowerInvariant().StartsWith("dienst ") && What.IndexOf(",") > -1)
           {
-            return What.Substring(7);
+            return What.Substring(0, What.IndexOf(",")).Trim();
           }
           return What;
         }

@@ -13,6 +13,27 @@ $(window).resize(function () {
   startSlideshow();
 });
 
+function setupStoreMail(textarea, subject, test) {
+  $('input.sendmail').click(function () {
+    if (localStorage) {
+      if (test.is(':checked')) {
+        localStorage.setItem('tempMail', textarea.val());
+        localStorage.setItem('tempMailSubject', subject.val());
+      } else {
+        localStorage.setItem('tempMail', "");
+        localStorage.setItem('tempMailSubject', "");
+      }
+    }
+  });
+}
+
+function restoreMail(textarea, subject) {
+  if (localStorage) {
+    textarea.val(localStorage.getItem('tempMail'));
+    subjct.val(localStorage.getItem('tempMailSubject'));
+  }
+}
+
 jQuery(document).ready(function ($) {
 
   /* index page */
@@ -246,24 +267,6 @@ jQuery(document).ready(function ($) {
       }
     });
   });
-
-  function setupStoreMail(textarea, test) {
-    $('input.sendmail').click(function () {
-      if (localStorage) {
-        if (test.is(':checked')) {
-          localStorage.setItem('tempMail', textarea.val());
-        } else {
-          localStorage.setItem('tempMail', "");
-        }
-      }
-    });
-  }
-
-  function restoreMail(textarea) {
-    if (localStorage) {
-      textarea.val(localStorage.getItem('tempMail'));
-    }
-  }
 
   /* ALERT BOXES ------------ */
   //$(".alert-box").delegate("a.close", "click", function(event) {
