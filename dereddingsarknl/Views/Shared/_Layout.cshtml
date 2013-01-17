@@ -53,13 +53,11 @@
 
     @if(ViewBag.CurrentUser != null)
     {
-      @Html.Raw("    _gaq.push(['_setCustomVar', 1, 'UserName', '" + ViewBag.CurrentUser.Name + "', 3]);")
-      @Html.Raw("    _gaq.push(['_setCustomVar', 2, 'LoggedIn', 'true', 3]);")
+      @Html.Raw("    _gaq.push(['_setCustomVar', 2, 'LoggedIn', 'true', 1]);")
     }
     else
     {
-      @Html.Raw("    _gaq.push(['_setCustomVar', 1, 'UserName', '', 3]);")
-      @Html.Raw("    _gaq.push(['_setCustomVar', 2, 'LoggedIn', 'false', 3]);")
+      @Html.Raw("    _gaq.push(['_setCustomVar', 2, 'LoggedIn', 'false', 1]);")
     }
 
     (function () {
