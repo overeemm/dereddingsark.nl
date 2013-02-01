@@ -203,6 +203,10 @@ namespace dereddingsarknl.Models
           {
             return What.Substring(0, What.IndexOf(",")).Trim();
           }
+          if(What.ToLowerInvariant().StartsWith("gezamelijke dienst ") && What.IndexOf(",") > -1)
+          {
+            return What.Substring(0, What.IndexOf(",")).Trim();
+          }
           return What;
         }
         return string.Empty;
@@ -215,7 +219,7 @@ namespace dereddingsarknl.Models
       {
         return What.StartsWith("dienst ", StringComparison.InvariantCultureIgnoreCase) 
           || What.IndexOf("jeugddienst", StringComparison.InvariantCultureIgnoreCase) != -1
-          || What.IndexOf("kerstfeest", StringComparison.InvariantCultureIgnoreCase) != -1
+          || What.IndexOf("gezamelijke dienst", StringComparison.InvariantCultureIgnoreCase) != -1
           || What.IndexOf("kerstmusical", StringComparison.InvariantCultureIgnoreCase) != -1
           || What.IndexOf("oudejaarsdienst", StringComparison.InvariantCultureIgnoreCase) != -1;
       }
