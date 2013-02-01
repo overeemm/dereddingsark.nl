@@ -61,13 +61,24 @@ namespace dereddingsarknl.Models
 
     private string _filePath;
     private iCalendar _calendar;
-
+    private List<CalendarItem> _items;
     private Calendar(string filePath)
     {
       _filePath = filePath;
       lock(fileLock)
       {
         _calendar = iCalendar.LoadFromStream(File.OpenRead(filePath)).FirstOrDefault() as iCalendar;
+
+        _items = _calendar
+          .GetOccurrences(new iCalDateTime(DateTime.Now), new iCalDateTime(DateTime.Now.AddYears(1)))
+          .Select(o =>
+            new CalendarItem()
+            {
+              What = (o.Source as Event).Summary,
+              Where = (o.Source as Event).Location,
+              When = o.Period.StartTime
+            })
+           .ToList();
       }
     }
 
@@ -97,23 +108,7 @@ namespace dereddingsarknl.Models
     {
       get
       {
-        return (new CalendarItem[] {
-          new CalendarItem("Kinder Kerstmusical Baarn", "Gymzaal 'De Spoorslag', Spoortstraat 5", new iCalDateTime(new DateTime(2012, 12, 24, 19, 00, 00))),
-          new CalendarItem("Kerstfeest Bunschoten", "Oostwende College, Plecht 1, Bunschoten", new iCalDateTime(new DateTime(2012, 12, 25, 10, 30, 00))),
-          new CalendarItem("Dienst Bunschoten, Jacques Brunt", "Oostwende College, Plecht 1, Bunschoten", new iCalDateTime(new DateTime(2012, 12, 30, 9, 45, 00))),
-          new CalendarItem("Dienst Baarn, Feike ter Velde", "De Reddingsark, Adelheidlaan 8", new iCalDateTime(new DateTime(2012, 12, 30, 9, 45, 00))),
-          new CalendarItem("Oudejaarsdienst Baarn", "De Reddingsark, Adelheidlaan 8", new iCalDateTime(new DateTime(2012, 12, 31, 19, 00, 00)))
-        }).Concat(
-          _calendar
-          .GetOccurrences(new iCalDateTime(DateTime.Now), new iCalDateTime(DateTime.Now.AddYears(1)))
-          .Select(o =>
-            new CalendarItem()
-            {
-              What = (o.Source as Event).Summary,
-              Where = (o.Source as Event).Location,
-              When = o.Period.StartTime
-            })
-        );
+        return _items;
       }
     }
 
@@ -150,7 +145,8 @@ namespace dereddingsarknl.Models
           return "De Reddingsark, Adelheidlaan 8, Baarn";
         }
         if(What.IndexOf("dienst bunschoten", StringComparison.InvariantCultureIgnoreCase) != -1 
-          || What.IndexOf("jeugddienst", StringComparison.InvariantCultureIgnoreCase) != -1)
+          || What.IndexOf("jeugddienst", StringComparison.InvariantCultureIgnoreCase) != -1
+          || What.IndexOf("gezamelijke dienst", StringComparison.InvariantCultureIgnoreCase) != -1)
         {
           return "Oostwende College, Plecht 1, Bunschoten";
         }

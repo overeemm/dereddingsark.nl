@@ -177,6 +177,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="apple-touch-icon.png" />
     <Content Include="App_Readme\glimpse.mvc3.readme.txt" />
     <Content Include="App_Readme\glimpse.readme.txt" />
     <Content Include="Content\app.css" />
@@ -187,20 +188,12 @@
     <Content Include="Content\FancyBox\helpers\fancybox_buttons.png" />
     <Content Include="Content\FancyBox\helpers\jquery.fancybox-buttons.css" />
     <Content Include="Content\FancyBox\helpers\jquery.fancybox-buttons.js" />
-    <Content Include="Content\FancyBox\helpers\jquery.fancybox-buttons.min.css" />
-    <Content Include="Content\FancyBox\helpers\jquery.fancybox-buttons.min.js" />
     <Content Include="Content\FancyBox\helpers\jquery.fancybox-media.js" />
-    <Content Include="Content\FancyBox\helpers\jquery.fancybox-media.min.js" />
     <Content Include="Content\FancyBox\helpers\jquery.fancybox-thumbs.css" />
     <Content Include="Content\FancyBox\helpers\jquery.fancybox-thumbs.js" />
-    <Content Include="Content\FancyBox\helpers\jquery.fancybox-thumbs.min.css" />
-    <Content Include="Content\FancyBox\helpers\jquery.fancybox-thumbs.min.js" />
     <Content Include="Content\FancyBox\jquery.fancybox.css" />
     <Content Include="Content\FancyBox\jquery.fancybox.js" />
-    <Content Include="Content\FancyBox\jquery.fancybox.min.css" />
-    <Content Include="Content\FancyBox\jquery.fancybox.min.js" />
     <Content Include="Content\FancyBox\jquery.fancybox.pack.js" />
-    <Content Include="Content\FancyBox\jquery.fancybox.pack.min.js" />
     <Content Include="Content\foundation.css" />
     <Content Include="Content\ie.min.css" />
     <Content Include="Content\Images\arrow-baarn.png" />
