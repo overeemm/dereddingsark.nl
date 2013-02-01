@@ -53,28 +53,28 @@ namespace dereddingsarknl.Controllers
       {
         isTaken = Users.IsEmailAlreadyTaken(email);
       }
-        if(isTaken)
+      if(isTaken)
+      {
+        return RedirectToAction("Show", new { emailtaken = email });
+      }
+      else
+      {
+        using(MiniProfiler.Current.Step("Write user"))
         {
-          return RedirectToAction("Show", new { emailtaken = email });
+          Users.Add(name, email, extras);
         }
-        else
+        var token = "";
+        using(MiniProfiler.Current.Step("Write usertoken"))
         {
-          using(MiniProfiler.Current.Step("Write user"))
-          {
-            Users.Add(name, email, extras);
-          }
-          var token = "";
-          using(MiniProfiler.Current.Step("Write usertoken"))
-          {
-            token = Users.StoreResetToken(email, true);
-          }
-          using(MiniProfiler.Current.Step("Send mail"))
-          {
-            string reseturl = Url.AbsoluteHttpsAction("SetPassword", "User", new { token = token, reason = "nieuw" });
-            Mailer.WelcomeNew(name, email, reseturl).Send(new SmtpClient().Wrap());
-          }
-          return RedirectToAction("Show");
+          token = Users.StoreResetToken(email, true);
         }
+        using(MiniProfiler.Current.Step("Send mail"))
+        {
+          string reseturl = Url.AbsoluteHttpsAction("SetPassword", "User", new { token = token, reason = "nieuw" });
+          Mailer.WelcomeNew(name, email, reseturl).Send(new SmtpClient().Wrap());
+        }
+        return RedirectToAction("Show");
+      }
     }
 
     [HttpPost]
@@ -134,16 +134,41 @@ namespace dereddingsarknl.Controllers
       }
       else
       {
-        var users = Users.GetUsers();
+        var users = Users.GetUsers().ToList();
+        if(to == "baarn")
+        {
+          users = users.Where(u => u.Baarn).ToList();
+        }
+        else if(to == "bunschoten")
+        {
+          users = users.Where(u => u.Bunschoten).ToList();
+        }
         if(test != null && test.Value)
         {
-          users = new User[] { CurrentUser };
+          users = new User[] { CurrentUser }.ToList();
         }
 
         string htmlmessage = new Markdown().Transform(body)
           .Replace("<p>", "<p style=\"color: #555; font-size: 15px; margin-top: 20px; padding: 10px;\">")
           .Replace("<a ", "<a style=\"color: #555; font-size: 15px;\" ");
-        Mailer.GroupMail(users, subject, htmlmessage, body).Send(new SmtpClient().Wrap());
+
+        var smtp = new SmtpClient().Wrap();
+        for(var i = 0; i < users.Count; i = i + 20)
+        {
+          var batch = users.Skip(i).Take(20);
+          try
+          {
+            Mailer.GroupMail(batch, subject, htmlmessage, body).Send(smtp);
+          }
+          catch(Exception e)
+          {
+            Elmah.ErrorLog.GetDefault(System.Web.HttpContext.Current)
+              .Log(new Elmah.Error(
+                new InvalidOperationException("Fout bij mailen aan " + 
+                      string.Join(", ", batch.Select(u => u.Email)), e)
+               ));
+          }
+        }
 
         return RedirectToAction("Mail");
       }

@@ -21,6 +21,9 @@ namespace dereddingsarknl.Models
     public bool EnableProfiler { get; private set; }
     public bool Mailer { get; private set; }
 
+    public bool Baarn { get; private set; }
+    public bool Bunschoten { get; private set; }
+
     public static string CreateIndexLine(string email, string name, string passwordHash, string salt, string extras)
     {
       return string.Format("\"{0}\", \"{1}\", \"{2}\", \"{3}\", \"{4}\"", email.Trim(), name.Trim(), passwordHash, salt, extras);
@@ -41,7 +44,9 @@ namespace dereddingsarknl.Models
         UserManager = extras.Contains("users"),
         AudioManager = extras.Contains("audio"),
         EnableProfiler = extras.Contains("profiler"),
-        Mailer = extras.Contains("mail")
+        Mailer = extras.Contains("mail"),
+        Baarn = extras.Contains("baarn"),
+        Bunschoten = extras.Contains("bunschoten")
       };
     }
   }
