@@ -16,30 +16,50 @@ namespace dereddingsarknl.Controllers
   public class UserController : BaseController
   {
     [HttpPost]
-    public ActionResult StoreNewBulk(string userlist, string sendmail, string sync)
+    public ActionResult StoreNewBulk(string userlist, string sendmail)
     {
-      //if((CurrentUser == null || !CurrentUser.UserManager) && GetUserCount() > 0)
-      //  return new HttpUnauthorizedResult("U heeft geen toegang tot deze pagina.");
+      if((CurrentUser == null || !CurrentUser.UserManager) && Users.GetUserCount() > 0)
+        return new HttpUnauthorizedResult("U heeft geen toegang tot deze pagina.");
 
-      //using(MiniProfiler.Current.Step("Store new users"))
-      //{
-      //  var users = Index.CreateUserIndex(HttpContext);
-      //  List<string> failed = new List<string>();
-      //  foreach(var userNameEmail in userlist.Split(new string[] { Environment.NewLine }, StringSplitOptions.None))
-      //  {
-      //    try
-      //    {
-      //      var name = userNameEmail.Split(' ')[0].Trim();
-      //      var email = userNameEmail.Split(' ')[1].Trim();
-      //    }
-      //    catch
-      //    {
-      //      failed.Add(userNameEmail);
-      //    }
-      //  }
+
+      List<string> failed = new List<string>();
+      foreach(var userNameEmail in userlist.Split(new string[] { System.Environment.NewLine }, StringSplitOptions.None))
+      {
+        var email = userNameEmail.Split(';')[0].Trim();
+        var name = userNameEmail.Split(';')[1].Trim();
+        var extras = userNameEmail.Split(';')[2].Trim();
+
+        var isTaken = false;
+        using(MiniProfiler.Current.Step("Check uniqueness user " + email))
+        {
+          isTaken = Users.IsEmailAlreadyTaken(email);
+        }
+        if(isTaken)
+        {
+          failed.Add(userNameEmail);
+        }
+        else
+        {
+          using(MiniProfiler.Current.Step("Write user " + email))
+          {
+            Users.Add(name, email, extras);
+          }
+          var token = "";
+          using(MiniProfiler.Current.Step("Write usertoken " + email))
+          {
+            token = Users.StoreResetToken(email, true);
+          }
+          using(MiniProfiler.Current.Step("Send mail " + email))
+          {
+            string reseturl = Url.AbsoluteHttpsAction("SetPassword", "User", new { token = token, reason = "nieuw" });
+            Mailer.WelcomeNew(name, email, reseturl).Send(new SmtpClient().Wrap());
+          }
+        }
+      }
+
+      Mailer.NewUsersBulk(failed).Send(new SmtpClient().Wrap());
 
       return RedirectToAction("Show");
-      //}
     }
 
     [HttpPost]
@@ -152,19 +172,18 @@ namespace dereddingsarknl.Controllers
           .Replace("<p>", "<p style=\"color: #555; font-size: 15px; margin-top: 20px; padding: 10px;\">")
           .Replace("<a ", "<a style=\"color: #555; font-size: 15px;\" ");
 
-        var smtp = new SmtpClient().Wrap();
         for(var i = 0; i < users.Count; i = i + 20)
         {
           var batch = users.Skip(i).Take(20);
           try
           {
-            Mailer.GroupMail(batch, subject, htmlmessage, body).Send(smtp);
+            Mailer.GroupMail(batch, subject, htmlmessage, body).Send(new SmtpClient().Wrap());
           }
           catch(Exception e)
           {
             Elmah.ErrorLog.GetDefault(System.Web.HttpContext.Current)
               .Log(new Elmah.Error(
-                new InvalidOperationException("Fout bij mailen aan " + 
+                new InvalidOperationException("Fout bij mailen aan " +
                       string.Join(", ", batch.Select(u => u.Email)), e)
                ));
           }

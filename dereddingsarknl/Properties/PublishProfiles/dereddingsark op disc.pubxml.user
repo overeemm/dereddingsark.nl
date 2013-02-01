@@ -26,7 +26,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/31/2013 21:20:52</publishTime>
     </File>
     <File Include="bin/dereddingsarknl.dll">
-      <publishTime>02/01/2013 20:04:19</publishTime>
+      <publishTime>02/01/2013 21:23:08</publishTime>
     </File>
     <File Include="bin/Elmah.dll">
       <publishTime>08/23/2012 23:09:50</publishTime>
@@ -98,7 +98,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/31/2013 21:26:36</publishTime>
     </File>
     <File Include="Content/app.css">
-      <publishTime>01/31/2013 20:55:52</publishTime>
+      <publishTime>02/01/2013 20:43:02</publishTime>
     </File>
     <File Include="Content/app.min.css">
       <publishTime>01/17/2013 21:22:29</publishTime>
@@ -440,7 +440,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/07/2012 22:45:27</publishTime>
     </File>
     <File Include="Views/Recordings/Podcast.cshtml">
-      <publishTime>12/07/2012 19:22:52</publishTime>
+      <publishTime>02/01/2013 21:11:34</publishTime>
     </File>
     <File Include="Views/Recordings/Show.cshtml">
       <publishTime>12/08/2012 13:10:44</publishTime>
@@ -468,6 +468,12 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Views/SiteMailer/GroupMail.text.cshtml">
       <publishTime>12/30/2012 14:22:45</publishTime>
+    </File>
+    <File Include="Views/SiteMailer/NewUsersBulk.cshtml">
+      <publishTime>02/01/2013 20:37:58</publishTime>
+    </File>
+    <File Include="Views/SiteMailer/NewUsersBulk.text.cshtml">
+      <publishTime>02/01/2013 20:37:39</publishTime>
     </File>
     <File Include="Views/SiteMailer/PasswordReset.cshtml">
       <publishTime>11/25/2012 22:35:52</publishTime>
@@ -503,7 +509,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/01/2013 14:55:40</publishTime>
     </File>
     <File Include="Views/User/Show.cshtml">
-      <publishTime>11/25/2012 22:47:22</publishTime>
+      <publishTime>02/01/2013 20:30:55</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>01/31/2013 21:20:14</publishTime>
@@ -512,7 +518,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/13/2012 20:59:53</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>02/01/2013 20:04:20</publishTime>
+      <publishTime>02/01/2013 21:23:08</publishTime>
     </File>
   </ItemGroup>
 </Project>

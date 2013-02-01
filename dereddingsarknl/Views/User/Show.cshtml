@@ -6,7 +6,7 @@
     <div class="twelve columns block">
       <h3>Gebruikers</h3>
 
-      <ul>
+      <ul class="scrollable">
         @foreach(var user in ViewBag.UserList)
         {
           <li class="user">
@@ -38,30 +38,27 @@
   </div>
     -->
 
-  <!--
   <div class="twelve columns">
     <div class="twelve columns block">
-      <h3>nieuw (bulk)</h3>
+      <h3>Nieuw (bulk)</h3>
 
       <p>
-        Zet op elke regel een nieuwe gebruiker ("email; naam"). 
+        Zet op elke regel een nieuwe gebruiker ("email; naam; extras"). 
         Als de bestaande gebruikers lijst volledig vervangen moet worden zullen gebruikers bijgewerkt worden
         en niet genoemde gebruikers verwijderd.
       </p>
 
       <form method="post" action="@Url.Action("StoreNewBulk", "User")">
         <textarea name="userlist"></textarea>
-        <input type="checkbox" name="sendmail" value="Verstuur e-mail" />
-        <input type="checkbox" name="sync" value="Vervang gebruikerslijst" />
-        <input type="submit" class="secondary small button" value="verwerk"></input>
+        <input type="checkbox" name="sendmail" value="Verstuur e-mail" checked="checked"/>
+        <input type="submit" class="secondary small button" value="verwerk"/>
       </form>
     </div>
   </div>
-    -->
 
   <div class="twelve columns">
     <div class="twelve columns block">
-      <h3>nieuw</h3>
+      <h3>Nieuw</h3>
       <form method="post" action="@Url.Action("StoreNew", "User")">
         <input type="text" placeholder="e-mail adres" name="email"></input>
         <input type="text" placeholder="naam" name="name"></input>

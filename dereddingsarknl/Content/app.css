@@ -1199,6 +1199,11 @@ div.block {
     font-size: 1.3rem;
   }
 
+ul.scrollable {
+  height: 300px;
+  overflow-y: auto;
+}
+
 li.user {
   height: 30px;
   border-bottom: solid 1px #ccc;
