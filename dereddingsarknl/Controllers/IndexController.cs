@@ -33,7 +33,7 @@ namespace dereddingsarknl.Controllers
       using(MiniProfiler.Current.Step("Read random 20 foto's from one album"))
       {
         var album = GetAlbum("", "Frontpage", "Frontpage");
-        var photos = album.Photos.TakeRandom(20);
+        var photos = album.Photos.TakeRandom(10);
         ViewBag.Photo = photos.First();
         ViewBag.Photos = photos.Skip(1).ToList();
       }

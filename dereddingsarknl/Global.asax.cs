@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using StackExchange.Profiling;
 using dereddingsarknl.Extensions;
+using System.Web.Optimization;
 
 namespace dereddingsarknl
 {
@@ -101,8 +102,10 @@ namespace dereddingsarknl
 
       RegisterGlobalFilters(GlobalFilters.Filters);
       RegisterRoutes(RouteTable.Routes);
-
+      
       MvcHandler.DisableMvcResponseHeader = true;
+
+      BundleConfig.RegisterBundles(BundleTable.Bundles);
     }
 
     protected void Application_Error(object sender, EventArgs e)
