@@ -1101,6 +1101,10 @@ div.internmenu {
     background: url("images/iconsbar.png") 0px -34px no-repeat;
   }
 
+  div.internmenu li#contact {
+    background: url("images/iconsbar.png") 0px -364px no-repeat;
+  }
+
   div.internmenu li#mailer {
     background: url("images/iconsbar.png") 0px -364px no-repeat;
   }

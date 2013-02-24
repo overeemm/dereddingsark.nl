@@ -25,7 +25,12 @@ namespace dereddingsarknl.uploader
     {
       get
       {
-        return System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), "lame.exe");
+        var lameexe = System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), "lame.exe");
+        if(!File.Exists(lameexe))
+        {
+          lameexe = System.IO.Path.Combine(new FileInfo(System.Reflection.Assembly.GetExecutingAssembly().Location).Directory.FullName, "lame.exe");
+        }
+        return lameexe;
       }
     }
 

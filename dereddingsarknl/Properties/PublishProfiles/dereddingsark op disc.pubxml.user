@@ -26,7 +26,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/31/2013 21:20:52</publishTime>
     </File>
     <File Include="bin/dereddingsarknl.dll">
-      <publishTime>02/01/2013 21:23:08</publishTime>
+      <publishTime>02/14/2013 21:14:29</publishTime>
     </File>
     <File Include="bin/Elmah.dll">
       <publishTime>08/23/2012 23:09:50</publishTime>
@@ -98,7 +98,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/31/2013 21:26:36</publishTime>
     </File>
     <File Include="Content/app.css">
-      <publishTime>02/01/2013 20:43:02</publishTime>
+      <publishTime>02/02/2013 13:32:32</publishTime>
     </File>
     <File Include="Content/app.min.css">
       <publishTime>01/17/2013 21:22:29</publishTime>
@@ -404,7 +404,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/16/2012 20:56:20</publishTime>
     </File>
     <File Include="Views/Articles/Feed.cshtml">
-      <publishTime>09/09/2012 19:32:03</publishTime>
+      <publishTime>02/14/2013 21:14:12</publishTime>
     </File>
     <File Include="Views/Articles/Show.cshtml">
       <publishTime>09/09/2012 19:15:30</publishTime>
@@ -431,10 +431,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/30/2012 20:38:53</publishTime>
     </File>
     <File Include="Views/Index/Show.cshtml">
-      <publishTime>01/01/2013 14:55:40</publishTime>
+      <publishTime>02/14/2013 21:41:53</publishTime>
+    </File>
+    <File Include="Views/Intern/Contact.cshtml">
+      <publishTime>02/02/2013 13:33:52</publishTime>
     </File>
     <File Include="Views/Intern/Show.cshtml">
-      <publishTime>02/01/2013 19:52:38</publishTime>
+      <publishTime>02/02/2013 13:32:14</publishTime>
     </File>
     <File Include="Views/PhotoAlbums/Show.cshtml">
       <publishTime>07/07/2012 22:45:27</publishTime>
@@ -518,7 +521,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/13/2012 20:59:53</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>02/01/2013 21:23:08</publishTime>
+      <publishTime>02/14/2013 21:42:06</publishTime>
     </File>
   </ItemGroup>
 </Project>
