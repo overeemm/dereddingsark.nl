@@ -65,8 +65,13 @@ puts "> Find the file at " + httplocation
 postbody = "url="+ httplocation + "&name=" + friendlyName + "&datetime=" + datum + "&categorie=" + category.name
 uri = URI.parse(APIADDRESS)
 https = Net::HTTP.new(uri.host, uri.port)
-https.set_debug_output $stderr
 https.use_ssl = true
+# Only needed for ruby 1.8.6
+# https.enable_post_connection_check = false
+https.verify_mode = OpenSSL::SSL::VERIFY_NONE
+https.ca_file = File.join(File.dirname(__FILE__), "cacert.pem")
+
+https.set_debug_output $stderr
 
 req, body = https.post(uri.path, postbody, {"X-UserGuid" => APIUSERGUID, "X-Token" => APIUSERTOKEN})
 req.each{ |h,v| puts "#{h}: #{v}" }
