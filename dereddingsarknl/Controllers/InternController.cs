@@ -12,6 +12,16 @@ namespace dereddingsarknl.Controllers
 {
   public class InternController : BaseController
   {
+    public ActionResult Memoriseren()
+    {
+      if(CurrentUser == null)
+        return new HttpUnauthorizedResult("U heeft geen toegang tot deze pagina.");
+
+      ViewBag.Title = "Memoriseren";
+
+      return View();
+    }
+
     public ActionResult Bunschoten(string datum)
     {
       if(CurrentUser == null)
