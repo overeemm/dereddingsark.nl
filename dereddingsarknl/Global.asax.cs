@@ -93,6 +93,7 @@ namespace dereddingsarknl
       routes.MapRoute("UserPassword", "user/setpassword", new { controller = "User", action = "SetPassword" });
       routes.MapRoute("UserCreateAPIToken", "user/apitoken", new { controller = "User", action = "CreateAPIToken" });
       routes.MapRoute("UserMail", "user/mail", new { controller = "User", action = "Mail" });
+      routes.MapRoute("UserMailList", "user/maillist", new { controller = "User", action = "MailList" });
 
       routes.MapRoute("404PageNotFound", "{*url}", new { controller = "Error", action = "NotFound" });
     }

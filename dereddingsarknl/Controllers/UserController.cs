@@ -10,6 +10,7 @@ using dereddingsarknl.Models;
 using dereddingsarknl.Extensions;
 using StackExchange.Profiling;
 using MarkdownSharp;
+using System.Text;
 
 namespace dereddingsarknl.Controllers
 {
@@ -141,6 +142,33 @@ namespace dereddingsarknl.Controllers
 
         return Redirect(referrer);
       }
+    }
+
+    public ActionResult MailList(string to)
+    {
+      if(CurrentUser == null || !CurrentUser.Mailer)
+        return new HttpUnauthorizedResult("U heeft geen toegang tot deze pagina.");
+
+      var users = Users.GetUsers().ToList();
+      if(to == "baarn")
+      {
+        users = users.Where(u => u.Baarn).ToList();
+      }
+      else if(to == "bunschoten")
+      {
+        users = users.Where(u => u.Bunschoten).ToList();
+      }
+
+      var count = users.Count();
+
+      var sb = new StringBuilder();
+      for(int i = 0; i < (count / 20); i++)
+      {
+        sb.AppendLine(string.Join(", ", users.Skip(i * 20).Take(20).Select(u => u.Email)));
+        sb.AppendLine();
+      }
+
+      return Content(sb.ToString());
     }
 
     public ActionResult Mail(string to, string subject, string body, bool? test)

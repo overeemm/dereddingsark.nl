@@ -71,7 +71,7 @@ namespace dereddingsarknl
           {
             obj = constructor();
             HttpRuntime.Cache.Add(filePath, obj,
-              new CacheDependency(filePath), Cache.NoAbsoluteExpiration,
+              new CacheDependency(filePath), DateTime.Now.AddSeconds(5),
               Cache.NoSlidingExpiration, CacheItemPriority.Normal, null);
           }
         }
