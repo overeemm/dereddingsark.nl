@@ -162,6 +162,10 @@ namespace dereddingsarknl.Models
     {
       get
       {
+        if(_what.StartsWith("p ", StringComparison.InvariantCultureIgnoreCase))
+        {
+          return char.ToUpper(_what[2]) + _what.Substring(3);
+        }
         return char.ToUpper(_what[0]) + _what.Substring(1);
       }
       set
@@ -199,9 +203,9 @@ namespace dereddingsarknl.Models
       {
         if(IsPublic)
         {
-          if(What.ToLowerInvariant().StartsWith("dienst ") && What.IndexOf(",") > -1)
+          if(What.ToLowerInvariant().StartsWith("dienst ") && What.IndexOf("spreker:") > -1)
           {
-            return What.Substring(0, What.IndexOf(",")).Trim();
+            return What.Substring(0, What.IndexOf("spreker:")).Trim();
           }
           if(What.ToLowerInvariant().StartsWith("gezamelijke dienst ") && What.IndexOf(",") > -1)
           {
@@ -218,6 +222,7 @@ namespace dereddingsarknl.Models
       get
       {
         return What.StartsWith("dienst ", StringComparison.InvariantCultureIgnoreCase) 
+          || What.StartsWith("P ", StringComparison.InvariantCultureIgnoreCase) 
           || What.IndexOf("jeugddienst", StringComparison.InvariantCultureIgnoreCase) != -1
           || What.IndexOf("gezamelijke dienst", StringComparison.InvariantCultureIgnoreCase) != -1
           || What.IndexOf("kerstmusical", StringComparison.InvariantCultureIgnoreCase) != -1
