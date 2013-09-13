@@ -72,5 +72,15 @@
       }
     </div>
   </div>
-
+  
+  <div class="twelve columns">
+    <div class="twelve columns block">
+      <h3>Vergelijk</h3>
+      <form method="post" action="@Url.Action("Diff", "User")" enctype="multipart/form-data">
+        <input type="file" name="file"></input>
+        <input type="submit" class="secondary small button" value="aanmaken (en mail sturen)"></input>
+      </form>
+      <p>Upload hier een file met per regel een e-mailadres.</p>
+    </div>
+  </div>
 </div>

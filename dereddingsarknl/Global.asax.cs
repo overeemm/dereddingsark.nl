@@ -83,6 +83,7 @@ namespace dereddingsarknl
       routes.MapRoute("DlBaarn", "intern/baarn/{datum}", new { controller = "Intern", action = "Baarn" });
       routes.MapRoute("DlBunschoten", "intern/bunschoten/{datum}", new { controller = "Intern", action = "Bunschoten" });
 
+      routes.MapRoute("UserDiff", "user/diff", new { controller = "User", action = "Diff" });
       routes.MapRoute("UserShow", "user/show", new { controller = "User", action = "Show" });
       routes.MapRoute("UserStoreNewBulk", "user/newbulk", new { controller = "User", action = "StoreNewBulk" });
       routes.MapRoute("UserStoreNew", "user/new", new { controller = "User", action = "StoreNew" });

@@ -171,6 +171,32 @@ namespace dereddingsarknl.Controllers
       return Content(sb.ToString());
     }
 
+    public ActionResult Diff(HttpPostedFileBase file)
+    {
+      if(CurrentUser == null || !CurrentUser.UserManager)
+        return new HttpUnauthorizedResult("U heeft geen toegang tot deze pagina.");
+
+      if(file != null && file.ContentLength > 0)
+      {
+        var b = new StreamReader(file.InputStream);
+        var lines = b.ReadToEnd().Split('\n').Where(l => !string.IsNullOrEmpty(l.Trim())).Select(l => l.Trim());
+        var newAddresses = new List<string>();
+        foreach(var line in lines)
+        {
+          var users = Users.GetUsers().ToList();
+          var user = users.SingleOrDefault(u => u.Email.Equals(line, StringComparison.InvariantCultureIgnoreCase));
+          if(user == null)
+          {
+            newAddresses.Add(line);
+          }
+        }
+
+        return Content(string.Join("; ", newAddresses));
+      }
+
+      return RedirectToAction("Show", "Index");
+    }
+
     public ActionResult Mail(string to, string subject, string body, bool? test)
     {
       if(CurrentUser == null || !CurrentUser.Mailer)

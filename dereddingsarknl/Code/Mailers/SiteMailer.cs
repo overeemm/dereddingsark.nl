@@ -15,8 +15,7 @@ namespace dereddingsarknl.Mailers
     {
       get
       {
-        return System.Diagnostics.Debugger.IsAttached
-          ? "DEBUG de reddingsark" : "Evangeliegemeente De Reddingsark";
+        return "Evangeliegemeente De Reddingsark";
       }
     }
 
