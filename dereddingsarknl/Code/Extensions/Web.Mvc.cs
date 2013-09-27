@@ -14,6 +14,11 @@ namespace dereddingsarknl.Extensions
       return actionDescriptor.GetCustomAttributes(false).Any(o => o is ApiActionAttribute);
     }
 
+    public static HtmlString CreateLinkXml(this UrlHelper url, string alias)
+    {
+      return new HtmlString("<link>" + url.AbsoluteHttpAction("Single", "Recordings", new { alias = alias }) + "</link>");
+    }
+
     public static string AbsoluteHttpsAction(this UrlHelper url, string actionName, string controllerName, object routeValues)
     {
       var urlString = url.Action(actionName, controllerName, routeValues);

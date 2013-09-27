@@ -1,5 +1,6 @@
 ﻿@using System.Globalization;
 @using dereddingsarknl.Models;
+@using System.Web.Optimization
 @{
   Layout = "";
 }<?xml version="1.0" encoding="UTF-8" ?>
@@ -40,26 +41,27 @@
           
           <item>
             
+            @WebMvcHelper.CreateLinkXml(Url, recording.Alias)
             <title>@recording.Title</title>
-            @("<link>")@Url.AbsoluteHttpAction("Single", "Recordings", new { alias = recording.Alias })@("</link>")
-
+            
             <itunes:author>evangeliegemeente De Reddingsark</itunes:author>
-            <itunes:subtitle></itunes:subtitle>
-            <itunes:summary></itunes:summary>
-            <description></description>
+            <itunes:subtitle> </itunes:subtitle>
+            <itunes:summary> </itunes:summary>
+            <description> </description>
             
             <dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">evangeliegemeente De Reddingsark</dc:creator>
 
-            <enclosure url="@recording.Url" length="10000" type="audio/mpeg" />
-            <media:content url="@recording.Url" fileSize="10000" type="audio/mpeg" />
+            <enclosure url="@recording.Url" length="10000" type="audio/mpeg"> </enclosure>
+            <media:content url="@recording.Url" fileSize="10000" type="audio/mpeg"> </media:content>
 
             <guid>@recording.Url</guid>
             <pubDate>@recording.Date.ToString("ddd, dd MMM yyyy HH:mm:ss Z")</pubDate>
             
             <itunes:explicit>no</itunes:explicit>
-            <itunes:keywords></itunes:keywords>
+            <itunes:keywords> </itunes:keywords>
           
           </item>
+          
         }
 
     </channel>

@@ -22,7 +22,6 @@ namespace dereddingsarknl.Controllers
       if((CurrentUser == null || !CurrentUser.UserManager) && Users.GetUserCount() > 0)
         return new HttpUnauthorizedResult("U heeft geen toegang tot deze pagina.");
 
-
       List<string> failed = new List<string>();
       foreach(var userNameEmail in userlist.Split(new string[] { System.Environment.NewLine }, StringSplitOptions.None))
       {

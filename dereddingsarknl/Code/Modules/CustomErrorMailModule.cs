@@ -16,6 +16,18 @@ namespace dereddingsarknl.Modules
       if(mail == null)
         throw new ArgumentNullException("mail");
 
+      if(mail.Body.IndexOf("Are your start/end tags properly balanced?", StringComparison.InvariantCultureIgnoreCase) > -1)
+      {
+        // stupid workaround for rare production bug
+        return;
+      }
+
+      if(HttpContext.Current != null && HttpContext.Current.Request.Url.AbsoluteUri.IndexOf("podcast", StringComparison.InvariantCultureIgnoreCase) > -1)
+      {
+        // stupid workaround for rare production bug
+        return;
+      }
+
       if(!System.Diagnostics.Debugger.IsAttached)
       {
         var client = new SmtpClient().Init();
