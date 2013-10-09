@@ -6,6 +6,7 @@ using System.Net.Mail;
 using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
+using dereddingsarknl.Attributes;
 using dereddingsarknl.Models;
 using dereddingsarknl.Extensions;
 using StackExchange.Profiling;
@@ -17,11 +18,9 @@ namespace dereddingsarknl.Controllers
   public class UserController : BaseController
   {
     [HttpPost]
+    [CustomAuthorize(Role = "UserManager")]
     public ActionResult StoreNewBulk(string userlist, string sendmail)
     {
-      if((CurrentUser == null || !CurrentUser.UserManager) && Users.GetUserCount() > 0)
-        return new HttpUnauthorizedResult("U heeft geen toegang tot deze pagina.");
-
       List<string> failed = new List<string>();
       foreach(var userNameEmail in userlist.Split(new string[] { System.Environment.NewLine }, StringSplitOptions.None))
       {
@@ -63,11 +62,9 @@ namespace dereddingsarknl.Controllers
     }
 
     [HttpPost]
+    [CustomAuthorize(Role = "UserManager")]
     public ActionResult StoreNew(string name, string email, string extras)
     {
-      if((CurrentUser == null || !CurrentUser.UserManager) && Users.GetUserCount() > 0)
-        return new HttpUnauthorizedResult("U heeft geen toegang tot deze pagina.");
-
       var isTaken = false;
       using(MiniProfiler.Current.Step("Check uniqueness user"))
       {
@@ -143,11 +140,9 @@ namespace dereddingsarknl.Controllers
       }
     }
 
+    [CustomAuthorize(Role = "Mailer")]
     public ActionResult MailList(string to)
     {
-      if(CurrentUser == null || !CurrentUser.Mailer)
-        return new HttpUnauthorizedResult("U heeft geen toegang tot deze pagina.");
-
       var users = Users.GetUsers().ToList();
       if(to == "baarn")
       {
@@ -170,11 +165,9 @@ namespace dereddingsarknl.Controllers
       return Content(sb.ToString());
     }
 
+    [CustomAuthorize(Role = "UserManager")]
     public ActionResult Diff(HttpPostedFileBase file)
     {
-      if(CurrentUser == null || !CurrentUser.UserManager)
-        return new HttpUnauthorizedResult("U heeft geen toegang tot deze pagina.");
-
       if(file != null && file.ContentLength > 0)
       {
         var b = new StreamReader(file.InputStream);
@@ -196,11 +189,9 @@ namespace dereddingsarknl.Controllers
       return RedirectToAction("Show", "Index");
     }
 
+    [CustomAuthorize(Role = "Mailer")]
     public ActionResult Mail(string to, string subject, string body, bool? test)
     {
-      if(CurrentUser == null || !CurrentUser.Mailer)
-        return new HttpUnauthorizedResult("U heeft geen toegang tot deze pagina.");
-
       if(Request.RequestType == "GET")
       {
         return View();
@@ -288,11 +279,9 @@ namespace dereddingsarknl.Controllers
       }
     }
 
+    [CustomAuthorize(Role = "UserManager")]
     public ActionResult CreateAPIToken(string email, string password)
     {
-      if(CurrentUser == null || !CurrentUser.UserManager)
-        return new HttpUnauthorizedResult("U heeft geen toegang tot deze pagina.");
-
       if(Request.RequestType == "GET")
       {
         return View();
@@ -367,11 +356,9 @@ namespace dereddingsarknl.Controllers
       }
     }
 
+    [CustomAuthorize(Role = "UserManager")]
     public ActionResult Show(string emailtaken)
     {
-      if((CurrentUser == null || !CurrentUser.UserManager) && Users.GetUserCount() > 0)
-        return new HttpUnauthorizedResult("U heeft geen toegang tot deze pagina.");
-
       ViewBag.EmailTaken = emailtaken;
 
       ViewBag.UserList = Users.GetUsers().OrderBy(u => u.Name).ToList();

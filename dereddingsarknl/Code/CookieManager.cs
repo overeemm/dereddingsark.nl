@@ -14,22 +14,24 @@ namespace dereddingsarknl
     protected const string Login_Cookie = "ark.login";
     protected const string Message_Cookie = "ark.msg";
 
-    private BaseController _controller;
+    private HttpResponseBase _response;
+    private HttpRequestBase _request;
 
     public CookieManager(BaseController controller)
     {
-      _controller = controller;
+      _response = controller.Response;
+      _request = controller.Request;
     }
 
-    //public CookieManager(ActionExecutingContext filterContext)
-    //{
-    //  _response = filterContext.HttpContext.Response;
-    //  _request = filterContext.HttpContext.Request;
-    //}
+    public CookieManager(AuthorizationContext filterContext)
+    {
+      _response = filterContext.HttpContext.Response;
+      _request = filterContext.HttpContext.Request;
+    }
 
     public string GetMessage()
     {
-      var msgcookie = _controller.Request.Cookies[Message_Cookie];
+      var msgcookie = _request.Cookies[Message_Cookie];
       if(msgcookie != null)
       {
         try
@@ -46,7 +48,7 @@ namespace dereddingsarknl
     {
       var responsecookie = new HttpCookie(Message_Cookie);
       responsecookie.Value = msg;
-      _controller.Response.Cookies.Add(responsecookie);
+      _response.Cookies.Add(responsecookie);
     }
 
     public void ClearMessage()
@@ -54,18 +56,18 @@ namespace dereddingsarknl
       var responsecookie = new HttpCookie(Message_Cookie);
       responsecookie.Value = "";
       responsecookie.Expires = DateTime.Now.AddDays(-1);
-      _controller.Response.Cookies.Add(responsecookie);
+      _response.Cookies.Add(responsecookie);
     }
 
     public UserToken GetUserToken()
     {
-      var cookie = _controller.Request.Cookies[Login_Cookie];
+      var cookie = _request.Cookies[Login_Cookie];
       if(cookie != null)
       {
         var guid = cookie.Values["guid"];
         var generated = cookie.Values["generated"];
         var token = cookie.Values["token"];
-        var ipadress = _controller.Request.ServerVariables["REMOTE_ADDR"];
+        var ipadress = _request.ServerVariables["REMOTE_ADDR"];
 
         return new UserToken
         {
@@ -90,30 +92,30 @@ namespace dereddingsarknl
       responsecookie.HttpOnly = true;
       responsecookie.Secure = Environment.SupportsHttps;
       responsecookie.Expires = token.GetExpiration(2);
-      _controller.Response.Cookies.Add(responsecookie);
+      _response.Cookies.Add(responsecookie);
 
       var httpsResponsecookie = new HttpCookie(Https_Cookie);
       httpsResponsecookie.Value = "1";
       httpsResponsecookie.HttpOnly = true;
       httpsResponsecookie.Expires = token.GetExpiration(2);
-      _controller.Response.Cookies.Add(httpsResponsecookie);
+      _response.Cookies.Add(httpsResponsecookie);
     }
 
     public UserToken ClearUserToken(User user)
     {
-      var cookie = _controller.Request.Cookies[Login_Cookie];
+      var cookie = _request.Cookies[Login_Cookie];
 
       var responsecookie = new HttpCookie(Login_Cookie);
       responsecookie.HttpOnly = true;
       responsecookie.Secure = true;
       responsecookie.Expires = DateTime.Now.AddDays(-1);
-      _controller.Response.Cookies.Add(responsecookie);
+      _response.Cookies.Add(responsecookie);
 
       var httpsResponsecookie = new HttpCookie(Https_Cookie);
       httpsResponsecookie.Value = "0";
       httpsResponsecookie.HttpOnly = true;
       httpsResponsecookie.Expires = DateTime.Now.AddDays(-1);
-      _controller.Response.Cookies.Add(httpsResponsecookie);
+      _response.Cookies.Add(httpsResponsecookie);
 
       if(cookie != null)
       {
@@ -127,7 +129,7 @@ namespace dereddingsarknl
 
     public bool UseHttps()
     {
-      var cookie = _controller.Request.Cookies[Https_Cookie];
+      var cookie = _request.Cookies[Https_Cookie];
       return cookie != null && cookie.Value == "1" && Environment.SupportsHttps;
     }
   }

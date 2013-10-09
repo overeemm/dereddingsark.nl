@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using dereddingsarknl.Attributes;
 using dereddingsarknl.Models;
 using dereddingsarknl.Extensions;
 using StackExchange.Profiling;
@@ -12,16 +13,15 @@ namespace dereddingsarknl.Controllers
 {
   public class InternController : BaseController
   {
+    [CustomAuthorize]
     public ActionResult Memoriseren()
     {
-      if(CurrentUser == null)
-        return new HttpUnauthorizedResult("U heeft geen toegang tot deze pagina.");
-
       ViewBag.Title = "Memoriseren";
 
       return View();
     }
 
+    [CustomAuthorize]
     public ActionResult Bunschoten(string datum)
     {
       if(CurrentUser == null)
@@ -30,19 +30,15 @@ namespace dereddingsarknl.Controllers
       return PdfDownload(DataFolders.InternBunschoten, f => f.Name.StartsWith(datum));
     }
 
+    [CustomAuthorize]
     public ActionResult Baarn(string datum)
     {
-      if(CurrentUser == null)
-        return new HttpUnauthorizedResult();
-
       return PdfDownload(DataFolders.InternBaarn, f => f.Name.StartsWith(datum));
     }
 
+    [CustomAuthorize]
     public ActionResult Contactblad(string nummer)
     {
-      if(CurrentUser == null)
-        return new HttpUnauthorizedResult();
-
       return PdfDownload(DataFolders.InternContactblad, f => f.Name.StartsWith(nummer));
     }
 
@@ -59,11 +55,9 @@ namespace dereddingsarknl.Controllers
       }
     }
 
+    [CustomAuthorize]
     public ActionResult Show()
     {
-      if(CurrentUser == null)
-        return new HttpUnauthorizedResult("U heeft geen toegang tot deze pagina.");
-
       ViewBag.Title = "Intern";
 
       using(MiniProfiler.Current.Step("Read photoalbums"))

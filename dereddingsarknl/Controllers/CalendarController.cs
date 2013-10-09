@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using dereddingsarknl.Attributes;
 using dereddingsarknl.Models;
 using dereddingsarknl.Extensions;
 using StackExchange.Profiling;
@@ -36,11 +37,9 @@ namespace dereddingsarknl.Controllers
       return View();
     }
 
+    [CustomAuthorize]
     public ActionResult ShowIntern()
     {
-      if(CurrentUser == null)
-        return new HttpUnauthorizedResult("U heeft geen toegang tot deze pagina.");
-
       ViewBag.Title = "Agenda";
 
       using(MiniProfiler.Current.Step("Read calendar file"))
