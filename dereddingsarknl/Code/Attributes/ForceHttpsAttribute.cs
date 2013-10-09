@@ -9,7 +9,6 @@ namespace dereddingsarknl.Attributes
   [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, Inherited = true, AllowMultiple = false)]
   public class ForceHttpsAttribute : ActionFilterAttribute
   {
-
     public override void OnActionExecuting(ActionExecutingContext filterContext)
     {
       if(filterContext == null)
