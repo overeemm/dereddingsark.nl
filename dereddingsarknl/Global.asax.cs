@@ -12,17 +12,18 @@ using System.Web.Optimization;
 
 namespace dereddingsarknl
 {
-  public class MvcApplication : System.Web.HttpApplication
+  public class MvcApplication : HttpApplication
   {
     public static void RegisterGlobalFilters(GlobalFilterCollection filters)
     {
-      //filters.Add(new HandleErrorAttribute());
       filters.Add(new HandleErrorAttribute
       {
         ExceptionType = typeof(FileNotFoundException),
-        View = "Custom404", // Custom404.cshtml is a view in the Shared folder.
-        Order = 2
+        View = "Custom404",
+        Order = 1
       });
+      
+      filters.Add(new HandleErrorAttribute(), 2);
     }
 
     protected void Application_EndRequest()
@@ -105,7 +106,7 @@ namespace dereddingsarknl
 
       RegisterGlobalFilters(GlobalFilters.Filters);
       RegisterRoutes(RouteTable.Routes);
-      
+
       MvcHandler.DisableMvcResponseHeader = true;
 
       BundleConfig.RegisterBundles(BundleTable.Bundles);
