@@ -18,7 +18,11 @@ namespace dereddingsarknl
         Order = 1
       });
 
-      filters.Add(new HandleErrorAttribute(), 2);
+      filters.Add(new HandleErrorAttribute
+      {
+        View = "Error",
+        Order = 2
+      });
     }
   }
 }

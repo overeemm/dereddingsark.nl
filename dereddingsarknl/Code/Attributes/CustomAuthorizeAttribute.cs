@@ -8,11 +8,11 @@ using dereddingsarknl.Models;
 namespace dereddingsarknl.Attributes
 {
   [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, Inherited = true, AllowMultiple = false)]
-  public class CustomAuthorizeAttribute : FilterAttribute, IAuthorizationFilter
+  public class CustomAuthorizeAttribute : ActionFilterAttribute
   {
     public string Role { get; set; }
 
-    public virtual void OnAuthorization(AuthorizationContext filterContext)
+    public override void OnActionExecuting(ActionExecutingContext filterContext)
     {
       if(filterContext == null)
       {
@@ -28,7 +28,9 @@ namespace dereddingsarknl.Attributes
         User user = users.GetUser(cookies.GetUserToken());
 
         if(user == null)
+        {
           filterContext.Result = new HttpUnauthorizedResult("U heeft geen toegang.");
+        }
         else
         {
           if(!string.IsNullOrEmpty(Role))

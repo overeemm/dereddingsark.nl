@@ -7,9 +7,10 @@ using System.Web.Mvc;
 namespace dereddingsarknl.Attributes
 {
   [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, Inherited = true, AllowMultiple = false)]
-  public class ForceHttpsAttribute : FilterAttribute, IAuthorizationFilter
+  public class ForceHttpsAttribute : ActionFilterAttribute
   {
-    public virtual void OnAuthorization(AuthorizationContext filterContext)
+
+    public override void OnActionExecuting(ActionExecutingContext filterContext)
     {
       if(filterContext == null)
       {
@@ -22,7 +23,7 @@ namespace dereddingsarknl.Attributes
       }
     }
 
-    protected virtual void HandleNonHttpsRequest(AuthorizationContext filterContext)
+    protected virtual void HandleNonHttpsRequest(ActionExecutingContext filterContext)
     {
       if(!String.Equals(filterContext.HttpContext.Request.HttpMethod, "GET", StringComparison.OrdinalIgnoreCase))
       {

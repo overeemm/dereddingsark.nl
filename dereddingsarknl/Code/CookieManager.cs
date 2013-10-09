@@ -23,7 +23,7 @@ namespace dereddingsarknl
       _request = controller.Request;
     }
 
-    public CookieManager(AuthorizationContext filterContext)
+    public CookieManager(ActionExecutingContext filterContext)
     {
       _response = filterContext.HttpContext.Response;
       _request = filterContext.HttpContext.Request;
