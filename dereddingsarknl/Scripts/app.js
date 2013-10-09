@@ -13,13 +13,15 @@ $(window).resize(function () {
   startSlideshow();
 });
 
-function setupStoreMail(textarea, subject, test) {
+function setupStoreMail(receiver, textarea, subject, test) {
   $('input.sendmail').click(function () {
     if (localStorage) {
-      if (test.is(':checked')) {
+      if(test.is(':checked')) {
+        localStorage.setItem('tempReceiver', receiver.val());
         localStorage.setItem('tempMail', textarea.val());
         localStorage.setItem('tempMailSubject', subject.val());
       } else {
+        localStorage.setItem('tempReceiver', "");
         localStorage.setItem('tempMail', "");
         localStorage.setItem('tempMailSubject', "");
       }
@@ -27,10 +29,11 @@ function setupStoreMail(textarea, subject, test) {
   });
 }
 
-function restoreMail(textarea, subject) {
-  if (localStorage) {
+function restoreMail(receiver, textarea, subject) {
+  if(localStorage) {
+    receiver.val(localStorage.getItem('tempReceiver'));
     textarea.val(localStorage.getItem('tempMail'));
-    subjct.val(localStorage.getItem('tempMailSubject'));
+    subject.val(localStorage.getItem('tempMailSubject'));
   }
 }
 

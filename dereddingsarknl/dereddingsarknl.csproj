@@ -256,8 +256,6 @@
     <Content Include="facebook.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <None Include="Properties\PublishProfiles\dereddingsark %40 movereem.nl.pubxml" />
-    <None Include="Properties\PublishProfiles\dereddingsark %40 nitroserve.pubxml" />
     <None Include="Properties\PublishProfiles\dereddingsark op disc.pubxml" />
     <Content Include="podcast.jpg" />
     <Content Include="Scripts\app.js" />
