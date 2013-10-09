@@ -9,6 +9,7 @@ using System.Web.Routing;
 using StackExchange.Profiling;
 using dereddingsarknl.Extensions;
 using System.Web.Optimization;
+using dereddingsarknl.Models;
 
 namespace dereddingsarknl
 {

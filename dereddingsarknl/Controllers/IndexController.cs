@@ -14,8 +14,6 @@ namespace dereddingsarknl.Controllers
 {
   public class IndexController : BaseController
   {
-    private static Random random = new Random();
-
     public ActionResult Show()
     {
       using(MiniProfiler.Current.Step("Read calendar file"))

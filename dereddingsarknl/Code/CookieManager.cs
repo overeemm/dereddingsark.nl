@@ -29,6 +29,12 @@ namespace dereddingsarknl
       _request = filterContext.HttpContext.Request;
     }
 
+    public CookieManager(HttpContextBase context)
+    {
+      _response = context.Response;
+      _request = context.Request;
+    }
+
     public string GetMessage()
     {
       var msgcookie = _request.Cookies[Message_Cookie];
