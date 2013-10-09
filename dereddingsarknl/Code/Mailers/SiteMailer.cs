@@ -41,7 +41,7 @@ namespace dereddingsarknl.Mailers
         x.ViewName = "Contact";
         x.To.Add(Email_AddressTo);
         x.From = new MailAddress(Email_AddressFrom, Email_Name);
-        x.ReplyTo = new MailAddress(fromaddress, fromname);
+        x.ReplyToList.Add(new MailAddress(fromaddress, fromname));
         x.LinkedResources = resources;
       });
     }
@@ -60,7 +60,7 @@ namespace dereddingsarknl.Mailers
         x.ViewName = "PasswordReset";
         x.To.Add(new MailAddress(user.Email, user.Name));
         x.From = new MailAddress(Email_AddressTo, Email_Name);
-        x.ReplyTo = new MailAddress(Email_AddressReplyTo, Email_Name);
+        x.ReplyToList.Add(new MailAddress(Email_AddressReplyTo, Email_Name));
         x.LinkedResources = resources;
       });
     }
@@ -80,7 +80,7 @@ namespace dereddingsarknl.Mailers
         x.ViewName = "WelcomeNew";
         x.To.Add(new MailAddress(email, name));
         x.From = new MailAddress(Email_AddressFrom, Email_Name);
-        x.ReplyTo = new MailAddress(Email_AddressReplyTo, Email_Name);
+        x.ReplyToList.Add(new MailAddress(Email_AddressReplyTo, Email_Name));
         x.LinkedResources = resources;
       });
     }
@@ -103,7 +103,7 @@ namespace dereddingsarknl.Mailers
         }
         x.To.Add(new MailAddress(Email_AddressFrom, Email_Name));
         x.From = new MailAddress(Email_AddressFrom, Email_Name);
-        x.ReplyTo = new MailAddress(Email_AddressReplyTo, Email_Name);
+        x.ReplyToList.Add(new MailAddress(Email_AddressReplyTo, Email_Name));
         x.LinkedResources = resources;
       });
     }
@@ -121,7 +121,7 @@ namespace dereddingsarknl.Mailers
         x.ViewName = "NewUsersBulk";
         x.To.Add(new MailAddress(Email_AddressFrom, Email_Name));
         x.From = new MailAddress(Email_AddressFrom, Email_Name);
-        x.ReplyTo = new MailAddress(Email_AddressReplyTo, Email_Name);
+        x.ReplyToList.Add(new MailAddress(Email_AddressReplyTo, Email_Name));
         x.LinkedResources = resources;
       });
     }

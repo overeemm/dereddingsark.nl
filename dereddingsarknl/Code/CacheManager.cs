@@ -8,7 +8,6 @@ namespace dereddingsarknl
 {
   public class CacheManager
   {
-    private HttpContextBase _context;
     private Dictionary<string, object> _locks = new Dictionary<string, object>();
     private static object _lockLock = new object();
 

@@ -39,7 +39,6 @@ namespace dereddingsarknl.Controllers
       }
 
       ViewBag.CalendarUrl = Calendar.GetCalendarUrl();
-      ViewBag.PodcastiTunesUrl = Recording.GetPodcastiTunesUrl();
       return View();
     }
 

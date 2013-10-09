@@ -286,7 +286,6 @@ namespace dereddingsarknl.Controllers
 
         return Redirect(referrer);
       }
-      return View();
     }
 
     public ActionResult CreateAPIToken(string email, string password)

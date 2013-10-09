@@ -8,11 +8,6 @@ namespace dereddingsarknl.Models
 {
   public class Recording
   {
-    public static string GetPodcastiTunesUrl()
-    {
-      return ConfigurationManager.AppSettings["podcastiTunes"];
-    }
-
     public DateTime Date { get; set; }
     public string Title { get; set; }
     public string Url { get; set; }

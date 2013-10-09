@@ -100,8 +100,7 @@ namespace dereddingsarknl.Models
         evt.Location = item.Where;
       }
 
-      iCalendarSerializer serializer = new iCalendarSerializer(iCal);
-      return serializer.SerializeToString();
+      return new iCalendarSerializer().SerializeToString(iCal);
     }
 
     public IEnumerable<CalendarItem> Items
@@ -125,8 +124,7 @@ namespace dereddingsarknl.Models
         evt.Location = item.Where;
       }
 
-      iCalendarSerializer serializer = new iCalendarSerializer(iCal);
-      return serializer.SerializeToString();
+      return new iCalendarSerializer().SerializeToString(iCal);
     }
   }
 
