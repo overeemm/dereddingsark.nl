@@ -95,6 +95,7 @@ namespace dereddingsarknl.Controllers
     }
 
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public ActionResult StoreUpdate(string password, string password2, string referrer, string token, string reason)
     {
       User user;

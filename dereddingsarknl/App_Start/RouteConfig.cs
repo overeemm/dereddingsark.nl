@@ -62,6 +62,7 @@ namespace dereddingsarknl
       routes.MapRoute("UserMail", "user/mail", new { controller = "User", action = "Mail" });
       routes.MapRoute("UserMailList", "user/maillist", new { controller = "User", action = "MailList" });
 
+      routes.MapRoute("500InternalServerError", "error", new { controller = "Error", action = "Unknown" });
       routes.MapRoute("404PageNotFound", "{*url}", new { controller = "Error", action = "NotFound" });
     }
   }

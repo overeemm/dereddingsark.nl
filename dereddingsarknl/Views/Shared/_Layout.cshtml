@@ -127,6 +127,7 @@
             <hr />
 
             <form method="post" action="@Url.AbsoluteHttpsAction("StoreUpdate", "User")">
+              @Html.AntiForgeryToken()
               <label>Uw nieuwe wachtwoord:</label>
               <input type="password" name="password" placeholder="nieuw wachtwoord"></input>
               <label>Herhaal uw wachtwoord:</label>

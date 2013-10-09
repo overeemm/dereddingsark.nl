@@ -17,11 +17,18 @@ namespace dereddingsarknl
         View = "Custom404",
         Order = 1
       });
+      
+      filters.Add(new HandleErrorAttribute
+      {
+        ExceptionType = typeof(HttpAntiForgeryException),
+        View = "Error",
+        Order = 2
+      });
 
       filters.Add(new HandleErrorAttribute
       {
         View = "Error",
-        Order = 2
+        Order = 3
       });
     }
   }
