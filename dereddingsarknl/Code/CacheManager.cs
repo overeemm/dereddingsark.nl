@@ -59,7 +59,26 @@ namespace dereddingsarknl
       return lockObj;
     }
 
-    public T GetCachedFile<T>(string filePath, Func<T> constructor) where T : class
+    public T GetLongCachedFile<T>(string filePath, Func<T> constructor) where T : class
+    {
+      T obj = HttpRuntime.Cache[filePath] as T;
+      if(obj == null)
+      {
+        lock(GetLock(filePath))
+        {
+          if(obj == null)
+          {
+            obj = constructor();
+            HttpRuntime.Cache.Add(filePath, obj,
+              new CacheDependency(filePath), Cache.NoAbsoluteExpiration,
+              Cache.NoSlidingExpiration, CacheItemPriority.Normal, null);
+          }
+        }
+      }
+      return obj;
+    }
+
+    public T GetShortCachedFile<T>(string filePath, Func<T> constructor) where T : class
     {
       T obj = HttpRuntime.Cache[filePath] as T;
       if(obj == null)

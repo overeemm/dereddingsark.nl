@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 
@@ -9,14 +10,18 @@ namespace dereddingsarknl
   {
     public static string GetAbsoluteDomain(bool https)
     {
-      if(System.Diagnostics.Debugger.IsAttached)
+      if(Developmode)
       {
-        return https ? "localhost:44300" : "localhost:2630";
+        return "http://www.dereddingsarktest.nl";
       }
       else
       {
-        return "www.dereddingsark.nl";
+        return (https ? "https://" : "http://") + "www.dereddingsark.nl";
       }
     }
+
+    public static bool SupportsHttps { get { return !Developmode; } }
+
+    public static bool Developmode { get { return HttpContext.Current.IsDebuggingEnabled; } }
   }
 }

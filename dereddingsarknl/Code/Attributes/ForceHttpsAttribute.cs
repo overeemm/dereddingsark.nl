@@ -30,7 +30,7 @@ namespace dereddingsarknl.Attributes
       }
 
       // redirect to HTTPS version of page
-      string url = "https://" + Environment.GetAbsoluteDomain(true) + filterContext.HttpContext.Request.RawUrl;
+      string url = Environment.GetAbsoluteDomain(true) + filterContext.HttpContext.Request.RawUrl;
       filterContext.Result = new RedirectResult(url);
     }
   }

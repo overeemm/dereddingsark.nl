@@ -88,7 +88,7 @@ namespace dereddingsarknl
       responsecookie.Values.Add("generated", token.Generated);
       responsecookie.Values.Add("token", token.Token);
       responsecookie.HttpOnly = true;
-      responsecookie.Secure = true;
+      responsecookie.Secure = Environment.SupportsHttps;
       responsecookie.Expires = token.GetExpiration(2);
       _controller.Response.Cookies.Add(responsecookie);
 
@@ -128,7 +128,7 @@ namespace dereddingsarknl
     public bool UseHttps()
     {
       var cookie = _controller.Request.Cookies[Https_Cookie];
-      return cookie != null && cookie.Value == "1";
+      return cookie != null && cookie.Value == "1" && Environment.SupportsHttps;
     }
   }
 }

@@ -32,9 +32,11 @@ namespace dereddingsarknl.Models
       // If the file is older then 30 minutes, start a backgroundworker to download it
       else if(File.GetLastWriteTimeUtc(calendarFile).AddMinutes(30) < DateTime.UtcNow)
       {
-        var worker = new BackgroundWorker();
-        worker.DoWork += (_, args) => DownloadCalendar(args.Argument as string);
-        worker.RunWorkerAsync(calendarFile);
+        // TODO
+        DownloadCalendar(calendarFile);
+        //var worker = new BackgroundWorker();
+        //worker.DoWork += (_, args) => DownloadCalendar(args.Argument as string);
+        //worker.RunWorkerAsync(calendarFile);
       }
 
       return new Calendar(calendarFile);

@@ -33,7 +33,7 @@ namespace dereddingsarknl
         {
           Orderer = new AsIsBundleOrderer()
         }
-        .Include("~/Scripts/jquery-1.9.0.js")
+        .Include("~/Scripts/jquery-1.10.2.js")
         .Include("~/Scripts/jquery.orbit-1.4.0.js")
         .Include("~/Scripts/jquery.placeholder.js")
         .Include("~/Scripts/jquery.tooltips.js")

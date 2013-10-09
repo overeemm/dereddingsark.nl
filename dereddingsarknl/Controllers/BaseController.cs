@@ -48,7 +48,7 @@ namespace dereddingsarknl.Controllers
       if(filterContext.HttpContext.Request.HttpMethod.Equals("GET", StringComparison.InvariantCultureIgnoreCase)
         && !filterContext.HttpContext.Request.IsSecureConnection && Cookies.UseHttps())
       {
-        string url = "https://" + Environment.GetAbsoluteDomain(true) + filterContext.HttpContext.Request.RawUrl;
+        string url = Environment.GetAbsoluteDomain(true) + filterContext.HttpContext.Request.RawUrl;
         filterContext.Result = new RedirectResult(url);
       }
       else

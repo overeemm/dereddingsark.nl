@@ -22,20 +22,17 @@ namespace dereddingsarknl.Extensions
 
     public static Calendar OpenCalendar(this FileInfo file, HttpContextBase context)
     {
-      //return new IndexFile(file.FullName);
-      return CacheManager.Instance.GetCachedFile<Calendar>(file.FullName, () => Calendar.Get(context));
+      return CacheManager.Instance.GetLongCachedFile<Calendar>(file.FullName, () => Calendar.Get(context));
     }
 
     public static IndexFile OpenIndex(this FileInfo file)
     {
-      //return new IndexFile(file.FullName);
-      return CacheManager.Instance.GetCachedFile<IndexFile>(file.FullName, () => new IndexFile(file.FullName));
+      return CacheManager.Instance.GetShortCachedFile<IndexFile>(file.FullName, () => new IndexFile(file.FullName));
     }
 
     public static MarkdownFile OpenMarkdown(this FileInfo file)
     {
-      //return new MarkdownFile(file.FullName);
-      return CacheManager.Instance.GetCachedFile<MarkdownFile>(file.FullName, () => new MarkdownFile(file.FullName));
+      return CacheManager.Instance.GetLongCachedFile<MarkdownFile>(file.FullName, () => new MarkdownFile(file.FullName));
     }
   }
 }
