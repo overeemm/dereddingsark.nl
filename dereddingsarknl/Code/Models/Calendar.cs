@@ -5,9 +5,11 @@ using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Threading;
 using System.Web;
 using DDay.iCal;
 using DDay.iCal.Serialization.iCalendar;
+using dereddingsarknl.Extensions;
 
 namespace dereddingsarknl.Models
 {
@@ -32,11 +34,8 @@ namespace dereddingsarknl.Models
       // If the file is older then 30 minutes, start a backgroundworker to download it
       else if(File.GetLastWriteTimeUtc(calendarFile).AddMinutes(30) < DateTime.UtcNow)
       {
-        // TODO
-        DownloadCalendar(calendarFile);
-        //var worker = new BackgroundWorker();
-        //worker.DoWork += (_, args) => DownloadCalendar(args.Argument as string);
-        //worker.RunWorkerAsync(calendarFile);
+        var worker = new Thread(args => DownloadCalendar(args as string));
+        worker.Start(calendarFile);
       }
 
       return new Calendar(calendarFile);
