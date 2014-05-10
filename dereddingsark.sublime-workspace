@@ -1,0 +1,738 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"open",
+				"openPlanQ"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"array_f",
+				"array_filter"
+			],
+			[
+				"t",
+				"type"
+			],
+			[
+				"stu",
+				"studentid"
+			],
+			[
+				"tut",
+				"tutorid"
+			],
+			[
+				"ex",
+				"extend"
+			],
+			[
+				"list-",
+				"list-style-type"
+			],
+			[
+				"logo",
+				"logoColor"
+			],
+			[
+				"bijles",
+				"bijlesGroepBlue"
+			],
+			[
+				"itemD",
+				"itemDate"
+			],
+			[
+				"ima",
+				"itemImage"
+			],
+			[
+				"2px",
+				"2px"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "dereddingsarknl/Views/Index/Show.cshtml",
+			"settings":
+			{
+				"buffer_size": 2175,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 67.0,
+		"selected_items":
+		[
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package Control: r",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package Control: re",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package Control: remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package Control: inst",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/overeem/Documents/Code/wefact-minutes-billing/javascripts/jquery-1.9.0.min.js",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/views/backend/admin_dashboard.blade.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/views/backend/leerlingen.blade.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/views/backend/admin/leerlingen.blade.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/views/backend/admin/admin_leerlingen.blade.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/views/backend/admin_leerlingen.blade.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/public/sass/backend.scss",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/routes.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/controllers/tutoring.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/views/backend/plan.blade.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-static/index.html",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-static/bijles-nodig.html",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/views/public/bijles-nodig.blade.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/views/public/index.blade.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/controllers/remover.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/migrations/2013_10_01_172403_guardian_remove_phone.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/views/backend/new_guardian.blade.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/views/backend/new_student.blade.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/controllers/tutor.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/controllers/student.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/views/backend/tutor.blade.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/views/backend/student.blade.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/controllers/backend.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/migrations/2013_09_18_193044_administration_missingfields.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/views/backend/tutoringforstudent.blade.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/views/backend/new_plan.blade.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/views/backend/tutoring.blade.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/views/backend/new_admin.blade.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/controllers/base.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/views/backend/new_tutor.blade.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/views/backend.blade.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/views/public/algemene-voorwaarden.blade.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-static/algemene-voorwaarden.html",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/controllers/public_mailer.php",
+		"/Users/overeem/Downloads/audio.csv",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/migrations/2013_08_28_183705_user_password_reset.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/config/local/session.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/config/session.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/views/backend/guardian_dashboard.blade.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/migrations/2013_08_10_184128_expand_tutored.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/migrations/2013_08_10_180552_correct_tutors.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/migrations/2013_08_10_180147_correct_student_numbers.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/migrations/2013_08_10_175445_correct_student.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/migrations/2013_08_10_172137_expand_student.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/migrations/2013_08_10_171752_expand_tutor.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/views/public.blade.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/public/index.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/config/local/application.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/config/application.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/public/sass/app.scss",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/views/backend/profile.blade.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/views/backend/tutored.blade.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/views/backend/login.blade.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/views/backend/reset.blade.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/views/backend/tutor_dashboard.blade.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/controllers/dashboards.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/views/backend/student_dashboard.blade.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/controllers/database.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/migrations/2013_07_17_190748_change_journal_when_column.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/migrations/2013_07_17_181342_change_tutor_relation_table.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/migrations/2013_07_12_181551_add_roles.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/readme.md",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/public/.htaccess",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/public/.passwords",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/migrations/2013_06_06_192658_update_users.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/laravel/auth/drivers/fluent.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/config/auth.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/config/database.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/migrations/2013_06_05_185928_create_users.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/config/local/database.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/views/public/contact.blade.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/controllers/db.php",
+		"/Users/overeem/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/views/backend/dashboard.blade.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/public/passwords",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/config/analytics.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/config/local/analytics.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/config/mail.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/config/local/mail.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/bundles.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/views/error/500.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/views/error/404.blade.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/views/error/404.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/views/public/bijles-geven.blade.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/views/public/hoe-werken-wij.blade.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/views/public/master.blade.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/controllers/public.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/public/config.rb",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/build.sh",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v-trunk/application/config/.gitignore",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/.gitignore",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v0.1/bijlesnodig_mailer.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v0.1/bijles-geven.html",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v0.1/algemene-voorwaarden.html",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v0.1/contact.html",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v0.1/hoe-werken-wij.html",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v0.1/index.html",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v0.1/bijles-nodig.html",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/index.html",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v0.1/config.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v0.1/contact_mailer.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v0.1/bijlesgeven_mailer.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v0.1/sass/app.scss",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v0.1/build.sh",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v0.1/stylesheets/ie.css",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v0.1/over-ons.html",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v0.1/javascripts/foundation/app.js",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v0.1/sass/_settings.scss",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v0.1/bijlesgeven.html",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v0.1/algemenevoorwaarden.html",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v0.1/bijlesnodig.html",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v0.1/hoewerkenwij.html",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v0.1/overons.html",
+		"/Users/overeem/Library/Application Support/Sublime Text 2/Packages/Git/Git.sublime-settings",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v0.1/htaccess",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v0.1/.htaccess",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v0.0.5-vacature/.htaccess",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v0.1/swiftmailer/classes/Swift/Mime/Headers/DateHeader.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v0.1/info.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/prototype/index.html",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v0.1/stylesheets/app.css",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v0.1/_config.yml",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v0.1/mailer.php",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v0.1/javascripts/app.min.js",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v0.1/sass/bijlesgroep.scss",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v0.1/bijlesgroep.nl/index.html",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v0.1/bijlesgroep.nl/stylesheets/app.css",
+		"/Users/overeem/Documents/Code/bijlesgroep.nl/v0.1/bijlesgroep.nl/javascripts/foundation/app.js"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"<project>",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"csv",
+			"right",
+			",",
+			"'",
+			"validate_student",
+			"inline",
+			"new_guardian",
+			"validate_journal",
+			"pdf",
+			".fou",
+			"salt",
+			"!=",
+			"$mailer->send",
+			"d-m-",
+			"t_name",
+			"d-m-",
+			"t_name",
+			"validate_journal",
+			"select",
+			"nonephoto",
+			"small",
+			"\n		Schema::table('users', function($table) {\n      $table->string('password_reset');\n      $table->date('password_reset_expire');\n    });",
+			"Input::old('",
+			"$student[0]->",
+			"$tutor[0]->",
+			"localho",
+			"$_POST",
+			"$_POST[\"name\"])",
+			"$_POST[\"intro\"]",
+			"$_POST[\"when\"]",
+			"$_POST[\"courses\"]",
+			"$_POST[\"level\"]",
+			"$_POST[\"birthdate\"]",
+			"$_POST[\"phone\"]",
+			"$_POST[\"email\"]",
+			"$_POST[\"level\"]",
+			"$_POST[\"days\"]",
+			"$_POST[\"address\"]",
+			"$_POST[\"homephone\"]",
+			"$_POST[\"school\"]",
+			"$_POST[\"phone\"]",
+			"$_POST[\"subject\"]",
+			"$_POST[\"email\"]",
+			"$_POST[\"birthdate\"]",
+			"$_POST[\"class\"]",
+			"$_POST[\"grade\"]",
+			"$_POST[\"name\"]",
+			"$image",
+			"$url",
+			"/images/",
+			"/javascripts/",
+			"/stylesheets/",
+			"blockq",
+			"cijfers",
+			"callto",
+			"call",
+			"smallphoto",
+			"</li>",
+			"<li>",
+			"footer",
+			"font-fam",
+			".png",
+			"bijlesdoc",
+			".intro",
+			"arrowdo",
+			"\\r\\n",
+			"');\n",
+			"888",
+			"06a",
+			"f2e",
+			"footer",
+			"ondertwee",
+			">\n",
+			"F2E6F7",
+			".loading",
+			"</p><p>",
+			"</p><p>'",
+			"</p><p>",
+			"</p><p>'",
+			"</p><p>",
+			"</p><p>'",
+			"'",
+			"</p>\n<p>",
+			"'",
+			"</p><p>",
+			"<br />",
+			"<br /><br />",
+			"</p><p>",
+			"<br />",
+			"<br /><br />",
+			"<br />",
+			"<br /><br />",
+			"<br />",
+			"<br /><br />",
+			"<br />",
+			"<br /><br />",
+			"</p><p>",
+			"</p>\n<p>",
+			"</p>",
+			"ui-btn",
+			"listview",
+			"data-rel='back'",
+			" ",
+			"geurts",
+			"vroon",
+			" "
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"",
+			"Input::old('",
+			"$i_name",
+			"$i_intro",
+			"$i_when",
+			"$i_courses",
+			"$i_level",
+			"$i_birthdate",
+			"$i_phone",
+			"$i_email",
+			"$i_level",
+			"$i_days",
+			"$i_address",
+			"$i_homephone",
+			"$i_school",
+			"$i_phone",
+			"$i_subject",
+			"$i_email",
+			"$i_birthdate",
+			"$i_class",
+			"$i_grade",
+			"$i_name",
+			"\"http://www.bijlesgroep.nl/img/logofacebook2.png\"",
+			"\"http://www.bijlesgroep.nl/\"",
+			"/img/",
+			"/js/",
+			"/css/",
+			"</blockquote>",
+			"<blockquote>",
+			"\\n",
+			" ",
+			"",
+			" ",
+			"\n\n",
+			" ",
+			"\n\n",
+			" ",
+			"\n\n",
+			" ",
+			"\n\n",
+			" ",
+			"\n\n",
+			", "
+		],
+		"reverse": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "dereddingsarknl/Views/Index/Show.cshtml",
+					"settings":
+					{
+						"buffer_size": 2175,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								393,
+								393
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"app",
+				"v-trunk/public/sass/app.scss"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": false,
+	"side_bar_visible": true,
+	"side_bar_width": 236.0,
+	"status_bar_visible": true
+}
