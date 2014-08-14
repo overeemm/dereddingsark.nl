@@ -3,6 +3,7 @@
 #################
 dereddingsarknl.uploader/Config/Config.cs
 dereddingsarknl.uploadercli/config.rb
+dereddingsarknl.uploadernode/config.js
 dereddingsarknl/Content/Fotos/
 dereddingsarknl/App_Data/
 dereddingsarknl.release

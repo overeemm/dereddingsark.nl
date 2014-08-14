@@ -1,0 +1,15 @@
+{
+  "name": "dereddingsarknl.uploadernode",
+  "version": "0.0.0",
+  "description": "upload console for mp3 files",
+  "main": "index.js",
+  "dependencies": {
+    "jsftp": "^1.3.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Michiel Overeem",
+  "license": "ISC"
+}
