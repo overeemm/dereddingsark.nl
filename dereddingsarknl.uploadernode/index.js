@@ -2,7 +2,7 @@ var readline = require('readline');
 var spawn = require('child_process').spawn;
 var JSFtp = require("jsftp");
 var querystring = require('querystring');
-var http = require('http');
+var https = require('https');
 var fs = require('fs');
 var config = require('./config.js');
 
@@ -35,7 +35,7 @@ rl.question('Welke categorie? ', function(categorie) {
       var today = getToday();
       rl.question('Welke datum (yyyy-MM-dd HH:mm:ss , of leeg voor ['+today+'])? ', function(datum) {
         datum = datum || today;
-        var targetFileName = spreker + (titel ? "-" + titel : "");
+        var targetFileName = spreker + (titel ? " - " + titel : "");
         var name = targetFileName;
         targetFileName = datum.substring(0, 4) + datum.substring(5, 7) + datum.substring(8, 10) + "-" + targetFileName
         targetFileName = targetFileName.replace(new RegExp("[\. \x00\/\\:\*\?\\\"<>\| ]", 'gi'), '_').toLowerCase() + ".mp3";
@@ -50,6 +50,7 @@ rl.question('Welke categorie? ', function(categorie) {
               
               fs.unlink(tempFilePath, function () {
                 rl.close();
+                process.exit();
               });
             });
 
@@ -65,7 +66,7 @@ rl.question('Welke categorie? ', function(categorie) {
 
 });
 
-function addfile(url, name, datum, category, callback){
+function addfile(url, name, datum, category, callback) {
 
   var post_data = querystring.stringify({
     "url": "http://www.dereddingsarkmedia.nl/"+url,
@@ -81,7 +82,7 @@ function addfile(url, name, datum, category, callback){
       path: '/audio/add',
       method: 'POST',
       rejectUnauthorized: false,
-      requestCert: true,
+      //requestCert: true,
       agent: false,
       headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
@@ -92,7 +93,7 @@ function addfile(url, name, datum, category, callback){
   };
 
   // Set up the request
-  var post_req = http.request(post_options, function(res) {
+  var post_req = https.request(post_options, function(res) {
     res.setEncoding('utf8');
     res.on('data', function (chunk) {
       console.log('Response: ' + chunk);
@@ -101,6 +102,10 @@ function addfile(url, name, datum, category, callback){
       console.log("Result: " + res.statusCode);
       callback();
     });
+  });
+
+  post_req.on('error', function(e) {
+    console.log('Error: ' + e.message);
   });
 
   // post the data
@@ -125,8 +130,7 @@ function lame(callback) {
   }); 
 }
 
-function upload(path, callback){
-
+function upload(path, callback) {
   var ftp = new JSFtp(config.ftp);
 
   ftp.put(tempFilePath, path, function(hadError) {
