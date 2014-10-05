@@ -223,6 +223,7 @@ namespace dereddingsarknl.Models
         return What.StartsWith("dienst ", StringComparison.InvariantCultureIgnoreCase) 
           || What.StartsWith("P ", StringComparison.InvariantCultureIgnoreCase) 
           || What.IndexOf("jeugddienst", StringComparison.InvariantCultureIgnoreCase) != -1
+          || What.IndexOf("israelstudie", StringComparison.InvariantCultureIgnoreCase) != -1
           || What.IndexOf("gezamelijke dienst", StringComparison.InvariantCultureIgnoreCase) != -1
           || What.IndexOf("kerstmusical", StringComparison.InvariantCultureIgnoreCase) != -1
           || What.IndexOf("oudejaarsdienst", StringComparison.InvariantCultureIgnoreCase) != -1;

@@ -34,6 +34,8 @@ namespace dereddingsarknl
       routes.MapRoute("RecordingPermaLink", "audio/{alias}", new { controller = "Recordings", action = "Single" });
       routes.MapRoute("Recordings", "audio", new { controller = "Recordings", action = "Show" });
 
+      routes.MapRoute("Study", "studies", new { controller = "Study", action = "Show" });
+
       routes.MapRoute("Articles", "artikelen", new { controller = "Articles", action = "Show" });
       routes.MapRoute("Articles archive", "artikelen/archief", new { controller = "Articles", action = "Archief" });
       routes.MapRoute("Articles rss feed", "artikelen/feed", new { controller = "Articles", action = "Feed" });

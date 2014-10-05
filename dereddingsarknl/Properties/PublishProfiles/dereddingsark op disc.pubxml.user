@@ -8,6 +8,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <LastUsedBuildConfiguration>Release</LastUsedBuildConfiguration>
     <LastUsedPlatform>Any CPU</LastUsedPlatform>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\Users\mov\Documents\GitHub\dereddingsark.nl\dereddingsarknl.release2</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="apple-touch-icon.png">
@@ -26,7 +27,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/09/2013 08:49:31</publishTime>
     </File>
     <File Include="bin/dereddingsarknl.dll">
-      <publishTime>10/09/2013 13:11:19</publishTime>
+      <publishTime>10/05/2014 20:59:08</publishTime>
     </File>
     <File Include="bin/Elmah.dll">
       <publishTime>10/09/2013 08:49:32</publishTime>
@@ -104,7 +105,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/09/2013 09:04:24</publishTime>
     </File>
     <File Include="Content/app.css">
-      <publishTime>10/09/2013 08:49:30</publishTime>
+      <publishTime>10/05/2014 20:24:22</publishTime>
     </File>
     <File Include="Content/app.min.css">
       <publishTime>01/17/2013 21:22:29</publishTime>
@@ -326,7 +327,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/09/2013 08:49:31</publishTime>
     </File>
     <File Include="Scripts/app.js">
-      <publishTime>10/09/2013 08:49:30</publishTime>
+      <publishTime>10/09/2013 13:39:52</publishTime>
     </File>
     <File Include="Scripts/app.min.js">
       <publishTime>01/17/2013 21:22:28</publishTime>
@@ -449,13 +450,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/09/2013 08:49:31</publishTime>
     </File>
     <File Include="Views/Error/Unknown.cshtml">
-      <publishTime>10/09/2013 08:49:31</publishTime>
+      <publishTime>10/09/2013 19:26:39</publishTime>
     </File>
     <File Include="Views/Index/Contact.cshtml">
       <publishTime>10/09/2013 08:49:31</publishTime>
     </File>
     <File Include="Views/Index/Show.cshtml">
-      <publishTime>10/09/2013 08:49:31</publishTime>
+      <publishTime>10/05/2014 19:38:59</publishTime>
     </File>
     <File Include="Views/Intern/Contact.cshtml">
       <publishTime>10/09/2013 08:49:31</publishTime>
@@ -485,7 +486,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/09/2013 08:49:31</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>10/09/2013 08:49:31</publishTime>
+      <publishTime>10/05/2014 20:01:01</publishTime>
     </File>
     <File Include="Views/SiteMailer/Contact.cshtml">
       <publishTime>10/09/2013 08:49:31</publishTime>
@@ -523,6 +524,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/SiteMailer/_Layout.text.cshtml">
       <publishTime>10/09/2013 08:49:31</publishTime>
     </File>
+    <File Include="Views/Study/Show.cshtml">
+      <publishTime>10/05/2014 20:57:52</publishTime>
+    </File>
     <File Include="Views/User/Add.cshtml">
       <publishTime>07/22/2012 20:47:04</publishTime>
     </File>
@@ -533,7 +537,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/09/2013 08:49:31</publishTime>
     </File>
     <File Include="Views/User/Mail.cshtml">
-      <publishTime>10/09/2013 08:49:31</publishTime>
+      <publishTime>10/09/2013 13:38:41</publishTime>
     </File>
     <File Include="Views/User/SetPassword.cshtml">
       <publishTime>10/09/2013 08:49:31</publishTime>
@@ -548,7 +552,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/09/2013 08:49:31</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>10/09/2013 13:11:20</publishTime>
+      <publishTime>10/05/2014 20:59:08</publishTime>
     </File>
   </ItemGroup>
 </Project>

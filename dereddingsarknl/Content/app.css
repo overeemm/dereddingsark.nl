@@ -16,10 +16,10 @@ body {
 }
 
 .hidden {
-    display: none;
-}​
+  display: none;
+}
 
-span.message, p.message {
+​ span.message, p.message {
   font-size: 15px;
   font-weight: bolder;
 }
@@ -1067,6 +1067,91 @@ div.artikellist div.artikel div {
 div.artikelcontainer {
   padding: 0px;
 }
+
+div.studielist > div {
+  padding: 0px;
+}
+
+  div.studielist > div .four.columns {
+    padding-right: 0px;
+  }
+
+div.studielist div.studies div {
+  height: 290px;
+  overflow: hidden;
+}
+
+  div.studielist div.studies div a, div.studielist div.studies div a:visited, div.studielist div.studies div a:active, div.studielist div.studies div a:hover {
+    color: #0A91A8;
+  }
+
+div.studielist div.studies div {
+  height: 90px;
+}
+
+div.row.studielist div.four.columns {
+  padding-left: 0px;
+}
+
+div.studies {
+  background-color: #fff;
+  -moz-box-shadow: 0px 0px 5px 0px #aaa;
+  -webkit-box-shadow: 0px 0px 5px 0px #aaa;
+  box-shadow: 0px 0px 5px 0px #aaa;
+  margin-bottom: 20px;
+  padding: 0px;
+}
+
+  div.studies h3 {
+    margin-top: 0px;
+  }
+
+  div.studies h5 {
+    font-size: 1.5rem;
+    padding-left: 10px;
+  }
+
+  div.studies h3 {
+    font-size: 1.8rem;
+    padding: 10px;
+    background-color: #0A91A8;
+    color: #fff;
+  }
+
+    div.studies h3 p.sort {
+      display: inline-block;
+      margin: 0px;
+      padding: 0px;
+      padding-left: 20px;
+      float: right;
+    }
+
+    div.studies h3 a, div.studies h3 a:visited, div.studies h3 a:active, div.studies h3 a:hover {
+      color: #fff;
+    }
+
+  div.studies p {
+    padding: 10px;
+    margin: 0px;
+    font-size: 1.3rem;
+  }
+
+  div.studies ul {
+    margin: 0px 20px 0px 20px;
+  }
+
+    div.studies ul li {
+      margin: 0px 0px 10px 0px;
+      list-style-type: none;
+      font-size: 1.3rem;
+    }
+    div.studies ul li a { display: block;}
+    div.studies ul li span {
+      display: block;
+      font-size: 0.8em;
+      font-style: italic;
+      padding-left: 5px;
+    }
 
 div.internmenu {
 }

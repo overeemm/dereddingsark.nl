@@ -92,6 +92,7 @@
             <option value="@Url.Action("Show", "Activities", new { partName = "" })" @(string.IsNullOrEmpty(@ViewBag.Activiteiten) ? "" : "selected=\"selected\"")>activiteiten</option>
             <option value="@Url.Action("Show", "Recordings")" @(string.IsNullOrEmpty(@ViewBag.Recordings) ? "" : "selected=\"selected\"")>audio</option>
             <option value="@Url.Action("Show", "Articles")" @(string.IsNullOrEmpty(@ViewBag.Artikelen) ? "" : "selected=\"selected\"")>artikelen</option>
+            <option value="@Url.Action("Show", "Study")" @(string.IsNullOrEmpty(@ViewBag.Studies) ? "" : "selected=\"selected\"")>studies</option>
 
             @if(ViewBag.CurrentUser != null)
             {
@@ -105,6 +106,8 @@
           <li class="activiteiten @ViewBag.Activiteiten"><a href="@Url.Action("Show", "Activities", new { partName = "" })">activiteiten</a></li>
           <li class="audio @ViewBag.Recordings""><a href="@Url.Action("Show", "Recordings")">audio</a></li>
           <li class="artikelen @ViewBag.Artikelen"><a href="@Url.Action("Show", "Articles")">artikelen</a></li>
+          <li class="studies @ViewBag.Studies"><a href="@Url.Action("Show", "Study")">studies</a></li>
+
           @if(ViewBag.CurrentUser != null)
           {
             <li class="intern @ViewBag.Intern"><a href="@Url.Action("Show", "Intern")">gemeente</a></li>
