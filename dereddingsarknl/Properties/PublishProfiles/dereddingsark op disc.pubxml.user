@@ -8,7 +8,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <LastUsedBuildConfiguration>Release</LastUsedBuildConfiguration>
     <LastUsedPlatform>Any CPU</LastUsedPlatform>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>C:\Users\mov\Documents\GitHub\dereddingsark.nl\dereddingsarknl.release2</_PublishTargetUrl>
+    <_PublishTargetUrl>C:\GitHub\dereddingsark.nl\dereddingsarknl.release2</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="apple-touch-icon.png">
@@ -540,7 +540,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/09/2013 13:38:41</publishTime>
     </File>
     <File Include="Views/User/SetPassword.cshtml">
-      <publishTime>10/09/2013 08:49:31</publishTime>
+      <publishTime>11/02/2014 13:20:11</publishTime>
     </File>
     <File Include="Views/User/Show.cshtml">
       <publishTime>10/09/2013 08:49:31</publishTime>
