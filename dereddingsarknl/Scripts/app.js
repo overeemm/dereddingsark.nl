@@ -200,7 +200,7 @@ jQuery(document).ready(function ($) {
 
     player.addEventListener("loadeddata", onLoadedData, false);
 
-    $("div.recording a").click(function (event) {
+    $("div.recording li.audio a").click(function (event) {
       event.preventDefault();
       event.stopPropagation();
 

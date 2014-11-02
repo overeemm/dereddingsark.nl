@@ -1017,7 +1017,6 @@ div.columns.recording p.titel {
 
 div.recording li {
   padding-left: 30px;
-  background: url("images/iconsbar.png") 0px 5px no-repeat;
   height: 43px;
   line-height: 30px;
   color: #fff;
@@ -1028,6 +1027,10 @@ div.recording li {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
+  div.recording li.audio {
+    background: url("images/iconsbar.png") 0px 5px no-repeat; 
+  }
 
   div.recording li:first-child {
     border-top: 0px;

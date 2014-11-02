@@ -41,13 +41,19 @@
         <div class="recordingpointer"></div>
         <div class="twelve columns recording">
           <ul>
+            @if (recording.Url.EndsWith("mp3")) {
             <li class="audio"><a href="@recording.Url" target="_blank">@recording.Title</a>
               <span>@recording.Date.ToString("ddd d MMM yyyy H:mm", new CultureInfo("nl-NL")) - @recording.Category</span>
             </li>
+            } else {
+            <li><a href="@recording.Url" target="_blank">@recording.Title</a>
+              <span>@recording.Date.ToString("ddd d MMM yyyy H:mm", new CultureInfo("nl-NL")) - @recording.Category</span>
+            </li>
+            }
           </ul>
         </div>
       </div>
     }
-  </div>
+</div>
 
 }
