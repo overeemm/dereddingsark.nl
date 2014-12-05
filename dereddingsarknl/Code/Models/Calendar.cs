@@ -226,6 +226,8 @@ namespace dereddingsarknl.Models
           || What.IndexOf("israelstudie", StringComparison.InvariantCultureIgnoreCase) != -1
           || What.IndexOf("gezamelijke dienst", StringComparison.InvariantCultureIgnoreCase) != -1
           || What.IndexOf("kerstmusical", StringComparison.InvariantCultureIgnoreCase) != -1
+          || What.IndexOf("kerstdienst", StringComparison.InvariantCultureIgnoreCase) != -1
+          || What.IndexOf("praise", StringComparison.InvariantCultureIgnoreCase) != -1
           || What.IndexOf("oudejaarsdienst", StringComparison.InvariantCultureIgnoreCase) != -1;
       }
     }

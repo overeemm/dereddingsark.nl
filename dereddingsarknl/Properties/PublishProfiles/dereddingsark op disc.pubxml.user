@@ -8,7 +8,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <LastUsedBuildConfiguration>Release</LastUsedBuildConfiguration>
     <LastUsedPlatform>Any CPU</LastUsedPlatform>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>C:\GitHub\dereddingsarknl.release</_PublishTargetUrl>
+    <_PublishTargetUrl>C:\temp\dereddingsarknl.release</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="apple-touch-icon.png">
@@ -27,7 +27,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/09/2013 08:49:31</publishTime>
     </File>
     <File Include="bin/dereddingsarknl.dll">
-      <publishTime>10/05/2014 20:59:08</publishTime>
+      <publishTime>12/05/2014 20:42:22</publishTime>
     </File>
     <File Include="bin/Elmah.dll">
       <publishTime>10/09/2013 08:49:32</publishTime>
@@ -525,7 +525,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/09/2013 08:49:31</publishTime>
     </File>
     <File Include="Views/Study/Show.cshtml">
-      <publishTime>10/05/2014 20:57:52</publishTime>
+      <publishTime>12/05/2014 20:52:38</publishTime>
     </File>
     <File Include="Views/User/Add.cshtml">
       <publishTime>07/22/2012 20:47:04</publishTime>
