@@ -44,6 +44,7 @@ namespace dereddingsarknl
 
       routes.MapRoute("Intern", "intern", new { controller = "Intern", action = "Show" });
       routes.MapRoute("Intern Memoriseren", "intern/memoriseren", new { controller = "Intern", action = "Memoriseren" });
+      routes.MapRoute("Intern rss feed", "intern/feed", new { controller = "Intern", action = "Feed" });
 
       routes.MapRoute("Podcast", "podcast", new { controller = "Recordings", action = "Podcast" });
 

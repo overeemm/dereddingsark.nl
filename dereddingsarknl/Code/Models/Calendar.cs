@@ -77,7 +77,14 @@ namespace dereddingsarknl.Models
             {
               What = (o.Source as Event).Summary,
               Where = (o.Source as Event).Location,
-              When = o.Period.StartTime
+              When = new iCalDateTime( 
+                o.Period.StartTime.Year, 
+                o.Period.StartTime.Month,
+                o.Period.StartTime.Day,
+                o.Period.StartTime.Hour,
+                o.Period.StartTime.Minute,
+                o.Period.StartTime.Second,
+                "Europe/Amsterdam") // make sure that our timezone is correct
             })
            .ToList();
       }

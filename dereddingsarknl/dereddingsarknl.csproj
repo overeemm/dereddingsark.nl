@@ -161,6 +161,7 @@
     <Compile Include="Code\Environment.cs" />
     <Compile Include="Code\Extensions\IO.cs" />
     <Compile Include="Code\HeaderManager.cs" />
+    <Compile Include="Code\Models\InternePublicatie.cs" />
     <Compile Include="Code\Modules\CustomErrorsModule.cs" />
     <Compile Include="Code\UserManager.cs" />
     <Compile Include="Code\UserToken.cs" />
@@ -332,6 +333,7 @@
     <Content Include="Views\Intern\Memoriseren.cshtml" />
     <Content Include="Scripts\jquery-2.0.3.min.map" />
     <Content Include="Views\Study\Show.cshtml" />
+    <Content Include="Views\Intern\Feed.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

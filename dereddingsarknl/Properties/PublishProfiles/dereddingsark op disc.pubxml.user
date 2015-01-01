@@ -27,7 +27,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/09/2013 08:49:31</publishTime>
     </File>
     <File Include="bin/dereddingsarknl.dll">
-      <publishTime>12/05/2014 20:42:22</publishTime>
+      <publishTime>01/01/2015 20:35:44</publishTime>
     </File>
     <File Include="bin/Elmah.dll">
       <publishTime>10/09/2013 08:49:32</publishTime>
@@ -429,7 +429,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/09/2013 08:49:31</publishTime>
     </File>
     <File Include="Views/Articles/Feed.cshtml">
-      <publishTime>10/09/2013 08:49:31</publishTime>
+      <publishTime>01/01/2015 20:21:28</publishTime>
     </File>
     <File Include="Views/Articles/Show.cshtml">
       <publishTime>10/09/2013 08:49:31</publishTime>
@@ -460,6 +460,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Views/Intern/Contact.cshtml">
       <publishTime>10/09/2013 08:49:31</publishTime>
+    </File>
+    <File Include="Views/Intern/Feed.cshtml">
+      <publishTime>01/01/2015 20:27:36</publishTime>
     </File>
     <File Include="Views/Intern/Memoriseren.cshtml">
       <publishTime>10/09/2013 08:49:31</publishTime>
