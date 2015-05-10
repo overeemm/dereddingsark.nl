@@ -23,14 +23,12 @@
       {
         <item>
           <title>@item.Name</title>
-          @("<link>")@item.Link@("</link>")
           <description>
-            <![CDATA[
-            @Html.Raw(item.Name)
-            ]]>
+            @item.Name
           </description>
-          <pubdate>@item.Date.ToUniversalTime().ToString("r")</pubdate>
-          <guid ispermalink="true">@item.Link</guid>
+          <pubDate>@item.Date.ToUniversalTime().ToString("r")</pubDate>
+          <guid isPermaLink="true">@item.Link</guid>
+          @Html.Raw("<link>")@item.Link@Html.Raw("</link>")
         </item>
       }
 
