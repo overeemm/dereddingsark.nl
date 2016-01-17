@@ -23,7 +23,7 @@
         {
           <item>
             <title>@artikel.Title</title>
-            @Html.Raw("<link>")@Url.Action("Artikel", "Articles", new { alias = @artikel.Alias })@Html.Raw("</link>")
+            @("<link>")@Url.Action("Artikel", "Articles", new { alias = @artikel.Alias })@("</link>")
             <description><![CDATA[
               @Html.Raw(artikel.Content)
             ]]></description>
